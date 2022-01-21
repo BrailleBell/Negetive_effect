@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.WebSockets;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -33,6 +34,8 @@ public class GhostTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        Debug.Log(Player.transform.position);
         // behaviour 
         targetPos = Player.transform.position;
         Ghost.transform.position =
