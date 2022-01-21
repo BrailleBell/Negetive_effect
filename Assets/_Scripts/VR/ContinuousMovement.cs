@@ -15,6 +15,7 @@ public class ContinuousMovement : MonoBehaviour
     private CharacterController character;
     public float speed = 1f; //speed of the character movement
 
+    //gravity stuff
     public float gravity = -9.81f; //the gravity of earth (funfact)
     private float fallingSpeed;
     public LayerMask groundLayer;
@@ -37,6 +38,10 @@ public class ContinuousMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        InputDevice controller = InputDevices.GetDeviceAtXRNode(inputSource);
+        Vector2 primary2dValue;
+        InputFeatureUsage<Vector2> primary2DVector = CommonUsages.primary2DAxis;
+
         CapsuleFollowHeadset();
 
         Quaternion headY = Quaternion.Euler(0, rig.CameraFloorOffsetObject.transform.eulerAngles.y, 0);
@@ -56,6 +61,12 @@ public class ContinuousMovement : MonoBehaviour
         }
 
         character.Move(Vector3.up * fallingSpeed * Time.fixedDeltaTime);
+
+        //testing if this will make the character run
+        if(controller.TryGetFeatureValue(primary2DVector, out primary2dValue) && primary2dValue != Vector2.zero)
+        {
+
+        }
     }
 
     //this makes sure that the player wont like bump into stuff irl
