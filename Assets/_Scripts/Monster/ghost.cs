@@ -43,7 +43,7 @@ public class ghost : MonoBehaviour
     {
         Debug.Log(State);
         timer +=  Time.deltaTime;
-
+     //   Debug.Log(timer);
         player_pos = player.transform.position;
         dist = Vector3.Distance(transform.position, player_pos);
         
@@ -94,12 +94,12 @@ public class ghost : MonoBehaviour
        
 
 
-            if (timer >=4)
+            if (timer >4)
             {
             newPosition = new Vector3(Random.Range(0f, boundx),0, Random.Range(0f, boundx));
             timer = 0;
             }
-        rb.MovePosition(transform.position + (newPosition * 5 * Time.deltaTime));
+        rb.MovePosition(transform.position + (newPosition * 3 * Time.deltaTime));
     }
         void follow()
         {
@@ -144,4 +144,10 @@ public class ghost : MonoBehaviour
         Object.Destroy(this, 1);
         }
 
+    private void OnDestroy()
+    {
+        GetComponent<ParticleSystem>().Emit(4); 
+
     }
+
+}

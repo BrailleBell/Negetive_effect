@@ -10,9 +10,9 @@ public class Cam_control : MonoBehaviour
     private Color col;
     
     private float alpha;
-    public float timer = 1;
+    public float timer;
     
-    private bool shot;
+    private bool shot = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,31 +26,38 @@ public class Cam_control : MonoBehaviour
     void Update()
     {
 
-
-        if (Input.GetButtonDown("Space"));
+        Debug.Log(shot);
+        if (Input.GetMouseButtonDown(0));
         {
-            shot = true;
+         
+         shot = true;
         }
         if (shot)
         {
-            timer -= Time.deltaTime;
+
+            shot = false;
+            
+            timer += Time.deltaTime;
             
             flash.enabled = true;
             flash_effect.GetComponent<SpriteRenderer>().color = new Vector4(col.r, col.g, col.b, timer);
             
-            if (timer <= 0)
+            if (timer >= 1 )
             {
                 flash.enabled = false;
-                shot = false;
+                
                 flash_effect.GetComponent<SpriteRenderer>().color = new Vector4(col.r, col.g, col.b, 0);
-                timer = 1;
+                timer = 0;
             }
         }
 
     }
-    void onTriggerEnter (Collider other)
+
+    void captureGhost(GameObject g)
     {
         
+        Destroy(g, 1);
+
     }
     
 }
