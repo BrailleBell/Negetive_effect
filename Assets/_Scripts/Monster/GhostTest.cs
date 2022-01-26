@@ -1,52 +1,46 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.WebSockets;
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.AI;
 
 public class GhostTest : MonoBehaviour
 {
     
     private GameObject Player;
-    public float ghostSpeed;
     private Vector3 targetPos;
-    private GameObject Ghost;
-    private Rigidbody rb;
     private int dir;
     private bool seen, seenafterTeleport;
     public float timer;
     private GameObject[] cover;
-    public GameObject coverTarget;
-    
-    
-    
-    
+    private Material hidingMat, orgMat;
+    private NavMeshAgent ghost;
+
+
+
+
+
+
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-        Ghost = gameObject;
-        rb = GetComponent<Rigidbody>();
-        
+        orgMat = GetComponent<Renderer>().material;
+        ghost = GetComponent<NavMeshAgent>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        Debug.Log(Player.transform.position);
-        // behaviour 
-        targetPos = Player.transform.position;
-        Ghost.transform.position =
-            Vector3.MoveTowards(gameObject.transform.position, targetPos, ghostSpeed * Time.deltaTime);
-        
-        gameObject.transform.LookAt(Player.transform.position);
-
+        targetPos = Player.transform.position; // finds the player
+        gameObject.transform.LookAt(targetPos);
         
 
-
-        if (GetComponent<Renderer>().isVisible)
+        if (GetComponent<Renderer>().isVisible) // checks if visible or not
         {
             seen = true;
             Debug.Log("SYNLIG");
@@ -57,14 +51,12 @@ public class GhostTest : MonoBehaviour
             seen = false;
             Debug.Log("IKKE SYNLIG");
             timer = 0;
-            targetPos = Player.transform.position;
-            Ghost.transform.position =
-                Vector3.MoveTowards(gameObject.transform.position, targetPos, ghostSpeed * Time.deltaTime);
-        
+            ghost.destination = targetPos;
             gameObject.transform.LookAt(Player.transform.position);
+            ghost.speed = 8;
 
-            
-            
+
+
         }
 
         if (seen)
@@ -73,11 +65,13 @@ public class GhostTest : MonoBehaviour
             if (timer > 1.5f)
             {
                 teleportaway();
-                
+                ghost.speed = 3.5f;
+
 
             }
 
             seen = false;
+            gameObject.GetComponent<Renderer>().material = orgMat;
 
         }
         
@@ -85,7 +79,7 @@ public class GhostTest : MonoBehaviour
     }
 
     
-    void teleportaway()
+    void teleportaway() // teleports the ghost to closest cover
     {
         GameObject[] gos;
         gos = GameObject.FindGameObjectsWithTag("Cover");
@@ -103,16 +97,27 @@ public class GhostTest : MonoBehaviour
             }
         }
 
+        ghost.destination = closest.transform.position;
         transform.position =  Vector3.MoveTowards(transform.position,closest.transform.position, 100f * Time.deltaTime);
         Debug.Log("Teleport");
 
         if (transform.position == closest.transform.position)
         {
-        
-            
+            hidingMat = closest.GetComponent<Renderer>().material;
+            gameObject.GetComponent<Renderer>().material = hidingMat;
+
         }
 
-    } 
+    }
 
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+          //  Player
+            
+        }
+    }
 }
 
