@@ -19,6 +19,7 @@ public class GhostTest : MonoBehaviour
     private GameObject[] cover;
     private Material hidingMat, orgMat;
     private NavMeshAgent ghost;
+    public GameObject cabin;
 
 
 
@@ -36,46 +37,56 @@ public class GhostTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        targetPos = Player.transform.position; // finds the player
-        gameObject.transform.LookAt(targetPos);
-        
-
-        if (GetComponent<Renderer>().isVisible) // checks if visible or not
+        Debug.Log(Vector3.Distance(ghost.transform.position,targetPos));
+        if (Vector3.Distance(ghost.transform.position, targetPos) < 100)
         {
-            seen = true;
-            Debug.Log("SYNLIG");
-            
-        }
-        else
-        {
-            seen = false;
-            Debug.Log("IKKE SYNLIG");
-            timer = 0;
-            ghost.destination = targetPos;
-            gameObject.transform.LookAt(Player.transform.position);
-            ghost.speed = 8;
 
 
+          //  Debug.Log(gameObject.GetComponent<MeshRenderer>().material);
+            targetPos = Player.transform.position; // finds the player
+            gameObject.transform.LookAt(targetPos);
 
-        }
 
-        if (seen)
-        {
-            timer += Time.deltaTime;
-            if (timer > 1.5f)
+            if (GetComponent<Renderer>().isVisible) // checks if visible or not
             {
-                teleportaway();
-                ghost.speed = 3.5f;
+                seen = true;
+                Debug.Log("SYNLIG");
+
+            }
+            else
+            {
+                seen = false;
+                Debug.Log("IKKE SYNLIG");
+                timer = 0;
+                ghost.destination = targetPos;
+                gameObject.transform.LookAt(Player.transform.position);
+                ghost.speed = 8;
+
 
 
             }
 
-            seen = false;
-            gameObject.GetComponent<Renderer>().material = orgMat;
+            if (seen)
+            {
+                timer += Time.deltaTime;
+                if (timer > 1.5f)
+                {
+                    teleportaway();
+                    ghost.speed = 3.5f;
+
+
+                }
+
+                seen = false;
+                gameObject.GetComponent<MeshRenderer>().material = orgMat;
+
+            }
 
         }
-        
-
+        else
+        {
+            ghost.destination = cabin.transform.position;
+        }
     }
 
     
@@ -103,8 +114,8 @@ public class GhostTest : MonoBehaviour
 
         if (transform.position == closest.transform.position)
         {
-            hidingMat = closest.GetComponent<Renderer>().material;
-            gameObject.GetComponent<Renderer>().material = hidingMat;
+            hidingMat = closest.GetComponent<MeshRenderer>().material;
+            gameObject.GetComponent<MeshRenderer>().material = hidingMat;
 
         }
 
