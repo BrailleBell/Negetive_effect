@@ -21,7 +21,7 @@ public class GhostTest : MonoBehaviour
     
     
     
-    // Start is called before the first frame update
+    
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
@@ -108,10 +108,8 @@ public class GhostTest : MonoBehaviour
 
         if (transform.position == closest.transform.position)
         {
-           // if (timer > 3f)
-           // {
-           //     transform.position = Vector3.MoveTowards(transform.position, targetPos, 10f * Time.deltaTime);
-           // }
+        
+            
         }
 
     } 
