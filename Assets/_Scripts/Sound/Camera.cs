@@ -31,10 +31,32 @@ public class Camera : MonoBehaviour
         if(doCameraFlash && !flashing)
         {
             CameraFlash();
+            //PhotoTaken();
         }
         else
         {
             doCameraFlash = false;
+        }
+    }
+
+    public void PhotoTaken() //checks if it has hit an enemy with the flash
+    {
+        Ray ray;
+        ray = new Ray(transform.position, transform.forward);
+        RaycastHit hit;
+
+        if(Physics.Raycast(ray, out hit))
+        {
+            if(hit.distance > 25f && hit.transform.gameObject.CompareTag("Ghost"))
+            {
+                CameraFlash();
+                Destroy(hit.transform.gameObject);
+                Debug.Log("Has hit ghost");
+            }
+            else
+            {
+                Debug.Log("Nothing has been hit");
+            }
         }
     }
 
@@ -44,7 +66,7 @@ public class Camera : MonoBehaviour
         Debug.Log("Photo taken");
     }
 
-    public void CameraFlash()
+    public void CameraFlash() //controlls the camera flash
     {
         //initial color
         Color col = flashImage.color;
