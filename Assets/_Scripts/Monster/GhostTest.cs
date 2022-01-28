@@ -17,7 +17,8 @@ public class GhostTest : MonoBehaviour
     private bool seen, seenafterTeleport;
     public float timer;
     private GameObject[] cover;
-    private Material hidingMat, orgMat;
+    private Material hidingMat;
+    public Material orgMat;
     private NavMeshAgent ghost;
     public GameObject cabin;
 
@@ -29,7 +30,7 @@ public class GhostTest : MonoBehaviour
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-        orgMat = GetComponent<Renderer>().material;
+     //   orgMat = gameObject.GetComponent<Renderer>().material;
         ghost = GetComponent<NavMeshAgent>();
 
     }
@@ -61,6 +62,10 @@ public class GhostTest : MonoBehaviour
                 ghost.destination = targetPos;
                 gameObject.transform.LookAt(Player.transform.position);
                 ghost.speed = 8;
+                float lerp = Mathf.PingPong(Time.time, 2.0f) / 2.0f;
+                GetComponent<Renderer>().material.Lerp(GetComponent<Renderer>().material, orgMat, lerp);
+                
+                
 
 
 
@@ -78,7 +83,7 @@ public class GhostTest : MonoBehaviour
                 }
 
                 seen = false;
-                gameObject.GetComponent<MeshRenderer>().material = orgMat;
+                
 
             }
 
@@ -105,19 +110,16 @@ public class GhostTest : MonoBehaviour
             {
                 closest = go;
                 distance = curDistance;
+                hidingMat = closest.GetComponent<Renderer>().material;
+                float lerp = Mathf.PingPong(Time.time, 2.0f) / 2.0f;
+                GetComponent<Renderer>().material.Lerp(GetComponent<Renderer>().material, hidingMat, lerp);
             }
         }
 
         ghost.destination = closest.transform.position;
         transform.position =  Vector3.MoveTowards(transform.position,closest.transform.position, 100f * Time.deltaTime);
         Debug.Log("Teleport");
-
-        if (transform.position == closest.transform.position)
-        {
-            hidingMat = closest.GetComponent<MeshRenderer>().material;
-            gameObject.GetComponent<MeshRenderer>().material = hidingMat;
-
-        }
+        
 
     }
 
