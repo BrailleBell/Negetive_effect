@@ -18,7 +18,7 @@ public class GhostTest : MonoBehaviour
     private bool seen, seenafterTeleport;
     public float timer;
     private GameObject[] cover;
-    private Material hidingMat;
+    public Material hidingMat;
     public Material orgMat;
     private NavMeshAgent ghost;
     public GameObject cabin;
@@ -26,6 +26,7 @@ public class GhostTest : MonoBehaviour
     public AudioClip killSound;
     private AudioSource sound;
     private Vector3 ghostPos;
+    private float attackDist = 3;
 
 
 
@@ -44,12 +45,7 @@ public class GhostTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ghostPos = ghost.transform.position;
-        if (Vector3.Distance(ghost.transform.position, targetPos) < 100)
-        {
-
-
-          //  Debug.Log(gameObject.GetComponent<MeshRenderer>().material);
+            ghostPos = ghost.transform.position;
             targetPos = Player.transform.position; // finds the player
             gameObject.transform.LookAt(targetPos);
 
@@ -68,7 +64,7 @@ public class GhostTest : MonoBehaviour
                 ghost.destination = targetPos;
                 gameObject.transform.LookAt(Player.transform.position);
                 ghost.speed = 8;
-                float lerp = Mathf.PingPong(Time.time, 2.0f) / 2.0f;
+                float lerp = Mathf.PingPong(Time.time, 1) / 100f;
                 GetComponent<Renderer>().material.Lerp(GetComponent<Renderer>().material, orgMat, lerp);
             }
 
@@ -82,18 +78,16 @@ public class GhostTest : MonoBehaviour
                 }
                 seen = false;
             }
-        }
-        else
-        {
-            ghost.destination = cabin.transform.position;
-        }
+            if(Vector3.Distance(ghostPos,Player.transform.position) < 2)
+            {
+                Debug.Log("dead");
+            }
+            
         
-        if(Vector3.Distance(ghostPos,Player.transform.position) < 2)
-        {
-            Debug.Log("dead");
-        }
-        
-        
+
+
+
+
     }
 
     
@@ -113,7 +107,7 @@ public class GhostTest : MonoBehaviour
                 
                 closest = go;
                 distance = curDistance;
-                hidingMat = closest.GetComponent<Renderer>().material;
+               // hidingMat = closest.GetComponent<Renderer>().material;
                 float lerptimer = Mathf.PingPong(Time.time, 1) / 100f;
                 GetComponent<Renderer>().material.Lerp(GetComponent<Renderer>().material, hidingMat, lerptimer);
             }
@@ -122,6 +116,7 @@ public class GhostTest : MonoBehaviour
         ghost.destination = closest.transform.position;
         transform.position =  Vector3.MoveTowards(transform.position,closest.transform.position, 20f * Time.deltaTime);
         {
+            
             
         }
          
