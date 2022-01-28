@@ -7,6 +7,7 @@ using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.AI;
+using Random = System.Random;
 
 public class GhostTest : MonoBehaviour
 {
@@ -17,9 +18,14 @@ public class GhostTest : MonoBehaviour
     private bool seen, seenafterTeleport;
     public float timer;
     private GameObject[] cover;
-    private Material hidingMat, orgMat;
+    private Material hidingMat;
+    public Material orgMat;
     private NavMeshAgent ghost;
     public GameObject cabin;
+    public AudioClip[] hidingSound;
+    public AudioClip killSound;
+    private AudioSource sound;
+    private Vector3 ghostPos;
 
 
 
@@ -29,15 +35,16 @@ public class GhostTest : MonoBehaviour
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-        orgMat = GetComponent<Renderer>().material;
+     //   orgMat = gameObject.GetComponent<Renderer>().material;
         ghost = GetComponent<NavMeshAgent>();
+        sound = GetComponent<AudioSource>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(Vector3.Distance(ghost.transform.position,targetPos));
+        ghostPos = ghost.transform.position;
         if (Vector3.Distance(ghost.transform.position, targetPos) < 100)
         {
 
@@ -61,9 +68,8 @@ public class GhostTest : MonoBehaviour
                 ghost.destination = targetPos;
                 gameObject.transform.LookAt(Player.transform.position);
                 ghost.speed = 8;
-
-
-
+                float lerp = Mathf.PingPong(Time.time, 2.0f) / 2.0f;
+                GetComponent<Renderer>().material.Lerp(GetComponent<Renderer>().material, orgMat, lerp);
             }
 
             if (seen)
@@ -73,20 +79,21 @@ public class GhostTest : MonoBehaviour
                 {
                     teleportaway();
                     ghost.speed = 3.5f;
-
-
                 }
-
                 seen = false;
-                gameObject.GetComponent<MeshRenderer>().material = orgMat;
-
             }
-
         }
         else
         {
             ghost.destination = cabin.transform.position;
         }
+        
+        if(Vector3.Distance(ghostPos,Player.transform.position) < 2)
+        {
+            Debug.Log("dead");
+        }
+        
+        
     }
 
     
@@ -103,32 +110,28 @@ public class GhostTest : MonoBehaviour
             float curDistance = diff.sqrMagnitude;
             if (curDistance < distance)
             {
+                
                 closest = go;
                 distance = curDistance;
+                hidingMat = closest.GetComponent<Renderer>().material;
+                float lerptimer = Mathf.PingPong(Time.time, 1) / 100f;
+                GetComponent<Renderer>().material.Lerp(GetComponent<Renderer>().material, hidingMat, lerptimer);
             }
         }
 
         ghost.destination = closest.transform.position;
-        transform.position =  Vector3.MoveTowards(transform.position,closest.transform.position, 100f * Time.deltaTime);
-        Debug.Log("Teleport");
-
-        if (transform.position == closest.transform.position)
+        transform.position =  Vector3.MoveTowards(transform.position,closest.transform.position, 20f * Time.deltaTime);
         {
-            hidingMat = closest.GetComponent<MeshRenderer>().material;
-            gameObject.GetComponent<MeshRenderer>().material = hidingMat;
-
-        }
-
-    }
-
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-          //  Player
             
         }
+         
+        
+        
+        sound = null;
+        Debug.Log("Teleport");
+        
+
     }
+    
 }
 
