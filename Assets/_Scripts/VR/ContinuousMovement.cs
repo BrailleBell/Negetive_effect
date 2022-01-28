@@ -38,16 +38,16 @@ public class ContinuousMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        CapsuleFollowHeadset();
+
         InputDevice controller = InputDevices.GetDeviceAtXRNode(inputSource);
         Vector2 primary2dValue;
         InputFeatureUsage<Vector2> primary2DVector = CommonUsages.primary2DAxis;
 
-        CapsuleFollowHeadset();
-
         Quaternion headY = Quaternion.Euler(0, rig.CameraFloorOffsetObject.transform.eulerAngles.y, 0);
 
         Vector3 direction = headY * new Vector3(inputAxis.x, 0, inputAxis.y);
-        character.Move(direction * Time.deltaTime * speed); //this makes the player move (basically)
+        character.Move(direction * Time.fixedDeltaTime * speed); //this makes the player move (basically)
 
         //gravity stuff
         bool isGrounded = CheckIfGrounded();
@@ -62,18 +62,18 @@ public class ContinuousMovement : MonoBehaviour
 
         character.Move(Vector3.up * fallingSpeed * Time.fixedDeltaTime);
 
-        //testing if this will make the character run
+        /*testing if this will make the character run
         if(controller.TryGetFeatureValue(primary2DVector, out primary2dValue) && primary2dValue != Vector2.zero)
         {
 
-        }
+        }*/
     }
 
     //this makes sure that the player wont like bump into stuff irl
     private void CapsuleFollowHeadset()
     {
         character.height = rig.CameraInOriginSpaceHeight + additionalHeight;
-        Vector3 capsuleCenter = transform.InverseTransformPoint(rig.CameraFloorOffsetObject.transform.position); //places the capsule where your head is
+        Vector3 capsuleCenter = transform.InverseTransformPoint(rig.Camera.gameObject.transform.position); //places the capsule where your head is
         character.center = new Vector3(capsuleCenter.x, character.height / 2 + character.skinWidth, capsuleCenter.z);
     }
 

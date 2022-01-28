@@ -47,7 +47,7 @@ public class Camera : MonoBehaviour
 
         if(Physics.Raycast(ray, out hit))
         {
-            if(hit.distance > 25f && hit.transform.gameObject.CompareTag("Ghost"))
+            if(hit.distance > 25f && hit.transform.gameObject.CompareTag("Monster"))
             {
                 CameraFlash();
                 Destroy(hit.transform.gameObject);
