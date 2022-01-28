@@ -53,11 +53,11 @@ public class Cam_control : MonoBehaviour
 
     }
 
-    void captureGhost(GameObject g)
+  /*  void captureGhost(GameObject g)
     {
         
         Destroy(g, 1);
 
     }
-    
+    */
 }
