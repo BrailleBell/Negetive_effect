@@ -7,22 +7,22 @@ using UnityEngine.UI;
 public class Poloroid_image : MonoBehaviour
 {
     
-    public Material sh;
+    public Material shaderMat;
     public GameObject Picture;
     private Texture2D screenCapture;
-    public Image photoDisplayArea;
-    public Material mat;
+    //public Image photoDisplayArea;
+ //  public Material mat;
     private Camera camCam;
-    public RenderTexture Poleroid;
-    public int x;
-    public int y;
+    public RenderTexture PoleroidImage;
+    public int x = 200;
+    public int y = 200;
 
     private void Start()
     {
       //  Instantiate(Picture, transform.position, Quaternion.identity);
         //screenCapture = new Texture2D(516, 516, TextureFormat.RGB24, false);
 
-        camCam = transform.GetChild(0).GetChild(1).GetComponent<Camera>();
+        camCam = transform.GetChild(0).GetComponent<Camera>();
        
     }
 
@@ -34,12 +34,12 @@ public class Poloroid_image : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             
-           screenCapture = toTexture2D(Poleroid);
-            Picture.transform.GetChild(0).GetComponent<Renderer>().material = new Material(sh);
+           screenCapture = toTexture2D(PoleroidImage);
+            Picture.transform.GetChild(0).GetComponent<Renderer>().material = new Material(shaderMat);
             Picture.transform.GetChild(0).GetComponent<Renderer>().material.SetTexture("_MainTex", screenCapture);
             // StartCoroutine(CapturePhoto());
             //  mat = new Material(Shader.Find("Universal_Render_Pipeline/2D/Sprite-Lit-Default"));
-            Instantiate(Picture, transform.position, Quaternion.Euler(90, 0, 0));
+            Instantiate(Picture, transform.position, Quaternion.Euler(90, 180, 0));
 
         }
     }
