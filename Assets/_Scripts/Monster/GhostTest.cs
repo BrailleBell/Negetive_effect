@@ -15,10 +15,10 @@ public class GhostTest : MonoBehaviour
     private GameObject Player;
     private Vector3 targetPos;
     private int dir;
-    private bool seen, seenafterTeleport;
+    private bool seen, seenafterTeleport, attacking;
     public float timer;
     private GameObject[] cover;
-    public Material hidingMat;
+    private Material hidingMat;
     public Material orgMat;
     private NavMeshAgent ghost;
     public GameObject cabin;
@@ -26,7 +26,7 @@ public class GhostTest : MonoBehaviour
     public AudioClip killSound;
     private AudioSource sound;
     private Vector3 ghostPos;
-    private float attackDist = 3;
+    private float attackDist = 15;
 
 
 
@@ -45,6 +45,7 @@ public class GhostTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(Vector3.Distance(ghost.transform.position, Player.transform.position));
             ghostPos = ghost.transform.position;
             targetPos = Player.transform.position; // finds the player
             gameObject.transform.LookAt(targetPos);
@@ -54,6 +55,8 @@ public class GhostTest : MonoBehaviour
             {
                 seen = true;
                 Debug.Log("SYNLIG");
+                ghost.destination = targetPos;
+                gameObject.transform.LookAt(Player.transform.position);
 
             }
             else
@@ -68,23 +71,35 @@ public class GhostTest : MonoBehaviour
                 GetComponent<Renderer>().material.Lerp(GetComponent<Renderer>().material, orgMat, lerp);
             }
 
-            if (seen)
+            if (seen & !attacking)
             {
                 timer += Time.deltaTime;
                 if (timer > 1.5f)
                 {
+                    ghost.destination = targetPos;
+                    gameObject.transform.LookAt(Player.transform.position);
                     teleportaway();
-                    ghost.speed = 3.5f;
+                    ghost.speed = 5;
                 }
                 seen = false;
             }
-            if(Vector3.Distance(ghostPos,Player.transform.position) < 2)
-            {
-                Debug.Log("dead");
-            }
-            
-        
 
+
+            // close to the player
+            if (Vector3.Distance(transform.position, Player.transform.position) < attackDist)
+            {
+                attacking = true;
+                ghost.speed = 50;
+
+                // Play Jumpscare and kill player
+
+
+            }
+            else
+            {
+                ghost.speed = 5;
+                attacking = false;
+            }
 
 
 
@@ -107,21 +122,19 @@ public class GhostTest : MonoBehaviour
                 
                 closest = go;
                 distance = curDistance;
-               // hidingMat = closest.GetComponent<Renderer>().material;
+                hidingMat = closest.GetComponent<Renderer>().material;
                 float lerptimer = Mathf.PingPong(Time.time, 1) / 100f;
                 GetComponent<Renderer>().material.Lerp(GetComponent<Renderer>().material, hidingMat, lerptimer);
+                ghost.destination = closest.transform.position;
+                transform.position =  Vector3.MoveTowards(transform.position,closest.transform.position, 20f * Time.deltaTime);
             }
         }
 
-        ghost.destination = closest.transform.position;
-        transform.position =  Vector3.MoveTowards(transform.position,closest.transform.position, 20f * Time.deltaTime);
-        {
-            
-            
-        }
-         
+      
         
-        
+
+
+
         sound = null;
         Debug.Log("Teleport");
         
