@@ -16,6 +16,8 @@ public class Poloroid_image : MonoBehaviour
     public RenderTexture PoleroidImage;
     public int x = 200;
     public int y = 200;
+    private float timer;
+    public Light flash;
 
     private void Start()
     {
@@ -23,7 +25,9 @@ public class Poloroid_image : MonoBehaviour
         //screenCapture = new Texture2D(516, 516, TextureFormat.RGB24, false);
 
         camCam = transform.GetChild(0).GetComponent<Camera>();
-       
+        flash = GetComponent<Light>();
+
+
     }
 
     
@@ -33,15 +37,24 @@ public class Poloroid_image : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            
-           screenCapture = toTexture2D(PoleroidImage);
-            Picture.transform.GetChild(0).GetComponent<Renderer>().material = new Material(shaderMat);
-            Picture.transform.GetChild(0).GetComponent<Renderer>().material.SetTexture("_MainTex", screenCapture);
+            screenCapture = toTexture2D(PoleroidImage);
+            Picture.transform.GetChild(0).GetComponent<Renderer>().sharedMaterial = new Material(shaderMat);
+            Picture.transform.GetChild(0).GetComponent<Renderer>().sharedMaterial.SetTexture("_MainTex", screenCapture);
             // StartCoroutine(CapturePhoto());
             //  mat = new Material(Shader.Find("Universal_Render_Pipeline/2D/Sprite-Lit-Default"));
             Instantiate(Picture, transform.position, Quaternion.Euler(90, 180, 0));
+            timer = +Time.deltaTime;
+            if (timer > 5)
+            {
+                Picture.GetComponent<BoxCollider>().enabled = false;
+                timer = 0;
+            }
 
         }
+
+        
+        
+
     }
 
     //take the render texture and turn it into it's own 2d texture

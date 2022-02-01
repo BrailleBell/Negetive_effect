@@ -1,13 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Net.WebSockets;
-using Microsoft.Unity.VisualStudio.Editor;
-using UnityEditor.Rendering;
 using UnityEngine;
-using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.AI;
-using Random = System.Random;
+using UnityEngine.SceneManagement;
 
 public class GhostTest : MonoBehaviour
 {
@@ -27,6 +20,7 @@ public class GhostTest : MonoBehaviour
     private AudioSource sound;
     private Vector3 ghostPos;
     private float attackDist = 15;
+    public int GoToSceneWhenKilled;
 
 
 
@@ -91,7 +85,13 @@ public class GhostTest : MonoBehaviour
                 attacking = true;
                 ghost.speed = 50;
 
-                // Play Jumpscare and kill player
+                if (Vector3.Distance(transform.position, Player.transform.position) < 3)
+                {
+                    SceneManager.LoadScene(GoToSceneWhenKilled);
+                }
+               
+
+               
 
 
             }
