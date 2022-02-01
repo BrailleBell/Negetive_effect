@@ -100,9 +100,6 @@ public class GhostTest : MonoBehaviour
                 ghost.speed = 5;
                 attacking = false;
             }
-
-
-
     }
 
     
@@ -119,7 +116,6 @@ public class GhostTest : MonoBehaviour
             float curDistance = diff.sqrMagnitude;
             if (curDistance < distance)
             {
-                
                 closest = go;
                 distance = curDistance;
                 hidingMat = closest.GetComponent<Renderer>().material;
@@ -129,12 +125,6 @@ public class GhostTest : MonoBehaviour
                 transform.position =  Vector3.MoveTowards(transform.position,closest.transform.position, 20f * Time.deltaTime);
             }
         }
-
-      
-        
-
-
-
         sound = null;
         Debug.Log("Teleport");
         
