@@ -64,7 +64,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cfa05ae2743b0564d9a53be8e04c9862, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -13.53
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cfa05ae2743b0564d9a53be8e04c9862, type: 3}
       propertyPath: m_LocalRotation.w
@@ -127,6 +127,7 @@ MonoBehaviour:
   cabin: {fileID: 0}
   hidingSound: []
   killSound: {fileID: 0}
+  GoToSceneWhenKilled: 0
 --- !u!195 &504677548
 NavMeshAgent:
   m_ObjectHideFlags: 0
