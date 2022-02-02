@@ -38,6 +38,10 @@ public class Poloroid_image : MonoBehaviour
     {
         if (lightsOn)
         {
+            Ray ray;
+            ray = new Ray(transform.position, transform.forward * 50);
+            RaycastHit hit;
+            Debug.DrawRay(gameObject.transform.position,transform.forward * 50,Color.green,0.3f);
             timerForFlash += Time.deltaTime;
             if(timerForFlash > 0.2f) 
             {
@@ -56,6 +60,22 @@ public class Poloroid_image : MonoBehaviour
                     Picture.GetComponent<BoxCollider>().enabled = false;
                     timerForPolaroid = 0;
                 }
+                
+                if(Physics.Raycast(ray, out hit, 50))
+                {
+                    if(hit.collider.gameObject.CompareTag("Monster"))
+                    {
+                        Destroy(hit.transform.gameObject);
+                        Debug.Log("monster hit");
+
+                    }
+                    else
+                    {
+                        Debug.Log("Nothing has been hit");
+                    }
+            
+                }
+
             }
         }
 
@@ -63,11 +83,8 @@ public class Poloroid_image : MonoBehaviour
         {
             lightsOn = true;
             flash.SetActive(true);
+
         }
-
-      
-        
-
     }
 
     //take the render texture and turn it into it's own 2d texture

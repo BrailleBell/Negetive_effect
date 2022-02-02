@@ -16,6 +16,10 @@ public class KillGhost : MonoBehaviour
     void Update()
     {
         
+        
+        
+        
+        
         Debug.DrawRay(gameObject.transform.position,transform.forward * 50,Color.green,0.3f);
         
         if (Input.GetKeyDown(KeyCode.Mouse0))

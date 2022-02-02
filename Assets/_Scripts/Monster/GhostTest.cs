@@ -19,7 +19,7 @@ public class GhostTest : MonoBehaviour
     public AudioClip killSound;
     private AudioSource sound;
     private Vector3 ghostPos;
-    private float attackDist = 15;
+    public float attackDist = 15;
     public int GoToSceneWhenKilled;
 
 
@@ -68,12 +68,12 @@ public class GhostTest : MonoBehaviour
             if (seen & !attacking)
             {
                 timer += Time.deltaTime;
-                if (timer > 1.5f)
+                if (timer > 0.8f)
                 {
-                    ghost.destination = targetPos;
-                    gameObject.transform.LookAt(Player.transform.position);
                     teleportaway();
-                    ghost.speed = 5;
+                    //  ghost.destination = targetPos;
+                    //gameObject.transform.LookAt(Player.transform.position);
+                    //ghost.speed = 5;
                 }
                 seen = false;
             }
