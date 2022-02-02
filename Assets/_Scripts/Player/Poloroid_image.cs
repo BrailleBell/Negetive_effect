@@ -63,9 +63,6 @@ public class Poloroid_image : MonoBehaviour
         {
             lightsOn = true;
             flash.SetActive(true);
-           
-            
-
         }
 
       
