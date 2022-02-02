@@ -16,7 +16,7 @@ public class KillGhost : MonoBehaviour
     void Update()
     {
         
-        Debug.DrawRay(gameObject.transform.position,transform.forward * 100,Color.green,0.3f);
+        Debug.DrawRay(gameObject.transform.position,transform.forward * 50,Color.green,0.3f);
         
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
@@ -24,18 +24,13 @@ public class KillGhost : MonoBehaviour
             ray = new Ray(transform.position, transform.forward * 50);
             RaycastHit hit;
 
-            if(Physics.Raycast(ray, out hit))
+            if(Physics.Raycast(ray, out hit, 50))
             {
-                if(hit.distance > 49f)
+                if(hit.collider.gameObject.CompareTag("Monster"))
                 {
-                    if (hit.collider.transform.gameObject.CompareTag("Monster"))
-                    {
-                        Destroy(hit.transform.gameObject);
-                        Debug.Log("monster hit");
-                        
-                    }
-                    
-                
+                   Destroy(hit.transform.gameObject);
+                   Debug.Log("monster hit");
+
                 }
                 else
                 {
