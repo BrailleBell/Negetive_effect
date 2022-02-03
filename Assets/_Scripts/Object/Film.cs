@@ -9,6 +9,7 @@ public class Film: MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
+        
         gm.GetFilm();
         gameObject.SetActive(false);
     }
