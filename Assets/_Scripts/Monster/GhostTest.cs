@@ -102,7 +102,7 @@ public class GhostTest : MonoBehaviour
                 attacking = false;
             }
             
-            if (ghostDying)
+            if (ghostDying) // after taking picture of the ghost it dies after 0.5 sec
             {
                 killTimer += Time.deltaTime;
                 if (killTimer > 0.5f)

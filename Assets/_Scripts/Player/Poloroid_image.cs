@@ -56,32 +56,17 @@ public class Poloroid_image : MonoBehaviour
                 //  mat = new Material(Shader.Find("Universal_Render_Pipeline/2D/Sprite-Lit-Default"));
                 Instantiate(Picture, transform.position, Quaternion.Euler(90, 180, 0));
                 timerForPolaroid = +Time.deltaTime;
+                if(cameraRange.GetComponent<MeshCollider>())
                 cameraRange.SetActive(false);
                 if (timerForPolaroid > 5)
                 {
                     Picture.GetComponent<BoxCollider>().enabled = false;
                     timerForPolaroid = 0;
                 }
-                
-              //  if(Physics.Raycast(ray, out hit, 50))
-              //  {
-              //      if(hit.collider.gameObject.CompareTag("Monster"))
-              //      {
-              //          Destroy(hit.transform.gameObject);
-              //          Debug.Log("monster hit");
-              //
-              //      }
-              //      else
-              //      {
-              //          Debug.Log("Nothing has been hit");
-              //      }
-              //
-              //  }
-
             }
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)) 
         {
             lightsOn = true;
             flash.SetActive(true);
