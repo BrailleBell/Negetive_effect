@@ -92,7 +92,7 @@ public class GhostTest : MonoBehaviour
 
                 if (Vector3.Distance(transform.position, Player.transform.position) < 7)
                 {
-                    SceneManager.LoadScene(GoToSceneWhenKilled);
+                    SceneManager.LoadScene(GoToSceneWhenKilled); // kill op hurt player 
                 }
 
             }

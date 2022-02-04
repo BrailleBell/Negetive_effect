@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
-    
-    public static  int film = 0;
+    public int film;
     public GameObject VRheadset;
     public static Text filmStr;
 
@@ -18,21 +17,22 @@ public class GameManager : MonoBehaviour
     {
         DontDestroyOnLoad(this);
         //     DontDestroyOnLoad(VRheadset);
-        filmStr = GameObject.FindGameObjectWithTag("filmClips").GetComponent<Text>();   
+        filmStr = GameObject.FindGameObjectWithTag("Film").GetComponent<Text>();   
     }
-
-    // Update is called once per frame
-
-   public void SnapPic()
+    
+    
+    
+        // films
+    public void SnapPic()
     {
         film--;
-        filmStr.text = film.ToString();
+        //filmStr.text = film.ToString();
     }
 
-    public static void  GetFilm()
+    public void  GetFilm()
     {
         film++ ;
-        filmStr.text = film.ToString();
+       // filmStr.text = film.ToString();
     }
 
 }

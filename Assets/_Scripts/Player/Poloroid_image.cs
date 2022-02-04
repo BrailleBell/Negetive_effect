@@ -20,6 +20,8 @@ public class Poloroid_image : MonoBehaviour
     public GameObject flash;
     private bool lightsOn;
     public GameObject cameraRange;
+    public GameManager gm;
+    public int film;
 
     //Sound stuff
     public AudioSource audioSource;
@@ -34,48 +36,56 @@ public class Poloroid_image : MonoBehaviour
         flash.SetActive(false);
         lightsOn = false;
         cameraRange.SetActive(false);
-        
+        gm = GameObject.Find("__GM").GetComponent<GameManager>();
 
 
     }
 
-    
+
     private void Update()
     {
         if (lightsOn)
         {
-          //  Ray ray;
-          //  ray = new Ray(transform.position, transform.forward * 50);
-          //  RaycastHit hit;
             timerForFlash += Time.deltaTime;
-            if(timerForFlash > 0.2f) 
+            if (timerForFlash > 0.2f)
             {
                 flash.SetActive(false);
                 lightsOn = false;
                 timerForFlash = 0;
-                screenCapture = toTexture2D(PoleroidImage);
-                Picture.transform.GetChild(0).GetComponent<Renderer>().sharedMaterial = new Material(shaderMat);
-                Picture.transform.GetChild(0).GetComponent<Renderer>().sharedMaterial.SetTexture("_MainTex", screenCapture);
-                // StartCoroutine(CapturePhoto());
-                //  mat = new Material(Shader.Find("Universal_Render_Pipeline/2D/Sprite-Lit-Default"));
-                Instantiate(Picture, transform.position, Quaternion.Euler(90, 180, 0));
-                timerForPolaroid = +Time.deltaTime;
-                if(cameraRange.GetComponent<MeshCollider>())
-                cameraRange.SetActive(false);
-                if (timerForPolaroid > 5)
+                if (gm.film > 0)
                 {
-                    Picture.GetComponent<BoxCollider>().enabled = false;
-                    timerForPolaroid = 0;
+                    screenCapture = toTexture2D(PoleroidImage);
+                    Picture.transform.GetChild(0).GetComponent<Renderer>().sharedMaterial = new Material(shaderMat);
+                    Picture.transform.GetChild(0).GetComponent<Renderer>().sharedMaterial
+                        .SetTexture("_MainTex", screenCapture);
+                    Instantiate(Picture, transform.position, Quaternion.Euler(90, 180, 0));
+                    timerForPolaroid = +Time.deltaTime;
+                    // if(cameraRange.GetComponent<MeshCollider>()) 
+                    cameraRange.SetActive(false);
+                    if (timerForPolaroid > 5)
+                    {
+                        Picture.GetComponent<BoxCollider>().enabled = false;
+                        timerForPolaroid = 0;
+                    }
                 }
             }
         }
 
-        if (Input.GetMouseButtonDown(0)) 
+        if (Input.GetMouseButtonDown(0))
         {
             lightsOn = true;
             flash.SetActive(true);
-            cameraRange.SetActive(true);
+            if (gm.film > 0)
+            {
+                cameraRange.SetActive(true);
+                gm.SnapPic();
+            }
 
+        }
+
+        if (gm.film == 0)
+        {
+            cameraRange.SetActive(false);
         }
     }
 
@@ -83,7 +93,11 @@ public class Poloroid_image : MonoBehaviour
     {
         lightsOn = true;
         flash.SetActive(true);
-        cameraRange.SetActive(true);
+        if (gm.film > 0)
+        { 
+            cameraRange.SetActive(true); 
+            gm.SnapPic(); 
+        }
     }
 
     public void Snapshot() //sound of taking a photo
@@ -101,15 +115,5 @@ public class Poloroid_image : MonoBehaviour
         tex.ReadPixels(new Rect(0, 0, rTex.width, rTex.height), 0, 0);
         tex.Apply();
         return tex;
-      
-    
-            //mat.SetTexture("texture", screenCapture);
-            //Picture.transform.GetChild(0).GetComponent<Material>().
-            //  Picture.transform.GetChild(0).GetComponent<Renderer>().material = mat;
-           
-      
-   
-        //Sprite photoSprite = Sprite.Create(screenCapture, new Rect(0.0f, 0.0f, screenCapture.width, screenCapture.height), new Vector2(0.5f, 0.5f), 100.0f);
-        //photoDisplayArea.sprite = photoSprite;
     }
 }
