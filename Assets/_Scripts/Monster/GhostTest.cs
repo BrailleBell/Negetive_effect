@@ -9,8 +9,8 @@ public class GhostTest : MonoBehaviour
     private GameObject Player;
     private Vector3 targetPos;
     private int dir;
-    private bool seen, seenafterTeleport, attacking, ghostDying;
-    public float timer, killTimer;
+    public bool seen, attacking, ghostDying;
+    public float timer, killTimer, attackTimer;
     private GameObject[] cover;
     private Material hidingMat;
     public Material orgMat;
@@ -20,8 +20,9 @@ public class GhostTest : MonoBehaviour
     public AudioClip killSound;
     private AudioSource sound;
     private Vector3 ghostPos;
-    public float attackDist = 15;
+    public float attackDist = 20;
     public int GoToSceneWhenKilled;
+    private Vector3 monsterOrgPos;
 
 
 
@@ -34,49 +35,52 @@ public class GhostTest : MonoBehaviour
      //   orgMat = gameObject.GetComponent<Renderer>().material;
         ghost = GetComponent<NavMeshAgent>();
         sound = GetComponent<AudioSource>();
-
+        monsterOrgPos = gameObject.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
+        Player = GameObject.FindGameObjectWithTag("Player");
         Debug.Log(Vector3.Distance(ghost.transform.position, Player.transform.position));
             ghostPos = ghost.transform.position;
             targetPos = Player.transform.position; // finds the player
             gameObject.transform.LookAt(targetPos);
 
 
-            if (GetComponent<Renderer>().isVisible) // checks if visible or not
+            if (GetComponent<Renderer>().isVisible && Vector3.Distance(ghost.transform.position, Player.transform.position) < 100) // checks if visible or not
             {
                 seen = true;
-                Debug.Log("SYNLIG");
-                ghost.destination = targetPos;
-                gameObject.transform.LookAt(Player.transform.position);
-
             }
             else
+            {
+                seen = false;
+            }
+
+            if (seen & !attacking) // teleports when not attacking and being seen to the closest cover and takes its texture
+            {
+                timer += Time.deltaTime;
+                if (timer > 0.8f)
+                {
+                    teleportaway();
+                    if (timer > 8)
+                    {
+                        attacking = true;
+                        timer = 0;
+                    }
+                } 
+            }
+            else if (!seen) // if not seen follows the player and takes his original texture
             {
                 seen = false;
                 Debug.Log("IKKE SYNLIG");
                 timer = 0;
                 ghost.destination = targetPos;
                 gameObject.transform.LookAt(Player.transform.position);
-                ghost.speed = 8;
+                ghost.speed = 20;
                 float lerp = Mathf.PingPong(Time.time, 1) / 100f;
                 GetComponent<Renderer>().material.Lerp(GetComponent<Renderer>().material, orgMat, lerp);
-            }
-
-            if (seen & !attacking)
-            {
-                timer += Time.deltaTime;
-                if (timer > 0.8f)
-                {
-                    teleportaway();
-                    //  ghost.destination = targetPos;
-                    //gameObject.transform.LookAt(Player.transform.position);
-                    //ghost.speed = 5;
-                }
-                seen = false;
+                
             }
 
 
@@ -86,37 +90,41 @@ public class GhostTest : MonoBehaviour
                 attacking = true;
                 ghost.speed = 50;
 
-                if (Vector3.Distance(transform.position, Player.transform.position) < 3)
+                if (Vector3.Distance(transform.position, Player.transform.position) < 7)
                 {
                     SceneManager.LoadScene(GoToSceneWhenKilled);
                 }
-               
-
-               
-
 
             }
-            else
-            {
-                ghost.speed = 5;
-                attacking = false;
-            }
-            
+
             if (ghostDying) // after taking picture of the ghost it dies after 0.5 sec
             {
-                killTimer += Time.deltaTime;
-                if (killTimer > 0.5f)
+                killTimer += Time.deltaTime; // kill time must be over 0.2 secounds! 
+                if (killTimer > 0.3f)
                 {
-                    gameObject.SetActive(false);
+                    gameObject.transform.position = monsterOrgPos;  //KILL GHOST INSERT HERE 
+                   // gameObject.SetActive(false);
                     Debug.Log(Vector3.Distance(gameObject.transform.position, Player.transform.position) + " Hit Ditscance");
                     killTimer = 0;
-                    
+                    ghostDying = false;
                 }
                
 
             }
-            
-            
+
+            if (attacking)
+            {
+                ghost.destination = Player.transform.position;
+                ghost.speed = 200;
+                attackTimer += Time.deltaTime;
+                if (attackTimer > 5)
+                {
+                    attacking = false;
+                    attackTimer = 0;
+                    teleportaway();
+                    
+                }
+            }
             
     }
 

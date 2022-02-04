@@ -77,8 +77,6 @@ public class Poloroid_image : MonoBehaviour
             cameraRange.SetActive(true);
 
         }
-        
-        
     }
 
     public void TakePictureInVR()
