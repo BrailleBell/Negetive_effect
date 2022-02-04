@@ -21,6 +21,10 @@ public class Poloroid_image : MonoBehaviour
     private bool lightsOn;
     public GameObject cameraRange;
 
+    //Sound stuff
+    public AudioSource audioSource;
+    public AudioClip audioClip;
+
     private void Start()
     {
       //  Instantiate(Picture, transform.position, Quaternion.identity);
@@ -82,6 +86,12 @@ public class Poloroid_image : MonoBehaviour
         lightsOn = true;
         flash.SetActive(true);
         cameraRange.SetActive(true);
+    }
+
+    public void Snapshot() //sound of taking a photo
+    {
+        audioSource.PlayOneShot(audioClip);
+        Debug.Log("Photo taken");
     }
 
     //take the render texture and turn it into it's own 2d texture
