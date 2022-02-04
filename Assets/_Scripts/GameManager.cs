@@ -4,15 +4,21 @@ using UnityEngine;
 using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
-    public int film;
-    public GameObject VRheadset;
-    public Text filmStr;
     
+    public static  int film = 0;
+    public GameObject VRheadset;
+    public static Text filmStr;
+
     // Start is called before the first frame update
+    private void Awake()
+    {
+        
+    }
     void Start()
     {
         DontDestroyOnLoad(this);
-        DontDestroyOnLoad(VRheadset);
+        //     DontDestroyOnLoad(VRheadset);
+        filmStr = GameObject.FindGameObjectWithTag("filmClips").GetComponent<Text>();   
     }
 
     // Update is called once per frame
@@ -23,9 +29,9 @@ public class GameManager : MonoBehaviour
         filmStr.text = film.ToString();
     }
 
-    public void  GetFilm()
+    public static void  GetFilm()
     {
-        film ++;
+        film++ ;
         filmStr.text = film.ToString();
     }
 

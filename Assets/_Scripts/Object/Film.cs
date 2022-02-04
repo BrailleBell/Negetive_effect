@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class Film: MonoBehaviour
 {
-    public GameManager gm;
-    // Start is called before the first frame update
     
-    private void OnTriggerEnter(Collider other)
+    // Start is called before the first frame update
+    private void Start()
     {
         
-        gm.GetFilm();
+        
+    }
+    private void OnTriggerEnter(Collider other)
+    {
         gameObject.SetActive(false);
+        GameManager.GetFilm();
+       
     }
   
 }
