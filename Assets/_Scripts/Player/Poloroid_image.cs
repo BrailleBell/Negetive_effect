@@ -73,6 +73,15 @@ public class Poloroid_image : MonoBehaviour
             cameraRange.SetActive(true);
 
         }
+        
+        
+    }
+
+    public void TakePictureInVR()
+    {
+        lightsOn = true;
+        flash.SetActive(true);
+        cameraRange.SetActive(true);
     }
 
     //take the render texture and turn it into it's own 2d texture
