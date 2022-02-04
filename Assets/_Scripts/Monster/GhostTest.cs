@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
@@ -8,8 +9,8 @@ public class GhostTest : MonoBehaviour
     private GameObject Player;
     private Vector3 targetPos;
     private int dir;
-    private bool seen, seenafterTeleport, attacking;
-    public float timer;
+    private bool seen, seenafterTeleport, attacking, ghostDying;
+    public float timer, killTimer;
     private GameObject[] cover;
     private Material hidingMat;
     public Material orgMat;
@@ -100,6 +101,23 @@ public class GhostTest : MonoBehaviour
                 ghost.speed = 5;
                 attacking = false;
             }
+            
+            if (ghostDying)
+            {
+                killTimer += Time.deltaTime;
+                if (killTimer > 0.5f)
+                {
+                    gameObject.SetActive(false);
+                    Debug.Log(Vector3.Distance(gameObject.transform.position, Player.transform.position) + " Hit Ditscance");
+                    killTimer = 0;
+                    
+                }
+               
+
+            }
+            
+            
+            
     }
 
     
@@ -130,6 +148,15 @@ public class GhostTest : MonoBehaviour
         
 
     }
-    
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "CameraShoot")
+        {
+            ghostDying = true;
+
+
+        }
+    }
 }
 

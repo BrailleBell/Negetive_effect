@@ -19,6 +19,7 @@ public class Poloroid_image : MonoBehaviour
     private float timerForPolaroid, timerForFlash;
     public GameObject flash;
     private bool lightsOn;
+    public GameObject cameraRange;
 
     private void Start()
     {
@@ -28,6 +29,7 @@ public class Poloroid_image : MonoBehaviour
         camCam = transform.GetChild(0).GetComponent<Camera>();
         flash.SetActive(false);
         lightsOn = false;
+        cameraRange.SetActive(false);
         
 
 
@@ -38,10 +40,9 @@ public class Poloroid_image : MonoBehaviour
     {
         if (lightsOn)
         {
-            Ray ray;
-            ray = new Ray(transform.position, transform.forward * 50);
-            RaycastHit hit;
-            Debug.DrawRay(gameObject.transform.position,transform.forward * 50,Color.green,0.3f);
+          //  Ray ray;
+          //  ray = new Ray(transform.position, transform.forward * 50);
+          //  RaycastHit hit;
             timerForFlash += Time.deltaTime;
             if(timerForFlash > 0.2f) 
             {
@@ -55,26 +56,27 @@ public class Poloroid_image : MonoBehaviour
                 //  mat = new Material(Shader.Find("Universal_Render_Pipeline/2D/Sprite-Lit-Default"));
                 Instantiate(Picture, transform.position, Quaternion.Euler(90, 180, 0));
                 timerForPolaroid = +Time.deltaTime;
+                cameraRange.SetActive(false);
                 if (timerForPolaroid > 5)
                 {
                     Picture.GetComponent<BoxCollider>().enabled = false;
                     timerForPolaroid = 0;
                 }
                 
-                if(Physics.Raycast(ray, out hit, 50))
-                {
-                    if(hit.collider.gameObject.CompareTag("Monster"))
-                    {
-                        Destroy(hit.transform.gameObject);
-                        Debug.Log("monster hit");
-
-                    }
-                    else
-                    {
-                        Debug.Log("Nothing has been hit");
-                    }
-            
-                }
+              //  if(Physics.Raycast(ray, out hit, 50))
+              //  {
+              //      if(hit.collider.gameObject.CompareTag("Monster"))
+              //      {
+              //          Destroy(hit.transform.gameObject);
+              //          Debug.Log("monster hit");
+              //
+              //      }
+              //      else
+              //      {
+              //          Debug.Log("Nothing has been hit");
+              //      }
+              //
+              //  }
 
             }
         }
@@ -83,6 +85,7 @@ public class Poloroid_image : MonoBehaviour
         {
             lightsOn = true;
             flash.SetActive(true);
+            cameraRange.SetActive(true);
 
         }
     }
