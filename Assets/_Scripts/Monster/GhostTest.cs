@@ -99,8 +99,10 @@ public class GhostTest : MonoBehaviour
 
             if (ghostDying) // after taking picture of the ghost it dies after 0.5 sec
             {
+                ghost.velocity = Vector3.zero;
+                ghost.isStopped = true;
                 killTimer += Time.deltaTime; // kill time must be over 0.2 secounds! 
-                if (killTimer > 0.3f)
+                if (killTimer > 0.5f)
                 {
                     gameObject.transform.position = monsterOrgPos;  //KILL GHOST INSERT HERE 
                    // gameObject.SetActive(false);
@@ -110,6 +112,11 @@ public class GhostTest : MonoBehaviour
                 }
                
 
+            }
+
+            if (!ghostDying)
+            {
+                ghost.isStopped = false;
             }
 
             if (attacking)
