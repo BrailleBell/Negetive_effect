@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
 {
     public int film;
     public GameObject VRheadset;
-    public TextMesh filmStr;
 
     // Start is called before the first frame update
     private void Awake()
@@ -18,13 +17,12 @@ public class GameManager : MonoBehaviour
     {
         DontDestroyOnLoad(this);
         //     DontDestroyOnLoad(VRheadset);
-          filmStr = GameObject.Find("FilmText").GetComponent<TextMesh>();   
     }
 
 
     private void Update()
     {
-        filmStr.text = film.ToString();
+        
     }
 
     // films

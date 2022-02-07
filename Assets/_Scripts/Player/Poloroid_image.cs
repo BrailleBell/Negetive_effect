@@ -21,6 +21,7 @@ public class Poloroid_image : MonoBehaviour
     private bool lightsOn;
     public GameObject cameraRange;
     public GameManager gm;
+    private TextMesh filmText;
 
     //Sound stuff
     public AudioSource audioSource;
@@ -36,6 +37,7 @@ public class Poloroid_image : MonoBehaviour
         lightsOn = false;
         cameraRange.SetActive(false);
         gm = GameObject.Find("__GM").GetComponent<GameManager>();
+        filmText = GameObject.Find("FilmText").GetComponent<TextMesh>();
 
 
     }
@@ -98,6 +100,11 @@ public class Poloroid_image : MonoBehaviour
         {
             cameraRange.SetActive(false);
         }
+        
+        
+        filmText.text = gm.film.ToString();
+        
+        
     }
 
     public void TakePictureInVR()
