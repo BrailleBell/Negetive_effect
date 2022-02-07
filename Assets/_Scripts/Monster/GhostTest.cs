@@ -35,6 +35,9 @@ public class GhostTest : MonoBehaviour
      //   orgMat = gameObject.GetComponent<Renderer>().material;
         ghost = GetComponent<NavMeshAgent>();
         sound = GetComponent<AudioSource>();
+        
+        
+        // for testing 
         monsterOrgPos = gameObject.transform.position;
     }
 
@@ -168,6 +171,7 @@ public class GhostTest : MonoBehaviour
     {
         if (other.gameObject.tag == "CameraShoot")
         {
+            Debug.Log("monster hit");
             ghostDying = true;
 
 

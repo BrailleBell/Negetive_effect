@@ -17,11 +17,10 @@ public class Poloroid_image : MonoBehaviour
     public int x = 200;
     public int y = 200;
     private float timerForPolaroid, timerForFlash;
-    public GameObject flash;
+    public GameObject flash, UVLight;
     private bool lightsOn;
     public GameObject cameraRange;
     public GameManager gm;
-    public int film;
 
     //Sound stuff
     public AudioSource audioSource;
@@ -54,6 +53,7 @@ public class Poloroid_image : MonoBehaviour
                 timerForFlash = 0;
                 if (gm.film > 0)
                 {
+                    gm.film--; 
                     screenCapture = toTexture2D(PoleroidImage);
                     Picture.transform.GetChild(0).GetComponent<Renderer>().sharedMaterial = new Material(shaderMat);
                     Picture.transform.GetChild(0).GetComponent<Renderer>().sharedMaterial
@@ -78,10 +78,21 @@ public class Poloroid_image : MonoBehaviour
             if (gm.film > 0)
             {
                 cameraRange.SetActive(true);
-                gm.SnapPic();
+                
             }
 
         }
+
+        if (Input.GetKey(KeyCode.Mouse1))
+        {
+            UVLight.SetActive(true);
+        }
+        else
+        {
+            UVLight.SetActive(false);
+        }
+        
+        
 
         if (gm.film == 0)
         {
@@ -100,11 +111,11 @@ public class Poloroid_image : MonoBehaviour
         }
     }
 
-    public void Snapshot() //sound of taking a photo
-    {
-        audioSource.PlayOneShot(audioClip);
-        Debug.Log("Photo taken");
-    }
+   // public void Snapshot() //sound of taking a photo
+   // {
+   //     audioSource.PlayOneShot(audioClip);
+   //     Debug.Log("Photo taken");
+   // }
 
     //take the render texture and turn it into it's own 2d texture
     Texture2D toTexture2D(RenderTexture rTex)
