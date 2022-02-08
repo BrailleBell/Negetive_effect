@@ -32,7 +32,7 @@ public class GhostTest : MonoBehaviour
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-     //   orgMat = gameObject.GetComponent<Renderer>().material;
+        orgMat = gameObject.GetComponent<Renderer>().material;
         ghost = GetComponent<NavMeshAgent>();
         sound = GetComponent<AudioSource>();
         
@@ -159,6 +159,11 @@ public class GhostTest : MonoBehaviour
                 GetComponent<Renderer>().material.Lerp(GetComponent<Renderer>().material, hidingMat, lerptimer);
                 ghost.destination = closest.transform.position;
                 transform.position =  Vector3.MoveTowards(transform.position,closest.transform.position, 20f * Time.deltaTime);
+            }
+            else
+            {
+                float lerp = Mathf.PingPong(Time.time, 1) / 100f;
+                GetComponent<Renderer>().material.Lerp(GetComponent<Renderer>().material, orgMat, lerp);
             }
         }
         sound = null;
