@@ -14,9 +14,16 @@ public class GameManager : MonoBehaviour
         
     }
     void Start()
-    {
-        DontDestroyOnLoad(this);
-        //     DontDestroyOnLoad(VRheadset);
+    { 
+        
+       DontDestroyOnLoad(this); 
+       // DontDestroyOnLoad(VRheadset);
+       if(GameObject.Find("__GM").activeInHierarchy == true)
+       {
+           
+       }
+
+    
     }
 
 
