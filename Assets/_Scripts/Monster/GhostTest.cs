@@ -32,7 +32,7 @@ public class GhostTest : MonoBehaviour
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-        orgMat = gameObject.GetComponent<Renderer>().material;
+      //  orgMat = gameObject.GetComponent<Renderer>().material;
         ghost = GetComponent<NavMeshAgent>();
         sound = GetComponent<AudioSource>();
         
@@ -99,6 +99,10 @@ public class GhostTest : MonoBehaviour
                 }
 
             }
+            else
+        {
+            attacking = false;
+        }
 
             if (ghostDying) // after taking picture of the ghost it dies after 0.5 sec
             {
@@ -125,7 +129,7 @@ public class GhostTest : MonoBehaviour
             if (attacking)
             {
                 ghost.destination = Player.transform.position;
-                ghost.speed = 200;
+                ghost.speed = 50;
                 attackTimer += Time.deltaTime;
                 if (attackTimer > 5)
                 {
@@ -158,13 +162,19 @@ public class GhostTest : MonoBehaviour
                 float lerptimer = Mathf.PingPong(Time.time, 1) / 100f;
                 GetComponent<Renderer>().material.Lerp(GetComponent<Renderer>().material, hidingMat, lerptimer);
                 ghost.destination = closest.transform.position;
-                transform.position =  Vector3.MoveTowards(transform.position,closest.transform.position, 20f * Time.deltaTime);
+              //   transform.position =  Vector3.MoveTowards(transform.position,closest.transform.position, 20f * Time.deltaTime);
+
+                if(Vector3.Distance(transform.position, closest.transform.position ) > 20)
+                {
+                    float lerp = Mathf.PingPong(Time.time, 1) / 100f;
+                    GetComponent<Renderer>().material.Lerp(GetComponent<Renderer>().material, orgMat, lerp);
+
+                }
             }
-            else
-            {
-                float lerp = Mathf.PingPong(Time.time, 1) / 100f;
-                GetComponent<Renderer>().material.Lerp(GetComponent<Renderer>().material, orgMat, lerp);
-            }
+            
+            
+                
+            
         }
         sound = null;
         Debug.Log("Teleport");
