@@ -25,16 +25,17 @@ public class Trundle : MonoBehaviour
 
 
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         distanceToPlayer = Vector3.Distance(transform.position, Player.transform.position);
         underGroundPos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 10,
             gameObject.transform.position.z);
+        
         aboveGroundPos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 10,
             gameObject.transform.position.z);
         ghost.destination = Player.transform.position;
+        
         gameObject.transform.LookAt(Player.transform);
 
         
@@ -58,17 +59,23 @@ public class Trundle : MonoBehaviour
             rb.useGravity = false;
             belowTimer += Time.deltaTime;
             ghost.updatePosition = false;
-            if(belowTimer >= 2)
+            if(belowTimer >= 10)
             {
-                transform.position = Vector3.Lerp(gameObject.transform.position, aboveGroundPos, lerp * Time.deltaTime);
+               // transform.position = Vector3.Lerp(gameObject.transform.position, aboveGroundPos, lerp * Time.deltaTime);
+
+               gameObject.transform.position = underGroundPos;
                 ghost.updatePosition = true;
                 Vector3 randomDirection = Random.insideUnitSphere * walkRadius;
                 randomDirection += transform.position;
                 NavMeshHit hit;
                 NavMesh.SamplePosition(randomDirection, out hit, walkRadius, 1);
                 Vector3 finalPosition = hit.position;
-                
-                
+
+                gameObject.transform.position = finalPosition;
+
+                belowTimer = 0;
+
+
             }
             
             
@@ -86,15 +93,17 @@ public class Trundle : MonoBehaviour
             if (aboveTimer > 2)
             {
                 rb.velocity = transform.up * lerp;
-                transform.position = Vector3.Lerp(gameObject.transform.position, underGroundPos, lerp * Time.deltaTime);
+                gameObject.transform.position = aboveGroundPos;
+              //  transform.position = Vector3.Lerp(gameObject.transform.position, underGroundPos, lerp * Time.deltaTime);
                 ghost.updatePosition = true;
                 float randomUpTime = Random.Range(10, 50);
+                aboveTimer = 0;
 
                 if (aboveTimer > randomUpTime)
                 {
-                    aboveGround = false;
-                    underGround = true;
-                    aboveTimer = 0;
+                   // aboveGround = false;
+                   // underGround = true;
+                   // aboveTimer = 0;
                 }
             }
 
