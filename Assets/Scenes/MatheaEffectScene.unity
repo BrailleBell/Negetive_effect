@@ -537,9 +537,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6491606269815147001, guid: 6580900a022cdd048847560361754d0a, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6491606269815147001, guid: 6580900a022cdd048847560361754d0a, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6491606269815147001, guid: 6580900a022cdd048847560361754d0a, type: 3}
+      propertyPath: InitialModule.startSize.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6491606269815147001, guid: 6580900a022cdd048847560361754d0a, type: 3}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6491606269815147001, guid: 6580900a022cdd048847560361754d0a, type: 3}
+      propertyPath: InitialModule.startSizeZ.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6491606269815147003, guid: 6580900a022cdd048847560361754d0a, type: 3}
       propertyPath: m_Name
       value: Particles_TrundleDown_Effect
+      objectReference: {fileID: 0}
+    - target: {fileID: 6491606270958594577, guid: 6580900a022cdd048847560361754d0a, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6491606270958594577, guid: 6580900a022cdd048847560361754d0a, type: 3}
+      propertyPath: InitialModule.startSize.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6491606270958594577, guid: 6580900a022cdd048847560361754d0a, type: 3}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6491606270958594577, guid: 6580900a022cdd048847560361754d0a, type: 3}
+      propertyPath: InitialModule.startSizeZ.minMaxState
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6580900a022cdd048847560361754d0a, type: 3}
