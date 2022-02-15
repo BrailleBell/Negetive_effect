@@ -9,7 +9,7 @@ public class GhostTest : MonoBehaviour
     private GameObject Player;
     private Vector3 targetPos;
     private int dir;
-    public bool seen, attacking, ghostDying;
+    public bool seen, attacking, ghostDying, notTestKill;
     public float timer, killTimer, attackTimer;
     private GameObject[] cover;
     private Material hidingMat;
@@ -46,9 +46,16 @@ public class GhostTest : MonoBehaviour
     {
         Player = GameObject.FindGameObjectWithTag("Player");
         Debug.Log(Vector3.Distance(ghost.transform.position, Player.transform.position));
-            ghostPos = ghost.transform.position;
-            targetPos = Player.transform.position; // finds the player
-            gameObject.transform.LookAt(targetPos);
+      if (Vector3.Distance(transform.position, Player.transform.position) < 200)
+      {
+          ghostPos = ghost.transform.position;
+          targetPos = Player.transform.position; // finds the player
+          gameObject.transform.LookAt(targetPos);
+          ghost.SetDestination(Player.transform.position);
+
+      }
+      
+           
 
 
             if (GetComponent<Renderer>().isVisible && Vector3.Distance(ghost.transform.position, Player.transform.position) < 100) // checks if visible or not
@@ -111,11 +118,21 @@ public class GhostTest : MonoBehaviour
                 killTimer += Time.deltaTime; // kill time must be over 0.2 secounds! 
                 if (killTimer > 0.5f)
                 {
-                    gameObject.transform.position = monsterOrgPos;  //KILL GHOST INSERT HERE 
-                   // gameObject.SetActive(false);
-                    Debug.Log(Vector3.Distance(gameObject.transform.position, Player.transform.position) + " Hit Ditscance");
-                    killTimer = 0;
-                    ghostDying = false;
+                    if (notTestKill)
+                    {
+                        gameObject.SetActive(false);
+                    
+                    }
+                    else
+                    {
+                        gameObject.transform.position = monsterOrgPos; //KILL GHOST INSERT HERE 
+                        // gameObject.SetActive(false);
+                        // Debug.Log(Vector3.Distance(gameObject.transform.position, Player.transform.position) +
+                        // " Hit Ditscance");
+                        killTimer = 0;
+                        ghostDying = false;
+                    
+                    }
                 }
                
 

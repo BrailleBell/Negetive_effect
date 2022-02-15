@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
+using UnityEngine.SceneManagement;
 
 public class Trundle : MonoBehaviour
 {
@@ -11,15 +12,16 @@ public class Trundle : MonoBehaviour
     private NavMeshAgent ghost;
     public float distanceToPlayer;
     private float lerp;
-    public float walkRadius;
     public float aboveTimer, belowTimer;
-    public bool aboveGround;
-    private bool shouldLerp, lerpHasStarted;
-    private float startTime;
-    public float _interval, offset, riseSpeed;
+    public bool aboveGround, notTestKill;
+    private bool shouldLerp, lerpHasStarted, ghostDying;
+    private float startTime, killTimer;
+  //  public float _interval, offset, riseSpeed;
     private Rigidbody rb;
+    public int GoToSceneWhenKilled;
     private Animator anim;
-    private float groundlevel, baseoffset;
+    private float groundlevel, baseoffset, attackDist;
+    private Vector3 monsterOrgPos;
 
     // Start is called before the first frame update
     void Start()
@@ -29,32 +31,81 @@ public class Trundle : MonoBehaviour
         Player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody>();
         baseoffset = ghost.baseOffset;
+        monsterOrgPos = transform.position;
 
     }
 
     void Update()
     {
-        
-        Debug.Log("startime is " + startTime);
-        Debug.Log(" Ghost baseofset " + ghost.baseOffset);
-        distanceToPlayer = Vector3.Distance(transform.position, Player.transform.position);
-        ghost.destination = Player.transform.position;
-        //  gameObject.transform.LookAt(Player.transform);
-        
-        
-        // attacking the player
-        if (distanceToPlayer < 10)
+        if (distanceToPlayer >= 200)
         {
-            anim.ResetTrigger("Up");
-            anim.ResetTrigger("Down");
-            anim.SetTrigger("Attack");
+            ghost.updatePosition = false;
+            GetComponentInChildren<MeshRenderer>().enabled = false;
         }
+        else
+        {
+            GetComponentInChildren<MeshRenderer>().enabled = true;
+            ghost.updatePosition = true;
+            ghost.SetDestination(Player.transform.position);
+            gameObject.transform.LookAt(Player.transform);
+
+        }
+            //Debug.Log("startime is " + startTime);
+            //Debug.Log(" Ghost baseofset " + ghost.baseOffset);
+        distanceToPlayer = Vector3.Distance(transform.position, Player.transform.position);
+
+
+
+        if (ghostDying) // after taking picture of the ghost it dies after 0.5 sec
+        {
+            ghost.velocity = Vector3.zero;
+            ghost.isStopped = true;
+            killTimer += Time.deltaTime; // kill time must be over 0.2 secounds! 
+            if (killTimer > 0.5f)
+            {
+                if (notTestKill)
+                {
+                    gameObject.SetActive(false);
+                    
+                }
+                else
+                {
+                    gameObject.transform.position = monsterOrgPos; //KILL GHOST INSERT HERE 
+                    // gameObject.SetActive(false);
+                    // Debug.Log(Vector3.Distance(gameObject.transform.position, Player.transform.position) +
+                    // " Hit Ditscance");
+                    killTimer = 0;
+                    ghostDying = false;
+                    
+                }
+               
+            }
+        }
+
+
+
+
         
         
         // going up and down
-        if (distanceToPlayer <= 40)
+        if (distanceToPlayer <= 20)
         {
             aboveGround = true;
+            
+            
+            // attacking the player
+            if (distanceToPlayer <= 10)
+            {
+                anim.ResetTrigger("Up");
+                anim.ResetTrigger("Down");
+                //anim.ResetTrigger("Walk");
+                //anim.SetTrigger("Attack");
+                
+                if (distanceToPlayer < 5)
+                {
+                    SceneManager.LoadScene(GoToSceneWhenKilled); // kill op hurt player 
+                }
+            }
         }
         else
         {
@@ -65,52 +116,56 @@ public class Trundle : MonoBehaviour
         if (!aboveGround)
             //&& currentPos.y > groundlevel - offset)
         {
+            ghost.isStopped = false;
+            GetComponent<BoxCollider>().enabled = false;
             aboveTimer = 0;
+           // anim.ResetTrigger("Walk");
             anim.ResetTrigger("Up");
             anim.SetTrigger("Down");
-            
-            
-           // ghost.baseOffset = -5f;
-           // GetComponentInChildren<BoxCollider>().enabled = false;
-           // if (currentPos.y - (riseSpeed * Time.deltaTime) < groundlevel - offset)
-           // {
-           //     transform.position = new Vector3(currentPos.x, groundlevel - offset, currentPos.z);
-           // }
-           // else
-           // {
-           //     transform.Translate(Vector3.down * riseSpeed * Time.deltaTime);
-           // }
+            ghost.speed = distanceToPlayer / 3;
 
 
-          //  shouldLerp = true; 
-            
-           // if (shouldLerp)
-           // {
-           //     if (!lerpHasStarted)
-           //     {
-           //         lerpHasStarted = true;
-           //         startTime = Time.time;
-           //     }
-           //     
-           //     transform.Translate();
-           //     transform.position = LerpHelper(transform.position, underGroundPos, startTime, _interval);
-           //     if (transform.position == underGroundPos)
-           //     {
-           //         transform.position = underGroundPos;
-           //         shouldLerp = false;
-           //         lerpHasStarted = false;
-           //         
-           //     }
-                
-             //   rb.useGravity = false;
-             //   Vector3 randomDirection = Random.insideUnitSphere * walkRadius;
-             //   randomDirection += transform.position;
-             //   NavMeshHit hit;
-             //   NavMesh.SamplePosition(randomDirection, out hit, walkRadius, 1);
-             //   Vector3 finalPosition = hit.position;
-             //   aboveTimer = 0;
-           // }
-            
+            // ghost.baseOffset = -5f;
+            // GetComponentInChildren<BoxCollider>().enabled = false;
+            // if (currentPos.y - (riseSpeed * Time.deltaTime) < groundlevel - offset)
+            // {
+            //     transform.position = new Vector3(currentPos.x, groundlevel - offset, currentPos.z);
+            // }
+            // else
+            // {
+            //     transform.Translate(Vector3.down * riseSpeed * Time.deltaTime);
+            // }
+
+
+            //  shouldLerp = true; 
+
+            // if (shouldLerp)
+            // {
+            //     if (!lerpHasStarted)
+            //     {
+            //         lerpHasStarted = true;
+            //         startTime = Time.time;
+            //     }
+            //     
+            //     transform.Translate();
+            //     transform.position = LerpHelper(transform.position, underGroundPos, startTime, _interval);
+            //     if (transform.position == underGroundPos)
+            //     {
+            //         transform.position = underGroundPos;
+            //         shouldLerp = false;
+            //         lerpHasStarted = false;
+            //         
+            //     }
+
+            //   rb.useGravity = false;
+            //   Vector3 randomDirection = Random.insideUnitSphere * walkRadius;
+            //   randomDirection += transform.position;
+            //   NavMeshHit hit;
+            //   NavMesh.SamplePosition(randomDirection, out hit, walkRadius, 1);
+            //   Vector3 finalPosition = hit.position;
+            //   aboveTimer = 0;
+            // }
+
         }
         
 
@@ -119,20 +174,21 @@ public class Trundle : MonoBehaviour
         if (aboveGround)
             //currentPos.y < groundlevel + offset)
         {
+            
             anim.ResetTrigger("Down");
             anim.SetTrigger("Up");
+            GetComponent<BoxCollider>().enabled = true;
+            ghost.speed = 7f;
             aboveTimer += Time.deltaTime;
             if (aboveTimer > 1.5f)
             {
-                anim.ResetTrigger("Down");
-                anim.SetTrigger("Walk");
-                float randomDownTime = Random.Range(10, 50);
-                if (aboveTimer > randomDownTime)
-                {
-                    aboveGround = false;
-                }
-                
-                
+                //   anim.SetTrigger("Walk");
+              //  float randomDownTime = Random.Range(10, 50);
+              //  if (aboveTimer > randomDownTime)
+              //  {
+              //      aboveGround = false;
+              //  }
+
 
 
 
@@ -169,10 +225,11 @@ public class Trundle : MonoBehaviour
            //         shouldLerp = false;
            //         lerpHasStarted = false;
            //     }
-//
+           //
 
-            }
         }
+    }
+        
 
     private void FixedUpdate()
     {
@@ -206,6 +263,19 @@ public class Trundle : MonoBehaviour
     {
         
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "CameraShoot")
+        {
+            Debug.Log("monster hit");
+            ghostDying = true;
+
+
+        }
+    }
+    
+    
+    
 }
 
 

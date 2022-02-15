@@ -10,7 +10,11 @@ public class Film: MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        gm = GameObject.Find("__GM").GetComponent<GameManager>();
+        if (gm.isActiveAndEnabled)
+        {
+            gm = GameObject.Find("__GM").GetComponent<GameManager>();
+        }
+        
 
 
     }
