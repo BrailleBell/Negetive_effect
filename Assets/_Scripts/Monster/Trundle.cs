@@ -1,28 +1,43 @@
 
 using System;
+using System.Collections;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Assertions.Must;
 using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.Timeline;
 
 public class Trundle : MonoBehaviour
 {
+    // floats && ints
+    public float distanceToPlayer;
+    private float lerp, lookAngle;
+    public float LookRange;
+    [Range(0,360)]
+    public float FOV;
+    public float aboveTimer, belowTimer, awareRadius;
+    private float startTime, killTimer;
+    private float groundlevel, baseoffset, attackDist;
+    public int GoToSceneWhenKilled;
+    private float vectorAngle;
+    
+    // bools && triggers
+    public bool aboveGround = true, notTestKill, seesPlayer;
+    private bool shouldLerp, lerpHasStarted, ghostDying, walking;
+
+    // rest
     private GameObject Player;
     private NavMeshAgent ghost;
-    public float distanceToPlayer;
-    private float lerp;
-    public float aboveTimer, belowTimer;
-    public bool aboveGround, notTestKill;
-    private bool shouldLerp, lerpHasStarted, ghostDying, walking;
-    private float startTime, killTimer;
     private Rigidbody rb;
-    public int GoToSceneWhenKilled;
     private Animator anim;
-    private float groundlevel, baseoffset, attackDist;
     private Vector3 monsterOrgPos;
     private AnimationTrack AdjustSpeed;
+    public Light chestLight;
+    private Color redlight, greenlight;
 
 
     void Start()
@@ -31,30 +46,73 @@ public class Trundle : MonoBehaviour
         ghost = GetComponent<NavMeshAgent>();
         Player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody>();
-        baseoffset = ghost.baseOffset;
-        monsterOrgPos = transform.position;
-
+        
+        redlight = new Color(94, 14, 0, 255); 
+        greenlight = new Color(16, 60, 13, 255);
     }
 
+  
     void Update()
     {
+        #region Visibility
+
+        Vector2 angleToPlayer = (new Vector2(Player.transform.position.x, Player.transform.position.z) -
+                                 new Vector2(transform.position.x, transform.position.z)).normalized;
+
+        vectorAngle = Vector2.Angle(transform.forward, angleToPlayer);
+
+        Vector2 debugger = new Vector2(transform.forward.x, transform.forward.z);
+        debugger = Quaternion.Euler(0, 0, -FOV / 2) * debugger;
+        Debug.DrawLine(transform.position, transform.position + (new Vector3(debugger.x,0,debugger.y)) * LookRange);
+        debugger = Quaternion.Euler(0, 0, FOV) * debugger;
+        Debug.DrawLine(transform.position, transform.position + (new Vector3(debugger.x,0,debugger.y)) * LookRange);
+        
+        if (vectorAngle < FOV / 2 && distanceToPlayer < LookRange || distanceToPlayer < awareRadius)
+        {
+            seesPlayer = true;
+            // sees player 
+        }
+        else
+        {
+            seesPlayer = false;
+        }
+        
+
+        #endregion
+        
+        
+        anim.SetTrigger("Walk");
+        #region movement
         distanceToPlayer = Vector3.Distance(transform.position, Player.transform.position);
 
-        Debug.Log(distanceToPlayer + " distance to player");
-        if (distanceToPlayer >= 150)
-        {
-            walking = true;
+        
+        if (seesPlayer)
+        {   
             ghost.SetDestination(Player.transform.position);
-            aboveGround = true;
-            //  GetComponentInChildren<SkinnedMeshRenderer>().enabled = false
-        }
-        else if (distanceToPlayer <= 150)
-        {
-            aboveGround = true;
-            //GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
-            gameObject.transform.LookAt(Player.transform);
+            // Change colour of inner circle
+            chestLight.color = Color.Lerp(Color.green, Color.red,  Time.deltaTime * 0.5f);
 
+            if (distanceToPlayer <= ghost.stoppingDistance)
+            {
+                GetComponent<BoxCollider>().enabled = true;
+                // attack
+                
+                
+                // face the player
+                Vector3 direction = (Player.transform.position - transform.position).normalized;
+                Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5);
+                if (distanceToPlayer <= 1)
+                {
+                    SceneManager.LoadScene(GoToSceneWhenKilled); // kill or hurt player 
+                }
+                anim.ResetTrigger("Down");
+                anim.SetTrigger("Up");
+                anim.SetTrigger("Walk");
+
+            }
         }
+        
 
         if (ghost.destination == Player.transform.position)
         {
@@ -80,12 +138,13 @@ public class Trundle : MonoBehaviour
         }
 
 
-        if (ghostDying) // after taking picture of the ghost it dies after 0.5 sec
+        if (ghostDying) // after taking picture of the ghost it dies after killtimer 
         {
+            anim.SetTrigger("Death");
             ghost.velocity = Vector3.zero;
             ghost.isStopped = true;
             killTimer += Time.deltaTime; // kill time must be over 0.2 secounds! 
-            if (killTimer > 0.5f)
+            if (killTimer > 2f)
             {
                 if (notTestKill)
                 {
@@ -100,65 +159,14 @@ public class Trundle : MonoBehaviour
                     ghostDying = false;
 
                 }
-
             }
         }
-
-
-
-
-
-
-        // going up and down
-        if (distanceToPlayer <= 30 && distanceToPlayer >= 10)
+        else // whenplayer is out of sight
         {
-            aboveGround = false;
-            Debug.Log("TETSTSATSDKAJSBDKJAHSBDJAHSBD");
-
-
-
-            // attacking the player
-            if (distanceToPlayer <= 10)
-            {
-                anim.ResetTrigger("Down");
-                anim.SetTrigger("Up");
-                anim.SetTrigger("Walk");
-                GetComponent<BoxCollider>().enabled = true;
-                ghost.speed = 7f;
-                aboveTimer += Time.deltaTime;
-                if (aboveTimer > 1.5f)
-                {
-
-
-
-
-                }
-
-                if (distanceToPlayer < 2)
-                {
-                    SceneManager.LoadScene(GoToSceneWhenKilled); // kill op hurt player 
-                }
-            }
+           
+            chestLight.color = Color.Lerp(Color.red, Color.green, Time.deltaTime * 0.5f);
         }
-
-        Vector3 currentPos = transform.position;
-        if (!aboveGround)
-            
-        {
-            anim.ResetTrigger("Up");
-            anim.ResetTrigger("Walk");
-            anim.SetTrigger("Down");
-            ghost.isStopped = false;
-            GetComponent<BoxCollider>().enabled = false;
-            aboveTimer = 0;
-            // anim.ResetTrigger("Walk");
-            ghost.speed = distanceToPlayer / 3;
-
-
-
-
-        }
-
+        #endregion
     }
 
     private Vector3 LerpHelper(Vector3 Start, Vector3 End, float TimeStarted, float Interval = 1)
@@ -181,6 +189,15 @@ public class Trundle : MonoBehaviour
     {
         
     }
+
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position,awareRadius);
+        
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "CameraShoot")

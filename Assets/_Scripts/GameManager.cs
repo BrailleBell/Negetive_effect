@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public int film;
     public GameObject VRheadset;
 
+    public GameObject[] spawnPoints;
     // Start is called before the first frame update
     private void Awake()
     {
