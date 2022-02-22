@@ -1,0 +1,485 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2990832450749550530
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2990832450749550541}
+  m_Layer: 0
+  m_Name: GraveyardAndRuins
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2990832450749550541
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2990832450749550530}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3317793077879202346}
+  - {fileID: 3317793077644439331}
+  - {fileID: 3317793078171294454}
+  - {fileID: 3317793077539966188}
+  - {fileID: 3317793078410109780}
+  - {fileID: 3317793077336093781}
+  - {fileID: 3317793077825147181}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2990832450627634367
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2990832450749550541}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1415.953
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 32.3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 801.531
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7123966
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7017771
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 89.14
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+      propertyPath: m_Name
+      value: 3Dmodel_Graveyard_gravestone_whole_Low_poly
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+--- !u!4 &3317793078410109780 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+  m_PrefabInstance: {fileID: 2990832450627634367}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2990832450858073373
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2990832450749550541}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1408.35
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 32.12
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 808.77
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7739978
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.02608308
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.63184357
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.031951327
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -78.452
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 4.728
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+      propertyPath: m_Name
+      value: 3Dmodel_Graveyard_gravestone_whole_Low_poly (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+--- !u!4 &3317793078171294454 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+  m_PrefabInstance: {fileID: 2990832450858073373}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2990832451183445441
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2990832450749550541}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: c704e8fc61f46404d89baf8fdeed609a, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c704e8fc61f46404d89baf8fdeed609a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1407.1608
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c704e8fc61f46404d89baf8fdeed609a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 31.504375
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c704e8fc61f46404d89baf8fdeed609a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 805.15875
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c704e8fc61f46404d89baf8fdeed609a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7572178
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c704e8fc61f46404d89baf8fdeed609a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c704e8fc61f46404d89baf8fdeed609a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.65316254
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c704e8fc61f46404d89baf8fdeed609a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c704e8fc61f46404d89baf8fdeed609a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c704e8fc61f46404d89baf8fdeed609a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 81.561
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c704e8fc61f46404d89baf8fdeed609a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c704e8fc61f46404d89baf8fdeed609a, type: 3}
+      propertyPath: m_Name
+      value: 3Dmodel_Graveyard_gravestone_Lower_part_low_poly (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c704e8fc61f46404d89baf8fdeed609a, type: 3}
+--- !u!4 &3317793077879202346 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c704e8fc61f46404d89baf8fdeed609a, type: 3}
+  m_PrefabInstance: {fileID: 2990832451183445441}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2990832451204019910
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2990832450749550541}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: c704e8fc61f46404d89baf8fdeed609a, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c704e8fc61f46404d89baf8fdeed609a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1415.89
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c704e8fc61f46404d89baf8fdeed609a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 32.07
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c704e8fc61f46404d89baf8fdeed609a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 804.34
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c704e8fc61f46404d89baf8fdeed609a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.737315
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c704e8fc61f46404d89baf8fdeed609a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c704e8fc61f46404d89baf8fdeed609a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.67554915
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c704e8fc61f46404d89baf8fdeed609a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c704e8fc61f46404d89baf8fdeed609a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c704e8fc61f46404d89baf8fdeed609a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -84.994
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c704e8fc61f46404d89baf8fdeed609a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c704e8fc61f46404d89baf8fdeed609a, type: 3}
+      propertyPath: m_Name
+      value: 3Dmodel_Graveyard_gravestone_Lower_part_low_poly
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c704e8fc61f46404d89baf8fdeed609a, type: 3}
+--- !u!4 &3317793077825147181 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c704e8fc61f46404d89baf8fdeed609a, type: 3}
+  m_PrefabInstance: {fileID: 2990832451204019910}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2990832451418474696
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2990832450749550541}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1406.4692
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 31.700865
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 801.3076
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.8200433
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5723015
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 69.822
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+      propertyPath: m_Name
+      value: 3Dmodel_Graveyard_gravestone_whole_Low_poly (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+--- !u!4 &3317793077644439331 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5d2cb69631b3b1e4aa8693589bafd522, type: 3}
+  m_PrefabInstance: {fileID: 2990832451418474696}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2990832451522685703
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2990832450749550541}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 1822c29f780f6134b85ecb916e587605, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1822c29f780f6134b85ecb916e587605, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1413.76
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1822c29f780f6134b85ecb916e587605, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 32.2574
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1822c29f780f6134b85ecb916e587605, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 805.36
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1822c29f780f6134b85ecb916e587605, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.49450138
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1822c29f780f6134b85ecb916e587605, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1822c29f780f6134b85ecb916e587605, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.86917686
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1822c29f780f6134b85ecb916e587605, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1822c29f780f6134b85ecb916e587605, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1822c29f780f6134b85ecb916e587605, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 120.726
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1822c29f780f6134b85ecb916e587605, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1822c29f780f6134b85ecb916e587605, type: 3}
+      propertyPath: m_Name
+      value: 3Dmodel_Graveyard_gravestone_upper_part_low_poly
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1822c29f780f6134b85ecb916e587605, type: 3}
+--- !u!4 &3317793077539966188 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1822c29f780f6134b85ecb916e587605, type: 3}
+  m_PrefabInstance: {fileID: 2990832451522685703}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2990832451701658558
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2990832450749550541}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: c0249cd5a51ad724e8effaa9acb635ed, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c0249cd5a51ad724e8effaa9acb635ed, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.23724878
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c0249cd5a51ad724e8effaa9acb635ed, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.23724878
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c0249cd5a51ad724e8effaa9acb635ed, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.23724878
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c0249cd5a51ad724e8effaa9acb635ed, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1439.45
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c0249cd5a51ad724e8effaa9acb635ed, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 31.8
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c0249cd5a51ad724e8effaa9acb635ed, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 813.96
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c0249cd5a51ad724e8effaa9acb635ed, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.050888002
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c0249cd5a51ad724e8effaa9acb635ed, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c0249cd5a51ad724e8effaa9acb635ed, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.9987044
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c0249cd5a51ad724e8effaa9acb635ed, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c0249cd5a51ad724e8effaa9acb635ed, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c0249cd5a51ad724e8effaa9acb635ed, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -174.166
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c0249cd5a51ad724e8effaa9acb635ed, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c0249cd5a51ad724e8effaa9acb635ed, type: 3}
+      propertyPath: m_Name
+      value: 3Dmodel_Ruins_low_poly_3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c0249cd5a51ad724e8effaa9acb635ed, type: 3}
+--- !u!4 &3317793077336093781 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c0249cd5a51ad724e8effaa9acb635ed, type: 3}
+  m_PrefabInstance: {fileID: 2990832451701658558}
+  m_PrefabAsset: {fileID: 0}
