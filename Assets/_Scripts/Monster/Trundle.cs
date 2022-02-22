@@ -188,7 +188,7 @@ public class Trundle : MonoBehaviour
 
         if (ghostDying) // after taking picture of the ghost it dies after killtimer 
         {
-            anim.SetTrigger("Death");
+            // anim.SetTrigger("Death");
             ghost.velocity = Vector3.zero;
             ghost.isStopped = true;
             killTimer += Time.deltaTime; // kill time must be over 0.2 secounds! 
