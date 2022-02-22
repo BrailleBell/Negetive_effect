@@ -9,8 +9,7 @@ public class FieldOfView : MonoBehaviour
     public float lookRadius;
 
     public float angle;
-
-    public LayerMask obstructionMask, targertMask;
+    public LayerMask obstructionMask,targertMask;
     // Start is called before the first frame update
     void Start()
     {

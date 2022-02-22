@@ -843,7 +843,7 @@ Transform:
   m_GameObject: {fileID: 657571541}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 27.028406, y: 27.028406, z: 27.028406}
+  m_LocalScale: {x: 130.44449, y: 130.44449, z: 130.44449}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -1397,11 +1397,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1210906260, guid: 2b6cc190d8a59d8458285087097cc5f7, type: 3}
       propertyPath: FOV
-      value: 70
+      value: 53
       objectReference: {fileID: 0}
     - target: {fileID: 1210906260, guid: 2b6cc190d8a59d8458285087097cc5f7, type: 3}
       propertyPath: LookRange
-      value: 56.7
+      value: 80.97
       objectReference: {fileID: 0}
     - target: {fileID: 1210906260, guid: 2b6cc190d8a59d8458285087097cc5f7, type: 3}
       propertyPath: chestLight
@@ -1413,7 +1413,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1210906260, guid: 2b6cc190d8a59d8458285087097cc5f7, type: 3}
       propertyPath: awareRadius
-      value: 31.8
+      value: 27.04
       objectReference: {fileID: 0}
     - target: {fileID: 1210906260, guid: 2b6cc190d8a59d8458285087097cc5f7, type: 3}
       propertyPath: notTestKill
@@ -1479,7 +1479,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pivot_Trundle_Mnstr
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 99057064, guid: 2b6cc190d8a59d8458285087097cc5f7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2b6cc190d8a59d8458285087097cc5f7, type: 3}
 --- !u!108 &1137764566 stripped
 Light:

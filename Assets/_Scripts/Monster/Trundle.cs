@@ -15,7 +15,7 @@ public class Trundle : MonoBehaviour
 {
     // floats && ints
     public float distanceToPlayer;
-    private float lerp, lookAngle;
+    private float lerpStuff, lookAngle;
     public float LookRange;
     [Range(0,360)]
     public float FOV;
@@ -25,8 +25,22 @@ public class Trundle : MonoBehaviour
     public int GoToSceneWhenKilled;
     private float vectorAngle;
     
+    
+    // States and enums
+    public enum State
+    {
+        Idle,
+        Walking,
+        Attacking,
+        Underground,
+        AboweGround
+    }
+
+    public State state;
+    
+    
     // bools && triggers
-    public bool aboveGround = true, notTestKill, seesPlayer;
+    public bool aboveGround, notTestKill, seesPlayer;
     private bool shouldLerp, lerpHasStarted, ghostDying, walking;
 
     // rest
@@ -49,75 +63,112 @@ public class Trundle : MonoBehaviour
         
         redlight = new Color(94, 14, 0, 255); 
         greenlight = new Color(16, 60, 13, 255);
+        state = State.Idle;
     }
 
   
     void Update()
     {
+         distanceToPlayer = Vector3.Distance(transform.position, Player.transform.position);
+         ghost.SetDestination(Player.transform.position);
+         if (distanceToPlayer > awareRadius)
+         {
+             anim.SetTrigger("Down");
+         }
+         
+         
+         switch (state)
+        {
+            case State.Idle:
+                LookingForPlayer();
+                break;
+            case State.Attacking:
+                break;
+            case State.Walking:
+                
+                LookingForPlayer();
+                anim.SetTrigger("Walk");
+                break;
+            case State.AboweGround:
+                AboveGround();
+                break;
+            case State.Underground:
+                BelowGround();
+                break;
+        }
+        
         #region Visibility
-
-        Vector2 angleToPlayer = (new Vector2(Player.transform.position.x, Player.transform.position.z) -
-                                 new Vector2(transform.position.x, transform.position.z)).normalized;
-
-        vectorAngle = Vector2.Angle(transform.forward, angleToPlayer);
-
-        Vector2 debugger = new Vector2(transform.forward.x, transform.forward.z);
-        debugger = Quaternion.Euler(0, 0, -FOV / 2) * debugger;
-        Debug.DrawLine(transform.position, transform.position + (new Vector3(debugger.x,0,debugger.y)) * LookRange);
-        debugger = Quaternion.Euler(0, 0, FOV) * debugger;
-        Debug.DrawLine(transform.position, transform.position + (new Vector3(debugger.x,0,debugger.y)) * LookRange);
         
-        if (vectorAngle < FOV / 2 && distanceToPlayer < LookRange || distanceToPlayer < awareRadius)
-        {
-            seesPlayer = true;
-            // sees player 
-        }
-        else
-        {
-            seesPlayer = false;
-        }
-        
+      
+
 
         #endregion
         
         
-        anim.SetTrigger("Walk");
+        
         #region movement
-        distanceToPlayer = Vector3.Distance(transform.position, Player.transform.position);
 
+        if (!aboveGround)
+        {
+            BelowGround();
+        }
         
         if (seesPlayer)
-        {   
+        {
+            ghost.updatePosition = true;
             ghost.SetDestination(Player.transform.position);
+            
             // Change colour of inner circle
-            chestLight.color = Color.Lerp(Color.green, Color.red,  Time.deltaTime * 0.5f);
-
-            if (distanceToPlayer <= ghost.stoppingDistance)
+            if (lerpStuff < 1)
             {
-                GetComponent<BoxCollider>().enabled = true;
-                // attack
-                
-                
-                // face the player
-                Vector3 direction = (Player.transform.position - transform.position).normalized;
-                Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5);
-                if (distanceToPlayer <= 1)
-                {
-                    SceneManager.LoadScene(GoToSceneWhenKilled); // kill or hurt player 
-                }
-                anim.ResetTrigger("Down");
-                anim.SetTrigger("Up");
-                anim.SetTrigger("Walk");
+                lerpStuff += Time.deltaTime / 0.5f;
 
             }
+            
+            // face the player
+            Vector3 direction = (Player.transform.position - transform.position).normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5);
+            
+            if ((distanceToPlayer <= LookRange) && (distanceToPlayer >= awareRadius))
+            {
+
+
+            }
+            else if ((distanceToPlayer <= LookRange) && (distanceToPlayer <= awareRadius))
+            {
+                AboveGround();
+                if (distanceToPlayer <= ghost.stoppingDistance)
+                {
+                    GetComponent<BoxCollider>().enabled = true;
+                    // attack
+
+
+                   
+                    if (distanceToPlayer <= 1)
+                    {
+                        SceneManager.LoadScene(GoToSceneWhenKilled); // kill or hurt player 
+                    }
+                }
+                
+            }
+           
+            
         }
         
-
-        if (ghost.destination == Player.transform.position)
+        else // whenplayer is out of sight
         {
-            walking = true;
+            seesPlayer = false;
+            if (lerpStuff > 0)
+            {
+                lerpStuff -= Time.deltaTime / 0.5f;
+                aboveGround = true;
+            }
+            
         }
+        
+        chestLight.color = Color.Lerp(Color.green, Color.red, lerpStuff);
+        
 
         if (walking)
         {
@@ -130,12 +181,9 @@ public class Trundle : MonoBehaviour
                 walkTimer = 0;
             }
             
-            anim.ResetTrigger("Up");
-            anim.ResetTrigger("Down_Idle");
-            anim.ResetTrigger("Down");
-            anim.ResetTrigger("Idle");
-            anim.SetTrigger("Walk");
         }
+        
+        
 
 
         if (ghostDying) // after taking picture of the ghost it dies after killtimer 
@@ -161,13 +209,9 @@ public class Trundle : MonoBehaviour
                 }
             }
         }
-        else // whenplayer is out of sight
-        {
-           
-            chestLight.color = Color.Lerp(Color.red, Color.green, Time.deltaTime * 0.5f);
-        }
         #endregion
     }
+    
 
     private Vector3 LerpHelper(Vector3 Start, Vector3 End, float TimeStarted, float Interval = 1)
     {
@@ -179,24 +223,62 @@ public class Trundle : MonoBehaviour
         return Vector3.Lerp(Start, End, lerpLocation);
     }
 
-    private void AboveGroundMethod()
+
+    public void AboveGround()
     {
-        
+       // anim.ResetTrigger("Down");
+        anim.SetTrigger("Up");
+    }
+
+    public void BelowGround()
+    {
+       // anim.SetTrigger("Down");
+       // anim.ResetTrigger("Walk");
+      //  anim.ResetTrigger("Up");
         
     }
 
-    private void BelowGroundMethod()
+    public void LookingForPlayer()
     {
-        
+        Vector2 angleToPlayer = (new Vector2(Player.transform.position.x, Player.transform.position.z) -
+                                 new Vector2(transform.position.x, transform.position.z)).normalized;
+        vectorAngle = Vector2.Angle(transform.forward, angleToPlayer);
+        if (distanceToPlayer <= LookRange && vectorAngle <= FOV / 2)
+        {
+            seesPlayer = true;
+            if (distanceToPlayer > awareRadius)
+            {
+                state = State.Underground;
+                ghost.SetDestination(Player.transform.position);
+            }
+            else if(distanceToPlayer < awareRadius)
+            {
+                state = State.AboweGround;
+                ghost.SetDestination(Player.transform.position);
+            }
+        }
+        else
+        {
+            seesPlayer = false;
+        }
     }
-
-
+    
+    
+    
+    
+    #region debug
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position,awareRadius);
-        
+        Vector2 debugger = new Vector2(transform.forward.x, transform.forward.z);
+        debugger = Quaternion.Euler(0, 0, -FOV / 2) * debugger;
+        Debug.DrawLine(transform.position, transform.position + (new Vector3(debugger.x,0,debugger.y)) * LookRange);
+        debugger = Quaternion.Euler(0, 0, FOV) * debugger;
+        Debug.DrawLine(transform.position, transform.position + (new Vector3(debugger.x,0,debugger.y)) * LookRange);
     }
+    #endregion
+   
 
     private void OnTriggerEnter(Collider other)
     {
