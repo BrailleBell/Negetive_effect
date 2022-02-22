@@ -687,10 +687,7 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: Up
-    m_EventTreshold: 0
+  m_Conditions: []
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 9168849535292405596}
   m_Solo: 0
@@ -797,7 +794,7 @@ AnimatorStateMachine:
     m_Position: {x: 230, y: 480, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 9168849535292405596}
-    m_Position: {x: 220, y: 180, z: 0}
+    m_Position: {x: 210, y: 160, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2505826265665054402}
     m_Position: {x: 520, y: 240, z: 0}
@@ -815,10 +812,7 @@ AnimatorStateMachine:
     m_Position: {x: 840, y: 370, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 9190966832404474964}
-    m_Position: {x: 10, y: 280, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 6488707671916730803}
-    m_Position: {x: 45, y: 345, z: 0}
+    m_Position: {x: 20, y: 290, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4428643920437810374}
     m_Position: {x: 770, y: 460, z: 0}
@@ -1107,32 +1101,6 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 0}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
---- !u!1102 &6488707671916730803
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Animation_Trundle_DownToUp
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 2ad70fb87a9ad7c4a8207457f51e7da0, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
