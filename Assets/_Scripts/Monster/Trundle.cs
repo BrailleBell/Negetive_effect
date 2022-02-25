@@ -349,37 +349,48 @@ public class Trundle : MonoBehaviour
     {
         circlingThePlayer = false;
         belowGround = false;
-
-        if (!attacking)
+        ghost.SetDestination(Player.transform.position);
+        transform.LookAt(Player.transform.position);
+        if (distanceToPlayer < spinningRadius / 2)
         {
-            anim.SetBool("Up",true);
-            anim.SetBool("Walk",true);
-            anim.SetBool("Down",false);
-            attacking = true;
-        }
-        else
-        {
-            ghost.SetDestination(new Vector3(Player.transform.position.x,Player.transform.position.y,Player.transform.position.z - 3));
-            transform.LookAt(Player.transform.position);
-            ghost.speed = circlingSpeed * 50;
-            GetComponent<BoxCollider>().enabled = true;
-            if (Vector3.Distance(transform.position, ghost.destination) > 1)
+            if (!attacking)
             {
-                if (distanceToPlayer <= 2)
+                ghost.speed = 0;
+                anim.SetBool("Up",true);
+                anim.SetBool("Walk",true);
+                anim.SetBool("Down",false);
+                attacking = true;
+            }
+            else
+            {
+                float uptime = 0;
+                uptime += Time.deltaTime;
+                GetComponent<BoxCollider>().enabled = true;
+                if(distanceToPlayer > 2f)
                 {
-                    //death
-                    SceneManager.LoadScene(GoToSceneWhenKilled); // kill or hurt player 
-                    Debug.Log("You died");
-                
+                    ghost.speed = 3;
+                    
                 }
-                
-            }
-            else if(distanceToPlayer > 2 && Vector3.Distance(transform.position, ghost.destination) <= 0.8f)
-            {
-                state = State.Chase;
-            }
+                else if (distanceToPlayer < 2f)
+                {
+                    ghost.speed = 0;
+                }
+                else if (distanceToPlayer < 1f)
+                {
+                    // Kill player
+                }
+                else if (uptime > 6)
+                {
+                    state = State.Chase;
+                    uptime = 0;
+                }
 
+
+            }
+            
         }
+        
+      
         
 
     }
