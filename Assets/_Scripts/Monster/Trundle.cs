@@ -83,9 +83,6 @@ public class Trundle : MonoBehaviour
     void Update()
     {
          distanceToPlayer = Vector3.Distance(transform.position, Player.transform.position);
-         
-
-
 
 
          switch (state)
@@ -116,22 +113,13 @@ public class Trundle : MonoBehaviour
         
         #region movement
 
-        if (!aboveGround)
-        {
-            BelowGround();
-        }
-        
         if (seesPlayer)
         {
             ghost.updatePosition = true;
             ghost.SetDestination(Player.transform.position);
             
             // Change colour of inner circle
-            if (lerpStuff < 1)
-            {
-                lerpStuff += Time.deltaTime / 0.5f;
 
-            }
             
             // face the player
             Vector3 direction = (Player.transform.position - transform.position).normalized;
@@ -150,7 +138,7 @@ public class Trundle : MonoBehaviour
                    
                     if (distanceToPlayer <= 1)
                     {
-                        SceneManager.LoadScene(GoToSceneWhenKilled); // kill or hurt player 
+                       
                     }
                 }
                 
@@ -162,11 +150,7 @@ public class Trundle : MonoBehaviour
         else // whenplayer is out of sight
         {
             seesPlayer = false;
-            if (lerpStuff > 0)
-            {
-                lerpStuff -= Time.deltaTime / 0.5f;
-                aboveGround = true;
-            }
+
             
         }
         
@@ -174,7 +158,7 @@ public class Trundle : MonoBehaviour
 
         if (ghostDying) // after taking picture of the ghost it dies after killtimer 
         {
-            // anim.SetTrigger("Death");
+            anim.SetBool("Death",true);
             ghost.velocity = Vector3.zero;
             ghost.isStopped = true;
             killTimer += Time.deltaTime; // kill time must be over 0.2 secounds! 
@@ -209,38 +193,28 @@ public class Trundle : MonoBehaviour
         return Vector3.Lerp(Start, End, lerpLocation);
     }
 
-    
-    
-    public void AboveGround()
-    {
-       // anim.ResetTrigger("Down");
-        
-    }
-
-    public void BelowGround()
-    {
-       // anim.SetTrigger("Down");
-       // anim.ResetTrigger("Walk");
-      //  anim.ResetTrigger("Up");
-        
-    }
-
     public void Patroling()
     {
+
+        if (lerpStuff > 0)
+        {
+            lerpStuff -= Time.deltaTime / 0.5f;
+            aboveGround = true;
+        }
+        anim.SetBool("Death",false);
         anim.SetBool("Up",false);
         anim.SetBool("Attack",false);
         anim.SetBool("Down",false);
         anim.SetBool("Walk",true);
         gameObject.GetComponent<BoxCollider>().enabled = true;
         ghost.acceleration = 8;
-        ghost.angularSpeed = 50;
+        ghost.angularSpeed = 120;
         ghost.speed = 3.5f;
         
         if (Vector3.Distance(gameObject.transform.position, MonsterWaypoints[wayPointInd].transform.position) >= radiusToWaypoint)
         {
             ghost.SetDestination(MonsterWaypoints[wayPointInd].transform.position);
-            transform.LookAt(MonsterWaypoints[wayPointInd].transform.position);
-            
+
         }
         else if(Vector3.Distance(gameObject.transform.position, MonsterWaypoints[wayPointInd].transform.position) <= radiusToWaypoint)
         {
@@ -279,14 +253,25 @@ public class Trundle : MonoBehaviour
 
     public void Chase()
     {
+        
+        if (lerpStuff < 1)
+        {
+            lerpStuff += Time.deltaTime / 0.5f;
+
+        }
+        
+        GetComponent<BoxCollider>().enabled = false;
+        attacking = false;
+        
         if (!belowGround)
         {
+            anim.SetBool("Walk",false);
+            anim.SetBool("Up",false);
             anim.SetBool("Down",true);
             belowGround = true;
 
         }
-        anim.SetBool("Walk",false);
-        anim.SetBool("Up",false);
+        
         
         belowTimer += Time.deltaTime;
         if (!attackTest && belowTimer >= Random.Range(20, 50))
@@ -294,7 +279,7 @@ public class Trundle : MonoBehaviour
             state = State.Attacking;
              belowTimer = 0;
         }
-        else if (attacking && belowTimer > attackTimer)
+        else if (attackTest && belowTimer > attackTimer)
         {
             state = State.Attacking;
             belowTimer = 0;
@@ -362,7 +347,8 @@ public class Trundle : MonoBehaviour
 
     public void Attacking()
     {
-       
+        circlingThePlayer = false;
+        belowGround = false;
 
         if (!attacking)
         {
@@ -373,17 +359,26 @@ public class Trundle : MonoBehaviour
         }
         else
         {
-            anim.SetBool("Up",false);
-            ghost.SetDestination(Player.transform.position);
+            ghost.SetDestination(new Vector3(Player.transform.position.x,Player.transform.position.y,Player.transform.position.z - 3));
             transform.LookAt(Player.transform.position);
-            ghost.speed = circlingSpeed * 10;
-            GetComponentInChildren<BoxCollider>().enabled = true;
-            if (distanceToPlayer <= 0.8f)
+            ghost.speed = circlingSpeed * 50;
+            GetComponent<BoxCollider>().enabled = true;
+            if (Vector3.Distance(transform.position, ghost.destination) > 1)
             {
-                //death
-                Debug.Log("You died");
+                if (distanceToPlayer <= 2)
+                {
+                    //death
+                    SceneManager.LoadScene(GoToSceneWhenKilled); // kill or hurt player 
+                    Debug.Log("You died");
+                
+                }
                 
             }
+            else if(distanceToPlayer > 2 && Vector3.Distance(transform.position, ghost.destination) <= 0.8f)
+            {
+                state = State.Chase;
+            }
+
         }
         
 

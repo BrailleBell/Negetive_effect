@@ -489,15 +489,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4107588694327392373, guid: 38bca53220374dd44a52dd1b97c19505, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 158.6
+      value: 151.5
       objectReference: {fileID: 0}
     - target: {fileID: 4107588694327392373, guid: 38bca53220374dd44a52dd1b97c19505, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.9435625
+      value: -14.7
       objectReference: {fileID: 0}
     - target: {fileID: 4107588694327392373, guid: 38bca53220374dd44a52dd1b97c19505, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 54.67221
+      value: 45.8
       objectReference: {fileID: 0}
     - target: {fileID: 4107588694327392373, guid: 38bca53220374dd44a52dd1b97c19505, type: 3}
       propertyPath: m_LocalRotation.w
@@ -907,13 +907,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 657571541}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.07087441, w: 0.9974853}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 43.140602, y: 43.140602, z: 43.140602}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -8.128}
 --- !u!1 &726081333
 GameObject:
   m_ObjectHideFlags: 0
@@ -1478,12 +1478,20 @@ PrefabInstance:
       value: 70.92
       objectReference: {fileID: 0}
     - target: {fileID: 1210906260, guid: 2b6cc190d8a59d8458285087097cc5f7, type: 3}
+      propertyPath: attackTest
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1210906260, guid: 2b6cc190d8a59d8458285087097cc5f7, type: 3}
       propertyPath: chestLight
       value: 
       objectReference: {fileID: 1137764566}
     - target: {fileID: 1210906260, guid: 2b6cc190d8a59d8458285087097cc5f7, type: 3}
       propertyPath: lookradius
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1210906260, guid: 2b6cc190d8a59d8458285087097cc5f7, type: 3}
+      propertyPath: attackTimer
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1210906260, guid: 2b6cc190d8a59d8458285087097cc5f7, type: 3}
       propertyPath: awareRadius
@@ -1494,8 +1502,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1210906260, guid: 2b6cc190d8a59d8458285087097cc5f7, type: 3}
+      propertyPath: Ground.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 1210906260, guid: 2b6cc190d8a59d8458285087097cc5f7, type: 3}
       propertyPath: circlingSpeed
-      value: 1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1210906260, guid: 2b6cc190d8a59d8458285087097cc5f7, type: 3}
       propertyPath: spinningRadius
@@ -1503,7 +1515,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1210906260, guid: 2b6cc190d8a59d8458285087097cc5f7, type: 3}
       propertyPath: radiusToWaypoint
-      value: 10
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1210906260, guid: 2b6cc190d8a59d8458285087097cc5f7, type: 3}
       propertyPath: targertMask.m_Bits
