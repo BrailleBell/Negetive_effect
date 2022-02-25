@@ -21,7 +21,7 @@ public class Trundle : MonoBehaviour
     public float LookRange;
     [Range(0,360)]
     public float FOV;
-    public float aboveTimer, belowTimer, awareRadius;
+    public float aboveTimer, belowTimer, awareRadius,attackTimer;
     private float startTime, killTimer;
     private float groundlevel, baseoffset, attackDist;
     public int GoToSceneWhenKilled;
@@ -46,7 +46,7 @@ public class Trundle : MonoBehaviour
     
     
     // bools && triggers
-    public bool aboveGround, notTestKill, seesPlayer, testOn, circlingThePlayer;
+    public bool aboveGround, notTestKill, seesPlayer, testOn, circlingThePlayer,attackTest;
     private bool shouldLerp, lerpHasStarted, ghostDying, walking, belowGround, attacking;
 
     // rest
@@ -289,10 +289,15 @@ public class Trundle : MonoBehaviour
         anim.SetBool("Up",false);
         
         belowTimer += Time.deltaTime;
-        if (belowTimer >= Random.Range(10, 50))
+        if (!attackTest && belowTimer >= Random.Range(20, 50))
         {
             state = State.Attacking;
              belowTimer = 0;
+        }
+        else if (attacking && belowTimer > attackTimer)
+        {
+            state = State.Attacking;
+            belowTimer = 0;
         }
 
         ghost.speed = distanceToPlayer / 3;
