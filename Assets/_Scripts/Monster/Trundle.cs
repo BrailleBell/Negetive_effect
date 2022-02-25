@@ -320,7 +320,7 @@ public class Trundle : MonoBehaviour
                 targetPos = Player.transform.position + targetPos;
                 ghost.SetDestination(targetPos);
                 circlingThePlayer = true;
-                transform.LookAt(targetPos);
+               // transform.LookAt(targetPos);
             }
             else
             {
@@ -333,15 +333,14 @@ public class Trundle : MonoBehaviour
                 float y = Mathf.Sin(angle) * spinningRadius;
                 Vector3 targetPos = new Vector3(x, 0, y);
                 targetPos = Player.transform.position + targetPos;
-                ghost.SetDestination(targetPos);
-                transform.LookAt(targetPos);
+                transform.position = targetPos;
+               // ghost.SetDestination(targetPos);
+               // transform.LookAt(targetPos);
                 _speed = circlingSpeed * 50;
 
 
 
             }
-            
-            
 
         }
         else
