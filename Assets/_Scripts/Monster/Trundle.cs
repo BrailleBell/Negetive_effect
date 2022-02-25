@@ -311,16 +311,31 @@ public class Trundle : MonoBehaviour
             float startAngle;
             if (!circlingThePlayer)
             {
+                RaycastHit hit;
+                if (Physics.Raycast(transform.position, -Vector3.up, out hit))
+                {
+                    Debug.Log(("Offset hight") + transform.position.y);
+                    float offset = hit.distance;
+                    if (offset > 0)
+                    {
+                        transform.position = new Vector3(transform.position.x, transform.position.y - offset, transform.position.z);
+                        
+                    }
+                    else if(offset < 0)
+                    {
+                        transform.position = new Vector3(transform.position.x, transform.position.y + offset, transform.position.z);
+                    }
+                    startAngle = Vector3.Angle(transform.position, Player.transform.position);
+                    ghost.speed = circlingSpeed;
+                    float x = Mathf.Cos(startAngle) * spinningRadius;
+                    float y = Mathf.Sin(startAngle) * spinningRadius;
+                    Vector3 targetPos = new Vector3(x, 0, y);
+                    targetPos = Player.transform.position + targetPos;
+                    ghost.SetDestination(targetPos);
+                    circlingThePlayer = true;
+                    // transform.LookAt(targetPos);
+                }
                 
-                startAngle = Vector3.Angle(transform.position, Player.transform.position);
-                ghost.speed = circlingSpeed;
-                float x = Mathf.Cos(startAngle) * spinningRadius;
-                float y = Mathf.Sin(startAngle) * spinningRadius;
-                Vector3 targetPos = new Vector3(x, 0, y);
-                targetPos = Player.transform.position + targetPos;
-                ghost.SetDestination(targetPos);
-                circlingThePlayer = true;
-               // transform.LookAt(targetPos);
             }
             else
             {
