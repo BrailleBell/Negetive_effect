@@ -47,7 +47,7 @@ public class Trundle : MonoBehaviour
     
     // bools && triggers
     public bool aboveGround, notTestKill, seesPlayer, testOn, circlingThePlayer;
-    private bool shouldLerp, lerpHasStarted, ghostDying, walking, belowGround;
+    private bool shouldLerp, lerpHasStarted, ghostDying, walking, belowGround, attacking;
 
     // rest
     public GameObject[] MonsterWaypoints;
@@ -59,6 +59,8 @@ public class Trundle : MonoBehaviour
     private AnimationTrack AdjustSpeed;
     public Light chestLight;
     private Color redlight, greenlight;
+    private Vector3 undergroundPos;
+    public LayerMask Ground;
     
     
     
@@ -92,6 +94,7 @@ public class Trundle : MonoBehaviour
                 LookingForPlayer();
                 break;
             case State.Attacking:
+                Attacking();
                 break;
             case State.Chase:
                 Chase();
@@ -168,21 +171,6 @@ public class Trundle : MonoBehaviour
         }
         
         chestLight.color = Color.Lerp(Color.green, Color.red, lerpStuff);
-        
-
-        if (walking)
-        {
-            float walkTimer = 0;
-            walkTimer += Time.deltaTime;
-            
-            if (walkTimer > 1.4f)
-            {
-                ghost.speed = walkTimer * 80;
-                walkTimer = 0;
-            }
-            
-        }
-        
 
         if (ghostDying) // after taking picture of the ghost it dies after killtimer 
         {
@@ -239,9 +227,15 @@ public class Trundle : MonoBehaviour
 
     public void Patroling()
     {
-        anim.SetBool("Up",true);
+        anim.SetBool("Up",false);
+        anim.SetBool("Attack",false);
+        anim.SetBool("Down",false);
         anim.SetBool("Walk",true);
         gameObject.GetComponent<BoxCollider>().enabled = true;
+        ghost.acceleration = 8;
+        ghost.angularSpeed = 50;
+        ghost.speed = 3.5f;
+        
         if (Vector3.Distance(gameObject.transform.position, MonsterWaypoints[wayPointInd].transform.position) >= radiusToWaypoint)
         {
             ghost.SetDestination(MonsterWaypoints[wayPointInd].transform.position);
@@ -271,6 +265,7 @@ public class Trundle : MonoBehaviour
         Vector2 angleToPlayer = (new Vector2(Player.transform.position.x, Player.transform.position.z) -
                                  new Vector2(transform.position.x, transform.position.z)).normalized;
         vectorAngle = Vector2.Angle(transform.forward, angleToPlayer);
+        
         if (distanceToPlayer <= LookRange && vectorAngle <= FOV / 2)
         {
             seesPlayer = true;
@@ -284,16 +279,11 @@ public class Trundle : MonoBehaviour
 
     public void Chase()
     {
-        belowGround = true;
-        if (belowGround)
+        if (!belowGround)
         {
             anim.SetBool("Down",true);
-            belowGround = false;
+            belowGround = true;
 
-        }
-        else
-        {
-            anim.SetBool("Down",false);
         }
         anim.SetBool("Walk",false);
         anim.SetBool("Up",false);
@@ -301,8 +291,8 @@ public class Trundle : MonoBehaviour
         belowTimer += Time.deltaTime;
         if (belowTimer >= Random.Range(10, 50))
         {
-           // state = State.Attacking;
-           // belowTimer = 0;
+            state = State.Attacking;
+             belowTimer = 0;
         }
 
         ghost.speed = distanceToPlayer / 3;
@@ -312,24 +302,14 @@ public class Trundle : MonoBehaviour
             if (!circlingThePlayer)
             {
                 RaycastHit hit;
-                if (Physics.Raycast(transform.position, -Vector3.up, out hit))
+                if (Physics.Raycast(new Vector3(transform.position.x,500,transform.position.z), -Vector3.up, out hit,Mathf.Infinity, Ground))
                 {
-                    Debug.Log(("Offset hight") + transform.position.y);
-                    float offset = hit.distance;
-                    if (offset > 0)
-                    {
-                        transform.position = new Vector3(transform.position.x, transform.position.y - offset, transform.position.z);
-                        
-                    }
-                    else if(offset < 0)
-                    {
-                        transform.position = new Vector3(transform.position.x, transform.position.y + offset, transform.position.z);
-                    }
                     startAngle = Vector3.Angle(transform.position, Player.transform.position);
                     ghost.speed = circlingSpeed;
                     float x = Mathf.Cos(startAngle) * spinningRadius;
                     float y = Mathf.Sin(startAngle) * spinningRadius;
-                    Vector3 targetPos = new Vector3(x, 0, y);
+                    float height = hit.transform.position.y;
+                    Vector3 targetPos = new Vector3(x, height, y);
                     targetPos = Player.transform.position + targetPos;
                     ghost.SetDestination(targetPos);
                     circlingThePlayer = true;
@@ -339,24 +319,26 @@ public class Trundle : MonoBehaviour
             }
             else
             {
-                ghost.acceleration = 100;
-                ghost.angularSpeed = 100;
-                pos += Time.deltaTime * circlingSpeed;
-                ghost.speed = _speed;
-                float angle = pos * 3.14159f;
-                float x = Mathf.Cos(angle) * spinningRadius;
-                float y = Mathf.Sin(angle) * spinningRadius;
-                Vector3 targetPos = new Vector3(x, 0, y);
-                targetPos = Player.transform.position + targetPos;
-                transform.position = targetPos;
-               // ghost.SetDestination(targetPos);
-               // transform.LookAt(targetPos);
-                _speed = circlingSpeed * 50;
-
-
-
+                RaycastHit hit;
+                if (Physics.Raycast(new Vector3(transform.position.x,500,transform.position.z), -Vector3.up, out hit,Mathf.Infinity,Ground))
+                {
+                    ghost.acceleration = 100;
+                    ghost.angularSpeed = 100;
+                    pos += Time.deltaTime * circlingSpeed;
+                    ghost.speed = _speed; 
+                    float angle = pos * 3.14159f;
+                    float x = Mathf.Cos(angle) * spinningRadius;
+                    float y = Mathf.Sin(angle) * spinningRadius;
+                    float height = hit.point.y;
+                    Vector3 targetPos = new Vector3(Player.transform.position.x + x, height, Player.transform.position.z + y);
+                    //targetPos = Player.transform.position + targetPos;
+                    transform.position = targetPos;
+                    // ghost.SetDestination(targetPos);
+                    // transform.LookAt(targetPos);
+                    _speed = circlingSpeed * 50;
+                    
+                }
             }
-
         }
         else
         {
@@ -375,20 +357,30 @@ public class Trundle : MonoBehaviour
 
     public void Attacking()
     {
-        if (!aboveGround)
+       
+
+        if (!attacking)
         {
             anim.SetBool("Up",true);
-            aboveGround = true;
+            anim.SetBool("Walk",true);
+            anim.SetBool("Down",false);
+            attacking = true;
+        }
+        else
+        {
+            anim.SetBool("Up",false);
+            ghost.SetDestination(Player.transform.position);
+            transform.LookAt(Player.transform.position);
+            ghost.speed = circlingSpeed * 10;
+            GetComponentInChildren<BoxCollider>().enabled = true;
+            if (distanceToPlayer <= 0.8f)
+            {
+                //death
+                Debug.Log("You died");
+                
+            }
         }
         
-
-        ghost.SetDestination(Player.transform.position);
-        if (distanceToPlayer < 1)
-        {
-            
-            
-            
-        }
 
     }
     
