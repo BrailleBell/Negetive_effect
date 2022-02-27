@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class GameManager : MonoBehaviour
 {
     public int film;
@@ -10,10 +11,21 @@ public class GameManager : MonoBehaviour
 
     public GameObject[] spawnPoints;
 
-    //saving stuff
-    public float Timer = 0;
-    public float TimeCheck = 180; //180 = 3 minutes
+    /// <summary>
+    /// To be able to trigger time specific events
+    /// like saving the game each hour and having the monsters behave differently 
+    /// every half an hour (ingame time) etc...
+    /// </summary>
+    public static Action OnMinuteChanged;
+    public static Action OnHourChanged;
+
+    //timer and saving stuff
     public bool SaveGame = false;
+    private float timer; //local time
+    private float minuteToRealTime = 0.5f; //every half a sec realtime is 1minute ingame (needs to be changed obvs, but this is for testing)
+
+    public static int Minute { get; private set; }
+    public static int Hour { get; private set; }
 
     // Start is called before the first frame update
     private void Awake()
@@ -22,6 +34,11 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
+        //game starts at 00:00am
+        Minute = 0;
+        Hour = 00;
+        timer = minuteToRealTime;
+
         LoadGameFunction();
 
        DontDestroyOnLoad(this); 
@@ -37,21 +54,21 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        Timer = Timer + 1 * Time.deltaTime;
+        timer -= Time.deltaTime;
 
-        if(Timer >= TimeCheck)
+        if(timer <= 0)
         {
-            SaveGame = true;
-        }
+            Minute++;
+            OnMinuteChanged?.Invoke(); //the "?" is the "null" check instead of putting it into an "if statement"
 
-        //need to find out how to save the time and makes sure it stays at that time
-        if(SaveGame == true)
-        {
-            SaveGameFunction();
-            LoadGameFunction();
-            Timer = 0; //resets the timer
-            SaveGame = false;
-            Debug.Log(SaveGame);
+            if (Minute >= 60)
+            {
+                Hour++;
+                OnHourChanged?.Invoke(); //the "?" is the "null" check instead of putting it into an "if statement"
+                Minute = 0;
+            }
+
+            timer = minuteToRealTime;
         }
     }
 
