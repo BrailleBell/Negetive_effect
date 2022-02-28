@@ -27,7 +27,7 @@ public class MenuManager : MonoBehaviour
 
     private void Update()
     {
-        //GoToPrevious();
+        GoToPrevious();
     }
 
     public void GoToPrevious()
@@ -54,5 +54,15 @@ public class MenuManager : MonoBehaviour
 
         currentPanel = newPanel;
         currentPanel.Show();
+    }
+
+    public void ToggleCM()
+    {
+
+    }
+
+    public void ToggleTPM()
+    {
+
     }
 }
