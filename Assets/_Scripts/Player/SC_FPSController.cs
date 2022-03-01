@@ -79,5 +79,10 @@ public class SC_FPSController : MonoBehaviour
         {
             other.gameObject.SetActive(false);
         }
+
+        if (other.gameObject.tag == "Monster")
+        {
+            // Kill player
+        }
     }
 }

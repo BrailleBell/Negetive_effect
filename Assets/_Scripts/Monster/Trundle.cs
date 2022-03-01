@@ -22,7 +22,7 @@ public class Trundle : MonoBehaviour
     [Range(0,360)]
     public float FOV;
     public float aboveTimer, belowTimer, awareRadius,attackTimer;
-    private float startTime, killTimer;
+    private float startTime, killTimer, uptime;
     private float groundlevel, baseoffset, attackDist;
     public int GoToSceneWhenKilled;
     private float vectorAngle;
@@ -30,7 +30,7 @@ public class Trundle : MonoBehaviour
     public float radiusToWaypoint;
     public float raduiusAroundTarget,spinningRadius; // Spinningradius always lover than radiusAroundTarget
     public float circlingSpeed;
-    private float pos;
+    private float pos,goingdownTimer;
     public float _speed;
 
     // States and enums
@@ -39,7 +39,8 @@ public class Trundle : MonoBehaviour
         Idle,
         Patroling,
         Attacking,
-        Chase
+        Chase,
+        GoingDown
     }
 
     public State state;
@@ -47,10 +48,11 @@ public class Trundle : MonoBehaviour
     
     // bools && triggers
     public bool aboveGround, notTestKill, seesPlayer, testOn, circlingThePlayer,attackTest;
-    private bool shouldLerp, lerpHasStarted, ghostDying, walking, belowGround, attacking;
+    private bool shouldLerp, lerpHasStarted, ghostDying, walking, belowGround, attacking,goingDown;
 
     // rest
     public GameObject[] MonsterWaypoints;
+    public GameObject arm1, arm2, arm3;
     private GameObject Player;
     private NavMeshAgent ghost;
     private Rigidbody rb;
@@ -100,17 +102,26 @@ public class Trundle : MonoBehaviour
                 Patroling();
                 LookingForPlayer();
                 break;
+            case State.GoingDown:
+                GoingDown();
+                break;
         }
-        
-        #region Visibility
-        
-      
 
 
-        #endregion
+         if (state == State.Attacking)
+         {
+             arm1.GetComponent<BoxCollider>().enabled = true;
+             arm2.GetComponent<BoxCollider>().enabled = true;
+             arm3.GetComponent<BoxCollider>().enabled = true;
+         }
+         else
+         {
+             arm1.GetComponent<BoxCollider>().enabled = false;
+             arm2.GetComponent<BoxCollider>().enabled = false;
+             arm3.GetComponent<BoxCollider>().enabled = false;
+         }
         
-        
-        
+         
         #region movement
 
         if (seesPlayer)
@@ -118,8 +129,6 @@ public class Trundle : MonoBehaviour
             ghost.updatePosition = true;
             ghost.SetDestination(Player.transform.position);
             
-            // Change colour of inner circle
-
             
             // face the player
             Vector3 direction = (Player.transform.position - transform.position).normalized;
@@ -128,31 +137,13 @@ public class Trundle : MonoBehaviour
             
             if ((distanceToPlayer <= LookRange) && (distanceToPlayer <= awareRadius))
             {
-             
-                if (distanceToPlayer <= ghost.stoppingDistance)
-                {
-                    GetComponent<BoxCollider>().enabled = true;
-                    // attack
 
-
-                   
-                    if (distanceToPlayer <= 1)
-                    {
-                       
-                    }
-                }
                 
             }
            
             
         }
         
-        else // whenplayer is out of sight
-        {
-            seesPlayer = false;
-
-            
-        }
         
         chestLight.color = Color.Lerp(Color.green, Color.red, lerpStuff);
 
@@ -162,7 +153,7 @@ public class Trundle : MonoBehaviour
             ghost.velocity = Vector3.zero;
             ghost.isStopped = true;
             killTimer += Time.deltaTime; // kill time must be over 0.2 secounds! 
-            if (killTimer > 2f)
+            if (killTimer > 3f)
             {
                 if (notTestKill)
                 {
@@ -225,13 +216,29 @@ public class Trundle : MonoBehaviour
             }
         }
 
-        if (seesPlayer)
+        if (state == State.Patroling && seesPlayer)
         {
-            state = State.Chase;
+            state = State.GoingDown;
+
         }
         
 
 
+    }
+
+    private void GoingDown()
+    {
+        goingdownTimer += Time.deltaTime;
+        anim.SetBool("Down",true);
+        if (goingdownTimer > 2)
+        {
+            goingDown = true;   
+        }
+
+        if (goingDown)
+        {
+            state = State.Chase;
+        }
     }
 
     public void LookingForPlayer()
@@ -244,6 +251,11 @@ public class Trundle : MonoBehaviour
         {
             seesPlayer = true;
         }
+
+        else if (distanceToPlayer < awareRadius)
+        {
+            seesPlayer = true;
+        }
         else
         {
             seesPlayer = false;
@@ -253,6 +265,8 @@ public class Trundle : MonoBehaviour
 
     public void Chase()
     {
+        goingDown = false;
+        attacking = false;
         
         if (lerpStuff < 1)
         {
@@ -274,7 +288,7 @@ public class Trundle : MonoBehaviour
         
         
         belowTimer += Time.deltaTime;
-        if (!attackTest && belowTimer >= Random.Range(20, 50))
+        if (!attackTest && belowTimer >= Random.Range(10, 30))
         {
             state = State.Attacking;
              belowTimer = 0;
@@ -357,14 +371,14 @@ public class Trundle : MonoBehaviour
             {
                 ghost.speed = 0;
                 anim.SetBool("Up",true);
-                anim.SetBool("Walk",true);
+                anim.SetBool("Attack",true);
                 anim.SetBool("Down",false);
                 attacking = true;
             }
-            else
+            else if(attacking)
             {
-                float uptime = 0;
                 uptime += Time.deltaTime;
+                anim.SetBool("Up",false);
                 GetComponent<BoxCollider>().enabled = true;
                 if(distanceToPlayer > 2f)
                 {
@@ -379,20 +393,19 @@ public class Trundle : MonoBehaviour
                 {
                     // Kill player
                 }
-                else if (uptime > 6)
+                if (uptime >= 6)
                 {
                     state = State.Chase;
                     uptime = 0;
                 }
 
-
+                if (distanceToPlayer > awareRadius)
+                {
+                    state = State.Chase;
+                    uptime = 0;
+                }
             }
-            
         }
-        
-      
-        
-
     }
     
     
