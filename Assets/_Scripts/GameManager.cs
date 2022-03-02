@@ -8,9 +8,12 @@ public class GameManager : MonoBehaviour
 {
     public int film;
     public GameObject VRheadset;
-
     public GameObject[] spawnPoints;
+    public GameObject Player;
 
+    //Camera reloading
+    public bool reloaded;
+    
     /// <summary>
     /// To be able to trigger time specific events
     /// like saving the game each hour and having the monsters behave differently 
@@ -30,7 +33,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        
+        Player = GameObject.FindGameObjectWithTag("Player");
     }
     void Start()
     {

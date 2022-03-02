@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,9 @@ public class Poloroid_image : MonoBehaviour
     public GameObject cameraRange;
     public GameManager gm;
     private TextMesh filmText;
+    
+    //Light
+    public GameObject reloadedlamp;
 
     //Sound stuff
     public AudioSource audioSource;
@@ -38,6 +42,7 @@ public class Poloroid_image : MonoBehaviour
         cameraRange.SetActive(false);
         gm = GameObject.Find("__GM").GetComponent<GameManager>();
         filmText = GameObject.Find("FilmText").GetComponent<TextMesh>();
+        gm.reloaded = true;
 
 
     }
@@ -45,7 +50,17 @@ public class Poloroid_image : MonoBehaviour
 
     private void Update()
     {
-        if (lightsOn)
+
+        if (gm.reloaded)
+        {
+            reloadedlamp.SetActive(true);
+        }
+        else
+        {
+            reloadedlamp.SetActive(false);
+        }
+        
+        if (lightsOn && gm.reloaded)
         {
             timerForFlash += Time.deltaTime;
             if (timerForFlash > 0.2f)
@@ -75,6 +90,7 @@ public class Poloroid_image : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            gm.reloaded = false;
             lightsOn = true;
             flash.SetActive(true);
             if (gm.film > 0)
@@ -109,6 +125,7 @@ public class Poloroid_image : MonoBehaviour
 
     public void TakePictureInVR()
     {
+        gm.reloaded = false;
         lightsOn = true;
         flash.SetActive(true);
         if (gm.film > 0)
@@ -134,4 +151,5 @@ public class Poloroid_image : MonoBehaviour
         tex.Apply();
         return tex;
     }
+    
 }

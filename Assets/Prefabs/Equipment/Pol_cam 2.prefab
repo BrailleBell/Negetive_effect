@@ -43,7 +43,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1000
+  m_Intensity: 200
   m_Range: 59.8
   m_SpotAngle: 86.36493
   m_InnerSpotAngle: 68.22023
@@ -137,6 +137,101 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneToGoToWhenWon: 2
+--- !u!1 &4986502126049505811
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7668677315259981176}
+  - component: {fileID: 1200922453422659895}
+  - component: {fileID: 4685223762866181749}
+  - component: {fileID: 1905343037124969725}
+  m_Layer: 0
+  m_Name: ReloadLight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7668677315259981176
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4986502126049505811}
+  m_LocalRotation: {x: 0, y: 0.013586879, z: -0, w: 0.99990773}
+  m_LocalPosition: {x: 0.336, y: 0.341, z: -0.48}
+  m_LocalScale: {x: 0.28654745, y: 0.24091318, z: 0.088637605}
+  m_Children: []
+  m_Father: {fileID: 8491670115103442490}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &1200922453422659895
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4986502126049505811}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &4685223762866181749
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4986502126049505811}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 3f550df28212dee46b894859662ff136, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1905343037124969725
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4986502126049505811}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9999999, y: 1, z: 1.0000001}
+  m_Center: {x: 0.00012207156, y: 0.0000038146973, z: 0.00000041441308}
 --- !u!1 &5598816347917955269
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,7 +348,7 @@ GameObject:
   - component: {fileID: 1427052804}
   m_Layer: 11
   m_Name: Pol_cam 2
-  m_TagString: Untagged
+  m_TagString: Camera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -267,10 +362,11 @@ Transform:
   m_GameObject: {fileID: 8491670115103442491}
   m_LocalRotation: {x: 0, y: -0.013586884, z: 0, w: 0.99990773}
   m_LocalPosition: {x: 0.34334624, y: -0.6303793, z: 0.81488645}
-  m_LocalScale: {x: 0.16, y: 0.16, z: 0.18}
+  m_LocalScale: {x: 0.5908531, y: 0.5908531, z: 0.66470975}
   m_Children:
   - {fileID: 2881907027216598180}
   - {fileID: 932451619084601680}
+  - {fileID: 7668677315259981176}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -1.557, z: 0}
@@ -354,7 +450,10 @@ MonoBehaviour:
   x: 200
   y: 200
   flash: {fileID: 2895286097515517006}
+  UVLight: {fileID: 0}
   cameraRange: {fileID: 557157048626107370}
+  gm: {fileID: 0}
+  reloadedlamp: {fileID: 0}
   audioSource: {fileID: 1427052804}
   audioClip: {fileID: 8300000, guid: 06da78679b160a240936e9580b0c0ead, type: 3}
 --- !u!114 &8491670115103442493
@@ -539,7 +638,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 06da78679b160a240936e9580b0c0ead, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -750,11 +849,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 65b3b2e4a9a3de045bc5e35382f78a39, type: 3}
       propertyPath: m_LocalScale.y
-      value: 235.47348
+      value: 50.25
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 65b3b2e4a9a3de045bc5e35382f78a39, type: 3}
       propertyPath: m_LocalScale.z
-      value: 107.306984
+      value: -74.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 65b3b2e4a9a3de045bc5e35382f78a39, type: 3}
       propertyPath: m_LocalPosition.x
