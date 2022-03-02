@@ -125,7 +125,7 @@ public class Poloroid_image : MonoBehaviour
         }
         
         
-        filmText.text = gm.film.ToString();
+//        filmText.text = gm.film.ToString();
         
         
     }

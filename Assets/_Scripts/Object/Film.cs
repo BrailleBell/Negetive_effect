@@ -21,10 +21,10 @@ public class Film: MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Camera")
+        if (collision.gameObject.CompareTag("Camera"))
         {
             Debug.Log("reloaded check, reloaded is "+ gm.reloaded);
-            collision.gameObject.SetActive(false);
+            gameObject.SetActive(false);
             gm.reloaded = true;
             gm.GetFilm();
             
