@@ -361,6 +361,12 @@ public class Trundle : MonoBehaviour
 
     public void Attacking()
     {
+        if(distanceToPlayer > awareRadius)
+        {
+            state = State.Chase;
+            uptime = 0;
+        }
+        
         circlingThePlayer = false;
         belowGround = false;
         ghost.SetDestination(Player.transform.position);
@@ -399,11 +405,6 @@ public class Trundle : MonoBehaviour
                     uptime = 0;
                 }
 
-                if (distanceToPlayer > awareRadius)
-                {
-                    state = State.Chase;
-                    uptime = 0;
-                }
             }
         }
     }
