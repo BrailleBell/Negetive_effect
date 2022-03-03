@@ -22,7 +22,9 @@ public class SurviveTimeManager : MonoBehaviour
 
     private void Update()
     {
-        timeText.text = PlayerPrefs.GetFloat("timer", 0).ToString();
+        timeText.text = PlayerPrefs.GetInt("timer").ToString();
+
+        Debug.Log(timeText.text);
     }
 
     //Dont understand how this works tbh, gonna have to look more into it
@@ -30,7 +32,7 @@ public class SurviveTimeManager : MonoBehaviour
     {
         if(GameManager.Hour == 01)
         {
-            PlayerPrefs.SetFloat("timer",0);
+            PlayerPrefs.SetInt("timer", 0);
         }
     }
 }

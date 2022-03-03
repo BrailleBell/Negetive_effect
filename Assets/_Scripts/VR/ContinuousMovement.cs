@@ -40,14 +40,15 @@ public class ContinuousMovement : MonoBehaviour
     {
         CapsuleFollowHeadset();
 
+        
         InputDevice controller = InputDevices.GetDeviceAtXRNode(inputSource);
         Vector2 primary2dValue;
         InputFeatureUsage<Vector2> primary2DVector = CommonUsages.primary2DAxis;
 
         Quaternion headY = Quaternion.Euler(0, rig.CameraFloorOffsetObject.transform.eulerAngles.y, 0);
 
-        Vector3 direction = headY * new Vector3(inputAxis.x, 0, inputAxis.y);
-        character.Move(direction * Time.fixedDeltaTime * speed); //this makes the player move (basically)
+        //Vector3 direction = headY * new Vector3(inputAxis.x, 0, inputAxis.y);
+        character.Move(transform.forward * Time.fixedDeltaTime * speed); //this makes the player move (basically)
 
         //gravity stuff
         bool isGrounded = CheckIfGrounded();
