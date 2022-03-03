@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class Poloroid_image : MonoBehaviour
 {
-    
+
     public Material shaderMat;
     public GameObject Picture;
     private Texture2D screenCapture;
@@ -50,52 +50,68 @@ public class Poloroid_image : MonoBehaviour
 
     private void Update()
     {
-
-        if (gm.reloaded)
+        
+        
+        
+        if (lightsOn) 
         {
-            reloadedlamp.SetActive(true);
-        }
-        else
-        {
-            reloadedlamp.SetActive(false);
-        }
-
-        if (gm.reloaded)
-        {
-            if (lightsOn)
+            flash.SetActive(true);
+            timerForFlash += Time.deltaTime;
+            
+            if (timerForFlash > 0.2f)
+            
             {
-                timerForFlash += Time.deltaTime;
-                if (timerForFlash > 0.2f)
-                {
-                    flash.SetActive(false);
-                    lightsOn = false;
-                    timerForFlash = 0;
-                    if (gm.film > 0)
-                    {
-                        gm.film--; 
-                        screenCapture = toTexture2D(PoleroidImage);
-                        Picture.transform.GetChild(0).GetComponent<Renderer>().sharedMaterial = new Material(shaderMat);
-                        Picture.transform.GetChild(0).GetComponent<Renderer>().sharedMaterial
-                            .SetTexture("_MainTex", screenCapture);
-                        Instantiate(Picture, transform.position, Quaternion.Euler(90, 180, 0));
-                        timerForPolaroid = +Time.deltaTime;
-                        // if(cameraRange.GetComponent<MeshCollider>()) 
-                        cameraRange.SetActive(false);
-                        gm.reloaded = false;
-                        if (timerForPolaroid > 5)
-                        {
-                            Picture.GetComponent<BoxCollider>().enabled = false;
-                            timerForPolaroid = 0;
-                        }
-                    }
-                }
-            }   
             
+                flash.SetActive(false);
+                
+                lightsOn = false;
+                
+                timerForFlash = 0;
+                
+                if (gm.film > 0)
+                
+                {
+                
+                    gm.film--; 
+                    
+                    screenCapture = toTexture2D(PoleroidImage);
+                    
+                    Picture.transform.GetChild(0).GetComponent<Renderer>().sharedMaterial = new Material(shaderMat);
+                    
+                    Picture.transform.GetChild(0).GetComponent<Renderer>().sharedMaterial
+                    
+                        .SetTexture("_MainTex", screenCapture);
+                        
+                    Instantiate(Picture, transform.position, Quaternion.Euler(90, 180, 0));
+                    
+                    timerForPolaroid = +Time.deltaTime;
+                    
+                    // if(cameraRange.GetComponent<MeshCollider>()) 
+                    
+                    cameraRange.SetActive(false);
+                    
+                    gm.reloaded = false;
+                    
+                    if (timerForPolaroid > 5)
+                    
+                    {
+                    
+                        Picture.GetComponent<BoxCollider>().enabled = false;
+                        
+                        timerForPolaroid = 0;
+                        
+                    }
+                    
+                    
+                }
+                
+                
+            } 
             
         }
+            
+            
         
-        
-
         if (Input.GetMouseButtonDown(0))
         {
             lightsOn = true;
@@ -130,10 +146,32 @@ public class Poloroid_image : MonoBehaviour
         
     }
 
+    public void ReloadCamera()
+    {
+       
+        if (!gm.reloadReady)
+        {
+            // instaniate film without glow
+            //play reload sound 
+            gm.reloadReady = true;
+        }
+
+    }
+
     public void TakePictureInVR()
     {
-        lightsOn = true;
-        flash.SetActive(true);
+        if (gm.reloaded)
+        {
+            gm.reloadReady = false;
+            lightsOn = true;
+
+        }
+        else
+        {
+            
+            
+        }
+
         if (gm.film > 0)
         { 
             cameraRange.SetActive(true); 

@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public GameObject Player;
 
     //Camera reloading
-    public bool reloaded;
+    public bool reloaded,reloadReady;
     
     /// <summary>
     /// To be able to trigger time specific events
