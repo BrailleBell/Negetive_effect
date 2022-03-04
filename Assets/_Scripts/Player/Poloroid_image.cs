@@ -18,7 +18,7 @@ public class Poloroid_image : MonoBehaviour
     public int x = 200;
     public int y = 200;
     private float timerForPolaroid, timerForFlash;
-    public GameObject flash, UVLight;
+    public GameObject flash, UVLight,Reloadedfilm;
     private bool lightsOn;
     public GameObject cameraRange;
     public GameManager gm;
@@ -43,6 +43,7 @@ public class Poloroid_image : MonoBehaviour
         gm = GameObject.Find("__GM").GetComponent<GameManager>();
         filmText = GameObject.Find("FilmText").GetComponent<TextMesh>();
         gm.reloaded = true;
+        Reloadedfilm.SetActive(false);
 
 
     }
@@ -50,8 +51,6 @@ public class Poloroid_image : MonoBehaviour
 
     private void Update()
     {
-        
-        
         
         if (lightsOn) 
         {
@@ -61,20 +60,13 @@ public class Poloroid_image : MonoBehaviour
             if (timerForFlash > 0.2f)
             
             {
-            
                 flash.SetActive(false);
                 
                 lightsOn = false;
                 
                 timerForFlash = 0;
-                
-                if (gm.film > 0)
-                
-                {
-                
-                    gm.film--; 
-                    
-                    screenCapture = toTexture2D(PoleroidImage);
+
+                screenCapture = toTexture2D(PoleroidImage);
                     
                     Picture.transform.GetChild(0).GetComponent<Renderer>().sharedMaterial = new Material(shaderMat);
                     
@@ -96,21 +88,42 @@ public class Poloroid_image : MonoBehaviour
                     
                     {
                     
-                        Picture.GetComponent<BoxCollider>().enabled = false;
-                        
-                        timerForPolaroid = 0;
+                     Debug.Log(timerForPolaroid);
+                     
                         
                     }
-                    
-                    
-                }
-                
-                
             } 
             
         }
-            
-            
+
+        if (!gm.reloaded)
+        {
+            GameObject[] gos;
+            gos = GameObject.FindGameObjectsWithTag("Film");
+            GameObject closest = null;
+            float distance = Mathf.Infinity;
+            Vector3 position = transform.position;
+            foreach (GameObject go in gos)
+            {
+                Vector3 diff = go.transform.position - position;
+                float curDistance = diff.sqrMagnitude;
+                if (curDistance < distance)
+                {
+                    closest = go;
+                    distance = curDistance;
+                    if (Vector3.Distance(transform.position, closest.transform.position) < 1)
+                    {
+                        Reloadedfilm.SetActive(true);
+                        closest.GetComponent<MeshRenderer>().enabled = false;
+                        closest.GetComponentInChildren<MeshRenderer>().enabled = false;
+                    }
+                    else
+                    {
+                        Reloadedfilm.SetActive(false);
+                    }
+                }
+            }
+        }
         
         if (Input.GetMouseButtonDown(0))
         {
@@ -132,15 +145,8 @@ public class Poloroid_image : MonoBehaviour
         {
             UVLight.SetActive(false);
         }
-        
-        
 
-        if (gm.film == 0)
-        {
-            cameraRange.SetActive(false);
-        }
-        
-        
+
 //        filmText.text = gm.film.ToString();
         
         
@@ -162,13 +168,14 @@ public class Poloroid_image : MonoBehaviour
     {
         if (gm.reloaded)
         {
+            cameraRange.SetActive(true); 
             gm.reloadReady = false;
             lightsOn = true;
 
         }
-        else
+        else if(!gm.reloaded)
         {
-            
+            // Play clicking sound only 
             
         }
 
