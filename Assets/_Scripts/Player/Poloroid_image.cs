@@ -114,56 +114,61 @@ public class Poloroid_image : MonoBehaviour
                     if (Vector3.Distance(transform.position, closest.transform.position) < 0.8f)
                     {
                         Reloadedfilm.SetActive(true);
-                        closest.GetComponent<MeshRenderer>().enabled = false;
-                        closest.GetComponentInChildren<MeshRenderer>().enabled = false;
+                        
                     }
                     else
                     {
                         Reloadedfilm.SetActive(false);
-                        closest.GetComponent<MeshRenderer>().enabled = true;
-                        closest.GetComponentInChildren<MeshRenderer>().enabled = true;
                         
                     }
                 }
             }
         }
         
-        if (Input.GetMouseButtonDown(0))
-        {
-            lightsOn = true;
-            flash.SetActive(true);
-            if (gm.film > 0)
-            {
-                cameraRange.SetActive(true);
-                
-            }
+  
+  #region pccontroller
+      //  if (Input.GetMouseButtonDown(0))
+      //  {
+      //      lightsOn = true;
+      //      flash.SetActive(true);
+      //      if (gm.film > 0)
+      //      {
+      //          cameraRange.SetActive(true);
+      //          
+      //      }
+//
+      //  }
+       // else if(Input.GetKeyUp(KeyCode.R) && gm.reloadReady)
+       // {
+       //     Debug.Log("reloaded check, reloaded is "+ gm.reloaded);
+       //     gm.reloaded = true;
+       //     gm.GetFilm();
+//
+       // }
 
-        }
-        else if(Input.GetKeyUp(KeyCode.R) && gm.reloadReady)
-        {
-            Debug.Log("reloaded check, reloaded is "+ gm.reloaded);
-            gm.reloaded = true;
-            gm.GetFilm();
-
-        }
-
-        if (Input.GetKey(KeyCode.Mouse1))
-        {
-            ReloadCamera();
-        }
-        else
-        {
-            UVLight.SetActive(false);
-        }
+     
+     //   if (Input.GetKey(KeyCode.Mouse1))
+     //   {
+     //       ReloadCamera();
+     //   }
+     //   else
+     //   {
+     //       UVLight.SetActive(false);
+     //   }
 
 
 //        filmText.text = gm.film.ToString();
         
         
+
+    #endregion
+
+
     }
 
     public void ReloadCamera()
     {
+        Debug.Log("A pressed");
        
         if (!gm.reloadReady)
         {
@@ -182,16 +187,19 @@ public class Poloroid_image : MonoBehaviour
         {
             cameraRange.SetActive(true); 
             gm.SnapPic(); 
-            reloadedlamp.SetActive(false);
+            reloadedlamp.SetActive(true);
             cameraRange.SetActive(true); 
             gm.reloadReady = false;
             lightsOn = true;
+            Debug.Log("Took a picture");
             
 
         }
         else if(!gm.reloaded)
         {
             // Play clicking sound only 
+
+            reloadedlamp.SetActive(true);
             
         }
         

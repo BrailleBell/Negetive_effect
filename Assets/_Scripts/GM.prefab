@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3448700390046429784}
   - component: {fileID: 3249190134339720256}
-  - component: {fileID: 2009187890179724715}
   m_Layer: 0
   m_Name: GM
   m_TagString: Untagged
@@ -46,19 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   film: 0
   VRheadset: {fileID: 0}
-  filmStr: {fileID: 0}
---- !u!114 &2009187890179724715
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4346115516230675086}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa851dd3fe53c60418021f2826777f85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  film: 0
-  VRheadset: {fileID: 0}
-  filmStr: {fileID: 0}
+  spawnPoints: []
+  Player: {fileID: 0}
+  reloaded: 0
+  reloadReady: 0
+  SaveGame: 0

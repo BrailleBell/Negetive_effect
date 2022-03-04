@@ -37,6 +37,8 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
+        reloadReady = true;
+        reloaded = false;
         //game starts at 00:00am
         Minute = 0;
         Hour = 00;
