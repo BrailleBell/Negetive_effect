@@ -1,5 +1,65 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7550124135662603951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Ambience.bank
+  m_EditorClassIdentifier: 
+  Path: Fmod/NegativeEffectFmod/Build/Desktop/Ambience.bank
+  Name: Ambience
+  StudioPath: bank:/Ambience
+  lastModified: 637820070533654509
+  FileSizes:
+  - Name: Desktop
+    Value: 2221280
+  Exists: 1
+--- !u!114 &-5975358614558467846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: Fmod/NegativeEffectFmod/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 637820070533684540
+  FileSizes:
+  - Name: Desktop
+    Value: 874
+  Exists: 1
+--- !u!114 &-4883192564741859142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Fmod/NegativeEffectFmod/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 637820070533664520
+  FileSizes:
+  - Name: Desktop
+    Value: 1246
+  Exists: 1
 --- !u!114 &-3758311016346125343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27,26 +87,6 @@ MonoBehaviour:
   - Chase
   - Attack
   Exists: 1
---- !u!114 &-2674348604805843737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: ../../../Skrivebord/Negative Effect Sounds/NegativeEffectFmod/Build/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 637820031529724307
-  FileSizes:
-  - Name: Desktop
-    Value: 1246
-  Exists: 1
 --- !u!114 &-1208588146123921988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,7 +106,7 @@ MonoBehaviour:
     Data3: 2110925747
     Data4: 537797422
   Banks:
-  - {fileID: 4400148390066805218}
+  - {fileID: -7550124135662603951}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
@@ -87,56 +127,16 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: 1441182790137127889}
-  - {fileID: 4400148390066805218}
-  - {fileID: -2674348604805843737}
+  - {fileID: -5975358614558467846}
+  - {fileID: -7550124135662603951}
+  - {fileID: -4883192564741859142}
   EditorEvents:
   - {fileID: -1208588146123921988}
   EditorParameters:
   - {fileID: -3758311016346125343}
   MasterBanks:
-  - {fileID: -2674348604805843737}
+  - {fileID: -4883192564741859142}
   StringsBanks:
-  - {fileID: 1441182790137127889}
-  cacheTime: 637820031530551823
+  - {fileID: -5975358614558467846}
+  cacheTime: 637820070533684540
   cacheVersion: 10
---- !u!114 &1441182790137127889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
-  m_EditorClassIdentifier: 
-  Path: ../../../Skrivebord/Negative Effect Sounds/NegativeEffectFmod/Build/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 637820031529743936
-  FileSizes:
-  - Name: Desktop
-    Value: 874
-  Exists: 1
---- !u!114 &4400148390066805218
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Ambience.bank
-  m_EditorClassIdentifier: 
-  Path: ../../../Skrivebord/Negative Effect Sounds/NegativeEffectFmod/Build/Desktop/Ambience.bank
-  Name: Ambience
-  StudioPath: bank:/Ambience
-  lastModified: 637820031530551823
-  FileSizes:
-  - Name: Desktop
-    Value: 2221280
-  Exists: 1
