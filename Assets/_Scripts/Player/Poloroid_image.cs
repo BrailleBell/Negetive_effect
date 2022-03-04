@@ -111,7 +111,7 @@ public class Poloroid_image : MonoBehaviour
                 {
                     closest = go;
                     distance = curDistance;
-                    if (Vector3.Distance(transform.position, closest.transform.position) < 1)
+                    if (Vector3.Distance(transform.position, closest.transform.position) < 0.8f)
                     {
                         Reloadedfilm.SetActive(true);
                         closest.GetComponent<MeshRenderer>().enabled = false;
