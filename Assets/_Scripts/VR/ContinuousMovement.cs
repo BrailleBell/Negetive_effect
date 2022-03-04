@@ -33,7 +33,6 @@ public class ContinuousMovement : MonoBehaviour
     {
         InputDevice device = InputDevices.GetDeviceAtXRNode(inputSource); //chooses the input source we choose to put in
         device.TryGetFeatureValue(CommonUsages.primary2DAxis, out inputAxis); //this chooses the right axis so that the movement happens the correct way (basically)
-
     }
 
     private void FixedUpdate()
@@ -47,8 +46,8 @@ public class ContinuousMovement : MonoBehaviour
 
         Quaternion headY = Quaternion.Euler(0, rig.CameraFloorOffsetObject.transform.eulerAngles.y, 0);
 
-        //Vector3 direction = headY * new Vector3(inputAxis.x, 0, inputAxis.y);
-        character.Move(transform.forward * Time.fixedDeltaTime * speed); //this makes the player move (basically)
+        Vector3 direction = headY * new Vector3(inputAxis.x, 0, inputAxis.y);
+        character.Move(direction * Time.fixedDeltaTime * speed); //this makes the player move (basically)
 
         //gravity stuff
         bool isGrounded = CheckIfGrounded();
