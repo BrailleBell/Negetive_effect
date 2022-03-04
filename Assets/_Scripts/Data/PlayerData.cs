@@ -6,9 +6,17 @@ public class PlayerData
 {
     public float time; // 
     public int level; // at what "checkpoint" the player is on, so when they die they respawn at right time
+    public int film; // how many films is on the player when saved
 
-    public PlayerData(float time, int level)
+    public PlayerData(float time, int level, int film)
     {
+        this.time = time;
+        this.level = level;
+        this.film = film;
+    }
 
+    public override string ToString()
+    {
+        return $"{time}. They have reached level {level}. And have {film}";
     }
 }
