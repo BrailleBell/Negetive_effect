@@ -120,6 +120,9 @@ public class Poloroid_image : MonoBehaviour
                     else
                     {
                         Reloadedfilm.SetActive(false);
+                        closest.GetComponent<MeshRenderer>().enabled = true;
+                        closest.GetComponentInChildren<MeshRenderer>().enabled = true;
+                        
                     }
                 }
             }
