@@ -96,7 +96,7 @@ public class Poloroid_image : MonoBehaviour
             
         }
 
-        if (!gm.reloaded)
+        if (!gm.reloaded && gm.reloadReady)
         {
             GameObject[] gos;
             gos = GameObject.FindGameObjectsWithTag("Film");
@@ -139,10 +139,17 @@ public class Poloroid_image : MonoBehaviour
             }
 
         }
+        else if(Input.GetKeyUp(KeyCode.R) && gm.reloadReady)
+        {
+            Debug.Log("reloaded check, reloaded is "+ gm.reloaded);
+            gm.reloaded = true;
+            gm.GetFilm();
+
+        }
 
         if (Input.GetKey(KeyCode.Mouse1))
         {
-            UVLight.SetActive(true);
+            ReloadCamera();
         }
         else
         {
@@ -163,6 +170,8 @@ public class Poloroid_image : MonoBehaviour
             // instaniate film without glow
             //play reload sound 
             gm.reloadReady = true;
+            Debug.Log("Reload Ready, insert film");
+            
         }
 
     }
@@ -171,10 +180,13 @@ public class Poloroid_image : MonoBehaviour
     {
         if (gm.reloaded)
         {
+            cameraRange.SetActive(true); 
+            gm.SnapPic(); 
             reloadedlamp.SetActive(false);
             cameraRange.SetActive(true); 
             gm.reloadReady = false;
             lightsOn = true;
+            
 
         }
         else if(!gm.reloaded)
@@ -182,12 +194,7 @@ public class Poloroid_image : MonoBehaviour
             // Play clicking sound only 
             
         }
-
-        if (gm.film > 0)
-        { 
-            cameraRange.SetActive(true); 
-            gm.SnapPic(); 
-        }
+        
     }
 
    // public void Snapshot() //sound of taking a photo
