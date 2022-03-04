@@ -13,28 +13,34 @@ public class SurviveTimeManager : MonoBehaviour
     private void OnEnable()
     {
         GameManager.OnHourChanged += TimeCheck;
+
+        //Debug.Log("is it working?");
     }
 
     private void OnDisable()
     {
         GameManager.OnHourChanged -= TimeCheck;
+
+        //Debug.Log("is it working?");
     }
 
     private void Update()
     {
         timeText.text = PlayerPrefs.GetInt("timer").ToString();
 
-        //Debug.Log(timeText.text);
+        //Debug.Log("is it working?");
     }
 
     //Dont understand how this works tbh, gonna have to look more into it
     private void TimeCheck()
     {
-        if(GameManager.Hour == 01)
+        if(GameManager.Hour == 01 && GameManager.Minute == 01)
         {
-            PlayerPrefs.SetInt("timer", 0);
+            PlayerPrefs.SetInt("timer", 01);
+
+            //Debug.Log("is it working?");
         }
 
-        Debug.Log(timeText.text);
+        Debug.Log("is it working?");
     }
 }
