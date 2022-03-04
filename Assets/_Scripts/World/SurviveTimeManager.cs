@@ -24,7 +24,7 @@ public class SurviveTimeManager : MonoBehaviour
     {
         timeText.text = PlayerPrefs.GetInt("timer").ToString();
 
-        Debug.Log(timeText.text);
+        //Debug.Log(timeText.text);
     }
 
     //Dont understand how this works tbh, gonna have to look more into it
@@ -34,5 +34,7 @@ public class SurviveTimeManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("timer", 0);
         }
+
+        Debug.Log(timeText.text);
     }
 }
