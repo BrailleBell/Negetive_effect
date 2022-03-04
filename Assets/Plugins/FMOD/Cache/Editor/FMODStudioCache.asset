@@ -1,0 +1,142 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-4540646092325817233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: ../../../Skrivebord/Negative Effect Sounds/NegativeEffectFmod/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 637820043587209745
+  FileSizes:
+  - Name: Desktop
+    Value: 1246
+  Exists: 1
+--- !u!114 &-2301587024228965745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: ../../../Skrivebord/Negative Effect Sounds/NegativeEffectFmod/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 637820043587249643
+  FileSizes:
+  - Name: Desktop
+    Value: 874
+  Exists: 1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: -2301587024228965745}
+  - {fileID: 2312344117951918335}
+  - {fileID: -4540646092325817233}
+  EditorEvents:
+  - {fileID: 3186812064649209084}
+  EditorParameters:
+  - {fileID: 1797146907448941893}
+  MasterBanks:
+  - {fileID: -4540646092325817233}
+  StringsBanks:
+  - {fileID: -2301587024228965745}
+  cacheTime: 637820043588783656
+  cacheVersion: 10
+--- !u!114 &1797146907448941893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Trundle
+  m_EditorClassIdentifier: 
+  Name: Trundle
+  StudioPath: parameter:/Trundle
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 3101944365
+    data2: 554783187
+  Type: 2
+  IsGlobal: 1
+  Labels:
+  - Walk
+  - Chase
+  - Attack
+  Exists: 1
+--- !u!114 &2312344117951918335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Ambience.bank
+  m_EditorClassIdentifier: 
+  Path: ../../../Skrivebord/Negative Effect Sounds/NegativeEffectFmod/Build/Desktop/Ambience.bank
+  Name: Ambience
+  StudioPath: bank:/Ambience
+  lastModified: 637820043588783656
+  FileSizes:
+  - Name: Desktop
+    Value: 2221280
+  Exists: 1
+--- !u!114 &3186812064649209084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambiences/ForrestAmbience
+  m_EditorClassIdentifier: 
+  Path: event:/Ambiences/ForrestAmbience
+  Guid:
+    Data1: -2131411859
+    Data2: 1269348003
+    Data3: 2110925747
+    Data4: 537797422
+  Banks:
+  - {fileID: 2312344117951918335}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 70000
