@@ -168,6 +168,7 @@ public class Poloroid_image : MonoBehaviour
     {
         if (gm.reloaded)
         {
+            reloadedlamp.SetActive(false);
             cameraRange.SetActive(true); 
             gm.reloadReady = false;
             lightsOn = true;
