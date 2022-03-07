@@ -15,6 +15,7 @@ public class Film: MonoBehaviour
         {
             gm = GameObject.Find("__GM").GetComponent<GameManager>();
             Camera = GameObject.Find("PoloroidCamera");
+            
         }
         
 
