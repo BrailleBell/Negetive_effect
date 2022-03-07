@@ -42,7 +42,6 @@ public class Poloroid_image : MonoBehaviour
         cameraRange.SetActive(false);
         gm = GameObject.Find("__GM").GetComponent<GameManager>();
         filmText = GameObject.Find("FilmText").GetComponent<TextMesh>();
-        gm.reloaded = true;
         Reloadedfilm.SetActive(false);
 
 
@@ -51,9 +50,20 @@ public class Poloroid_image : MonoBehaviour
 
     private void Update()
     {
+
+        if (gm.reloaded)
+        {
+            reloadedlamp.SetActive(true);
+        }
+        else
+        {
+            reloadedlamp.SetActive(false);
+        }
+        
         
         if (lightsOn) 
         {
+            Debug.Log("Shoot picture");
             flash.SetActive(true);
             timerForFlash += Time.deltaTime;
             
@@ -201,7 +211,6 @@ public class Poloroid_image : MonoBehaviour
             cameraRange.SetActive(true); 
             gm.SnapPic(); 
             reloadedlamp.SetActive(true);
-            cameraRange.SetActive(true); 
             gm.reloadReady = false;
             lightsOn = true;
             Debug.Log("Took a picture");
@@ -211,8 +220,7 @@ public class Poloroid_image : MonoBehaviour
         else if(!gm.reloaded)
         {
             // Play clicking sound only 
-
-            reloadedlamp.SetActive(true);
+            
             
         }
         

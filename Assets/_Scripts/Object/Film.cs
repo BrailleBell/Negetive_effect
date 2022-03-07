@@ -21,14 +21,19 @@ public class Film: MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Camera") && gm.reloadReady)
+        if (gm.reloadReady)
         {
-            Debug.Log("reloaded check, reloaded is "+ gm.reloaded);
-            gm.reloaded = true;
-            gm.GetFilm();
-            Destroy(this);
+            if (collision.gameObject.CompareTag("Camera"))
+            {
+                Debug.Log("reloaded check, reloaded is "+ gm.reloaded);
+                Debug.Log("RELOADED!!");
+                gm.reloaded = true;
+                gm.GetFilm();
+                Destroy(gameObject);
 
+            }
             
         }
+
     }
 }
