@@ -11,15 +11,8 @@ public class Film: MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        if (gm.isActiveAndEnabled)
-        {
-            gm = GameObject.Find("__GM").GetComponent<GameManager>();
+        gm = GameObject.Find("__GM").GetComponent<GameManager>();
             Camera = GameObject.Find("PoloroidCamera");
-            
-        }
-        
-
-
     }
 
     private void Update()
@@ -33,6 +26,10 @@ public class Film: MonoBehaviour
                     gm.reloaded = true;
                     gm.GetFilm();
                     Destroy(gameObject);
+            }
+            else
+            {
+                Debug.Log(Vector3.Distance(gameObject.transform.position, Camera.transform.position));
             }
         }
     }
@@ -49,7 +46,7 @@ public class Film: MonoBehaviour
                 gm.reloaded = true;
                 gm.GetFilm();
                 Destroy(gameObject);
-
+                
             }
             
         }
