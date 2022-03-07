@@ -6,6 +6,7 @@ using UnityEngine;
 public class Film: MonoBehaviour
 {
     public GameManager gm;
+    public GameObject Camera;
     
     // Start is called before the first frame update
     private void Start()
@@ -13,11 +14,28 @@ public class Film: MonoBehaviour
         if (gm.isActiveAndEnabled)
         {
             gm = GameObject.Find("__GM").GetComponent<GameManager>();
+            Camera = GameObject.Find("PoloroidCamera");
         }
         
 
 
     }
+
+    private void Update()
+    {
+        if (gm.reloadReady)
+        {
+            if (Vector3.Distance(gameObject.transform.position, Camera.transform.position) < 0.5f)
+            {
+                    Debug.Log("reloaded check, reloaded is "+ gm.reloaded);
+                    Debug.Log("RELOADED!!");
+                    gm.reloaded = true;
+                    gm.GetFilm();
+                    Destroy(gameObject);
+            }
+        }
+    }
+    
 
     private void OnCollisionEnter(Collision collision)
     {
