@@ -29,13 +29,13 @@ public class Film: MonoBehaviour
             }
             else
             {
-                Debug.Log(Vector3.Distance(gameObject.transform.position, Camera.transform.position));
+              //  Debug.Log(Vector3.Distance(gameObject.transform.position, Camera.transform.position));
             }
         }
     }
     
 
-    private void OnCollisionEnter(Collision collision)
+   /* private void OnCollisionEnter(Collision collision)
     {
         if (gm.reloadReady)
         {
@@ -45,11 +45,9 @@ public class Film: MonoBehaviour
                 Debug.Log("RELOADED!!");
                 gm.reloaded = true;
                 gm.GetFilm();
-                Destroy(gameObject);
-                
+                Destroy(gameObject);   
             }
-            
         }
-
-    }
+    }*/
+   
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,6 +24,7 @@ public class Poloroid_image : MonoBehaviour
     public GameObject cameraRange;
     public GameManager gm;
     private TextMesh filmText;
+    public GameObject oldFilm;
     
     //Light
     public GameObject reloadedlamp;
@@ -54,56 +56,58 @@ public class Poloroid_image : MonoBehaviour
         if (gm.reloaded)
         {
             reloadedlamp.SetActive(true);
+            gm.reloadReady = false;
         }
         else
         {
             reloadedlamp.SetActive(false);
+            
         }
-        
-        
-        if (lightsOn) 
+
+
+        if (lightsOn)
         {
             Debug.Log("Shoot picture");
             flash.SetActive(true);
             timerForFlash += Time.deltaTime;
-            
+
             if (timerForFlash > 0.2f)
-            
+
             {
                 flash.SetActive(false);
-                
+
                 lightsOn = false;
-                
+
                 timerForFlash = 0;
 
                 screenCapture = toTexture2D(PoleroidImage);
-                    
-                    Picture.transform.GetChild(0).GetComponent<Renderer>().sharedMaterial = new Material(shaderMat);
-                    
-                    Picture.transform.GetChild(0).GetComponent<Renderer>().sharedMaterial
-                    
-                        .SetTexture("_MainTex", screenCapture);
-                        
-                    Instantiate(Picture, transform.position, Quaternion.Euler(90, 180, 0));
-                    
-                    timerForPolaroid = +Time.deltaTime;
-                    
-                    // if(cameraRange.GetComponent<MeshCollider>()) 
-                    
-                    cameraRange.SetActive(false);
-                    
-                    gm.reloaded = false;
-                    
-                    if (timerForPolaroid > 5)
-                    
-                    {
-                    
-                     Debug.Log(timerForPolaroid);
-                     
-                        
-                    }
-            } 
-            
+
+                Picture.transform.GetChild(0).GetComponent<Renderer>().sharedMaterial = new Material(shaderMat);
+
+                Picture.transform.GetChild(0).GetComponent<Renderer>().sharedMaterial
+
+                    .SetTexture("_MainTex", screenCapture);
+
+                Instantiate(Picture, transform.position, Quaternion.Euler(90, 180, 0));
+
+                timerForPolaroid = +Time.deltaTime;
+
+                // if(cameraRange.GetComponent<MeshCollider>()) 
+
+                cameraRange.SetActive(false);
+
+                gm.reloaded = false;
+
+                if (timerForPolaroid > 5)
+
+                {
+
+                    Debug.Log(timerForPolaroid);
+
+
+                }
+            }
+
         }
 
         if (!gm.reloaded && gm.reloadReady)
@@ -124,39 +128,39 @@ public class Poloroid_image : MonoBehaviour
                     if (Vector3.Distance(transform.position, closest.transform.position) < 0.8f)
                     {
                         Reloadedfilm.SetActive(true);
-                        
+
                     }
                     else
                     {
                         Reloadedfilm.SetActive(false);
-                        
+
                     }
                 }
             }
         }
-        
-  
-  #region pccontroller
-      //  if (Input.GetMouseButtonDown(0))
-      //  {
-      //      lightsOn = true;
-      //      flash.SetActive(true);
-      //      if (gm.film > 0)
-      //      {
-      //          cameraRange.SetActive(true);
-      //          
-      //      }
-//
-      //  }
-       // else if(Input.GetKeyUp(KeyCode.R) && gm.reloadReady)
-       // {
-       //     Debug.Log("reloaded check, reloaded is "+ gm.reloaded);
-       //     gm.reloaded = true;
-       //     gm.GetFilm();
-//
-       // }
 
-       if (Input.GetKeyDown(KeyCode.Space))
+
+        #region pccontroller
+
+        if (Input.GetMouseButtonDown(0) && gm.reloaded)
+        {
+            cameraRange.SetActive(true); 
+            gm.SnapPic(); 
+            reloadedlamp.SetActive(true);
+            gm.reloadReady = false;
+            lightsOn = true;
+            Debug.Log("Took a picture");
+//
+        }
+        // else if(Input.GetKeyUp(KeyCode.R) && gm.reloadReady)
+        // {
+        //     Debug.Log("reloaded check, reloaded is "+ gm.reloaded);
+        //     gm.reloaded = true;
+        //     gm.GetFilm();
+//
+    //}
+
+    if (Input.GetKeyDown(KeyCode.Space))
        {
            Debug.Log("A pressed");
        
@@ -166,6 +170,7 @@ public class Poloroid_image : MonoBehaviour
                //play reload sound 
                gm.reloadReady = true;
                Debug.Log("Reload Ready, insert film");
+               Instantiate(oldFilm, transform.position, quaternion.identity);
             
            }
        }
@@ -199,7 +204,8 @@ public class Poloroid_image : MonoBehaviour
             //play reload sound 
             gm.reloadReady = true;
             Debug.Log("Reload Ready, insert film");
-            
+            Instantiate(oldFilm, transform.position, quaternion.identity);
+
         }
 
     }
