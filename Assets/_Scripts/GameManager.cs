@@ -37,8 +37,13 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
+        #region Camera
+        // ReloadChecks for the camera
+        
         reloadReady = true;
         reloaded = false;
+        #endregion
+        
         //game starts at 00:00am
         Minute = 0;
         Hour = 00;

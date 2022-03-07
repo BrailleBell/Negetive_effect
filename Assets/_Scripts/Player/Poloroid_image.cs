@@ -125,9 +125,24 @@ public class Poloroid_image : MonoBehaviour
                 {
                     closest = go;
                     distance = curDistance;
-                    if (Vector3.Distance(transform.position, closest.transform.position) < 0.8f)
+                    Debug.Log(closest.transform.position);
+                    Debug.DrawRay(gameObject.transform.position,closest.transform.position,Color.green);
+                    if (Vector3.Distance(transform.position, closest.transform.position) < 0.7f)
                     {
                         Reloadedfilm.SetActive(true);
+                        
+
+                        /*if (Vector3.Distance(transform.position, closest.transform.position) < 0.4f)
+                        {
+                            Debug.Log("reloaded check, reloaded is "+ gm.reloaded);
+                            Debug.Log("RELOADED!!");
+                            gm.reloaded = true;
+                            gm.reloadReady = false;
+                            closest.SetActive(false);
+                        }
+                        */
+                        
+                        
 
                     }
                     else
@@ -205,10 +220,8 @@ public class Poloroid_image : MonoBehaviour
     public void ReloadCamera()
     {
         Debug.Log("A pressed");
-       
         if (!gm.reloadReady)
         {
-            // instaniate film without glow
             //play reload sound 
             gm.reloadReady = true;
             Debug.Log("Reload Ready, insert film");
@@ -226,6 +239,7 @@ public class Poloroid_image : MonoBehaviour
             gm.SnapPic(); 
             reloadedlamp.SetActive(true);
             lightsOn = true;
+            gm.reloadReady = false;
             Debug.Log("Took a picture");
             
 

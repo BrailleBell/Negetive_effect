@@ -17,7 +17,7 @@ public class Film: MonoBehaviour
 
     private void Update()
     {
-        if (gm.reloadReady)
+       /* if (gm.reloadReady)
         {
             if (Vector3.Distance(gameObject.transform.position, Camera.transform.position) < 0.5f)
             {
@@ -33,11 +33,11 @@ public class Film: MonoBehaviour
             {
                 Debug.Log(Vector3.Distance(gameObject.transform.position, Camera.transform.position));
             }
-        }
+        }*/
     }
     
 
-   /* private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if (gm.reloadReady)
         {
@@ -47,9 +47,10 @@ public class Film: MonoBehaviour
                 Debug.Log("RELOADED!!");
                 gm.reloaded = true;
                 gm.GetFilm();
-                Destroy(gameObject);   
+                gm.reloadReady = false;
+                Destroy(gameObject);
             }
         }
-    }*/
+    }
    
 }
