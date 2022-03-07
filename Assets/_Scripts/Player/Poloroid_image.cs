@@ -41,7 +41,7 @@ public class Poloroid_image : MonoBehaviour
         lightsOn = false;
         cameraRange.SetActive(false);
         gm = GameObject.Find("__GM").GetComponent<GameManager>();
-        filmText = GameObject.Find("FilmText").GetComponent<TextMesh>();
+//        filmText = GameObject.Find("FilmText").GetComponent<TextMesh>();
         Reloadedfilm.SetActive(false);
 
 
