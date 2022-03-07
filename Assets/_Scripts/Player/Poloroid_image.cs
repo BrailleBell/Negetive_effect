@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.InputSystem;
 
 public class Poloroid_image : MonoBehaviour
 {
@@ -56,7 +56,7 @@ public class Poloroid_image : MonoBehaviour
         if (gm.reloaded)
         {
             reloadedlamp.SetActive(true);
-            gm.reloadReady = false;
+
         }
         else
         {
@@ -138,6 +138,10 @@ public class Poloroid_image : MonoBehaviour
                 }
             }
         }
+        else if (!gm.reloadReady)
+        {
+            Reloadedfilm.SetActive(false);
+        }
 
 
         #region pccontroller
@@ -166,11 +170,14 @@ public class Poloroid_image : MonoBehaviour
        
            if (!gm.reloadReady)
            {
+
+               ReloadCamera();
+
                // instaniate film without glow
                //play reload sound 
-               gm.reloadReady = true;
-               Debug.Log("Reload Ready, insert film");
-               Instantiate(oldFilm, transform.position, quaternion.identity);
+               //gm.reloadReady = true;
+               //Debug.Log("Reload Ready, insert film");
+               //Instantiate(oldFilm, transform.position, quaternion.identity);
             
            }
        }
@@ -187,9 +194,10 @@ public class Poloroid_image : MonoBehaviour
 
 //        filmText.text = gm.film.ToString();
         
-        
 
     #endregion
+
+    
 
 
     }
@@ -217,7 +225,6 @@ public class Poloroid_image : MonoBehaviour
             cameraRange.SetActive(true); 
             gm.SnapPic(); 
             reloadedlamp.SetActive(true);
-            gm.reloadReady = false;
             lightsOn = true;
             Debug.Log("Took a picture");
             

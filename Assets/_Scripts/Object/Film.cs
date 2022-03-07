@@ -26,10 +26,12 @@ public class Film: MonoBehaviour
                     gm.reloaded = true;
                     gm.GetFilm();
                     Destroy(gameObject);
+                    gm.reloadReady = false;
+                    
             }
             else
             {
-              //  Debug.Log(Vector3.Distance(gameObject.transform.position, Camera.transform.position));
+                Debug.Log(Vector3.Distance(gameObject.transform.position, Camera.transform.position));
             }
         }
     }
