@@ -146,6 +146,19 @@ public class Poloroid_image : MonoBehaviour
 //
        // }
 
+       if (Input.GetKeyDown(KeyCode.Space))
+       {
+           Debug.Log("A pressed");
+       
+           if (!gm.reloadReady)
+           {
+               // instaniate film without glow
+               //play reload sound 
+               gm.reloadReady = true;
+               Debug.Log("Reload Ready, insert film");
+            
+           }
+       }
      
      //   if (Input.GetKey(KeyCode.Mouse1))
      //   {
