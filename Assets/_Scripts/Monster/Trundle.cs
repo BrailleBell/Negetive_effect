@@ -1,7 +1,7 @@
 
 using System;
 using System.Collections;
-using TMPro.EditorUtilities;
+//using TMPro.EditorUtilities;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AI;
@@ -68,7 +68,7 @@ public class Trundle : MonoBehaviour
     
     void Start()
     {
-        anim.SetBool("Chase", false);
+       // anim.SetBool("Chase", false);
         state = State.Patroling;
         anim = GetComponentInChildren<Animator>();
         ghost = GetComponent<NavMeshAgent>();
