@@ -68,6 +68,7 @@ public class Trundle : MonoBehaviour
     
     void Start()
     {
+        anim.SetBool("Chase", false);
         state = State.Patroling;
         anim = GetComponentInChildren<Animator>();
         ghost = GetComponent<NavMeshAgent>();
@@ -197,6 +198,7 @@ public class Trundle : MonoBehaviour
         anim.SetBool("Attack",false);
         anim.SetBool("Down",false);
         anim.SetBool("Walk",true);
+        anim.SetBool("Chase", false);
         gameObject.GetComponent<BoxCollider>().enabled = true;
         ghost.acceleration = 8;
         ghost.angularSpeed = 120;
@@ -265,6 +267,7 @@ public class Trundle : MonoBehaviour
 
     public void Chase()
     {
+        anim.SetBool("Chase", true);
         goingDown = false;
         attacking = false;
         
