@@ -7,7 +7,7 @@
 [LOG] OutputWASAPI::init                       : Output buffer size: 4096 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 1024 * 4
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x4000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 0000011868E24178 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 00000117C0920268 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -17,12 +17,125 @@
 [LOG] Manager::readBank                        : fileversion = 141, compatVersion = 140 (oldest = 44, newest = 141)
 [LOG] Manager::readBank                        : fileversion = 141, compatVersion = 140 (oldest = 44, newest = 141)
 [LOG] Manager::readBank                        : fileversion = 141, compatVersion = 140 (oldest = 44, newest = 141)
-[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
-[LOG] Manager::readBank                        : fileversion = 141, compatVersion = 140 (oldest = 44, newest = 141)
-[LOG] Manager::readBank                        : fileversion = 141, compatVersion = 140 (oldest = 44, newest = 141)
-[LOG] Manager::readBank                        : fileversion = 141, compatVersion = 140 (oldest = 44, newest = 141)
 [LOG] Manager::readBank                        : fileversion = 141, compatVersion = 140 (oldest = 44, newest = 141)
 [LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 141, compatVersion = 140 (oldest = 44, newest = 141)
+[LOG] Manager::readBank                        : fileversion = 141, compatVersion = 140 (oldest = 44, newest = 141)
+[LOG] Manager::readBank                        : fileversion = 141, compatVersion = 140 (oldest = 44, newest = 141)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 1795392
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 16064
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000008F7D2F358
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFAF2D80AD0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFAF2D80AA0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFAF2D80BA0
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFAF2D80C60
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000117BB74D528
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='512780__iwanplays__croworraven2', format=5, channels=2, frequency=48000, lengthbytes=16928, lengthpcm=63746, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.153503.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 1795392
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 16064
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000008F7D2F358
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFAF2D80AD0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFAF2D80AA0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFAF2D80BA0
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFAF2D80C60
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000117BB74D528
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='326457__miekyj__crackling-leaves-owi', format=5, channels=2, frequency=48000, lengthbytes=39904, lengthpcm=232459, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.038696.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 1795392
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 16064
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000008F7D2F358
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFAF2D80AD0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFAF2D80AA0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFAF2D80BA0
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFAF2D80C60
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000117BB74D528
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='512781__iwanplays__croworraven1', format=5, channels=2, frequency=48000, lengthbytes=16896, lengthpcm=61784, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.249298.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 1795392
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 16064
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000008F7D2F358
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFAF2D80AD0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFAF2D80AA0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFAF2D80BA0
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFAF2D80C60
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000117BB74D528
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='536732__egomassive__caw', format=5, channels=1, frequency=48000, lengthbytes=13408, lengthpcm=91320, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.616852.
+[LOG] SystemI::createSound                     : filename = FmodAssets/Desktop/Ambience.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] Thread::initThread                       : Init FMOD nonblocking thread (0). Affinity: 0x4000000000000003, Priority: 0xFFFF7FFC, Stack Size: 114688, Semaphore: Yes, Sleep Time: 0, Looping: Yes.
+[LOG] SystemI::createSound                     : setdata soundi = 00000117B42253A8 : node = 00000117A5E4C590
+[LOG] SystemI::createSound                     : add node to async list : head = 00000117C3D51BF8.  list count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000117B42253A8
+[LOG] SystemI::createSoundInternal             :     Create name='FmodAssets/Desktop/Ambience.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 1795392
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 16064
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 00000117A5E4C6A0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 2000
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='483479__astounded__wind-blowing-gusting-through-french-castle-tower', format=5, channels=2, frequency=48000, lengthbytes=973536, lengthpcm=3848198, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.944061.
+[LOG] Thread::initThread                       :     Init FMOD file thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFC, Stack Size: 65536, Semaphore: No, Sleep Time: 10, Looping: Yes.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000117B42253A8
+[LOG] SystemI::createSound                     : filename = FmodAssets/Desktop/Ambience.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] SystemI::createSound                     : setdata soundi = 0000011868D0A438 : node = 00000117B4404020
+[LOG] SystemI::createSound                     : add node to async list : head = 00000117C3D51BF8.  list count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000011868D0A438
+[LOG] SystemI::createSoundInternal             :     Create name='FmodAssets/Desktop/Ambience.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 1795392
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 16064
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 00000117B4404130
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='181801__keweldog__breeze (1)', format=5, channels=2, frequency=48000, lengthbytes=733024, lengthpcm=3112020, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.048218.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000011868D0A438
+[LOG] SoundI::release                          : 181801__keweldog__breeze (1) (0000011868D0A438)
+[LOG] SoundI::release                          :     181801__keweldog__breeze (1) (00000117D8932428)
+[LOG] SoundI::release                          :     181801__keweldog__breeze (1) (00000117B4225558)
+[LOG] SoundI::release                          : 483479__astounded__wind-blowing-gusting-through-french-castle-tower (00000117B42253A8)
+[LOG] SoundI::release                          :     483479__astounded__wind-blowing-gusting-through-french-castle-tower (00000117D89337A8)
+[LOG] SoundI::release                          :     483479__astounded__wind-blowing-gusting-through-french-castle-tower (00000117B4223F68)
+[LOG] SoundI::release                          :  (00000117C04C3738)
+[LOG] SoundI::release                          :     326457__miekyj__crackling-leaves-owi (00000117D630FE48)
+[LOG] SoundI::release                          :  (00000117C04C4148)
+[LOG] SoundI::release                          :     512780__iwanplays__croworraven2 (00000117D630D5A8)
+[LOG] SoundI::release                          :  (00000117C04C32E8)
+[LOG] SoundI::release                          :     536732__egomassive__caw (00000117D630F2E8)
+[LOG] SoundI::release                          :  (00000117C04C3178)
+[LOG] SoundI::release                          :     512781__iwanplays__croworraven1 (00000117D630DDC8)
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] Thread::callback                         : FMOD Studio sample load thread finished.
 [LOG] LiveUpdate::release                      : 
@@ -30,3 +143,5 @@
 [LOG] Thread::callback                         : FMOD stream thread finished.
 [LOG] Thread::callback                         : FMOD mixer thread finished.
 [LOG] SystemI::close                           : Closed.
+[LOG] Thread::callback                         : FMOD nonblocking thread (0) finished.
+[LOG] Thread::callback                         : FMOD file thread finished.
