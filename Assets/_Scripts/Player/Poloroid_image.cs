@@ -98,6 +98,8 @@ public class Poloroid_image : MonoBehaviour
 
                 gm.reloaded = false;
 
+                ReloadCamera();
+
                 if (timerForPolaroid > 5)
 
                 {
@@ -125,7 +127,7 @@ public class Poloroid_image : MonoBehaviour
                 {
                     closest = go;
                     distance = curDistance;
-                    Debug.Log(closest.transform.position);
+//                    Debug.Log(closest.transform.position);
                     Debug.DrawRay(gameObject.transform.position,closest.transform.position,Color.green);
                     if (Vector3.Distance(transform.position, closest.transform.position) < 0.7f)
                     {
@@ -179,9 +181,9 @@ public class Poloroid_image : MonoBehaviour
 //
     //}
 
-    if (Input.GetKeyDown(KeyCode.Space))
+    /*if (Input.GetKeyDown(KeyCode.Space))
        {
-           Debug.Log("A pressed");
+           Debug.Log("Space pressed");
        
            if (!gm.reloadReady)
            {
@@ -195,7 +197,7 @@ public class Poloroid_image : MonoBehaviour
                //Instantiate(oldFilm, transform.position, quaternion.identity);
             
            }
-       }
+       }*/
      
      //   if (Input.GetKey(KeyCode.Mouse1))
      //   {
@@ -217,17 +219,19 @@ public class Poloroid_image : MonoBehaviour
 
     }
 
+
     public void ReloadCamera()
     {
         Debug.Log("A pressed");
-        if (!gm.reloadReady)
-        {
-            //play reload sound 
-            gm.reloadReady = true;
-            Debug.Log("Reload Ready, insert film");
-            Instantiate(oldFilm, transform.position, quaternion.identity);
+        gm.reloadReady = true;
+        Instantiate(oldFilm, transform.position, quaternion.identity);
+        Debug.Log("Check0");
+         Debug.Log("check1");
+         //play reload sound 
+       
+      Debug.Log("Reload Ready, insert film");
+     //Instantiate(oldFilm, transform.position, quaternion.identity);
 
-        }
 
     }
 
@@ -239,8 +243,8 @@ public class Poloroid_image : MonoBehaviour
             gm.SnapPic(); 
             reloadedlamp.SetActive(true);
             lightsOn = true;
-            gm.reloadReady = false;
             Debug.Log("Took a picture");
+            
             
 
         }
