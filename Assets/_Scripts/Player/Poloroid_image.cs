@@ -33,6 +33,9 @@ public class Poloroid_image : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip audioClip;
 
+    //VR input stuff
+    public InputActionReference reloadReference = null;
+
     private void Start()
     {
       //  Instantiate(Picture, transform.position, Quaternion.identity);
@@ -46,7 +49,7 @@ public class Poloroid_image : MonoBehaviour
 //        filmText = GameObject.Find("FilmText").GetComponent<TextMesh>();
         Reloadedfilm.SetActive(false);
 
-
+        reloadReference.action.started += context => ReloadCamera();
     }
 
 
@@ -178,50 +181,54 @@ public class Poloroid_image : MonoBehaviour
         //     Debug.Log("reloaded check, reloaded is "+ gm.reloaded);
         //     gm.reloaded = true;
         //     gm.GetFilm();
-//
-    //}
+        //
+        //}
 
-    /*if (Input.GetKeyDown(KeyCode.Space))
-       {
-           Debug.Log("Space pressed");
-       
-           if (!gm.reloadReady)
+        /*if (Input.GetKeyDown(KeyCode.Space))
            {
+               Debug.Log("Space pressed");
 
-               ReloadCamera();
+               if (!gm.reloadReady)
+               {
 
-               // instaniate film without glow
-               //play reload sound 
-               //gm.reloadReady = true;
-               //Debug.Log("Reload Ready, insert film");
-               //Instantiate(oldFilm, transform.position, quaternion.identity);
-            
-           }
-       }*/
-     
-     //   if (Input.GetKey(KeyCode.Mouse1))
-     //   {
-     //       ReloadCamera();
-     //   }
-     //   else
-     //   {
-     //       UVLight.SetActive(false);
-     //   }
+                   ReloadCamera();
 
+                   // instaniate film without glow
+                   //play reload sound 
+                   //gm.reloadReady = true;
+                   //Debug.Log("Reload Ready, insert film");
+                   //Instantiate(oldFilm, transform.position, quaternion.identity);
 
-//        filmText.text = gm.film.ToString();
-        
+               }
+           }*/
 
-    #endregion
-
-    
+        //   if (Input.GetKey(KeyCode.Mouse1))
+        //   {
+        //       ReloadCamera();
+        //   }
+        //   else
+        //   {
+        //       UVLight.SetActive(false);
+        //   }
 
 
+        //        filmText.text = gm.film.ToString();
+
+
+        #endregion
+
+
+
+        reloadReference.action.started -= context => ReloadCamera();
     }
-
 
     public void ReloadCamera()
     {
+        //delete this after testing if the action works lmao
+        bool isActive = !gameObject.activeSelf;
+        gameObject.SetActive(isActive);
+        //
+        
         Debug.Log("A pressed");
         gm.reloadReady = true;
         Instantiate(oldFilm, transform.position, quaternion.identity);
@@ -230,8 +237,7 @@ public class Poloroid_image : MonoBehaviour
          //play reload sound 
        
       Debug.Log("Reload Ready, insert film");
-     //Instantiate(oldFilm, transform.position, quaternion.identity);
-
+        //Instantiate(oldFilm, transform.position, quaternion.identity);
 
     }
 
