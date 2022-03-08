@@ -756,7 +756,7 @@
                     "id": "d11b048a-61b1-43e8-91de-4a030ed484a1",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press",
                     "initialStateCheck": false
                 }
             ],
@@ -1116,7 +1116,7 @@
                 {
                     "name": "",
                     "id": "379033e1-0dc3-409d-b1a7-9f084a1fbbae",
-                    "path": "*/{PrimaryButton}",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "Generic XR Controller",
