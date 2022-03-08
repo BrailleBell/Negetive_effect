@@ -1125,6 +1125,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Custom",
+            "id": "9da1431e-3623-4a00-8e2f-dcc187128f22",
+            "actions": [
+                {
+                    "name": "Reload",
+                    "type": "Button",
+                    "id": "853f9535-c612-4d3e-a8fd-0b7f51d12716",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f2beb212-59dc-4104-a915-f91daa620069",
+                    "path": "*/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Reload",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
