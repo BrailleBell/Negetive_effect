@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1252450266047998423}
   - component: {fileID: 8084194697145866977}
   - component: {fileID: 8484639918583400654}
+  - component: {fileID: 1867605102434986093}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -79,6 +80,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 00:00
+--- !u!114 &1867605102434986093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763579388908677211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 695049d09133381429aa18ae26154a08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 8484639918583400654}
 --- !u!1 &5986178329185569101
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,6 +105,7 @@ GameObject:
   - component: {fileID: 3847560223071277329}
   - component: {fileID: 4231830826445702097}
   - component: {fileID: 1360802888936692386}
+  - component: {fileID: 1636395432497542166}
   m_Layer: 0
   m_Name: DigitalClockCanvas
   m_TagString: Untagged
@@ -179,6 +194,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1636395432497542166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5986178329185569101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b5fd74a9c4ba5f40add5e4f8bf747d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7736170788677216960
 GameObject:
   m_ObjectHideFlags: 0
