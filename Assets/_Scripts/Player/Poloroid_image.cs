@@ -49,7 +49,7 @@ public class Poloroid_image : MonoBehaviour
 //        filmText = GameObject.Find("FilmText").GetComponent<TextMesh>();
         Reloadedfilm.SetActive(false);
 
-        reloadReference.action.started += context => ReloadCamera();
+        reloadReference.action.started += ReloadCamera;
     }
 
 
@@ -101,7 +101,7 @@ public class Poloroid_image : MonoBehaviour
 
                 gm.reloaded = false;
 
-                ReloadCamera();
+                //ReloadCamera();
 
                 if (timerForPolaroid > 5)
 
@@ -217,12 +217,14 @@ public class Poloroid_image : MonoBehaviour
 
         #endregion
 
-
-
-        reloadReference.action.started -= context => ReloadCamera();
     }
 
-    public void ReloadCamera()
+    private void OnDestroy()
+    {
+        reloadReference.action.started -= ReloadCamera;
+    }
+
+    public void ReloadCamera(InputAction.CallbackContext context)
     {
         //delete this after testing if the action works lmao
         bool isActive = !gameObject.activeSelf;
