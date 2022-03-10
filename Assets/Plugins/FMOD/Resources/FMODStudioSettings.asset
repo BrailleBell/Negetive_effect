@@ -170,6 +170,7 @@ MonoBehaviour:
   - Master
   Banks:
   - Ambience
+  - Music
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0
@@ -184,17 +185,17 @@ MonoBehaviour:
   HideSetupWizard: 1
   LastEventReferenceScanVersion: 131588
   Platforms:
-  - {fileID: 8554943478628194066}
-  - {fileID: 2648850973944279743}
-  - {fileID: 2017461877865206383}
-  - {fileID: 4440139960874905622}
   - {fileID: -5222087332661587156}
-  - {fileID: 1069185468637780774}
-  - {fileID: 4182118923032460035}
   - {fileID: -1067835885666430233}
-  - {fileID: 8790251330853076999}
-  - {fileID: 4956309378601918095}
+  - {fileID: 1069185468637780774}
   - {fileID: 1494431673238582705}
+  - {fileID: 2017461877865206383}
+  - {fileID: 2648850973944279743}
+  - {fileID: 4182118923032460035}
+  - {fileID: 4440139960874905622}
+  - {fileID: 4956309378601918095}
+  - {fileID: 8554943478628194066}
+  - {fileID: 8790251330853076999}
   MigratedPlatforms: 0b0000000a0000000c0000001500000009000000060000000800000012000000050000000200000001000000
 --- !u!114 &1069185468637780774
 MonoBehaviour:
@@ -452,15 +453,15 @@ MonoBehaviour:
     HasValue: 0
   displaySortOrder: 0
   childIdentifiers:
-  - fd7c55dab0fce234b8c25f6ffca523c1
-  - e7a046c753c3c3d4aacc91f6597f310d
   - 2c5177b11d81d824dbb064f9ac8527da
-  - c88d16e5272a4e241b0ef0ac2e53b73d
-  - 52eb9df5db46521439908db3a29a1bbb
   - 46fbfdf3fc43db0458918377fd40293e
-  - 2fea114e74ecf3c4f920e1d5cc1c4c40
-  - b7716510a1f36934c87976f3a81dbf3d
+  - c88d16e5272a4e241b0ef0ac2e53b73d
   - 0f8eb3f400726694eb47beb1a9f94ce8
+  - fd7c55dab0fce234b8c25f6ffca523c1
+  - 52eb9df5db46521439908db3a29a1bbb
+  - e7a046c753c3c3d4aacc91f6597f310d
+  - b7716510a1f36934c87976f3a81dbf3d
+  - 2fea114e74ecf3c4f920e1d5cc1c4c40
 --- !u!114 &4182118923032460035
 MonoBehaviour:
   m_ObjectHideFlags: 0

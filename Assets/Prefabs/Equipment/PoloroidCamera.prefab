@@ -20,7 +20,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8184848427480486260
 Transform:
   m_ObjectHideFlags: 0
@@ -67,6 +67,7 @@ MonoBehaviour:
   reloadedlamp: {fileID: 8184848428212550620}
   audioSource: {fileID: 0}
   audioClip: {fileID: 8300000, guid: 06da78679b160a240936e9580b0c0ead, type: 3}
+  reloadReference: {fileID: 0}
 --- !u!114 &8184848427480486257
 MonoBehaviour:
   m_ObjectHideFlags: 0
