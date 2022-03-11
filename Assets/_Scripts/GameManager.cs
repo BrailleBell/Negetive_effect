@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public int film;
+    public int film, SceneToGoTo;
     public GameObject VRheadset;
     public GameObject[] spawnPoints;
     public GameObject Player;
@@ -106,5 +107,5 @@ public class GameManager : MonoBehaviour
         film++ ;
       
     }
-
+    
 }
