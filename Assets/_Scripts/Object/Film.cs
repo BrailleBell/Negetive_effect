@@ -7,6 +7,7 @@ public class Film: MonoBehaviour
 {
     public GameManager gm;
     public GameObject Camera;
+    public GameObject[] ArmPacks;
     public bool gripped;
     
     // Start is called before the first frame update
@@ -14,6 +15,7 @@ public class Film: MonoBehaviour
     {
         gm = GameObject.Find("__GM").GetComponent<GameManager>();
             Camera = GameObject.Find("PoloroidCamera");
+            ArmPacks = GameObject.FindGameObjectsWithTag("ArmPack");
     }
 
     private void Update()
@@ -52,14 +54,11 @@ public class Film: MonoBehaviour
             }
         }
 
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("ArmPack"))
+        if (collision.gameObject.CompareTag("ArmPack"))
         {
             gm.GetFilm();
             Destroy(gameObject);
         }
     }
+
 }

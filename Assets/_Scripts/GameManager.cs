@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
         
         reloadReady = true;
         reloaded = false;
+        film = 0;
         #endregion
         
         //game starts at 00:00am

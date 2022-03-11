@@ -22,6 +22,7 @@ public class Inventory : MonoBehaviour
 
     public void InstantiateFilm()
     {
+        Debug.Log("grabbed a film, do you have more than 0?");
         if (gm.film >= 1)
         {
             gm.film--;
