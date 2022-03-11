@@ -7,6 +7,7 @@ public class Film: MonoBehaviour
 {
     public GameManager gm;
     public GameObject Camera;
+    public bool gripped;
     
     // Start is called before the first frame update
     private void Start()
@@ -50,6 +51,15 @@ public class Film: MonoBehaviour
                 Destroy(gameObject);
             }
         }
+
     }
-   
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("ArmPack"))
+        {
+            gm.GetFilm();
+            Destroy(gameObject);
+        }
+    }
 }
