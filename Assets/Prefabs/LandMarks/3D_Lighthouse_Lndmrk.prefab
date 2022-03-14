@@ -73,7 +73,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2178063950591872243}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.41500092, z: 0.5299631}
+  m_LocalPosition: {x: 0, y: 0.41500092, z: 0}
   m_LocalScale: {x: 2.09791, y: 2.09791, z: 2.09791}
   m_Children: []
   m_Father: {fileID: 9196159634388486638}
@@ -208,7 +208,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2362037613337819845}
-  m_LocalRotation: {x: -0, y: -0.72484916, z: -0, w: 0.6889077}
+  m_LocalRotation: {x: 0, y: -0.7248516, z: 0, w: 0.6889051}
   m_LocalPosition: {x: 1828.2207, y: 35.84, z: 291.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -216,7 +216,7 @@ Transform:
   - {fileID: 7718918855403087804}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -92.913, z: 0}
 --- !u!1 &2378973791910262135
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,6 +545,7 @@ GameObject:
   - component: {fileID: 9196159634388486638}
   - component: {fileID: 6247873225434755280}
   - component: {fileID: 3897313987179859600}
+  - component: {fileID: 1649706291}
   m_Layer: 0
   m_Name: Lighthouse_Lens
   m_TagString: Untagged
@@ -622,6 +623,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &1649706291
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8134115961168429865}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9425fc4b5cc92a742b871d82c0e40ed4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8163759855840671804
 GameObject:
   m_ObjectHideFlags: 0

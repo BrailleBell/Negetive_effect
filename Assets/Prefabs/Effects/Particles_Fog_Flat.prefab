@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4459489127121480604}
   - component: {fileID: 4459489127121480605}
   - component: {fileID: 4459489127121480602}
+  - component: {fileID: 7188246495003800287}
   m_Layer: 0
   m_Name: Particles_Fog_Flat
   m_TagString: Untagged
@@ -4804,3 +4805,17 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &7188246495003800287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4459489127121480603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e150479545af5544bac4efac1a7b0ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 50
+  cullDistance: 0

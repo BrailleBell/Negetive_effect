@@ -47,7 +47,7 @@ public class Trundle : MonoBehaviour
     
     
     // bools && triggers
-    public bool aboveGround, notTestKill, seesPlayer, testOn, circlingThePlayer,attackTest;
+    public bool aboveGround, notTestKill, seesPlayer, testOn, circlingThePlayer,attackTest, alwaysChasePlayer;
     private bool shouldLerp, lerpHasStarted, ghostDying, walking, belowGround, attacking,goingDown;
 
     // rest
@@ -86,7 +86,6 @@ public class Trundle : MonoBehaviour
     void Update()
     {
          distanceToPlayer = Vector3.Distance(transform.position, Player.transform.position);
-
 
          switch (state)
         {
@@ -187,6 +186,7 @@ public class Trundle : MonoBehaviour
 
     public void Patroling()
     {
+        
 
         if (lerpStuff > 0)
         {
@@ -203,8 +203,12 @@ public class Trundle : MonoBehaviour
         ghost.acceleration = 8;
         ghost.angularSpeed = 120;
         ghost.speed = 3.5f;
-        
-        if (Vector3.Distance(gameObject.transform.position, MonsterWaypoints[wayPointInd].transform.position) >= radiusToWaypoint)
+
+        if(alwaysChasePlayer)
+        {
+            ghost.SetDestination(Player.transform.position);
+        }
+        else if (Vector3.Distance(gameObject.transform.position, MonsterWaypoints[wayPointInd].transform.position) >= radiusToWaypoint)
         {
             ghost.SetDestination(MonsterWaypoints[wayPointInd].transform.position);
 
@@ -217,6 +221,7 @@ public class Trundle : MonoBehaviour
                 wayPointInd = 0;
             }
         }
+
 
         if (state == State.Patroling && seesPlayer)
         {
