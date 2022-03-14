@@ -10,7 +10,7 @@ public class TrundleHide : MonoBehaviour
     public bool seen;
     private Animator anim;
     private float timer;
-    public float DistanceForHiding;
+    public float DistanceForHiding, DistanceForAppearing;
     public SkinnedMeshRenderer trundle;
     
     // Start is called before the first frame update
@@ -26,7 +26,20 @@ public class TrundleHide : MonoBehaviour
     {
         gameObject.transform.LookAt(Player.transform.position);
         DistanceToPlayer = Vector3.Distance(gameObject.transform.position, Player.transform.position);
-        
+
+
+        if (DistanceToPlayer < DistanceForAppearing)
+        {
+            anim.SetBool("Down",false);
+            trundle.enabled = true;
+            anim.SetBool("Up",true);
+            
+        }
+        else
+        {
+            anim.SetBool("Down",true);
+            trundle.enabled = false;
+        }
         if (trundle.isVisible)
         {
             seen = true;
@@ -41,6 +54,7 @@ public class TrundleHide : MonoBehaviour
             if (DistanceToPlayer < DistanceForHiding)
             {
                 timer += Time.deltaTime;
+                anim.SetBool("Up",false);
                 anim.SetBool("Down",true);
                 if (timer > 1)
                 {
@@ -57,5 +71,7 @@ public class TrundleHide : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position,DistanceForHiding);
+        Gizmos.color = Color.black;
+        Gizmos.DrawWireSphere(transform.position,DistanceForAppearing);
     }
 }
