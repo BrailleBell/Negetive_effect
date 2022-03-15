@@ -17,6 +17,6 @@ public class PlayerData
 
     public override string ToString()
     {
-        return $"{time}. They have reached level {level}. And have {film}";
+        return $"{time}. They have reached level {level}. And have {film}.";
     }
 }
