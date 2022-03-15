@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
+        MonsterSpawn = GameObject.Find("---Monsters---");
     }
     void Start()
     {
