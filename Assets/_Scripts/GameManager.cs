@@ -51,7 +51,6 @@ public class GameManager : MonoBehaviour
         Hour = 00;
         timer = minuteToRealTime;
 
-        LoadGameFunction();
 
        DontDestroyOnLoad(this); 
        // DontDestroyOnLoad(VRheadset);
@@ -82,19 +81,6 @@ public class GameManager : MonoBehaviour
 
             timer = minuteToRealTime;
         }
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    public void SaveGameFunction()
-    {
-        
-    }
-
-    public void LoadGameFunction()
-    {
-        
     }
 
     // films
