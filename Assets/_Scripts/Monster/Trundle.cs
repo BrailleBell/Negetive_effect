@@ -11,6 +11,7 @@ using Random = UnityEngine.Random;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.Timeline;
+using FMOD;
 
 public class Trundle : MonoBehaviour
 {
@@ -245,8 +246,10 @@ public class Trundle : MonoBehaviour
 
     private void GoingDown()
     {
+        
         goingdownTimer += Time.deltaTime;
         anim.SetBool("Down",true);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Monsters/Trundle/Down");
         if (goingdownTimer > 2)
         {
             goingDown = true;   
@@ -282,8 +285,8 @@ public class Trundle : MonoBehaviour
 
     public void Chase()
     {
+        
         anim.SetBool("Chase", true);
-        FMODUnity.RuntimeManager.PlayOneShot("event:/Monsters/Trundle/Down");
         goingDown = false;
         attacking = false;
         
@@ -402,16 +405,18 @@ public class Trundle : MonoBehaviour
             }
             else if(attacking)
             {
+                GetComponent<BoxCollider>().enabled = true;
                 uptime += Time.deltaTime;
                 anim.SetBool("Up",false);
-                if(distanceToPlayer > 2f)
+                if(distanceToPlayer > 3f)
+                    
                 {
                     ghost.speed = 7.5f;
                     
                 }
-                else if (distanceToPlayer < 2f)
+                else if (distanceToPlayer < 3f)
                 {
-                    ghost.speed = 7.5f;
+                    ghost.speed = 6f;
                 }
 
                // if (distanceToPlayer < 1f)
@@ -438,9 +443,9 @@ public class Trundle : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position,awareRadius);
         Vector2 debugger = new Vector2(transform.forward.x, transform.forward.z);
         debugger = Quaternion.Euler(0, 0, -FOV / 2) * debugger;
-        Debug.DrawLine(transform.position, transform.position + (new Vector3(debugger.x,0,debugger.y)) * LookRange);
+        UnityEngine.Debug.DrawLine(transform.position, transform.position + (new Vector3(debugger.x,0,debugger.y)) * LookRange);
         debugger = Quaternion.Euler(0, 0, FOV) * debugger;
-        Debug.DrawLine(transform.position, transform.position + (new Vector3(debugger.x,0,debugger.y)) * LookRange);
+        UnityEngine.Debug.DrawLine(transform.position, transform.position + (new Vector3(debugger.x,0,debugger.y)) * LookRange);
         if (ghost != null)
         {
             Gizmos.color = Color.green;
@@ -458,7 +463,7 @@ public class Trundle : MonoBehaviour
     {
         if (other.gameObject.tag == "CameraShoot")
         {
-            Debug.Log("monster hit");
+            UnityEngine.Debug.Log("monster hit");
             ghostDying = true;
 
         }

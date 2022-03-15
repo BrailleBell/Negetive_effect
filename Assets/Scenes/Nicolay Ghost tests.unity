@@ -479,6 +479,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1515970822, guid: 38bca53220374dd44a52dd1b97c19505, type: 3}
+      propertyPath: Camera
+      value: 
+      objectReference: {fileID: 562632344}
     - target: {fileID: 4107588694327392368, guid: 38bca53220374dd44a52dd1b97c19505, type: 3}
       propertyPath: m_Name
       value: FPSPlayer!
@@ -685,6 +689,11 @@ Transform:
   m_Father: {fileID: 1117619556}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &562632344 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4107588695407972776, guid: 38bca53220374dd44a52dd1b97c19505, type: 3}
+  m_PrefabInstance: {fileID: 310627285}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &601822616
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -694,6 +703,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1210906260, guid: 2b6cc190d8a59d8458285087097cc5f7, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1210906260, guid: 2b6cc190d8a59d8458285087097cc5f7, type: 3}
+      propertyPath: alwaysChasePlayer
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1210906260, guid: 2b6cc190d8a59d8458285087097cc5f7, type: 3}
@@ -756,6 +769,10 @@ PrefabInstance:
       propertyPath: MonsterWaypoints.Array.data[12]
       value: 
       objectReference: {fileID: 1259347578}
+    - target: {fileID: 4589717054461141605, guid: 2b6cc190d8a59d8458285087097cc5f7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8507901550095671569, guid: 2b6cc190d8a59d8458285087097cc5f7, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -1522,6 +1539,10 @@ PrefabInstance:
     - target: {fileID: 7679653625039259461, guid: f820a236040ddce44921c525b17d6e85, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7679653625039259462, guid: f820a236040ddce44921c525b17d6e85, type: 3}
+      propertyPath: minuteToRealTime
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7679653625039259463, guid: f820a236040ddce44921c525b17d6e85, type: 3}
       propertyPath: m_Name
