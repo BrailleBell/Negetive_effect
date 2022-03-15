@@ -10,7 +10,10 @@ public class GameManager : MonoBehaviour
     public int film, SceneToGoTo;
     public GameObject VRheadset;
     public GameObject[] spawnPoints;
+
+    [Header("Gameobjects")]
     public GameObject Player;
+    public GameObject MonsterSpawn;
 
     //Camera reloading
     public bool reloaded,reloadReady;
@@ -80,6 +83,12 @@ public class GameManager : MonoBehaviour
             }
 
             timer = minuteToRealTime;
+        }
+
+        if(Minute >= 25)
+        {
+            MonsterSpawn.SetActive(true);
+            Debug.Log("spawned");
         }
     }
 
