@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 515336330530309729}
   - component: {fileID: 3497340040941652420}
   - component: {fileID: 1688281915884518670}
+  - component: {fileID: 5598325067862205647}
   m_Layer: 0
   m_Name: Fence low poly
   m_TagString: Untagged
@@ -25,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 895379619302907099}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2727.6255, y: 1436.63, z: 2668.4192}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -81,3 +82,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5598325067862205647
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 895379619302907099}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.415241, y: 3.3719928, z: 1.8794384}
+  m_Center: {x: -0.0001221134, y: 1.6860039, z: -0.000061010032}

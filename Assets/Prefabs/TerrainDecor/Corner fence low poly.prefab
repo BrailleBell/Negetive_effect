@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7628994762108026434}
   - component: {fileID: 6805072926703661543}
   - component: {fileID: 8760783908311418157}
+  - component: {fileID: 32471411065923507}
   m_Layer: 0
   m_Name: Corner fence low poly
   m_TagString: Untagged
@@ -25,9 +26,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7103428941048964344}
-  m_LocalRotation: {x: -0, y: -0.13052596, z: -0, w: 0.99144495}
+  m_LocalRotation: {x: 0, y: -0.13052624, z: 0, w: 0.9914449}
   m_LocalPosition: {x: 1643.392, y: 25.97, z: 664.675}
-  m_LocalScale: {x: 1.3309124, y: 1.3309124, z: 1.3309124}
+  m_LocalScale: {x: 1.3309124, y: 1.3309122, z: 1.3309124}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -81,3 +82,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &32471411065923507
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7103428941048964344}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5000006, y: 3.8057833, z: 1.5000001}
+  m_Center: {x: -0.000060962928, y: 1.1528878, z: 0.000121959696}

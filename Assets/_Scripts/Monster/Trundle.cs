@@ -394,20 +394,20 @@ public class Trundle : MonoBehaviour
             {
                 uptime += Time.deltaTime;
                 anim.SetBool("Up",false);
-                GetComponent<BoxCollider>().enabled = true;
                 if(distanceToPlayer > 2f)
                 {
-                    ghost.speed = Random.Range(5,20);
+                    ghost.speed = 7.5f;
                     
                 }
                 else if (distanceToPlayer < 2f)
                 {
-                    ghost.speed = 5;
+                    ghost.speed = 7.5f;
                 }
-                else if (distanceToPlayer < 1f)
-                {
-                    SceneManager.LoadScene(GoToSceneWhenKilled);
-                }
+
+               // if (distanceToPlayer < 1f)
+               // {
+               //     SceneManager.LoadScene(GoToSceneWhenKilled);
+               // }
                 if (uptime >= 6)
                 {
                     state = State.Chase;
