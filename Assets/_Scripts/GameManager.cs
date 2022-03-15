@@ -25,8 +25,8 @@ public class GameManager : MonoBehaviour
 
     //timer and saving stuff
     public bool SaveGame = false;
-    private float timer; //local time
-    private float minuteToRealTime = 0.5f; //every half a sec realtime is 1minute ingame (needs to be changed obvs, but this is for testing)
+    public float timer; //local time
+    public float minuteToRealTime; //every half a sec realtime is 1minute ingame (needs to be changed obvs, but this is for testing)
 
     public static int Minute { get; private set; }
     public static int Hour { get; private set; }
@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
             Minute++;
             OnMinuteChanged?.Invoke(); //the "?" is the "null" check instead of putting it into an "if statement"
 
-            if (Minute >= 60)
+            if (Minute >= 59)
             {
                 Hour++;
                 OnHourChanged?.Invoke(); //the "?" is the "null" check instead of putting it into an "if statement"
@@ -89,12 +89,12 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void SaveGameFunction()
     {
-        PlayerPrefs.SetInt("Films", film);
+        
     }
 
     public void LoadGameFunction()
     {
-        film = PlayerPrefs.GetInt("Films");
+        
     }
 
     // films

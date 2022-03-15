@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerData
 {
-    public float time; // 
+    public float time; // how long player has been inside game
     public int level; // at what "checkpoint" the player is on, so when they die they respawn at right time
     public int film; // how many films is on the player when saved
 

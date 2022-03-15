@@ -26,8 +26,7 @@ public class SurviveTimeManager : MonoBehaviour
 
     private void Update()
     {
-        timeText.text = PlayerPrefs.GetInt("timer").ToString();
-
+        
         //Debug.Log("is it working?");
     }
 
@@ -36,8 +35,7 @@ public class SurviveTimeManager : MonoBehaviour
     {
         if(GameManager.Hour == 01 && GameManager.Minute == 01)
         {
-            PlayerPrefs.SetInt("timer", 01);
-
+           
             //Debug.Log("is it working?");
         }
 
