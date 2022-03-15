@@ -48,7 +48,7 @@ public class Trundle : MonoBehaviour
     
     // bools && triggers
     public bool aboveGround;
-     public bool SpawnAfterKilled;
+    public bool SpawnAfterKilled;
     public bool seesPlayer, testOn, circlingThePlayer,attackTest, alwaysChasePlayer;
     private bool shouldLerp, lerpHasStarted, ghostDying, walking, belowGround, attacking,goingDown;
 
@@ -159,16 +159,25 @@ public class Trundle : MonoBehaviour
                 if (SpawnAfterKilled)
                 {
                     gameObject.transform.position = MonsterWaypoints[wayPointInd].transform.position;
+                    ghostDying = false;
+                    killTimer = 0;
 
                 }
                 else
                 {
-                    gameObject.transform.position = monsterOrgPos; //KILL GHOST INSERT HERE 
-                    
-                    killTimer = 0;
+                    gameObject.SetActive(false);
                     ghostDying = false;
-
+                    killTimer = 0;
                 }
+                
+               //{
+               //     gameObject.transform.position = monsterOrgPos; //KILL GHOST INSERT HERE 
+               //     
+               //     killTimer = 0;
+               //     ghostDying = false;
+               //
+               //
+               //}
             }
         }
         #endregion
@@ -274,6 +283,7 @@ public class Trundle : MonoBehaviour
     public void Chase()
     {
         anim.SetBool("Chase", true);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Monsters/Trundle/Down");
         goingDown = false;
         attacking = false;
         
