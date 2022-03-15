@@ -74,33 +74,38 @@ public class GameManager : MonoBehaviour
     {
         timer -= Time.deltaTime;
 
-        if(timer <= 0)
+        if(SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(2))
         {
-            Minute++;
-            OnMinuteChanged?.Invoke(); //the "?" is the "null" check instead of putting it into an "if statement"
-
-            if (Minute >= 59)
+            if (timer <= 0)
             {
-                Hour++;
-                OnHourChanged?.Invoke(); //the "?" is the "null" check instead of putting it into an "if statement"
-                Minute = 0;
+                Minute++;
+                OnMinuteChanged?.Invoke(); //the "?" is the "null" check instead of putting it into an "if statement"
+
+                if (Minute >= 59)
+                {
+                    Hour++;
+                    OnHourChanged?.Invoke(); //the "?" is the "null" check instead of putting it into an "if statement"
+                    Minute = 0;
+                }
+
+                timer = minuteToRealTime;
             }
 
-            timer = minuteToRealTime;
-        }
-
-        //At 25 minutes it spawnes a monster
-        if(Minute >= 25)
-        {
-            if (!isCreated)
+            //At 25 minutes it spawnes a monster
+            if (Minute >= 25)
             {
-                MonsterSpawn.SetActive(true);
-                Debug.Log("spawned");
+                if (!isCreated)
+                {
+                    MonsterSpawn.SetActive(true);
+                    Debug.Log("spawned");
 
-                isCreated = true;
+                    isCreated = true;
+                }
+
             }
-            
+            Debug.Log("Scene is loaded MainScene");
         }
+        
     }
 
     // films
