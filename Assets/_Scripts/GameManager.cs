@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public GameObject Player;
     public GameObject MonsterSpawn;
 
+    public bool isCreated;
+
     //Camera reloading
     public bool reloaded,reloadReady;
     
@@ -28,6 +30,7 @@ public class GameManager : MonoBehaviour
 
     //timer and saving stuff
     public bool SaveGame = false;
+    [Header("Time")]
     public float timer; //local time
     public float minuteToRealTime; //every half a sec realtime is 1minute ingame (needs to be changed obvs, but this is for testing)
 
@@ -85,10 +88,17 @@ public class GameManager : MonoBehaviour
             timer = minuteToRealTime;
         }
 
+        //At 25 minutes it spawnes a monster
         if(Minute >= 25)
         {
-            MonsterSpawn.SetActive(true);
-            Debug.Log("spawned");
+            if (!isCreated)
+            {
+                MonsterSpawn.SetActive(true);
+                Debug.Log("spawned");
+
+                isCreated = true;
+            }
+            
         }
     }
 

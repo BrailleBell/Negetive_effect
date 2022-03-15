@@ -4,5 +4,10 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
+    public GameObject[] spawnPoints;
 
+    protected void Spawner()
+    {
+
+    }
 }
