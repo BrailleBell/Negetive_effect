@@ -47,7 +47,9 @@ public class Trundle : MonoBehaviour
     
     
     // bools && triggers
-    public bool aboveGround, notTestKill, seesPlayer, testOn, circlingThePlayer,attackTest, alwaysChasePlayer;
+    public bool aboveGround;
+     public bool SpawnAfterKilled;
+    public bool seesPlayer, testOn, circlingThePlayer,attackTest, alwaysChasePlayer;
     private bool shouldLerp, lerpHasStarted, ghostDying, walking, belowGround, attacking,goingDown;
 
     // rest
@@ -120,9 +122,8 @@ public class Trundle : MonoBehaviour
              arm2.GetComponent<BoxCollider>().enabled = false;
              arm3.GetComponent<BoxCollider>().enabled = false;
          }
-        
-         
-        #region movement
+
+         #region movement
 
         if (seesPlayer)
         {
@@ -155,9 +156,9 @@ public class Trundle : MonoBehaviour
             killTimer += Time.deltaTime; // kill time must be over 0.2 secounds! 
             if (killTimer > 3f)
             {
-                if (notTestKill)
+                if (SpawnAfterKilled)
                 {
-                    gameObject.SetActive(false);
+                    gameObject.transform.position = MonsterWaypoints[wayPointInd].transform.position;
 
                 }
                 else
@@ -383,7 +384,7 @@ public class Trundle : MonoBehaviour
         {
             if (!attacking)
             {
-                ghost.speed = 0;
+                ghost.speed = 2;
                 anim.SetBool("Up",true);
                 anim.SetBool("Attack",true);
                 anim.SetBool("Down",false);
@@ -396,16 +397,16 @@ public class Trundle : MonoBehaviour
                 GetComponent<BoxCollider>().enabled = true;
                 if(distanceToPlayer > 2f)
                 {
-                    ghost.speed = 3;
+                    ghost.speed = Random.Range(5,20);
                     
                 }
                 else if (distanceToPlayer < 2f)
                 {
-                    ghost.speed = 0;
+                    ghost.speed = 5;
                 }
                 else if (distanceToPlayer < 1f)
                 {
-                    // Kill player
+                    SceneManager.LoadScene(GoToSceneWhenKilled);
                 }
                 if (uptime >= 6)
                 {
