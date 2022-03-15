@@ -41,10 +41,11 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-        MonsterSpawn = GameObject.Find("---Monsters---");
+        MonsterSpawn = GameObject.FindGameObjectWithTag("MonsterSpawn");
     }
     void Start()
     {
+        MonsterSpawn.SetActive(false);
         #region Camera
         // ReloadChecks for the camera
         

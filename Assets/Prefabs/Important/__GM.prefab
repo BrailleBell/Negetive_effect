@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7679653625039259461
 Transform:
   m_ObjectHideFlags: 0
@@ -43,5 +43,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa851dd3fe53c60418021f2826777f85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  film: 7
+  film: 1
+  SceneToGoTo: 0
   VRheadset: {fileID: 0}
+  spawnPoints: []
+  Player: {fileID: 0}
+  MonsterSpawn: {fileID: 0}
+  isCreated: 0
+  reloaded: 0
+  reloadReady: 0
+  SaveGame: 0
+  timer: 0
+  minuteToRealTime: 5

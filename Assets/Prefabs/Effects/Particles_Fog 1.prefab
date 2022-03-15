@@ -4817,6 +4817,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Particles_Fog2
       objectReference: {fileID: 0}
+    - target: {fileID: 1895525078330147320, guid: 644fc6c0c7cacfd4eb1ce4949adb60ea, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1895525078330147321, guid: 644fc6c0c7cacfd4eb1ce4949adb60ea, type: 3}
       propertyPath: m_SortingFudge
       value: 8
@@ -5173,7 +5177,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1895525078330147326, guid: 644fc6c0c7cacfd4eb1ce4949adb60ea, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1895525078330147326, guid: 644fc6c0c7cacfd4eb1ce4949adb60ea, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
