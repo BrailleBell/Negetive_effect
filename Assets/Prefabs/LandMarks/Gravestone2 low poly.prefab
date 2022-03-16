@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1667008661
 Transform:
   m_ObjectHideFlags: 0
@@ -39,7 +39,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1667008658}
-  m_Mesh: {fileID: 8210331827781620237, guid: f2e5c323270efd44a9215710219e58b2, type: 2}
+  m_Mesh: {fileID: -841931638069044335, guid: 6381d85c7422e0f42bc24152ba3999eb, type: 2}
 --- !u!23 &1667008659
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8688895073832014864, guid: f2e5c323270efd44a9215710219e58b2, type: 2}
+  - {fileID: -915443036600733131, guid: 6381d85c7422e0f42bc24152ba3999eb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -92,8 +92,9 @@ GameObject:
   - component: {fileID: 3947888551867955267}
   - component: {fileID: 100886985897719782}
   - component: {fileID: 2774951175134659372}
-  - component: {fileID: 519148146}
   - component: {fileID: 519148144}
+  - component: {fileID: 7257962018847278695}
+  - component: {fileID: 403142980895802809}
   m_Layer: 0
   m_Name: Gravestone2 low poly
   m_TagString: Untagged
@@ -165,29 +166,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!205 &519148146
-LODGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4432218318889018105}
-  serializedVersion: 2
-  m_LocalReferencePoint: {x: 0, y: 2.1486752, z: -0.00012207031}
-  m_Size: 4.328387
-  m_FadeMode: 0
-  m_AnimateCrossFading: 0
-  m_LastLODIsBillboard: 0
-  m_LODs:
-  - screenRelativeHeight: 0.6
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 2774951175134659372}
-  - screenRelativeHeight: 0.0215
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 2774951175134659372}
-  m_Enabled: 1
 --- !u!114 &519148144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,13 +178,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fadcc2d9a34a1a34f93d4962ec37e6e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_data: {fileID: 11400000, guid: f2e5c323270efd44a9215710219e58b2, type: 2}
+  m_data: {fileID: 11400000, guid: 6381d85c7422e0f42bc24152ba3999eb, type: 2}
   m_rootTransform: {fileID: 3947888551867955267}
-  m_lodGroup: {fileID: 519148146}
-  m_renderers: []
+  m_lodGroup: {fileID: 403142980895802809}
+  m_renderers:
+  - {fileID: 2774951175134659372}
+  - {fileID: 1667008659}
   m_lodReplacement: 2
   m_renderPipelineInUse: 3
-  m_insertIndex: 1
+  m_insertIndex: 0
   m_lastImpostor: {fileID: 1667008658}
-  m_folderPath: Assets/Prefabs/TerrainDecor/
+  m_folderPath: Assets/AmplifyImpostors/Models/
   m_cutMode: 0
+--- !u!65 &7257962018847278695
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4432218318889018105}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.508358, y: 4.3283877, z: 1.6645628}
+  m_Center: {x: -0.000061035156, y: 2.1486757, z: 0.00000005277928}
+--- !u!205 &403142980895802809
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4432218318889018105}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: -0.00000023841858, y: 2.1486757, z: 0.00000011920929}
+  m_Size: 4.3283877
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.022767361
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 2774951175134659372}
+  - screenRelativeHeight: 0.004017361
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 2774951175134659372}
+  m_Enabled: 1
