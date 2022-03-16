@@ -25,8 +25,30 @@ public class Enemy<T> where T : Enemy
 public abstract class Enemy : MonoBehaviour
 {
     public GameObject[] spawnPoints;
+    protected GameObject[] enemies, nameEnemies;
 
-    protected void Spawner()
+    protected float speed;
+    protected float lookRange;
+    protected float attackDMG;
+
+    public virtual void Start()
+    {
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        //nameEnemies = GameObject.FindObjectOfType
+        Debug.Log(enemies);
+    }
+
+    protected virtual void Spawner()
+    {
+
+    }
+
+    protected virtual void Attack()
+    {
+
+    }
+
+    protected virtual void Movement()
     {
 
     }
