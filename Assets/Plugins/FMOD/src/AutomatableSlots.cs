@@ -5,8 +5,6 @@ namespace FMODUnity
     [Serializable]
     public struct AutomatableSlots
     {
-        public const int Count = 16;
-
         public float slot00;
         public float slot01;
         public float slot02;
@@ -23,6 +21,8 @@ namespace FMODUnity
         public float slot13;
         public float slot14;
         public float slot15;
+
+        public const int Count = 16;
 
         public float GetValue(int index)
         {

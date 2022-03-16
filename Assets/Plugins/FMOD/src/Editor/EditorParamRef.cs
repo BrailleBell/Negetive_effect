@@ -35,8 +35,6 @@ namespace FMODUnity
         [SerializeField]
         public string[] Labels = { };
 
-        public bool Exists;
-
         [Serializable]
         public struct ParameterID
         {
@@ -56,13 +54,10 @@ namespace FMODUnity
                 };
             }
 
-            public bool Equals(FMOD.Studio.PARAMETER_ID other)
-            {
-                return data1 == other.data1 && data2 == other.data2;
-            }
-
             public uint data1;
             public uint data2;
         }
+
+        public bool Exists;
     }
 }

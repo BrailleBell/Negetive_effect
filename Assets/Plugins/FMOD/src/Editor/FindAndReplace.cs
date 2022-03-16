@@ -7,17 +7,6 @@ namespace FMODUnity
 {
     class FindAndReplace : EditorWindow
     {
-        bool levelScope = true;
-        bool prefabScope;
-        string findText;
-        string replaceText;
-        string message = "";
-        MessageType messageType = MessageType.None;
-        int lastMatch = -1;
-        List<StudioEventEmitter> emitters;
-
-        bool first = true;
-
         [MenuItem("FMOD/Find and Replace", priority = 2)]
         static void ShowFindAndReplace()
         {
@@ -29,6 +18,15 @@ namespace FMODUnity
             window.position = position;
             window.ShowUtility();
         }
+
+        bool levelScope = true;
+        bool prefabScope;
+        string findText;
+        string replaceText;
+        string message = "";
+        MessageType messageType = MessageType.None;
+        int lastMatch = -1;
+        List<StudioEventEmitter> emitters;
 
         void OnHierarchyChange()
         {
@@ -44,6 +42,8 @@ namespace FMODUnity
                 emitters.RemoveAll(x => PrefabUtility.GetPrefabAssetType(x) == PrefabAssetType.NotAPrefab);
             }
         }
+
+        bool first = true;
 
         void OnGUI()
         {

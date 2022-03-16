@@ -43,9 +43,26 @@ namespace FMODUnity
         bool hasBankSourceChanged = false;
         bool hasBankTargetChanged = false;
 
+        internal enum SourceType : uint
+        {
+            FMODStudioProject = 0,
+            SinglePlatformBuild,
+            MultiplePlatformBuild
+        }
+
         bool expandThreadAffinity;
         bool expandDynamicPlugins;
         bool expandStaticPlugins;
+
+        [Flags]
+        enum Section
+        {
+            BankImport = 1 << 0,
+            Initialization = 1 << 1,
+            Behavior = 1 << 2,
+            UserInterface = 1 << 3,
+            PlatformSpecific = 1 << 4,
+        }
 
         static Section sExpandedSections;
 
@@ -69,91 +86,6 @@ namespace FMODUnity
         SerializedProperty bankRefreshCooldown;
         SerializedProperty showBankRefreshWindow;
         SerializedProperty eventLinkage;
-
-        [NonSerialized]
-        bool resourcesLoaded = false;
-
-        GUIStyle mainHeaderStyle;
-        GUIStyle sectionHeaderStyle;
-        GUIStyle platformHeaderStyle;
-        GUIStyle dropdownStyle;
-        GUIStyle inheritedPropertyLabelStyle;
-        GUIStyle overriddenPropertyLabelStyle;
-        GUIStyle inheritedPropertyFoldoutStyle;
-        GUIStyle overriddenPropertyFoldoutStyle;
-
-        GUIContent mainHeaderIcon;
-
-        Texture2D propertyOverrideIndicator;
-
-        const int THREAD_AFFINITY_CORES_PER_ROW = 8;
-
-        const string EditPlatformUndoMessage = "Edit FMOD Platform Properties";
-
-        private PlatformPropertyStringListView staticPluginsView;
-        private PlatformPropertyStringListView dynamicPluginsView;
-
-        static readonly int[] LoggingValues = new int[] {
-            (int)FMOD.DEBUG_FLAGS.NONE,
-            (int)FMOD.DEBUG_FLAGS.ERROR,
-            (int)FMOD.DEBUG_FLAGS.WARNING,
-            (int)FMOD.DEBUG_FLAGS.LOG,
-        };
-
-        static readonly string[] LoggingDisplay = new string[] {
-            "None",
-            "Error",
-            "Warning",
-            "Log",
-        };
-
-        private ReorderableList banksToLoadView;
-
-        PlatformsView platformsView;
-        TreeViewState platformTreeViewState = new TreeViewState();
-
-        string lastSourceBankPath;
-
-        static readonly GUIContent BankRefreshLabel = new GUIContent("Refresh Banks");
-
-        static readonly GUIContent[] BankRefreshCooldownLabels = new GUIContent[] {
-            new GUIContent("After 1 second"),
-            new GUIContent("After 5 seconds"),
-            new GUIContent("After 10 seconds"),
-            new GUIContent("After 20 seconds"),
-            new GUIContent("After 30 seconds"),
-            new GUIContent("After 1 minute"),
-            new GUIContent("Prompt Me"),
-            new GUIContent("Manually"),
-        };
-
-        static readonly int[] BankRefreshCooldownValues = new int[] {
-            1,
-            5,
-            10,
-            20,
-            30,
-            60,
-            Settings.BankRefreshPrompt,
-            Settings.BankRefreshManual,
-        };
-
-        internal enum SourceType : uint
-        {
-            FMODStudioProject = 0,
-            SinglePlatformBuild,
-            MultiplePlatformBuild
-        }
-
-        [Flags]
-        enum Section
-        {
-            BankImport = 1 << 0,
-            Initialization = 1 << 1,
-            Behavior = 1 << 2,
-            UserInterface = 1 << 3,
-            PlatformSpecific = 1 << 4,
-        }
 
         void OnEnable()
         {
@@ -209,6 +141,22 @@ namespace FMODUnity
 
             Repaint();
         }
+
+        [NonSerialized]
+        bool resourcesLoaded = false;
+
+        GUIStyle mainHeaderStyle;
+        GUIStyle sectionHeaderStyle;
+        GUIStyle platformHeaderStyle;
+        GUIStyle dropdownStyle;
+        GUIStyle inheritedPropertyLabelStyle;
+        GUIStyle overriddenPropertyLabelStyle;
+        GUIStyle inheritedPropertyFoldoutStyle;
+        GUIStyle overriddenPropertyFoldoutStyle;
+
+        GUIContent mainHeaderIcon;
+
+        Texture2D propertyOverrideIndicator;
 
         void AffirmResources()
         {
@@ -453,6 +401,8 @@ namespace FMODUnity
 
             return expandThreadAffinity;
         }
+
+        const int THREAD_AFFINITY_CORES_PER_ROW = 8;
 
         void DisplayThreadAffinityGroups(Platform platform)
         {
@@ -765,28 +715,6 @@ namespace FMODUnity
 
         class ProjectPlatformSelector : PopupWindowContent
         {
-            private Platform platform;
-            private SettingsEditor settingsEditor;
-            private string[] outputSubdirectories;
-
-            private GUIStyle headerStyle;
-            private GUIStyle toggleStyle;
-
-            private GUIContent subdirectoryHeader = new GUIContent("Output sub-directory:");
-            private GUIContent speakerModeHeader = new GUIContent("Surround speaker mode:");
-
-            const string HelpText = "Select the output sub-directory and speaker mode that match the project " +
-                "platform settings in the FMOD Studio build preferences.";
-            const string UndoText = "Edit FMOD Platform Settings";
-
-            const float InterColumnSpace = 25;
-
-            Vector2 subdirectorySize;
-            Vector2 speakerModeSize;
-            Vector2 helpButtonSize;
-
-            Vector2 windowSize;
-
             public ProjectPlatformSelector(Platform platform, SettingsEditor settingsEditor)
             {
                 this.platform = platform;
@@ -836,6 +764,28 @@ namespace FMODUnity
 
                 return totalSize;
             }
+
+            private Platform platform;
+            private SettingsEditor settingsEditor;
+            private string[] outputSubdirectories;
+
+            private GUIStyle headerStyle;
+            private GUIStyle toggleStyle;
+
+            private GUIContent subdirectoryHeader = new GUIContent("Output sub-directory:");
+            private GUIContent speakerModeHeader = new GUIContent("Surround speaker mode:");
+
+            const string HelpText = "Select the output sub-directory and speaker mode that match the project " +
+                "platform settings in the FMOD Studio build preferences.";
+            const string UndoText = "Edit FMOD Platform Settings";
+
+            const float InterColumnSpace = 25;
+
+            Vector2 subdirectorySize;
+            Vector2 speakerModeSize;
+            Vector2 helpButtonSize;
+
+            Vector2 windowSize;
 
             public override Vector2 GetWindowSize()
             {
@@ -997,6 +947,11 @@ namespace FMODUnity
             }
         }
 
+        const string EditPlatformUndoMessage = "Edit FMOD Platform Properties";
+
+        private PlatformPropertyStringListView staticPluginsView;
+        private PlatformPropertyStringListView dynamicPluginsView;
+
         private void DisplayPlatform(Platform platform)
         {
             if (!platform.Active)
@@ -1086,7 +1041,7 @@ namespace FMODUnity
                 {
                     labelContent = new GUIContent(string.Format("<b>{0}</b>: {1} inheriting from Unity build target: ",
                         platform.DisplayName, type));
-                    parent = EditorSettings.Instance.CurrentEditorPlatform;
+                    parent = (target as Settings).CurrentEditorPlatform;
 
                     while (!parent.Active)
                     {
@@ -1445,7 +1400,27 @@ namespace FMODUnity
         {
             private GUIStyle style;
 
+            protected override void Prepare()
+            {
+                style = new GUIStyle(GUI.skin.label) {
+                    richText = true,
+                    wordWrap = true,
+                };
+            }
+
             readonly GUIContent introduction = new GUIContent("Choose how to access your FMOD Studio content:");
+
+            struct ListEntry
+            {
+                public ListEntry(string label, string description)
+                {
+                    this.label = new GUIContent(label);
+                    this.description = new GUIContent(description);
+                }
+
+                public GUIContent label;
+                public GUIContent description;
+            }
 
             private readonly ListEntry[] listEntries = {
                 new ListEntry("FMOD Studio Project",
@@ -1459,26 +1434,6 @@ namespace FMODUnity
                     "with each platform in its own subdirectory."
                 ),
             };
-
-            protected override void Prepare()
-            {
-                style = new GUIStyle(GUI.skin.label) {
-                    richText = true,
-                    wordWrap = true,
-                };
-            }
-
-            struct ListEntry
-            {
-                public ListEntry(string label, string description)
-                {
-                    this.label = new GUIContent(label);
-                    this.description = new GUIContent(description);
-                }
-
-                public GUIContent label;
-                public GUIContent description;
-            }
 
             protected override Vector2 GetContentSize()
             {
@@ -1590,6 +1545,20 @@ namespace FMODUnity
             EditorGUILayout.PropertyField(eventLinkage);
         }
 
+        static readonly int[] LoggingValues = new int[] {
+            (int)FMOD.DEBUG_FLAGS.NONE,
+            (int)FMOD.DEBUG_FLAGS.ERROR,
+            (int)FMOD.DEBUG_FLAGS.WARNING,
+            (int)FMOD.DEBUG_FLAGS.LOG,
+        };
+
+        static readonly string[] LoggingDisplay = new string[] {
+            "None",
+            "Error",
+            "Warning",
+            "Log",
+        };
+
         private void DrawBehaviorSection()
         {
             if (DrawSectionHeaderLayout(Section.Behavior, "Behavior"))
@@ -1664,6 +1633,8 @@ namespace FMODUnity
             }
         }
 
+        private ReorderableList banksToLoadView;
+
         private void DisplayBanksToLoad()
         {
             banksToLoad.isExpanded = EditorGUILayout.Foldout(banksToLoad.isExpanded, "Specified Banks", true);
@@ -1731,7 +1702,7 @@ namespace FMODUnity
             if (settings.HasPlatforms)
             {
                 bankDirectory = string.Format("{0}/{1}/",
-                    settings.SourceBankPath, EditorSettings.Instance.CurrentEditorPlatform.BuildDirectory);
+                    settings.SourceBankPath, settings.CurrentEditorPlatform.BuildDirectory);
             }
             else
             {
@@ -1761,36 +1732,20 @@ namespace FMODUnity
             }
         }
 
+        PlatformsView platformsView;
+        TreeViewState platformTreeViewState = new TreeViewState();
+
         private class PlatformsView : TreeView
         {
             const float RowPadding = 2;
-
-            private Settings settings;
-
-            static UnityEditorInternal.ReorderableList.Defaults s_Defaults;
-
-            const float HeaderHeight = 3;
-            const float BodyHeight = 150;
-            const float FooterHeight = 13;
-            const float TotalHeight = HeaderHeight + BodyHeight + FooterHeight;
-
-            const float ButtonWidth = 25;
-            const float ButtonHeight = 16;
-            const float ButtonMarginTop = 0;
-
-            const float FooterMarginRight = 10;
-
-            static readonly RectOffset BodyPadding = new RectOffset(1, 2, 1, 4);
-            static readonly RectOffset FooterPadding = new RectOffset(4, 4, 0, 0);
-
-            static readonly Vector2 DragHandleSize = new Vector2(10, 7);
-            static readonly Vector2 DragHandlePadding = new Vector2(5, 6);
 
             public PlatformsView(Settings settings, TreeViewState state) : base(state)
             {
                 this.settings = settings;
                 rowHeight = EditorGUIUtility.singleLineHeight + RowPadding;
             }
+
+            private Settings settings;
 
             public Platform SelectedPlatform
             {
@@ -1814,6 +1769,8 @@ namespace FMODUnity
                 }
             }
 
+            static UnityEditorInternal.ReorderableList.Defaults s_Defaults;
+
             static UnityEditorInternal.ReorderableList.Defaults defaultBehaviours
             {
                 get
@@ -1826,6 +1783,23 @@ namespace FMODUnity
                     return s_Defaults;
                 }
             }
+
+            const float HeaderHeight = 3;
+            const float BodyHeight = 150;
+            const float FooterHeight = 13;
+            const float TotalHeight = HeaderHeight + BodyHeight + FooterHeight;
+
+            const float ButtonWidth = 25;
+            const float ButtonHeight = 16;
+            const float ButtonMarginTop = 0;
+
+            const float FooterMarginRight = 10;
+
+            static readonly RectOffset BodyPadding = new RectOffset(1, 2, 1, 4);
+            static readonly RectOffset FooterPadding = new RectOffset(4, 4, 0, 0);
+
+            static readonly Vector2 DragHandleSize = new Vector2(10, 7);
+            static readonly Vector2 DragHandlePadding = new Vector2(5, 6);
 
             public void DrawLayout()
             {
@@ -1939,7 +1913,7 @@ namespace FMODUnity
 
                 int sortOrder = UpdateSortOrderForChildren(settings.DefaultPlatform, null, UndoMessage);
 
-                PlatformGroup group = EditorSettings.Instance.AddPlatformGroup("New Group", sortOrder);
+                PlatformGroup group = settings.AddPlatformGroup("New Group", sortOrder);
 
                 Undo.RegisterCreatedObjectUndo(group, UndoMessage);
 
@@ -2330,10 +2304,6 @@ namespace FMODUnity
         {
             const float ElementPadding = 2;
 
-            public Platform platform;
-
-            List<string> displayList;
-
             public PlatformPropertyStringListView(Platform.PropertyAccessor<List<string>> property)
                 : base(null, typeof(string), true, false, true, true)
             {
@@ -2351,11 +2321,14 @@ namespace FMODUnity
                 onReorderCallback = OnReorder;
             }
 
+            public Platform platform;
             public Platform.PropertyAccessor<List<string>> property { get; private set; }
 
             // We need this because ReorderableList modifies the list before calling
             // onReorderCallback, meaning we can't call AffirmOverriddenList
             // soon enough.
+            List<string> displayList;
+
             public void DrawLayout()
             {
                 if (IsReloadNeeded())
@@ -2495,6 +2468,8 @@ namespace FMODUnity
             }
         }
 
+        string lastSourceBankPath;
+
         private void RefreshBanks()
         {
             Settings settings = target as Settings;
@@ -2505,6 +2480,30 @@ namespace FMODUnity
                 EventManager.RefreshBanks();
             }
         }
+
+        static readonly GUIContent BankRefreshLabel = new GUIContent("Refresh Banks");
+
+        static readonly GUIContent[] BankRefreshCooldownLabels = new GUIContent[] {
+            new GUIContent("After 1 second"),
+            new GUIContent("After 5 seconds"), 
+            new GUIContent("After 10 seconds"),
+            new GUIContent("After 20 seconds"),
+            new GUIContent("After 30 seconds"),
+            new GUIContent("After 1 minute"),
+            new GUIContent("Prompt Me"),
+            new GUIContent("Manually"),
+        };
+
+        static readonly int[] BankRefreshCooldownValues = new int[] {
+            1,
+            5, 
+            10,
+            20,
+            30,
+            60,
+            Settings.BankRefreshPrompt,
+            Settings.BankRefreshManual,
+        };
 
         public static void DisplayBankRefreshSettings(SerializedProperty cooldown, SerializedProperty showWindow,
             bool inInspector)

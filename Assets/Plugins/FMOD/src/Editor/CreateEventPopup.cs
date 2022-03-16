@@ -18,21 +18,6 @@ namespace FMODUnity
         }
 
         SerializedProperty outputProperty;
-
-        FolderEntry rootFolder;
-        FolderEntry currentFolder;
-        List<BankEntry> banks;
-
-        int lastHover = 0;
-        string eventFolder = "/";
-        string eventName = "";
-        string currentFilter = "";
-        int selectedBank = 0;
-        bool resetCursor = true;
-        Vector2 scrollPos = new Vector2();
-        Rect scrollRect = new Rect();
-        bool isConnected = false;
-
         internal void SelectEvent(SerializedProperty property)
         {
             outputProperty = property;
@@ -43,6 +28,10 @@ namespace FMODUnity
             public string name;
             public string guid;
         }
+
+        FolderEntry rootFolder;
+        FolderEntry currentFolder;
+        List<BankEntry> banks;
 
         public CreateEventPopup()
         {
@@ -111,6 +100,16 @@ namespace FMODUnity
                 BuildTreeItem(childEntry);
             }
         }
+
+        int lastHover = 0;
+        string eventFolder = "/";
+        string eventName = "";
+        string currentFilter = "";
+        int selectedBank = 0;
+        bool resetCursor = true;
+        Vector2 scrollPos = new Vector2();
+        Rect scrollRect = new Rect();
+        bool isConnected = false;
 
         public void OnGUI()
         {

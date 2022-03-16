@@ -26,8 +26,6 @@ namespace FMODUnity
         ListView parameterLinksView;
         ListView initialParameterValuesView;
 
-        string eventPath;
-
         public void OnEnable()
         {
             eventPlayable = target as FMODEventPlayable;
@@ -65,6 +63,8 @@ namespace FMODUnity
             // This is in case the undo/redo modified any curves on the Playable's clip
             RefreshTimelineEditor();
         }
+
+        string eventPath;
 
         private void RefreshEventRef()
         {
@@ -445,6 +445,11 @@ namespace FMODUnity
             }
         }
 
+        static bool ClipHasCurves(TimelineClip clip)
+        {
+            return clip.hasCurves;
+        }
+
         void DeleteParameterAutomation(string name)
         {
             serializedObject.Update();
@@ -461,7 +466,7 @@ namespace FMODUnity
         {
             serializedObject.Update();
 
-            if (eventPlayable.OwningClip.hasCurves)
+            if (ClipHasCurves(eventPlayable.OwningClip))
             {
                 SerializedProperty linkProperty = parameterLinksProperty.GetArrayElementAtIndex(index);
                 SerializedProperty slotProperty = linkProperty.FindPropertyRelative("Slot");

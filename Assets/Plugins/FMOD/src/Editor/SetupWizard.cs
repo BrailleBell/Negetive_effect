@@ -13,6 +13,19 @@ namespace FMODUnity
     {
         private static SetupWizardWindow instance;
 
+        enum PAGES : int
+        {
+            Welcome = 0,
+            Updating,
+            Linking,
+            Listener,
+            UnityAudio,
+            UnitySources,
+            SourceControl,
+            End,
+            Max
+        }
+
         static readonly List<string> pageNames = new List<string>
         {
             "Welcome",
@@ -25,7 +38,35 @@ namespace FMODUnity
             "End"
         };
 
-        static readonly List<bool> pageComplete = new List<bool>(new bool[(int)PAGES.Max]);
+        static readonly List<bool> pageComplete = new List<bool>(new bool[(int) PAGES.Max]);
+
+        public enum UpdateTaskType
+        {
+            ReorganizePluginFiles,
+            UpdateEventReferences,
+        }
+
+        class UpdateTask
+        {
+            public UpdateTaskType Type;
+            public string Name;
+            public string Description;
+            public bool IsComplete;
+            public Action Execute;
+            public Func<bool> CheckComplete;
+
+            public static UpdateTask Create(UpdateTaskType type, string name, string description,
+                Action execute, Func<bool> checkComplete)
+            {
+                return new UpdateTask() {
+                    Type = type,
+                    Name = name,
+                    Description = description,
+                    Execute = execute,
+                    CheckComplete = checkComplete
+                };
+            }
+        }
 
         static readonly List<UpdateTask> updateTasks = new List<UpdateTask>() {
             UpdateTask.Create(
@@ -45,7 +86,28 @@ namespace FMODUnity
             ),
         };
 
+        public static void SetUpdateTaskComplete(UpdateTaskType type)
+        {
+            foreach (UpdateTask task in updateTasks.Where(t => t.Type == type))
+            {
+                task.IsComplete = true;
+            }
+        }
+
         static bool updateTaskStatusChecked = false;
+
+        static void CheckUpdateTaskStatus()
+        {
+            if (!updateTaskStatusChecked)
+            {
+                updateTaskStatusChecked = true;
+
+                foreach (UpdateTask task in updateTasks)
+                {
+                    task.IsComplete = task.CheckComplete();
+                }
+            }
+        }
 
         PAGES currentPage = PAGES.Welcome;
 
@@ -88,87 +150,6 @@ namespace FMODUnity
         static StagingSystem.UpdateStep nextStagingStep;
 
         static bool IsStagingUpdateInProgress => nextStagingStep != null;
-
-        const string IgnoreFileText =
-@"# Never ignore DLLs in the FMOD subfolder.
-!/[Aa]ssets/Plugins/FMOD/**/lib/*
-
-# Don't ignore images and gizmos used by FMOD in the Unity Editor.
-!/[Aa]ssets/Gizmos/FMOD/*
-!/[Aa]ssets/Editor Default Resources/FMOD/*
-                    
-# Ignore the Cache folder since it is updated locally.
-/[Aa]ssets/Plugins/FMOD/Cache/*
-                    
-# Ignore bank files in the StreamingAssets folder.
-/[Aa]ssets/StreamingAssets/**/*.bank
-/[Aa]ssets/StreamingAssets/**/*.bank.meta
-                    
-# If the source bank files are kept outside of the StreamingAssets folder then these can be ignored.
-# Log files can be ignored.
-fmod_editor.log";
-
-        enum PAGES : int
-        {
-            Welcome = 0,
-            Updating,
-            Linking,
-            Listener,
-            UnityAudio,
-            UnitySources,
-            SourceControl,
-            End,
-            Max
-        }
-
-        public enum UpdateTaskType
-        {
-            ReorganizePluginFiles,
-            UpdateEventReferences,
-        }
-
-        class UpdateTask
-        {
-            public UpdateTaskType Type;
-            public string Name;
-            public string Description;
-            public bool IsComplete;
-            public Action Execute;
-            public Func<bool> CheckComplete;
-
-            public static UpdateTask Create(UpdateTaskType type, string name, string description,
-                Action execute, Func<bool> checkComplete)
-            {
-                return new UpdateTask() {
-                    Type = type,
-                    Name = name,
-                    Description = description,
-                    Execute = execute,
-                    CheckComplete = checkComplete
-                };
-            }
-        }
-
-        public static void SetUpdateTaskComplete(UpdateTaskType type)
-        {
-            foreach (UpdateTask task in updateTasks.Where(t => t.Type == type))
-            {
-                task.IsComplete = true;
-            }
-        }
-
-        static void CheckUpdateTaskStatus()
-        {
-            if (!updateTaskStatusChecked)
-            {
-                updateTaskStatusChecked = true;
-
-                foreach (UpdateTask task in updateTasks)
-                {
-                    task.IsComplete = task.CheckComplete();
-                }
-            }
-        }
 
         static void DoNextStagingStep()
         {
@@ -759,6 +740,25 @@ fmod_editor.log";
             }
         }
 
+        const string IgnoreFileText =
+@"# Never ignore DLLs in the FMOD subfolder.
+!/[Aa]ssets/Plugins/FMOD/**/lib/*
+
+# Don't ignore images and gizmos used by FMOD in the Unity Editor.
+!/[Aa]ssets/Gizmos/FMOD/*
+!/[Aa]ssets/Editor Default Resources/FMOD/*
+                    
+# Ignore the Cache folder since it is updated locally.
+/[Aa]ssets/Plugins/FMOD/Cache/*
+                    
+# Ignore bank files in the StreamingAssets folder.
+/[Aa]ssets/StreamingAssets/**/*.bank
+/[Aa]ssets/StreamingAssets/**/*.bank.meta
+                    
+# If the source bank files are kept outside of the StreamingAssets folder then these can be ignored.
+# Log files can be ignored.
+fmod_editor.log";
+
         void SourceControl()
         {
             EditorGUILayout.LabelField("There are a number of files produced by FMOD for Unity that should be ignored by source control. " +
@@ -832,7 +832,7 @@ fmod_editor.log";
 
                 if (GUILayout.Button(" FMOD Settings ", buttonStyle))
                 {
-                    EditorSettings.EditSettings();
+                    Settings.EditSettings();
                 }
 
                 GUILayout.FlexibleSpace();
@@ -953,8 +953,6 @@ fmod_editor.log";
 
     class SimpleTreeView : TreeView
     {
-        const float BodyHeight = 200;
-
         public SimpleTreeView(TreeViewState state) : base(state)
         {
             Reload();
@@ -1113,6 +1111,8 @@ fmod_editor.log";
                 }
             }
         }
+
+        const float BodyHeight = 200;
 
         public void Drawlayout()
         {

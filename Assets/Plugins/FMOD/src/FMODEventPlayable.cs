@@ -13,27 +13,20 @@ namespace FMODUnity
     {
         public FMODEventPlayableBehavior template = new FMODEventPlayableBehavior();
 
+        public GameObject TrackTargetObject { get; set; }
         public float eventLength; //In seconds.
-
-        [Obsolete("Use the eventReference field instead")]
-        [SerializeField]
-        public string eventName;
-
-        [SerializeField]
-        public EventReference eventReference;
-
-        [SerializeField]
-        public STOP_MODE stopType;
-
-        [SerializeField]
-        public ParamRef[] parameters = new ParamRef[0];
-
-        [NonSerialized]
-        public bool cachedParameters = false;
 
         FMODEventPlayableBehavior behavior;
 
-        public GameObject TrackTargetObject { get; set; }
+        [Obsolete("Use the eventReference field instead")]
+        [SerializeField] public string eventName;
+
+        [SerializeField] public EventReference eventReference;
+        [SerializeField] public STOP_MODE stopType;
+
+        [SerializeField] public ParamRef[] parameters = new ParamRef[0];
+
+        [NonSerialized] public bool cachedParameters = false;
 
         public override double duration
         {
