@@ -28,10 +28,7 @@ public class Poloroid_image : MonoBehaviour
     
     //Light
     public GameObject reloadedlamp;
-
-    //Sound stuff
-    public AudioSource audioSource;
-    public AudioClip audioClip;
+    
 
     //VR input stuff
     public InputActionReference reloadReference = null;
@@ -247,12 +244,13 @@ public class Poloroid_image : MonoBehaviour
     {
         if (gm.reloaded)
         {
-            cameraRange.SetActive(true); 
+            cameraRange.SetActive(true);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/TakingPicture");
             gm.SnapPic(); 
             reloadedlamp.SetActive(true);
             lightsOn = true;
             Debug.Log("Took a picture");
-            FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/TakingPicture");
+            
             
             
 
