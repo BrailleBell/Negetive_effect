@@ -59,20 +59,20 @@ public class HandPresence : MonoBehaviour
     {
         if(targetDevice.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue))
         {
-            handAnim.SetFloat("Trigger", triggerValue);
+//            handAnim.SetFloat("Trigger", triggerValue);
         }
         else
         {
-            handAnim.SetFloat("Trigger", 0);
+            //handAnim.SetFloat("Trigger", 0);
         }
 
         if (targetDevice.TryGetFeatureValue(CommonUsages.grip, out float gripValue))
         {
-            handAnim.SetFloat("Trigger", gripValue);
+            //handAnim.SetFloat("Trigger", gripValue);
         }
         else
         {
-            handAnim.SetFloat("Trigger", 0);
+            //handAnim.SetFloat("Trigger", 0);
         }
     }
 

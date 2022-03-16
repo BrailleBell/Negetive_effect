@@ -104,7 +104,7 @@ public class GameManager : MonoBehaviour
                 }
 
             }
-            Debug.Log("Scene is loaded MainScene");
+//            Debug.Log("Scene is loaded MainScene");
         }
         
     }
