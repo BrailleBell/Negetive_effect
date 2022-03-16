@@ -24,6 +24,7 @@ public class Film: MonoBehaviour
         {
             if (Vector3.Distance(gameObject.transform.position, Camera.transform.position) < 0.5f)
             {
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/CameraReload");
                     Debug.Log("reloaded check, reloaded is "+ gm.reloaded);
                     Debug.Log("RELOADED!!");
                     gm.reloaded = true;
@@ -45,12 +46,14 @@ public class Film: MonoBehaviour
         {
             if (collision.gameObject.CompareTag("Camera"))
             {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/CameraReload");
                 Debug.Log("reloaded check, reloaded is "+ gm.reloaded);
                 Debug.Log("RELOADED!!");
                 gm.reloaded = true;
                 gm.GetFilm();
                 gm.reloadReady = false;
                 Destroy(gameObject);
+                
             }
         }
 
