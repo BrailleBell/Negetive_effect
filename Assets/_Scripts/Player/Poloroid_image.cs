@@ -277,7 +277,8 @@ public class Poloroid_image : MonoBehaviour
         }
         else if(!gm.reloaded)
         {
-            // Play clicking sound only 
+            Debug.Log("Is there sound?");
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/EmptyClick");
             
             
         }

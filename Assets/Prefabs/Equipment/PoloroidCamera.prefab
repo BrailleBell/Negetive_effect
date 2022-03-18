@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8184848427480486260}
   - component: {fileID: 8184848427480486262}
-  - component: {fileID: 8184848427480486257}
   - component: {fileID: 8184848427480486256}
   - component: {fileID: 8184848427480486259}
   - component: {fileID: 8184848427480486263}
@@ -20,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8184848427480486260
 Transform:
   m_ObjectHideFlags: 0
@@ -64,25 +63,8 @@ MonoBehaviour:
   cameraRange: {fileID: 9031693721285528831}
   gm: {fileID: 0}
   oldFilm: {fileID: 6906281059564909540, guid: 95788a784d3e103449f3b434a0ca6748, type: 3}
-  Camera: {fileID: 0}
   reloadedlamp: {fileID: 8184848428212550620}
   reloadReference: {fileID: 0}
---- !u!114 &8184848427480486257
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8184848427480486221}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11444233fad5d0c46bd37a9561bb8d8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flashTimeLength: 0.2
-  doCameraFlash: 0
-  audioSource: {fileID: 0}
-  audioClip: {fileID: 0}
 --- !u!54 &8184848427480486256
 Rigidbody:
   m_ObjectHideFlags: 0
