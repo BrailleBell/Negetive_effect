@@ -26,9 +26,12 @@ public class Poloroid_image : MonoBehaviour
     private TextMesh filmText;
     public GameObject oldFilm;
     private Camera _camera;
-    
+
     //Light
     public GameObject reloadedlamp;
+    
+    //Sound
+    private SoundManager SM;
     
 
     //VR input stuff
@@ -37,7 +40,8 @@ public class Poloroid_image : MonoBehaviour
     private void Awake()
     {
         _camera = GameObject.FindGameObjectWithTag("PolaroidCameraCam").GetComponent<Camera>();
-        
+        SM = GameObject.Find("__SM").GetComponent<SoundManager>();
+
     }
 
     private void Start()
@@ -265,7 +269,7 @@ public class Poloroid_image : MonoBehaviour
         {
             _camera.enabled = true;
             cameraRange.SetActive(true);
-            FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/TakingPicture");
+            SM.TakePicture.start();
             gm.SnapPic(); 
             reloadedlamp.SetActive(true);
             lightsOn = true;
@@ -278,9 +282,9 @@ public class Poloroid_image : MonoBehaviour
         else if(!gm.reloaded)
         {
             Debug.Log("Is there sound?");
-            FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/EmptyClick");
-            
-            
+            SM.EmptyClick.start();
+
+
         }
         
     }
