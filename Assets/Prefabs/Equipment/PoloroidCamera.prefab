@@ -64,9 +64,8 @@ MonoBehaviour:
   cameraRange: {fileID: 9031693721285528831}
   gm: {fileID: 0}
   oldFilm: {fileID: 6906281059564909540, guid: 95788a784d3e103449f3b434a0ca6748, type: 3}
+  Camera: {fileID: 0}
   reloadedlamp: {fileID: 8184848428212550620}
-  audioSource: {fileID: 0}
-  audioClip: {fileID: 8300000, guid: 06da78679b160a240936e9580b0c0ead, type: 3}
   reloadReference: {fileID: 0}
 --- !u!114 &8184848427480486257
 MonoBehaviour:
@@ -359,7 +358,7 @@ GameObject:
   - component: {fileID: 8184848427764152797}
   m_Layer: 11
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: PolaroidCameraCam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

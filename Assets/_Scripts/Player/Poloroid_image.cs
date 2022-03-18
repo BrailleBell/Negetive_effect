@@ -25,6 +25,7 @@ public class Poloroid_image : MonoBehaviour
     public GameManager gm;
     private TextMesh filmText;
     public GameObject oldFilm;
+    private Camera _camera;
     
     //Light
     public GameObject reloadedlamp;
@@ -33,8 +34,15 @@ public class Poloroid_image : MonoBehaviour
     //VR input stuff
     public InputActionReference reloadReference = null;
 
+    private void Awake()
+    {
+        _camera = GameObject.FindGameObjectWithTag("PolaroidCameraCam").GetComponent<Camera>();
+        
+    }
+
     private void Start()
     {
+        
       //  Instantiate(Picture, transform.position, Quaternion.identity);
         //screenCapture = new Texture2D(516, 516, TextureFormat.RGB24, false);
 
@@ -52,6 +60,10 @@ public class Poloroid_image : MonoBehaviour
 
     private void Update()
     {
+        if (_camera.enabled)
+        {
+            Debug.Log("Lollee");
+        }
 
         if (gm.reloaded)
         {
@@ -67,6 +79,7 @@ public class Poloroid_image : MonoBehaviour
 
         if (lightsOn)
         {
+            _camera.enabled = true;
             Debug.Log("Shoot picture");
             flash.SetActive(true);
             timerForFlash += Time.deltaTime;
@@ -98,6 +111,8 @@ public class Poloroid_image : MonoBehaviour
 
                 gm.reloaded = false;
 
+                _camera.enabled = false;
+
                 ReloadCamera();
 
                 if (timerForPolaroid > 5)
@@ -110,6 +125,10 @@ public class Poloroid_image : MonoBehaviour
                 }
             }
 
+        }
+        else
+        {
+            _camera.enabled = false;
         }
 
         if (!gm.reloaded && gm.reloadReady)
@@ -244,6 +263,7 @@ public class Poloroid_image : MonoBehaviour
     {
         if (gm.reloaded)
         {
+            _camera.enabled = true;
             cameraRange.SetActive(true);
             FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/TakingPicture");
             gm.SnapPic(); 
