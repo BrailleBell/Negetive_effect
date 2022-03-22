@@ -30,19 +30,20 @@ public class ArmColor : MonoBehaviour
             {
                 closest = go;
                 distance = curDistance;
-                float lerptimer = Mathf.PingPong(Time.time, 1) / 100f;
 
                 if(Vector3.Distance(transform.position,closest.transform.position) < meetersToMonster)
                 {
-                    float lerp = Mathf.PingPong(Time.time, 1) / 100f;
-                    GetComponent<Renderer>().material.Lerp(GetComponent<Renderer>().material, redlight, lerp);
+                   // float lerp = Mathf.PingPong(Time.time, 1) / 100f;
+                   // GetComponent<Renderer>().material.Lerp(GetComponent<Renderer>().material, redlight, lerp);
+                    GetComponent<Renderer>().material = redlight;
 
                 }
                 else
                 {
-                    float lerp = Mathf.PingPong(Time.time, 1) / 100f;
-                    GetComponent<Renderer>().material.Lerp(GetComponent<Renderer>().material, greenLight, lerp);
-                    
+                    //float lerp = Mathf.PingPong(Time.time, 1) / 100f;
+                    //GetComponent<Renderer>().material.Lerp(GetComponent<Renderer>().material, greenLight, lerp);
+                    GetComponent<Renderer>().material = greenLight;
+
                 }
             }
             
