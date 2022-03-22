@@ -306,5 +306,18 @@ public class Poloroid_image : MonoBehaviour
         tex.Apply();
         return tex;
     }
-    
+
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Monster"))
+        {
+            reloadedlamp.GetComponent<Material>().color = Color.red;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        reloadedlamp.GetComponent<Material>().color = Color.white;
+    }
 }
