@@ -99,6 +99,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gm: {fileID: 3249190134339720256, guid: 122a393cf3b4d8e46be22561c9d1bb5e, type: 3}
   Camera: {fileID: 0}
+  ArmPacks: []
+  gripped: 0
 --- !u!54 &5730885791252106415
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -242,5 +244,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.8159673, y: 0.12210749, z: 1.2048721}
+  m_Size: {x: 0.48, y: 0.12210749, z: 0.67}
   m_Center: {x: 0, y: 0.061053745, z: 0.0005906522}

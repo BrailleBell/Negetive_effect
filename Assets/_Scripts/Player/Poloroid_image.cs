@@ -283,6 +283,7 @@ public class Poloroid_image : MonoBehaviour
         {
             Debug.Log("Is there sound?");
             SM.EmptyClick.start();
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/EmptyClick");
 
 
         }
