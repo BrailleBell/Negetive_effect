@@ -16,7 +16,7 @@ namespace SaveLoadSystem
         public const string SaveDirectory = "/SaveData/";
         public const string FileName = "SaveGame.txt";
 
-        public static bool Save()
+        public static bool SaveGame()
         {
             var dir = Application.persistentDataPath + SaveDirectory;
 
@@ -25,7 +25,24 @@ namespace SaveLoadSystem
                 Directory.CreateDirectory(dir);
             }
 
+            string json = JsonUtility.ToJson(CurrentSaveData, true);
+            File.WriteAllText(dir + FileName, json);
+
+            GUIUtility.systemCopyBuffer = dir;
+
             return true;
+        }
+
+        public static void LoadGame()
+        {
+            string fullPath = Application.persistentDataPath + SaveDirectory + FileName;
+            SaveData tempData = new SaveData();
+
+            if (File.Exists(fullPath))
+            {
+                string json = File.ReadAllText(fullPath);
+                tempData = JsonUtility.FromJson<SaveData>(json);
+            }
         }
    }
 }
