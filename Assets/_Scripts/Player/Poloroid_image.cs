@@ -251,7 +251,6 @@ public class Poloroid_image : MonoBehaviour
        // gameObject.SetActive(isActive);
         //
         
-        Debug.Log("A pressed");
         gm.reloadReady = true;
         Instantiate(oldFilm, transform.position, quaternion.identity);
         Debug.Log("Check0");
