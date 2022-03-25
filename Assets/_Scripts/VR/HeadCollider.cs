@@ -6,11 +6,13 @@ using UnityEngine.XR;
 public class HeadCollider : MonoBehaviour
 {
     public Camera camera; //this is supposed to be the camera for eyes
-    CapsuleCollider collider;
+    //CapsuleCollider collider;
+    CharacterController collider;
 
     private void Start()
     {
-        collider = GetComponent<CapsuleCollider>();
+        //collider = GetComponent<CapsuleCollider>();
+        collider = GetComponent<CharacterController>();
     }
 
     private void Update()

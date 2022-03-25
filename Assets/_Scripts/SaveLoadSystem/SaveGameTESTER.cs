@@ -12,6 +12,6 @@ public class SaveGameTESTER : MonoBehaviour
 
     public void LoadGame()
     {
-        //load game here
+        SaveGameManager.LoadGame();
     }
 }
