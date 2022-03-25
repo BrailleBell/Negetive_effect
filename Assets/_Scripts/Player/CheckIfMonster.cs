@@ -6,10 +6,13 @@ using UnityEngine;
 public class CheckIfMonster : MonoBehaviour
 {
     public Poloroid_image pol;
+
+    private Material mymat;
     // Start is called before the first frame update
     void Start()
     {
         pol = GetComponentInParent<Poloroid_image>();
+        mymat = pol.reloadedlamp.GetComponent<Renderer>().material;
 
     }
 
@@ -18,7 +21,7 @@ public class CheckIfMonster : MonoBehaviour
     {
         if (other.CompareTag("Monster"))
         {
-            pol.reloadedlamp.GetComponent<Material>().color = Color.red;
+            mymat.SetColor("_EmissionColor", Color.red);
         }
     }
 
@@ -26,7 +29,7 @@ public class CheckIfMonster : MonoBehaviour
     {
         if (other.CompareTag("Monster"))
         {
-            pol.reloadedlamp.GetComponent<Material>().color = Color.white;
+            mymat.SetColor("_EmissionColor", Color.white);
         }
         
     }
