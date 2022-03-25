@@ -216,13 +216,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1648940921072651221}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9efe98d31462ddf49bf872596e0e367d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Camera: {fileID: 1648940921072651221}
-  characterController: {fileID: 1648940921072651220}
+  camera: {fileID: 1648940921238995974}
 --- !u!1 &1648940921238995971
 GameObject:
   m_ObjectHideFlags: 0
