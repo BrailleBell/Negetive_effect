@@ -2,6 +2,7 @@ using SaveLoadSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerSaveData : MonoBehaviour
 {
@@ -22,18 +23,60 @@ public class PlayerSaveData : MonoBehaviour
             SaveGameManager.SaveGame();
         }*/
 
-        if (Input.GetKeyDown(KeyCode.R))
+        /*if (Input.GetKeyDown(KeyCode.R))
         {
             SaveGameManager.CurrentSaveData.OurPlayerData = OurData;
             SaveGameManager.SaveGame();
-        }
+        }*/
 
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKeyDown(KeyCode.T)) //gotta make it load when you die / when you start the game from a saveload
         {
             SaveGameManager.LoadGame();
             OurData = SaveGameManager.CurrentSaveData.OurPlayerData;
             currentTime = (int)OurData.CurrentTime; //causally converting the float into an int for this to work
         }
+
+        ///Trying some dummy way of saving after each hour
+        ///
+        if(GameManager.Hour == 01)
+        {
+            SaveGameManager.CurrentSaveData.OurPlayerData = OurData;
+            SaveGameManager.SaveGame();
+            Debug.Log("Saved at 1am");
+        }
+        if (GameManager.Hour == 02)
+        {
+            SaveGameManager.CurrentSaveData.OurPlayerData = OurData;
+            SaveGameManager.SaveGame();
+            Debug.Log("Saved at 2am");
+        }
+        if (GameManager.Hour == 03)
+        {
+            SaveGameManager.CurrentSaveData.OurPlayerData = OurData;
+            SaveGameManager.SaveGame();
+            Debug.Log("Saved at 3am");
+        }
+        if (GameManager.Hour == 04)
+        {
+            SaveGameManager.CurrentSaveData.OurPlayerData = OurData;
+            SaveGameManager.SaveGame();
+            Debug.Log("Saved at 4am");
+        }
+        if (GameManager.Hour == 05)
+        {
+            SaveGameManager.CurrentSaveData.OurPlayerData = OurData;
+            SaveGameManager.SaveGame();
+            Debug.Log("Saved at 5am");
+        }
+        if (GameManager.Hour == 06)
+        {
+            SaveGameManager.CurrentSaveData.OurPlayerData = OurData;
+            SaveGameManager.SaveGame();
+            SceneManager.LoadScene(4);
+            Debug.Log("Saved at 6am");
+
+        }
+
     }
 }
 
