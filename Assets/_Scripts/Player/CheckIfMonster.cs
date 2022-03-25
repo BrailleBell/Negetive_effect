@@ -16,11 +16,23 @@ public class CheckIfMonster : MonoBehaviour
 
     }
 
+    private void update ()
+    {
+        if (pol.isActiveAndEnabled)
+        {
+            pol = GetComponentInParent<Poloroid_image>();
+            mymat = pol.reloadedlamp.GetComponent<Renderer>().material;
+        }
+
+    }
+
 
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Monster"))
         {
+
+            Debug.Log("ser monster shø");
             mymat.SetColor("_EmissionColor", Color.red);
         }
     }
@@ -29,6 +41,7 @@ public class CheckIfMonster : MonoBehaviour
     {
         if (other.CompareTag("Monster"))
         {
+            Debug.Log("Ser ikke monster");
             mymat.SetColor("_EmissionColor", Color.white);
         }
         
