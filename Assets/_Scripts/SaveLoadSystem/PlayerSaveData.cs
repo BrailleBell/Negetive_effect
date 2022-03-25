@@ -1,3 +1,4 @@
+using SaveLoadSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,10 +21,11 @@ public class PlayerSaveData : MonoBehaviour
         OurData.CurrentTime = currentTime;
         //OurData.CurrentFilm = currentFilm;
 
-        if (Input.GetButtonDown(XRButton.Grip));
+        /*if (Input.GetButtonDown(XRButton.Grip));
         {
-
-        }
+            SaveGameManager.CurrentSaveData.OurPlayerData = OurData;
+            SaveGameManager.SaveGame();
+        }*/
     }
 }
 
