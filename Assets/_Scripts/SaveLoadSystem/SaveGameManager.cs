@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEngine.Events;
 /// <summary>
 /// Gonna make the outline here first and then implement it
 /// to the GameManager since its easier to see things in an own script
@@ -15,6 +16,9 @@ namespace SaveLoadSystem
         public static SaveData CurrentSaveData = new SaveData();
         public const string SaveDirectory = "/SaveData/";
         public const string FileName = "SaveGame.txt";
+
+        public static UnityAction OnLoadGameStart;
+        public static UnityAction OnLoadGameFinish;
 
         public static bool SaveGame()
         {
@@ -35,6 +39,8 @@ namespace SaveLoadSystem
 
         public static void LoadGame()
         {
+            OnLoadGameStart?.Invoke();
+
             string fullPath = Application.persistentDataPath + SaveDirectory + FileName;
             SaveData tempData = new SaveData();
 
@@ -43,6 +49,13 @@ namespace SaveLoadSystem
                 string json = File.ReadAllText(fullPath);
                 tempData = JsonUtility.FromJson<SaveData>(json);
             }
+            else
+            {
+                Debug.LogError("Save file does not exist!");
+            }
+
+            CurrentSaveData = tempData;
+            OnLoadGameFinish?.Invoke();
         }
    }
 }
