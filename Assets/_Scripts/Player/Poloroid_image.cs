@@ -21,7 +21,7 @@ public class Poloroid_image : MonoBehaviour
     private float timerForPolaroid, timerForFlash;
     public GameObject flash, UVLight,Reloadedfilm;
     private bool lightsOn;
-    public GameObject cameraRange;
+    public GameObject cameraRange, monsterCheck;
     public GameManager gm;
     private TextMesh filmText;
     public GameObject oldFilm;
@@ -308,16 +308,16 @@ public class Poloroid_image : MonoBehaviour
     }
 
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("Monster"))
-        {
-            reloadedlamp.GetComponent<Material>().color = Color.red;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        reloadedlamp.GetComponent<Material>().color = Color.white;
-    }
+   // private void OnTriggerStay(Collider other)
+   // {
+   //     if (monsterCheck.gameObject.other.CompareTag("Monster"))
+   //     {
+   //         reloadedlamp.GetComponent<Material>().color = Color.red;
+   //     }
+   // }
+   //
+   // private void OnTriggerExit(Collider other)
+   // {
+   //     reloadedlamp.GetComponent<Material>().color = Color.white;
+   // }
 }
