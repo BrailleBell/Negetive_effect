@@ -22,7 +22,6 @@ namespace SaveLoadSystem
 
         public static bool SaveGame()
         {
-            //var dir = Application.persistentDataPath + SaveDirectory + FileName;
             var dir = Application.dataPath + Path.AltDirectorySeparatorChar + SaveDirectory;
 
             if (!Directory.Exists(dir))

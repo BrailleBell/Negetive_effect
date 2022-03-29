@@ -40,13 +40,13 @@ public class PlayerSaveData : MonoBehaviour
 
         ///Trying some dummy way of saving after each hour
         ///
-        if(GameManager.Minute == 59)
+        if(GameManager.Minute == 01)
         {
             SaveGameManager.CurrentSaveData.OurPlayerData = OurData;
             SaveGameManager.SaveGame();
             Debug.Log("Saved at 1am");
         }
-        if (GameManager.Hour == -121)
+        if (GameManager.Hour == 02)
         {
             SaveGameManager.CurrentSaveData.OurPlayerData = OurData;
             SaveGameManager.SaveGame();
