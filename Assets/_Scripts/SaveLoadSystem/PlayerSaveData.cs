@@ -8,7 +8,7 @@ public class PlayerSaveData : MonoBehaviour
 {
     private OurPlayerData OurData = new OurPlayerData();
 
-    private int currentTime = GameManager.Hour; //Hopefully it works like this
+    private int currentTime = GameManager.Minute; //Hopefully it works like this
     private int currentFilm;
 
     // Update is called once per frame
@@ -23,28 +23,30 @@ public class PlayerSaveData : MonoBehaviour
             SaveGameManager.SaveGame();
         }*/
 
-        /*if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R)) //just to create the initial save file ig...
         {
             SaveGameManager.CurrentSaveData.OurPlayerData = OurData;
             SaveGameManager.SaveGame();
-        }*/
+            Debug.Log("SaveGame has saved");
+        }
 
         if (Input.GetKeyDown(KeyCode.T)) //gotta make it load when you die / when you start the game from a saveload
         {
             SaveGameManager.LoadGame();
             OurData = SaveGameManager.CurrentSaveData.OurPlayerData;
             currentTime = (int)OurData.CurrentTime; //causally converting the float into an int for this to work
+            Debug.Log("LoadGame has loaded the savefile");
         }
 
         ///Trying some dummy way of saving after each hour
         ///
-        if(GameManager.Hour == 01)
+        if(GameManager.Minute == 59)
         {
             SaveGameManager.CurrentSaveData.OurPlayerData = OurData;
             SaveGameManager.SaveGame();
             Debug.Log("Saved at 1am");
         }
-        if (GameManager.Hour == 02)
+        if (GameManager.Hour == -121)
         {
             SaveGameManager.CurrentSaveData.OurPlayerData = OurData;
             SaveGameManager.SaveGame();
@@ -76,7 +78,6 @@ public class PlayerSaveData : MonoBehaviour
             Debug.Log("Saved at 6am");
 
         }
-
     }
 }
 

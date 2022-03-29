@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
         #endregion
         
         //game starts at 00:00am
-        Minute = 0;
+        Minute = 00;
         Hour = 00;
         timer = minuteToRealTime;
 
@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
 
         if(SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(2))
         {
-            if (timer <= 0)
+            if (timer <= 00)
             {
                 Minute++;
                 OnMinuteChanged?.Invoke(); //the "?" is the "null" check instead of putting it into an "if statement"
