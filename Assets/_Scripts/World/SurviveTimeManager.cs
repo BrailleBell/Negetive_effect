@@ -34,8 +34,8 @@ public class SurviveTimeManager : MonoBehaviour
         {
             if(GameManager.Minute == 59)
             {
-                SceneManager.LoadScene(4);
-                Debug.Log("working?");
+                //SceneManager.LoadScene(4);
+                Debug.Log("is the timecheck working?");
             }
         }
     }

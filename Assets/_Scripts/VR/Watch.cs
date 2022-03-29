@@ -6,7 +6,7 @@ using TMPro;
 
 public class Watch : MonoBehaviour
 {
-    //public TextMeshProUGUI timeText;
+    public TextMeshProUGUI timeText;
     public Text text;
 
     private void OnEnable()
@@ -23,7 +23,8 @@ public class Watch : MonoBehaviour
 
     private void UpdateTime()
     {
-        //timeText.text = $"{GameManager.Hour:00}:{GameManager.Minute:00}";
+        timeText.text = $"{GameManager.Hour:00}:{GameManager.Minute:00}";
+        Debug.LogWarning("watch working?");
         text.text = $"{GameManager.Hour:00}:{GameManager.Minute:00}";
     }
 }
