@@ -22,9 +22,15 @@ namespace SaveLoadSystem
         /*public static UnityAction OnLoadGameStart;
         public static UnityAction OnLoadGameFinish;*/
 
-        public static bool SaveGame()
+        public static bool SaveGame() //This works
         {
             var dir = Application.dataPath + Path.AltDirectorySeparatorChar + SaveDirectory;
+            string fullPath = Application.persistentDataPath + SaveDirectory;
+            
+            if (!Directory.Exists(fullPath))
+            {
+                Directory.CreateDirectory(fullPath);
+            }
 
             if (!Directory.Exists(dir))
             {
@@ -34,17 +40,21 @@ namespace SaveLoadSystem
             string json = JsonUtility.ToJson(CurrentSaveData, true);
             File.WriteAllText(dir + FileName, json);
 
+            json = JsonUtility.ToJson(CurrentSaveData, true);
+            File.WriteAllText(fullPath + FileName, json);
+
             GUIUtility.systemCopyBuffer = dir;
 
             return true;
         }
 
-        public static void LoadGame()
+        public static void LoadGame() //Does work
         {
             //OnLoadGameStart?.Invoke();
 
             var dir = Application.dataPath + Path.AltDirectorySeparatorChar + SaveDirectory;
-            string fullPath = Application.persistentDataPath + SaveDirectory + FileName;
+
+            string fullPath = Application.persistentDataPath + SaveDirectory;
             SaveData tempData = new SaveData();
             //BinaryFormatter bf = new BinaryFormatter();
 
@@ -53,10 +63,14 @@ namespace SaveLoadSystem
                 Directory.CreateDirectory(dir);
             }
 
-            if (File.Exists(fullPath))
+            if (File.Exists(fullPath + FileName))
             {
-                string json = File.ReadAllText(fullPath);
+                string json = File.ReadAllText(fullPath + FileName);
                 tempData = JsonUtility.FromJson<SaveData>(json);
+
+
+                json = JsonUtility.ToJson(tempData, true);
+                File.WriteAllText(dir + FileName, json);
 
                 GUIUtility.systemCopyBuffer = dir;
 

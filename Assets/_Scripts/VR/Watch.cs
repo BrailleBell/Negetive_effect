@@ -9,22 +9,26 @@ public class Watch : MonoBehaviour
     public TextMeshProUGUI timeText;
     public Text text;
 
-    private void OnEnable()
+    private void Update()
     {
-        GameManager.OnMinuteChanged += UpdateTime;
-        GameManager.OnHourChanged += UpdateTime;
-    }
+        int min = (int)GameManager.getTimer / 60 % 60;
+        int hour = (int)GameManager.getTimer / 3600 % 24;
 
-    private void OnDisable()
-    {
-        GameManager.OnMinuteChanged -= UpdateTime;
-        GameManager.OnHourChanged -= UpdateTime;
-    }
+        string _Min;
+        if (min < 10)
+            _Min = "0" + min;
+        else
+            _Min = min.ToString();
 
-    private void UpdateTime()
-    {
-        timeText.text = $"{GameManager.Hour:00}:{GameManager.Minute:00}";
-        Debug.LogWarning("watch working?");
-        text.text = $"{GameManager.Hour:00}:{GameManager.Minute:00}";
+        string _Hour;
+        if(hour < 10)
+        {
+            _Hour = "0" + hour;
+        }
+        else
+        {
+            _Hour = hour.ToString();
+        }
+        text.text = _Hour + ":" + _Min;
     }
 }
