@@ -8,7 +8,7 @@ public class PlayerSaveData : MonoBehaviour
 {
     private OurPlayerData OurData = new OurPlayerData();
 
-    private int currentTime = GameManager.Minute; //Hopefully it works like this
+    private int currentTime = GameManager.Hour; //Hopefully it works like this
     private int currentFilm;
 
     // Update is called once per frame
@@ -34,11 +34,12 @@ public class PlayerSaveData : MonoBehaviour
         {
             SaveGameManager.LoadGame();
             OurData = SaveGameManager.CurrentSaveData.OurPlayerData;
-            currentTime = (int)OurData.CurrentTime; //causally converting the float into an int for this to work
+            //currentTime = OurData.CurrentTime; //causally converting the float into an int for this to work
             Debug.Log("LoadGame has loaded the savefile");
         }
 
         ///Trying some dummy way of saving after each hour
+        ///just missing to put in what the time is
         ///
         if(GameManager.Minute == 01)
         {
@@ -87,7 +88,7 @@ public class PlayerSaveData : MonoBehaviour
 [System.Serializable]
 public struct OurPlayerData
 {
-    public float CurrentTime;
-    public int CurrentLevel;
-    public int CurrentFilm;
+    public int CurrentTime;
+    //public int CurrentLevel;
+    //public int CurrentFilm;
 }

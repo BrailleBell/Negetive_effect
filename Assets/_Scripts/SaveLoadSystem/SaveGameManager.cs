@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using UnityEngine.Events;
+using System;
+using System.Runtime.Serialization.Formatters.Binary;
 /// <summary>
 /// Gonna make the outline here first and then implement it
 /// to the GameManager since its easier to see things in an own script
@@ -17,8 +19,8 @@ namespace SaveLoadSystem
         public const string SaveDirectory = "/SaveData/";
         public const string FileName = "SaveGame.txt";
 
-        public static UnityAction OnLoadGameStart;
-        public static UnityAction OnLoadGameFinish;
+        /*public static UnityAction OnLoadGameStart;
+        public static UnityAction OnLoadGameFinish;*/
 
         public static bool SaveGame()
         {
@@ -39,15 +41,26 @@ namespace SaveLoadSystem
 
         public static void LoadGame()
         {
-            OnLoadGameStart?.Invoke();
+            //OnLoadGameStart?.Invoke();
 
+            var dir = Application.dataPath + Path.AltDirectorySeparatorChar + SaveDirectory;
             string fullPath = Application.persistentDataPath + SaveDirectory + FileName;
             SaveData tempData = new SaveData();
+            //BinaryFormatter bf = new BinaryFormatter();
+
+            if (!Directory.Exists(dir))
+            {
+                Directory.CreateDirectory(dir);
+            }
 
             if (File.Exists(fullPath))
             {
                 string json = File.ReadAllText(fullPath);
                 tempData = JsonUtility.FromJson<SaveData>(json);
+
+                GUIUtility.systemCopyBuffer = dir;
+
+                Debug.Log("Save file does exist!");
             }
             else
             {
@@ -55,8 +68,8 @@ namespace SaveLoadSystem
             }
 
             CurrentSaveData = tempData;
-            OnLoadGameFinish?.Invoke();
+            //OnLoadGameFinish?.Invoke();
         }
-   }
+    }
 }
 
