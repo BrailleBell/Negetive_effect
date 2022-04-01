@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class SurviveTimeManager : MonoBehaviour
 {
+    public Animator amAni ;
     public static Text timeText;
   
     private void OnEnable()
@@ -38,5 +39,10 @@ public class SurviveTimeManager : MonoBehaviour
                 Debug.Log("is the timecheck working?");
             }
         }
+           /* if (GameManager.Hour == 06)
+            {
+                amAni.SetBool("Win", true);
+
+            }*/
     }
 }
