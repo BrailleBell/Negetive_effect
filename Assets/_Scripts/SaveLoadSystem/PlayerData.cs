@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,6 @@ public class PlayerData
 
     public override string ToString()
     {
-        return $"{time}. They have reached level {level}. And have {film}.";
+        return $"Time elapsed: {time}. They have reached level {level}. And have {film}.";
     }
 }

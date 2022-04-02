@@ -8,20 +8,19 @@ public class PlayerSaveData : MonoBehaviour
 {
     private OurPlayerData OurData = new OurPlayerData();
 
-    private int currentTime = GameManager.Minute; //Hopefully it works like this
+    private float currentTime = GameManager.getTimer; //Hopefully it works like this
     private int currentFilm;
+
+    private void Awake()
+    {
+        GameManager.OnHourChanged.AddListener(AutoSave);
+    }
 
     // Update is called once per frame
     void Update()
     {
         OurData.CurrentTime = currentTime;
         //OurData.CurrentFilm = currentFilm;
-
-        /*if (Input.GetButtonDown(XRButton.Grip));
-        {
-            SaveGameManager.CurrentSaveData.OurPlayerData = OurData;
-            SaveGameManager.SaveGame();
-        }*/
 
         if (Input.GetKeyDown(KeyCode.R)) //just to create the initial save file ig...
         {
@@ -34,50 +33,27 @@ public class PlayerSaveData : MonoBehaviour
         {
             SaveGameManager.LoadGame();
             OurData = SaveGameManager.CurrentSaveData.OurPlayerData;
-            currentTime = (int)OurData.CurrentTime; //causally converting the float into an int for this to work
+            currentTime = OurData.CurrentTime;
             Debug.Log("LoadGame has loaded the savefile");
         }
+    }
 
-        ///Trying some dummy way of saving after each hour
-        ///
-        if(GameManager.Minute == 01)
-        {
-            SaveGameManager.CurrentSaveData.OurPlayerData = OurData;
-            SaveGameManager.SaveGame();
-            Debug.Log("Saved at 1am");
-        }
-        if (GameManager.Hour == 02)
-        {
-            SaveGameManager.CurrentSaveData.OurPlayerData = OurData;
-            SaveGameManager.SaveGame();
-            Debug.Log("Saved at 2am");
-        }
-        if (GameManager.Hour == 03)
-        {
-            SaveGameManager.CurrentSaveData.OurPlayerData = OurData;
-            SaveGameManager.SaveGame();
-            Debug.Log("Saved at 3am");
-        }
-        if (GameManager.Hour == 04)
-        {
-            SaveGameManager.CurrentSaveData.OurPlayerData = OurData;
-            SaveGameManager.SaveGame();
-            Debug.Log("Saved at 4am");
-        }
-        if (GameManager.Hour == 05)
-        {
-            SaveGameManager.CurrentSaveData.OurPlayerData = OurData;
-            SaveGameManager.SaveGame();
-            Debug.Log("Saved at 5am");
-        }
-        if (GameManager.Hour == 06)
-        {
-            SaveGameManager.CurrentSaveData.OurPlayerData = OurData;
-            SaveGameManager.SaveGame();
-            SceneManager.LoadScene(4);
-            Debug.Log("Saved at 6am");
+    public void AutoSave()
+    {
+        SaveGameManager.CurrentSaveData.OurPlayerData = OurData;
+        SaveGameManager.SaveGame();
+        Debug.Log("SaveGame has saved");
+    }
 
-        }
+    public void LoadSaveFile()
+    {
+        SaveGameManager.LoadGame();
+    }
+
+    void OnApplicationQuit()
+    {
+        AutoSave();
+        Debug.Log("Application ending after " + Time.time + " seconds");
     }
 }
 
@@ -88,6 +64,6 @@ public class PlayerSaveData : MonoBehaviour
 public struct OurPlayerData
 {
     public float CurrentTime;
-    public int CurrentLevel;
-    public int CurrentFilm;
+    //public int CurrentLevel;
+    //public int CurrentFilm;
 }

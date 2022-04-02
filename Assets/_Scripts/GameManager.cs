@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -25,17 +26,18 @@ public class GameManager : MonoBehaviour
     /// like saving the game each hour and having the monsters behave differently 
     /// every half an hour (ingame time) etc...
     /// </summary>
-    public static Action OnMinuteChanged;
-    public static Action OnHourChanged;
+    public static UnityEvent OnMinuteChanged;
+    public static UnityEvent OnHourChanged;
 
     //timer and saving stuff
     public bool SaveGame = false;
     [Header("Time")]
-    public float timer; //local time
+    static float timer; //local time
     public float minuteToRealTime; //every half a sec realtime is 1minute ingame (needs to be changed obvs, but this is for testing)
 
-    public static int Minute { get; private set; }
-    public static int Hour { get; private set; }
+    public static float getTimer => timer;
+
+    int previousHour;
 
     // Start is called before the first frame update
     private void Awake()
@@ -55,10 +57,7 @@ public class GameManager : MonoBehaviour
         #endregion
         
         //game starts at 00:00am
-        Minute = 00;
-        Hour = 00;
         timer = minuteToRealTime;
-
 
        DontDestroyOnLoad(this); 
        // DontDestroyOnLoad(VRheadset);
@@ -73,27 +72,26 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        timer -= Time.deltaTime;
+        timer += Time.deltaTime;
+        int min = (int)timer / 60 % 60;
+        int hour = (int)timer / 3600 % 24;
 
-        if(SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(2))
+        Debug.Log(hour + ":" + min);
+
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(2))
         {
-            if (timer <= 00)
+
+            if (previousHour != hour)
             {
-                Minute++;
-                OnMinuteChanged?.Invoke(); //the "?" is the "null" check instead of putting it into an "if statement"
-
-                if (Minute >= 59)
-                {
-                    Hour++;
-                    OnHourChanged?.Invoke(); //the "?" is the "null" check instead of putting it into an "if statement"
-                    Minute = 0;
-                }
-
-                timer = minuteToRealTime;
+                OnHourChanged?.Invoke(); //the "?" is the "null" check instead of putting it into an "if statement"
+                previousHour = hour;
             }
 
+            timer = minuteToRealTime;
+            
+
             //At 25 minutes it spawnes a monster
-            if (Minute >= 25)
+            if (min >= 25)
             {
                 if (!isCreated)
                 {
@@ -108,6 +106,7 @@ public class GameManager : MonoBehaviour
         }
         
     }
+
 
     // films
     public void SnapPic()
