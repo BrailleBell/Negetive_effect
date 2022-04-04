@@ -72,19 +72,20 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        timer += Time.deltaTime;
-        int min = (int)timer / 60 % 60;
-        int hour = (int)timer / 3600 % 24;
+        timer += Time.deltaTime; //makes so that the times goes forward
+        int min = (int)timer / 60 % 60; //ingame minutes
+        int hour = (int)timer / 3600 % 24; //ingame hours
 
         Debug.Log(hour + ":" + min);
 
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(2))
         {
-
-            if (previousHour != hour)
+            //this indicates that something will happen every hour 
+            if (previousHour != hour) //measures that it has reached a new hour and then if it has then whatever inside this will happen
             {
-                OnHourChanged?.Invoke(); //the "?" is the "null" check instead of putting it into an "if statement"
-                previousHour = hour;
+                OnHourChanged?.Invoke(); /*the "?" is the "null" check instead of putting it into an "if statement"
+                                          * starts the event OnHourChanged*/
+                previousHour = hour; //makes sure it resets the function
             }
 
             timer = minuteToRealTime;

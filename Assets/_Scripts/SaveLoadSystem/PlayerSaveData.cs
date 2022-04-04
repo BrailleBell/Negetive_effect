@@ -13,6 +13,8 @@ public class PlayerSaveData : MonoBehaviour
 
     private void Awake()
     {
+        ///Ads the event from GM where we call this function to happen every hour
+        ///we then call the AutoSave function from here
         GameManager.OnHourChanged.AddListener(AutoSave);
     }
 
@@ -21,23 +23,28 @@ public class PlayerSaveData : MonoBehaviour
     {
         OurData.CurrentTime = currentTime;
         //OurData.CurrentFilm = currentFilm;
-
-        if (Input.GetKeyDown(KeyCode.R)) //just to create the initial save file ig...
+        #region SAVE TESTING
+        if (Input.GetKeyDown(KeyCode.R))
         {
             SaveGameManager.CurrentSaveData.OurPlayerData = OurData;
             SaveGameManager.SaveGame();
             Debug.Log("SaveGame has saved");
         }
 
-        if (Input.GetKeyDown(KeyCode.T)) //gotta make it load when you die / when you start the game from a saveload
+        if (Input.GetKeyDown(KeyCode.T))
         {
             SaveGameManager.LoadGame();
             OurData = SaveGameManager.CurrentSaveData.OurPlayerData;
             currentTime = OurData.CurrentTime;
             Debug.Log("LoadGame has loaded the savefile");
         }
+        #endregion
     }
 
+    /// <summary>
+    /// Saves the player data and overwrites the SaveGame file
+    /// this AutoSave is run every ingame hour or when game is quit
+    /// </summary>
     public void AutoSave()
     {
         SaveGameManager.CurrentSaveData.OurPlayerData = OurData;
@@ -45,12 +52,15 @@ public class PlayerSaveData : MonoBehaviour
         Debug.Log("SaveGame has saved");
     }
 
-    public void LoadSaveFile()
+    public void LoadSaveFile() //this is used on the load button in the main menu scene
     {
-        SaveGameManager.LoadGame();
+        SaveGameManager.LoadGame(); //calls the load game function from the SaveGameManager.cs
     }
 
-    void OnApplicationQuit()
+    /// <summary>
+    /// When the player exits the game it will autosave the game
+    /// </summary>
+    void OnApplicationQuit() //Needs to be tested
     {
         AutoSave();
         Debug.Log("Application ending after " + Time.time + " seconds");
@@ -58,7 +68,9 @@ public class PlayerSaveData : MonoBehaviour
 }
 
 /// <summary>
-/// This is where you put the stuff needed to be saved as the player
+/// This is where you put the stuff needed to be saved on the player
+/// (just make sure that if stuff needs to be linked from somewhere else
+/// to make sure it actually does work)
 /// </summary>
 [System.Serializable]
 public struct OurPlayerData

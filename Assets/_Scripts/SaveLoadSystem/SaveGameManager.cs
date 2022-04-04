@@ -22,7 +22,13 @@ namespace SaveLoadSystem
         /*public static UnityAction OnLoadGameStart;
         public static UnityAction OnLoadGameFinish;*/
 
-        public static bool SaveGame() //This works
+        /// <summary>
+        /// This makes a save locally and on to our assets in Unity with all data from PlayerSaveData.cs
+        /// Local save can be found in: C:\Users\[YOUR USER NAME]\AppData\LocalLow\DefaultCompany\NegativeEffectBackup
+        /// Unity save can be found in: Assets/SaveData
+        /// </summary>
+        /// <returns></returns>
+        public static bool SaveGame()
         {
             var dir = Application.dataPath + Path.AltDirectorySeparatorChar + SaveDirectory;
             string fullPath = Application.persistentDataPath + SaveDirectory;
@@ -48,7 +54,10 @@ namespace SaveLoadSystem
             return true;
         }
 
-        public static void LoadGame() //Does work
+        /// <summary>
+        /// Should find the file automatically and load the latest save file
+        /// </summary>
+        public static void LoadGame()
         {
             //OnLoadGameStart?.Invoke();
 
