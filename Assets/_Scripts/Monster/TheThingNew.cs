@@ -42,9 +42,7 @@ public class TheThingNew : MonoBehaviour
         
         if (dying) // after taking picture of the ghost it dies after killtimer 
         {
-            anim.SetBool("Death",true);
-            ghost.velocity = Vector3.zero;
-            ghost.isStopped = true;
+            anim.SetBool("Death", true);
             GetComponent<BoxCollider>().enabled = false;
             killTimer += Time.deltaTime; // kill time must be over 0.2 secounds! 
             if (killTimer > 3f)
@@ -61,6 +59,10 @@ public class TheThingNew : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position,visibilityRange);
+        if (ghost)
+        {
+            Gizmos.DrawRay(transform.position,ghost.destination);
+        }
     }
 
 

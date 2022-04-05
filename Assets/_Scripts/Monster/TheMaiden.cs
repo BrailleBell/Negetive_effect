@@ -100,11 +100,13 @@ public class TheMaiden : MonoBehaviour
         Gizmos.color = Color.red;
         //Gizmos.DrawLine(ghost.transform.position,ghost.destination);
         Gizmos.DrawWireSphere(transform.position,HearingRange);
-        if (ghost.destination != null)
-        {
-            Gizmos.DrawRay(transform.position, ghost.destination);
-            
-        }
 
+        if (ghost)
+        {
+              if (ghost.destination != null)
+              {
+                  Gizmos.DrawRay(transform.position, ghost.destination);
+              }
+        }
     }
 }
