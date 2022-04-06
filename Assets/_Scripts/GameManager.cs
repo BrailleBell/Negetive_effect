@@ -39,6 +39,8 @@ public class GameManager : MonoBehaviour
 
     int previousHour;
 
+    public static GameObject polaroidImage; //Takes the prefab (hopefully) so that it can be used in other scripts
+
     // Start is called before the first frame update
     private void Awake()
     {
