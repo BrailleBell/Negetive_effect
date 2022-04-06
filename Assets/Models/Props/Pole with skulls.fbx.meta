@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6f0bcb95cb79612468700dd565f04252
+guid: fd3591c15df042e45b8aa7957a7fc209
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -9,6 +9,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Skull
     second: {fileID: 2100000, guid: d4ebad0daba068748b0c33c8086bc95f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: c5778ba75fa48854f83546dfff0ed3da, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
