@@ -62,8 +62,10 @@ public class TheMaiden : MonoBehaviour
         if (ghostDying) // after taking picture of the ghost it dies after killtimer 
         {
             //  anim.SetBool("Death",true);
+            //anim.SetBool("Flying",false);
             ghost.velocity = Vector3.zero;
             ghost.isStopped = true;
+            GetComponent<BoxCollider>().enabled = false;
             killTimer += Time.deltaTime; // kill time must be over 0.2 secounds! 
             if (killTimer > 3f)
             {
@@ -83,6 +85,8 @@ public class TheMaiden : MonoBehaviour
                         }
                         
                         gameObject.transform.position = spawnPoints[spawnpointId].transform.position;
+                        GetComponent<BoxCollider>().enabled = true;
+                       // anim.SetBool("Flying",true);
                         spawnpointId = spawnpointId++;
                         if (spawnpointId >= spawnPoints.Length)
                         {
@@ -90,6 +94,13 @@ public class TheMaiden : MonoBehaviour
                         }
                         ghostDying = false;
                         killTimer = 0;
+
+                    }
+                    else
+                    {
+                        gameObject.transform.position = spawnPoints[spawnpointId].transform.position; 
+                        GetComponent<BoxCollider>().enabled = true;
+                       // anim.SetBool("Flying",true);
                         
                     }
                   
