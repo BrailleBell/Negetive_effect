@@ -76,8 +76,8 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime; //makes so that the times goes forward
-        int min = (int)timer / 60 % 60; //ingame minutes
-        int hour = (int)timer / 3600 % 24; //ingame hours
+        int min = (int)timer / 60 * 160 % 60; //ingame minutes
+        int hour = (int)timer / 3600 * 160 % 24; //ingame hours
 
         Debug.Log(hour + ":" + min);
 
