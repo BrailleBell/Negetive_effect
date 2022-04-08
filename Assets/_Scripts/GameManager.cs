@@ -89,44 +89,7 @@ public class GameManager : MonoBehaviour
                 OnHourChanged?.Invoke(); /*the "?" is the "null" check instead of putting it into an "if statement"
                                           * starts the event OnHourChanged*/
 
-                switch (hour) /*might have to fix this later, cuz its pretty scuffed
-                               * but what it does is it sets the hourly gameobjects to the hour it need
-                               * and then deactivates the one that got active and is no longer needed*/
-                {
-                    case 0:
-                        hourlyObjects[0].SetActive(true);
-                        break;
-
-                    case 1:
-                        hourlyObjects[1].SetActive(true);
-                        hourlyObjects[0].SetActive(false);
-                        break;
-
-                    case 2:
-                        hourlyObjects[2].SetActive(true);
-                        hourlyObjects[1].SetActive(false);
-                        break;
-
-                    case 3:
-                        hourlyObjects[3].SetActive(true);
-                        hourlyObjects[2].SetActive(false);
-                        break;
-
-                    case 4:
-                        hourlyObjects[4].SetActive(true);
-                        hourlyObjects[3].SetActive(false);
-                        break;
-
-                    case 5:
-                        hourlyObjects[5].SetActive(true);
-                        hourlyObjects[4].SetActive(false);
-                        break;
-
-                    case 6:
-                        hourlyObjects[6].SetActive(true);
-                        hourlyObjects[5].SetActive(false);
-                        break;
-                }
+                
 
                 previousHour = hour; //makes sure it resets the function
             }
@@ -145,7 +108,46 @@ public class GameManager : MonoBehaviour
                 }
 
             }
-//            Debug.Log("Scene is loaded MainScene");
+            //            Debug.Log("Scene is loaded MainScene");
+
+            switch (hour) /*might have to fix this later, cuz its pretty scuffed
+                               * but what it does is it sets the hourly gameobjects to the hour it need
+                               * and then deactivates the one that got active and is no longer needed*/
+            {
+                case 0:
+                    hourlyObjects[0].SetActive(true);
+                    break;
+
+                case 1:
+                    hourlyObjects[1].SetActive(true);
+                    hourlyObjects[0].SetActive(false);
+                    break;
+
+                case 2:
+                    hourlyObjects[2].SetActive(true);
+                    hourlyObjects[1].SetActive(false);
+                    break;
+
+                case 3:
+                    hourlyObjects[3].SetActive(true);
+                    hourlyObjects[2].SetActive(false);
+                    break;
+
+                case 4:
+                    hourlyObjects[4].SetActive(true);
+                    hourlyObjects[3].SetActive(false);
+                    break;
+
+                case 5:
+                    hourlyObjects[5].SetActive(true);
+                    hourlyObjects[4].SetActive(false);
+                    break;
+
+                case 6:
+                    hourlyObjects[6].SetActive(true);
+                    hourlyObjects[5].SetActive(false);
+                    break;
+            }
         }
         
     }
