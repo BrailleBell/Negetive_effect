@@ -89,7 +89,9 @@ public class GameManager : MonoBehaviour
                 OnHourChanged?.Invoke(); /*the "?" is the "null" check instead of putting it into an "if statement"
                                           * starts the event OnHourChanged*/
 
-                switch (hour)
+                switch (hour) /*might have to fix this later, cuz its pretty scuffed
+                               * but what it does is it sets the hourly gameobjects to the hour it need
+                               * and then deactivates the one that got active and is no longer needed*/
                 {
                     case 0:
                         hourlyObjects[0].SetActive(true);
