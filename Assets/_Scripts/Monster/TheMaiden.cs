@@ -65,7 +65,6 @@ public class TheMaiden : MonoBehaviour
             ghost.velocity = Vector3.zero;
             ghost.isStopped = true;
             killTimer += Time.deltaTime; // kill time must be over 0.2 secounds! 
-            RespawnsLeft--;
             if (killTimer > 3f)
             {
                 if (SpawnAfterKilled)
@@ -77,6 +76,10 @@ public class TheMaiden : MonoBehaviour
                         if (RespawnsLeft == 0)
                         {
                             gameObject.SetActive(false);
+                        }
+                        else
+                        {
+                            RespawnsLeft--;
                         }
                         
                         gameObject.transform.position = spawnPoints[spawnpointId].transform.position;
