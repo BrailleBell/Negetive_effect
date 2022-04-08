@@ -125,4 +125,12 @@ public class TheMaiden : MonoBehaviour
               }
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("CameraShoot"))
+        {
+            ghostDying = true;
+        }
+    }
 }
