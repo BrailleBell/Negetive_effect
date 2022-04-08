@@ -27,7 +27,7 @@ public class TheMaiden : MonoBehaviour
 
         Player = GameObject.FindWithTag("Player");
         ghost = GetComponent<NavMeshAgent>();
-        if (GetComponent<Animator>())
+        if (GetComponentInChildren<Animator>())
         {
             anim = GetComponent<Animator>();
         }
@@ -61,7 +61,7 @@ public class TheMaiden : MonoBehaviour
         
         if (ghostDying) // after taking picture of the ghost it dies after killtimer 
         {
-            anim.SetBool("Death",true);
+            //  anim.SetBool("Death",true);
             ghost.velocity = Vector3.zero;
             ghost.isStopped = true;
             killTimer += Time.deltaTime; // kill time must be over 0.2 secounds! 
