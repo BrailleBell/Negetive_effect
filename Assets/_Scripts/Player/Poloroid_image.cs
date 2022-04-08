@@ -273,7 +273,7 @@ public class Poloroid_image : MonoBehaviour
             reloadedlamp.SetActive(true);
             lightsOn = true;
             Debug.Log("Took a picture");
-            
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/TakingPicture");
             
             
 

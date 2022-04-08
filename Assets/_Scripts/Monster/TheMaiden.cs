@@ -18,6 +18,8 @@ public class TheMaiden : MonoBehaviour
     public bool RespawnsOn;
     public int RespawnsLeft;
     private float killTimer;
+    public GameObject[] spawnPoints;
+    private int spawnpointId;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +31,6 @@ public class TheMaiden : MonoBehaviour
         {
             anim = GetComponent<Animator>();
         }
-
 
     }
 
@@ -64,10 +65,30 @@ public class TheMaiden : MonoBehaviour
             ghost.velocity = Vector3.zero;
             ghost.isStopped = true;
             killTimer += Time.deltaTime; // kill time must be over 0.2 secounds! 
+            RespawnsLeft--;
             if (killTimer > 3f)
             {
                 if (SpawnAfterKilled)
                 {
+                    spawnpointId = UnityEngine.Random.Range(1, spawnPoints.Length);
+                    
+                    if (RespawnsOn)
+                    {
+                        if (RespawnsLeft == 0)
+                        {
+                            gameObject.SetActive(false);
+                        }
+                        
+                        gameObject.transform.position = spawnPoints[spawnpointId].transform.position;
+                        spawnpointId = spawnpointId++;
+                        if (spawnpointId >= spawnPoints.Length)
+                        {
+                            spawnpointId = 1;
+                        }
+                        ghostDying = false;
+                        killTimer = 0;
+                        
+                    }
                   
 
                 }
@@ -78,14 +99,6 @@ public class TheMaiden : MonoBehaviour
                     killTimer = 0;
                 }
                 
-                //{
-                //     gameObject.transform.position = monsterOrgPos; //KILL GHOST INSERT HERE 
-                //     
-                //     killTimer = 0;
-                //     ghostDying = false;
-                //
-                //
-                //}
             }
         }
         
