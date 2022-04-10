@@ -76,8 +76,8 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime; //makes so that the times goes forward
-        int min = (int)timer / 60 * 160 % 60; //ingame minutes
-        int hour = (int)timer / 3600 * 160 % 24; //ingame hours
+        int min = (int)timer * 10 / 60 % 60; //ingame minutes
+        int hour = (int)timer * 10 / 3600 % 24; //ingame hours
 
         Debug.Log(hour + ":" + min);
 
@@ -108,7 +108,11 @@ public class GameManager : MonoBehaviour
                 }
 
             }
-            //            Debug.Log("Scene is loaded MainScene");
+
+            if(hour == 6)
+            {
+                SceneManager.LoadScene(sceneBuildIndex: 4);
+            }
 
             switch (hour) /*might have to fix this later, cuz its pretty scuffed
                                * but what it does is it sets the hourly gameobjects to the hour it need
