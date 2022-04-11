@@ -37,6 +37,11 @@ public class TheMaiden : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (Input.GetKeyUp(KeyCode.F))
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/MaidenDeath");
+        }
         if (!DontFollow)
         {
             ghost.SetDestination(Player.transform.position);
