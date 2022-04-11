@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
 
     public static GameObject polaroidImage; //Takes the prefab (hopefully) so that it can be used in other scripts
     public GameObject[] hourlyObjects;
+    public GameObject hourChangeCanvas;
+
 
     // Start is called before the first frame update
     private void Awake()
@@ -76,8 +78,8 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime; //makes so that the times goes forward
-        int min = (int)timer * 10 / 60 % 60; //ingame minutes
-        int hour = (int)timer * 10 / 3600 % 24; //ingame hours
+        int min = (int)timer * 40 / 60 % 60; //ingame minutes
+        int hour = (int)timer * 40 / 3600 % 24; //ingame hours
 
         Debug.Log(hour + ":" + min);
 
@@ -133,6 +135,7 @@ public class GameManager : MonoBehaviour
                     {
                         hourlyObjects[1].SetActive(true);
                         hourlyObjects[0].SetActive(false);
+
                     }
                     break;
 
