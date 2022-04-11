@@ -63,6 +63,7 @@ public class TheMaiden : MonoBehaviour
         {
             //  anim.SetBool("Death",true);
             //anim.SetBool("Flying",false);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/MaidenDeath");
             ghost.velocity = Vector3.zero;
             ghost.isStopped = true;
             GetComponent<BoxCollider>().enabled = false;
