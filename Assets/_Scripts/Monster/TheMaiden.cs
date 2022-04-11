@@ -70,6 +70,7 @@ public class TheMaiden : MonoBehaviour
             killTimer += Time.deltaTime; // kill time must be over 0.2 secounds! 
             if (killTimer > 3f)
             {
+                gameObject.SetActive(false);
                 if (SpawnAfterKilled)
                 {
                     spawnpointId = UnityEngine.Random.Range(1, spawnPoints.Length);
@@ -85,7 +86,7 @@ public class TheMaiden : MonoBehaviour
                             RespawnsLeft--;
                         }
                         
-                        gameObject.transform.position = spawnPoints[spawnpointId].transform.position;
+                        ghost.Warp(spawnPoints[spawnpointId].transform.position);
                         GetComponent<BoxCollider>().enabled = true;
                        // anim.SetBool("Flying",true);
                         spawnpointId = spawnpointId++;
@@ -99,9 +100,9 @@ public class TheMaiden : MonoBehaviour
                     }
                     else
                     {
-                        gameObject.transform.position = spawnPoints[spawnpointId].transform.position; 
+                        ghost.Warp(spawnPoints[spawnpointId].transform.position);
                         GetComponent<BoxCollider>().enabled = true;
-                       // anim.SetBool("Flying",true);
+                        // anim.SetBool("Flying",true);
                         
                     }
                   
