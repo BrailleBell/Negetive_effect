@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     public bool SaveGame = false;
     [Header("Time")]
     static float timer; //local time
-    public float minuteToRealTime; //every half a sec realtime is 1minute ingame (needs to be changed obvs, but this is for testing)
+    private float minuteToRealTime; //every half a sec realtime is 1minute ingame (needs to be changed obvs, but this is for testing)
 
     public static float getTimer => timer;
 
