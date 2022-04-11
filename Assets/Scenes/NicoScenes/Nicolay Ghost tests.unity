@@ -2082,6 +2082,10 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6911821844288288695, guid: 762f2ff514a1fe4488a7f40bc51b3496, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 13.95
+      objectReference: {fileID: 0}
     - target: {fileID: 7489749465671613782, guid: 762f2ff514a1fe4488a7f40bc51b3496, type: 3}
       propertyPath: m_Name
       value: 3D_TheMaiden_Mnstr
@@ -2823,6 +2827,41 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90b919fa49aef7343933dfe203d37b0b, type: 3}
+--- !u!1 &1984125185 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6097990393379876109, guid: 762f2ff514a1fe4488a7f40bc51b3496, type: 3}
+  m_PrefabInstance: {fileID: 1373252974}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1984125186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984125185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -2021398047
+      Data2: 1173928498
+      Data3: -1599795276
+      Data4: 1258103299
+    Path: event:/Monsters/Maiden
+  Event: 
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 0.844
+  OverrideMaxDistance: 70.60939
 --- !u!1 &2033621567
 GameObject:
   m_ObjectHideFlags: 0
