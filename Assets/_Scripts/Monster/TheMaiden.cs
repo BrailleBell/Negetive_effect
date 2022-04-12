@@ -67,8 +67,8 @@ public class TheMaiden : MonoBehaviour
         
         if (ghostDying) // after taking picture of the ghost it dies after killtimer 
         {
-            //  anim.SetBool("Death",true);
-            //anim.SetBool("Flying",false);
+            anim.SetBool("Death",true);
+            anim.SetBool("Flying",false);
             FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/MaidenDeath",GetComponent<Transform>().position);
             ghost.velocity = Vector3.zero;
             ghost.isStopped = true;
@@ -94,7 +94,7 @@ public class TheMaiden : MonoBehaviour
                         
                         ghost.Warp(spawnPoints[spawnpointId].transform.position);
                         GetComponent<BoxCollider>().enabled = true;
-                       // anim.SetBool("Flying",true);
+                        anim.SetBool("Flying",true);
                         spawnpointId = spawnpointId++;
                         if (spawnpointId >= spawnPoints.Length)
                         {
@@ -108,7 +108,7 @@ public class TheMaiden : MonoBehaviour
                     {
                         ghost.Warp(spawnPoints[spawnpointId].transform.position);
                         GetComponent<BoxCollider>().enabled = true;
-                        // anim.SetBool("Flying",true);
+                        anim.SetBool("Flying",true);
                         
                     }
                   

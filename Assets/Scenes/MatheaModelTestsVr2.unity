@@ -2367,7 +2367,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &103374932
 Transform:
   m_ObjectHideFlags: 0
@@ -12285,7 +12285,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &561970223
 Transform:
   m_ObjectHideFlags: 0
@@ -15389,6 +15389,10 @@ PrefabInstance:
     - target: {fileID: 6097990393379876109, guid: 762f2ff514a1fe4488a7f40bc51b3496, type: 3}
       propertyPath: m_Name
       value: 3D_TheMaiden_Mnstr
+      objectReference: {fileID: 0}
+    - target: {fileID: 6097990393379876109, guid: 762f2ff514a1fe4488a7f40bc51b3496, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6911821844288288695, guid: 762f2ff514a1fe4488a7f40bc51b3496, type: 3}
       propertyPath: m_RootOrder
@@ -27105,7 +27109,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1229210648
 Transform:
   m_ObjectHideFlags: 0
@@ -29597,7 +29601,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1322642306
 Transform:
   m_ObjectHideFlags: 0
@@ -30035,7 +30039,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1342220002
 Transform:
   m_ObjectHideFlags: 0
@@ -35150,6 +35154,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6132007712385090244, guid: 7022d9fa11fb6e74cb2ae97d25e2e849, type: 3}
   m_PrefabInstance: {fileID: 1556968868}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1556968872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556968869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b741f195e80e3ca4081cfcab83181a89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dying: 0
+  anim: {fileID: 0}
+  killTimer: 0
 --- !u!4 &1559018750 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1809407483627031813, guid: 9ee28b9a529eef749b184858f3ba08e4, type: 3}
@@ -84243,7 +84262,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6682731443018016565, guid: e3ce45d46ec20744a83a21a6b27daaab, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6682731443018016567, guid: e3ce45d46ec20744a83a21a6b27daaab, type: 3}
       propertyPath: m_LocalRotation.w
