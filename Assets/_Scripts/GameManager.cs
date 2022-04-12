@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     [Header("Gameobjects")]
     public GameObject Player;
     public GameObject MonsterSpawn;
+    private GameObject timeSp;
 
     public bool isCreated;
 
@@ -47,11 +48,13 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
+        timeSp = GameObject.FindGameObjectWithTag("HourUI");
         Player = GameObject.FindGameObjectWithTag("Player");
         MonsterSpawn = GameObject.FindGameObjectWithTag("MonsterSpawn");
     }
     void Start()
     {
+   
         MonsterSpawn.SetActive(false);
         #region Camera
         // ReloadChecks for the camera
@@ -113,8 +116,8 @@ public class GameManager : MonoBehaviour
 
             //When the hour reaches 06:00am the player will be sent to the win scene
             if(hour == 6)
-            {
-                SceneManager.LoadScene(sceneBuildIndex: 4);
+            {  
+                SceneManager.LoadScene(sceneBuildIndex: 4);             // ? could you delay this till after the 6am display UI has finished playing, ca 3 sec
             }
 
 
@@ -127,6 +130,7 @@ public class GameManager : MonoBehaviour
                     if(hour == 0)
                     {
                         hourlyObjects[0].SetActive(true);
+                       
                     }
                     break;
 
@@ -135,7 +139,7 @@ public class GameManager : MonoBehaviour
                     {
                         hourlyObjects[1].SetActive(true);
                         hourlyObjects[0].SetActive(false);
-
+                        timeSp.GetComponent<TimeSwap>().hour(Player.transform); // this will trigger the clock display to appear infront of the player
                     }
                     break;
 
@@ -144,6 +148,7 @@ public class GameManager : MonoBehaviour
                     {
                         hourlyObjects[2].SetActive(true);
                         hourlyObjects[1].SetActive(false);
+                        timeSp.GetComponent<TimeSwap>().hour(Player.transform);
                     }
                     break;
 
@@ -152,6 +157,7 @@ public class GameManager : MonoBehaviour
                     {
                         hourlyObjects[3].SetActive(true);
                         hourlyObjects[2].SetActive(false);
+                        timeSp.GetComponent<TimeSwap>().hour(Player.transform);
                     }
                     break;
 
@@ -160,6 +166,7 @@ public class GameManager : MonoBehaviour
                     {
                         hourlyObjects[4].SetActive(true);
                         hourlyObjects[3].SetActive(false);
+                        timeSp.GetComponent<TimeSwap>().hour(Player.transform);
                     }
                     break;
 
@@ -168,6 +175,7 @@ public class GameManager : MonoBehaviour
                     {
                         hourlyObjects[5].SetActive(true);
                         hourlyObjects[4].SetActive(false);
+                        timeSp.GetComponent<TimeSwap>().hour(Player.transform);
                     }
                     break;
 
@@ -176,6 +184,7 @@ public class GameManager : MonoBehaviour
                     {
                         hourlyObjects[6].SetActive(true);
                         hourlyObjects[5].SetActive(false);
+                        timeSp.GetComponent<Animator>().SetBool("Win", true);
                     }
                     break;
             }
