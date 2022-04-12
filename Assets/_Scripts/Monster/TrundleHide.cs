@@ -40,6 +40,7 @@ public class TrundleHide : MonoBehaviour
             anim.SetBool("Down",true);
             trundle.enabled = false;
         }
+        
         if (trundle.isVisible)
         {
             seen = true;
@@ -56,6 +57,7 @@ public class TrundleHide : MonoBehaviour
                 timer += Time.deltaTime;
                 anim.SetBool("Up",false);
                 anim.SetBool("Down",true);
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Monsters/Trundle/Down",GetComponent<Transform>().position);
                 if (timer > 1)
                 {
                     gameObject.SetActive(false);

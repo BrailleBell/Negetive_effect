@@ -273,7 +273,7 @@ public class Poloroid_image : MonoBehaviour
             reloadedlamp.SetActive(true);
             lightsOn = true;
             Debug.Log("Took a picture");
-            FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/TakingPicture");
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/TakingPicture",GetComponent<Transform>().position);
             
             
 
@@ -282,7 +282,7 @@ public class Poloroid_image : MonoBehaviour
         {
             Debug.Log("Is there sound?");
             SM.EmptyClick.start();
-            FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/EmptyClick");
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/EmptyClick",GetComponent<Transform>().position);
 
 
         }

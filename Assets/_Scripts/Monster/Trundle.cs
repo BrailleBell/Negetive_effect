@@ -249,7 +249,7 @@ public class Trundle : MonoBehaviour
         
         goingdownTimer += Time.deltaTime;
         anim.SetBool("Down",true);
-        FMODUnity.RuntimeManager.PlayOneShot("event:/Monsters/Trundle/Down");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Monsters/Trundle/Down",GetComponent<Transform>().position);
         if (goingdownTimer > 2)
         {
             goingDown = true;   

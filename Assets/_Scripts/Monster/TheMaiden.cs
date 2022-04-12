@@ -40,8 +40,9 @@ public class TheMaiden : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.F))
         {
-            FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/MaidenDeath");
+           // FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/MaidenDeath",GetComponent<Transform>().position);
         }
+        
         if (!DontFollow)
         {
             ghost.SetDestination(Player.transform.position);
@@ -68,7 +69,7 @@ public class TheMaiden : MonoBehaviour
         {
             //  anim.SetBool("Death",true);
             //anim.SetBool("Flying",false);
-            FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/MaidenDeath");
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/MaidenDeath",GetComponent<Transform>().position);
             ghost.velocity = Vector3.zero;
             ghost.isStopped = true;
             GetComponent<BoxCollider>().enabled = false;
