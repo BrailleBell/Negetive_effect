@@ -9,9 +9,10 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class SurviveTimeManager : MonoBehaviour
 {
-    public Animator amAni ;
+    public Animator amAni;
+    static string timeString = "0";
     public static Text timeText;
-  
+
     private void OnEnable()
     {
         GameManager.OnHourChanged += TimeCheck;
@@ -24,23 +25,33 @@ public class SurviveTimeManager : MonoBehaviour
 
     private void Update()
     {
-        
+
         //Debug.Log("is it working?");
     }
+
+    static void Hour(string T)
+    {
+        timeText.text = T;
+        amAni.SetBool("Win", true);
+
+    }
+
 
     //Dont understand how this works tbh, gonna have to look more into it
     private void TimeCheck()
     {
-        if(GameManager.Hour == 01)
+        if (GameManager.Hour == 01)
         {
-            if(GameManager.Minute == 59)
+            if (GameManager.Minute == 59)
             {
                 //SceneManager.LoadScene(4);
                 Debug.Log("is the timecheck working?");
             }
         }
-           /* if (GameManager.Hour == 06)
-            {
-                amAni.SetBool("Win", true);
+        if (GameManager.Hour == 06)
+        {
+            amAni.SetBool("Win", true);
 
-            }*/
+        }
+    }
+}*/
