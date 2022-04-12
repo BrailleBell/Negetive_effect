@@ -16,8 +16,8 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
 --- !u!4 &1667008661
 Transform:
   m_ObjectHideFlags: 0
@@ -94,13 +94,15 @@ GameObject:
   - component: {fileID: 2774951175134659372}
   - component: {fileID: 519148144}
   - component: {fileID: 7257962018847278695}
+  - component: {fileID: 5403177647422074655}
+  - component: {fileID: 2197165226764716583}
   - component: {fileID: 403142980895802809}
   m_Layer: 0
   m_Name: Gravestone2 low poly
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &3947888551867955267
 Transform:
@@ -201,8 +203,34 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.508358, y: 4.3283877, z: 1.6645628}
-  m_Center: {x: -0.000061035156, y: 2.1486757, z: 0.00000005277928}
+  m_Size: {x: 2.508358, y: 1.3301513, z: 1.6645628}
+  m_Center: {x: -0.000061029936, y: 0.64955604, z: 0.000000056456294}
+--- !u!65 &5403177647422074655
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4432218318889018105}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.82046765, y: 3.0048532, z: 0.5069112}
+  m_Center: {x: -0.026792036, y: 2.8104653, z: -0.07665318}
+--- !u!65 &2197165226764716583
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4432218318889018105}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.223399, y: 0.82364917, z: 0.54963845}
+  m_Center: {x: -0.037920676, y: 3.2537384, z: -0.07376395}
 --- !u!205 &403142980895802809
 LODGroup:
   m_ObjectHideFlags: 0
@@ -211,18 +239,18 @@ LODGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4432218318889018105}
   serializedVersion: 2
-  m_LocalReferencePoint: {x: -0.00000023841858, y: 2.1486757, z: 0.00000011920929}
+  m_LocalReferencePoint: {x: 0, y: 2.1487367, z: 0.00000011920929}
   m_Size: 4.3283877
   m_FadeMode: 0
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.022767361
+  - screenRelativeHeight: 0.12880254
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2774951175134659372}
-  - screenRelativeHeight: 0.004017361
+  - screenRelativeHeight: 0.030507809
     fadeTransitionWidth: 0
     renderers:
-    - renderer: {fileID: 2774951175134659372}
+    - renderer: {fileID: 1667008659}
   m_Enabled: 1

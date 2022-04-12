@@ -1,5 +1,86 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &606393829
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 606393830}
+  - component: {fileID: 606393832}
+  - component: {fileID: 606393831}
+  m_Layer: 0
+  m_Name: Impostor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &606393830
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606393829}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1385805388125897592}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &606393832
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606393829}
+  m_Mesh: {fileID: -3060149939013373486, guid: 8e026c7e84178884cbe39307bff954e0, type: 2}
+--- !u!23 &606393831
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606393829}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 7596166975696074365, guid: 8e026c7e84178884cbe39307bff954e0, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1761063605985434050
 GameObject:
   m_ObjectHideFlags: 0
@@ -13,13 +94,14 @@ GameObject:
   - component: {fileID: 247823825588123671}
   - component: {fileID: 8363319935589248138}
   - component: {fileID: 8748281434018835905}
-  - component: {fileID: 1024498631770065507}
+  - component: {fileID: 4982661442568404074}
+  - component: {fileID: 4982661442568404075}
   m_Layer: 0
   m_Name: Rock11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1385805388125897592
 Transform:
@@ -32,6 +114,7 @@ Transform:
   m_LocalPosition: {x: 1788.8667, y: 34.45751, z: 250.81203}
   m_LocalScale: {x: 0.7544221, y: 0.75442207, z: 0.7544222}
   m_Children:
+  - {fileID: 606393830}
   - {fileID: 5035673574767575266}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -113,7 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_data: {fileID: 11400000, guid: 8e026c7e84178884cbe39307bff954e0, type: 2}
   m_rootTransform: {fileID: 1385805388125897592}
-  m_lodGroup: {fileID: 1024498631770065507}
+  m_lodGroup: {fileID: 0}
   m_renderers:
   - {fileID: 247823825588123671}
   m_lodReplacement: 2
@@ -122,7 +205,7 @@ MonoBehaviour:
   m_lastImpostor: {fileID: 7155074417245372296}
   m_folderPath: Assets/AmplifyImpostors/Models/
   m_cutMode: 0
---- !u!205 &1024498631770065507
+--- !u!205 &4982661442568404074
 LODGroup:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,15 +219,38 @@ LODGroup:
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.11573611
+  - screenRelativeHeight: 0.17988653
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 247823825588123671}
-  - screenRelativeHeight: 0.0029062498
+  - screenRelativeHeight: 0.057821173
     fadeTransitionWidth: 0
     renderers:
-    - renderer: {fileID: 1392018953997087621}
+    - renderer: {fileID: 606393831}
   m_Enabled: 1
+--- !u!114 &4982661442568404075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761063605985434050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fadcc2d9a34a1a34f93d4962ec37e6e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_data: {fileID: 11400000, guid: 8e026c7e84178884cbe39307bff954e0, type: 2}
+  m_rootTransform: {fileID: 1385805388125897592}
+  m_lodGroup: {fileID: 4982661442568404074}
+  m_renderers:
+  - {fileID: 247823825588123671}
+  m_lodReplacement: 2
+  m_renderPipelineInUse: 3
+  m_insertIndex: 0
+  m_lastImpostor: {fileID: 606393829}
+  m_folderPath: Assets/AmplifyImpostors/Models/
+  m_cutMode: 0
 --- !u!1 &7155074417245372296
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,7 +267,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5035673574767575266
 Transform:
@@ -175,7 +281,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1385805388125897592}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1788540360207097366
 MeshFilter:

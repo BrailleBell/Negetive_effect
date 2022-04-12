@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 6197657674005669404}
   - component: {fileID: 7038382140880054713}
   - component: {fileID: 5064768431254609267}
+  - component: {fileID: 8960573420719068840}
+  - component: {fileID: 3130412916441824888}
   m_Layer: 0
   m_Name: Little pine tree combined low poly
   m_TagString: Untagged
@@ -85,3 +87,47 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8960573420719068840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6721992420791467174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fadcc2d9a34a1a34f93d4962ec37e6e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_data: {fileID: 11400000, guid: 9c4732f2da728e741b518bd4f82df1a9, type: 2}
+  m_rootTransform: {fileID: 6197657674005669404}
+  m_lodGroup: {fileID: 3130412916441824888}
+  m_renderers:
+  - {fileID: 5064768431254609267}
+  m_lodReplacement: 2
+  m_renderPipelineInUse: 3
+  m_insertIndex: 1
+  m_lastImpostor: {fileID: 0}
+  m_folderPath: Assets/AmplifyImpostors/Models/
+  m_cutMode: 0
+--- !u!205 &3130412916441824888
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6721992420791467174}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.3970745
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.11886929
+    fadeTransitionWidth: 0
+    renderers: []
+  m_Enabled: 1
