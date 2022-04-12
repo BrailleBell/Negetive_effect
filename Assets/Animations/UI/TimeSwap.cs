@@ -9,16 +9,16 @@ public class TimeSwap : MonoBehaviour
     public string time;
     public  Text clock;
     public GameObject Canvas;
+    public string[] ams = { "01:00", "02:00", "03:00", "04:00", "05:00" };
+    private int onTheHour = 0;
 
-    private void Start()
+ 
+    public void hour(Transform T)
     {
-        Canvas = transform.GetChild(0).gameObject;
-    }
-    public void hour(string T, Vector3 V)
-    {
-        clock.text = T; 
+        clock.text = ams [onTheHour]; 
         ani.SetBool("Hour", true);
-        Canvas.transform.position = V;
+        Canvas.transform.position = T.forward * 2;
+        onTheHour++;
     }
 
     public void stop()
