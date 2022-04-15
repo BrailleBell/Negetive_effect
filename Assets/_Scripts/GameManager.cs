@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     int previousHour;
 
     public static GameObject polaroidImage; //Takes the prefab (hopefully) so that it can be used in other scripts
+    public static GameObject[] Notes; //Takes the prefab of the items (hopefully) and makes it possible to save
     public GameObject[] hourlyObjects;
     public GameObject hourChangeCanvas;
 
@@ -51,6 +52,7 @@ public class GameManager : MonoBehaviour
         timeSp = GameObject.FindGameObjectWithTag("HourUI");
         Player = GameObject.FindGameObjectWithTag("Player");
         MonsterSpawn = GameObject.FindGameObjectWithTag("MonsterSpawn");
+        Notes = GameObject.FindGameObjectsWithTag("Notes");
     }
     void Start()
     {
@@ -81,6 +83,9 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime; //makes so that the times goes forward
+        /* timer * 10 = around 5 seconds per ingame min
+         * timer * 20 = around 2 seconds per ingame min
+         * timer * 40 = around 1 second per ingame min*/
         int min = (int)timer * 40 / 60 % 60; //ingame minutes
         int hour = (int)timer * 40 / 3600 % 24; //ingame hours
 

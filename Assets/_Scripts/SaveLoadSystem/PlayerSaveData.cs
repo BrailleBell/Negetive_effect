@@ -10,6 +10,7 @@ public class PlayerSaveData : MonoBehaviour
 
     private float currentTime = GameManager.getTimer; //Hopefully it works like this
     private GameObject currentFilm = GameManager.polaroidImage;
+    private GameObject[] notesSaved = GameManager.Notes;
     
 
     private void Awake()
@@ -24,6 +25,8 @@ public class PlayerSaveData : MonoBehaviour
     {
         OurData.CurrentTime = currentTime;
         OurData.CurrentFilm = currentFilm;
+        OurData.NotesSaved = notesSaved;
+
         #region SAVE TESTING
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -78,4 +81,5 @@ public struct OurPlayerData
 {
     public float CurrentTime;
     public GameObject CurrentFilm;
+    public GameObject[] NotesSaved;
 }
