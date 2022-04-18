@@ -247,6 +247,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scarecrow low poly
       objectReference: {fileID: 0}
+    - target: {fileID: 6796657695934584958, guid: 7022d9fa11fb6e74cb2ae97d25e2e849, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7022d9fa11fb6e74cb2ae97d25e2e849, type: 3}
 --- !u!1001 &738493880
@@ -1097,13 +1101,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1869353241}
-  m_LocalRotation: {x: 0.8077971, y: 0.29957294, z: -0.45747015, w: 0.22009294}
+  m_LocalRotation: {x: 0.70121336, y: 0.11650038, z: -0.7006284, w: 0.06202594}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 39.026, y: -128.59, z: -201.333}
+  m_LocalEulerAnglesHint: {x: 14.491, y: -90.624, z: -184.53}
 --- !u!1001 &6368371509522098606
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1111,6 +1115,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5105098798836535056, guid: 762f2ff514a1fe4488a7f40bc51b3496, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6097990393379876109, guid: 762f2ff514a1fe4488a7f40bc51b3496, type: 3}
       propertyPath: m_Name
       value: 3D_TheMaiden_Mnstr
@@ -1133,15 +1141,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6911821844288288695, guid: 762f2ff514a1fe4488a7f40bc51b3496, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.64046293
       objectReference: {fileID: 0}
     - target: {fileID: 6911821844288288695, guid: 762f2ff514a1fe4488a7f40bc51b3496, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6911821844288288695, guid: 762f2ff514a1fe4488a7f40bc51b3496, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.7679891
       objectReference: {fileID: 0}
     - target: {fileID: 6911821844288288695, guid: 762f2ff514a1fe4488a7f40bc51b3496, type: 3}
       propertyPath: m_LocalRotation.z
@@ -1153,7 +1161,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6911821844288288695, guid: 762f2ff514a1fe4488a7f40bc51b3496, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 100.347
       objectReference: {fileID: 0}
     - target: {fileID: 6911821844288288695, guid: 762f2ff514a1fe4488a7f40bc51b3496, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
