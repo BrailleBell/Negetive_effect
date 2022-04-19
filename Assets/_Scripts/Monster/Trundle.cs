@@ -12,6 +12,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.Timeline;
 using FMOD;
+using FMODUnity;
 
 public class Trundle : MonoBehaviour
 {
@@ -402,9 +403,11 @@ public class Trundle : MonoBehaviour
                 anim.SetBool("Attack",true);
                 anim.SetBool("Down",false);
                 attacking = true;
+                RuntimeManager.PlayOneShot("event:/Monsters/Trundle/Up", GetComponent<Transform>().transform.position);
             }
             else if(attacking)
             {
+                RuntimeManager.PlayOneShot("event:/Monsters/Trundle/Attacking",GetComponent<Transform>().transform.position);
                 GetComponent<BoxCollider>().enabled = true;
                 uptime += Time.deltaTime;
                 anim.SetBool("Up",false);

@@ -59,8 +59,8 @@ public class Film: MonoBehaviour
 
         if (collision.gameObject.CompareTag("ArmPack"))
         {
-            gm.GetFilm();
-            Destroy(gameObject);
+           // gm.GetFilm();
+           // Destroy(gameObject);
         }
     }
 

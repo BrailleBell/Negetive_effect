@@ -18,6 +18,7 @@ public class TheMaiden : MonoBehaviour
     public bool RespawnsOn;
     public int RespawnsLeft;
     private float killTimer;
+    public float moveSpeed;
     public GameObject[] spawnPoints;
     private int spawnpointId;
 
@@ -37,7 +38,9 @@ public class TheMaiden : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        // Looks at the player
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Player.transform.position - transform.position), 3 * Time.deltaTime);
+        
         if (Input.GetKeyUp(KeyCode.F))
         {
            // FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/MaidenDeath",GetComponent<Transform>().position);
@@ -45,9 +48,9 @@ public class TheMaiden : MonoBehaviour
         
         if (!DontFollow)
         {
-            ghost.SetDestination(Player.transform.position);
-            
+            transform.position += transform.forward * moveSpeed * Time.deltaTime;
         }
+        
         else
         {
             ghost.SetDestination(ghost.transform.position);
@@ -58,11 +61,11 @@ public class TheMaiden : MonoBehaviour
 
         if (DistanceToPlayer < HearingRange)
         {
-            ghost.speed = DistanceToPlayer / 3;
+            moveSpeed = DistanceToPlayer / 3;
         }
         else
         {
-            ghost.speed = 5;
+            moveSpeed = 10;
         }
         
         if (ghostDying) // after taking picture of the ghost it dies after killtimer 
