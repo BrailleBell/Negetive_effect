@@ -21,7 +21,7 @@ public class TimeSwap : MonoBehaviour
     {
         clock.text = ams [onTheHour]; 
         ani.SetBool("Hour", true);
-        Canvas.transform.position = T.position +T.forward * 2;
+        Canvas.transform.position = T.position /*+T.forward * 2*/;
         onTheHour++;
     }
 

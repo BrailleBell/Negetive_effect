@@ -56,7 +56,8 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-     
+        timeSp.GetComponent<TimeSwap>().hour(Player.transform);
+
         MonsterSpawn.SetActive(false);
         #region Camera
         // ReloadChecks for the camera
@@ -83,7 +84,6 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime; //makes so that the times goes forward
-        Debug.Log(timer);
         /* timer * 10 = around 5 seconds per ingame min
          * timer * 20 = around 2 seconds per ingame min
          * timer * 40 = around 1 second per ingame min*/
