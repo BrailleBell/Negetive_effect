@@ -83,6 +83,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime; //makes so that the times goes forward
+        Debug.Log(timer);
         /* timer * 10 = around 5 seconds per ingame min
          * timer * 20 = around 2 seconds per ingame min
          * timer * 40 = around 1 second per ingame min*/
@@ -104,7 +105,7 @@ public class GameManager : MonoBehaviour
                 previousHour = hour; //makes sure it resets the function
             }
 
-            timer = minuteToRealTime;
+            //timer = minuteToRealTime;
 
             //At 25 minutes it spawnes a monster
             if (min >= 25)
@@ -135,7 +136,7 @@ public class GameManager : MonoBehaviour
                     if(hour == 0)
                     {
                         hourlyObjects[0].SetActive(true);
-                        timeSp.GetComponent<TimeSwap>().hour(Player.transform);
+                        //timeSp.GetComponent<TimeSwap>().hour(Player.transform);
                         Debug.Log("hello, the hour has been changed");
                     }
                     break;
@@ -144,7 +145,7 @@ public class GameManager : MonoBehaviour
                     if(hour == 1)
                     {
                         hourlyObjects[1].SetActive(true);
-                        hourlyObjects[0].SetActive(false);
+                        //hourlyObjects[0].SetActive(false);
                         timeSp.GetComponent<TimeSwap>().hour(Player.transform); // this will trigger the clock display to appear infront of the player
                     }
                     break;
@@ -153,7 +154,7 @@ public class GameManager : MonoBehaviour
                     if(hour == 2)
                     {
                         hourlyObjects[2].SetActive(true);
-                        hourlyObjects[1].SetActive(false);
+                        //hourlyObjects[1].SetActive(false);
                         timeSp.GetComponent<TimeSwap>().hour(Player.transform);
                     }
                     break;
@@ -162,7 +163,7 @@ public class GameManager : MonoBehaviour
                     if(hour == 3)
                     {
                         hourlyObjects[3].SetActive(true);
-                        hourlyObjects[2].SetActive(false);
+                       // hourlyObjects[2].SetActive(false);
                         timeSp.GetComponent<TimeSwap>().hour(Player.transform);
                     }
                     break;
@@ -180,7 +181,7 @@ public class GameManager : MonoBehaviour
                     if(hour == 5)
                     {
                         hourlyObjects[5].SetActive(true);
-                        hourlyObjects[4].SetActive(false);
+                        //hourlyObjects[4].SetActive(false);
                         timeSp.GetComponent<TimeSwap>().hour(Player.transform);
                     }
                     break;
@@ -189,7 +190,7 @@ public class GameManager : MonoBehaviour
                     if(hour == 6)
                     {
                         hourlyObjects[6].SetActive(true);
-                        hourlyObjects[5].SetActive(false);
+                        //hourlyObjects[5].SetActive(false);
                         timeSp.GetComponent<Animator>().SetBool("Win", true);
                     }
                     break;
