@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-   
+     
         MonsterSpawn.SetActive(false);
         #region Camera
         // ReloadChecks for the camera
@@ -136,6 +136,7 @@ public class GameManager : MonoBehaviour
                     {
                         hourlyObjects[0].SetActive(true);
                         timeSp.GetComponent<TimeSwap>().hour(Player.transform);
+                        Debug.Log("hello, the hour has been changed");
                     }
                     break;
 
