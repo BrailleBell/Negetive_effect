@@ -135,7 +135,7 @@ public class GameManager : MonoBehaviour
                     if(hour == 0)
                     {
                         hourlyObjects[0].SetActive(true);
-                       
+                        timeSp.GetComponent<TimeSwap>().hour(Player.transform);
                     }
                     break;
 
