@@ -19,10 +19,19 @@ public class TimeSwap : MonoBehaviour
     //lastly it will increase the integer value of onTheHour, making it easier to change the time.
     public void hour(Transform T)
     {
-        clock.text = ams [onTheHour]; 
-        ani.SetBool("Hour", true);
-        Canvas.transform.position = T.position /*+T.forward * 2*/;
-        onTheHour++;
+        if (onTheHour > ams.Length)
+        {
+            Debug.Log("outside the bounds of the AMS array");
+        }
+        else
+        {
+            clock.text = ams[onTheHour];
+            ani.SetBool("Hour", true);
+            Canvas.transform.position = T.GetChild(0).GetChild(0).position + (T.forward * 2);
+            Canvas.transform.rotation = T.GetChild(0).GetChild(0).rotation;
+            Canvas.transform.Rotate(0, 0, 180);
+            onTheHour++;
+        }
     }
 
     //sets the Hour parameter to false afther the animation has played
