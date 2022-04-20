@@ -10,7 +10,7 @@ public class TheMaiden : MonoBehaviour
     private RaycastHit hit;
     public float _float;
     private GameObject Player;
-    private NavMeshAgent ghost;
+    private GameObject ghost;
     public float DistanceToPlayer;
     public float HearingRange;
     private Animator anim;
@@ -30,7 +30,7 @@ public class TheMaiden : MonoBehaviour
     {
         MaidenDeathScream = FMODUnity.RuntimeManager.CreateInstance("event:/Effects/MaidenDeath");
         Player = GameObject.FindWithTag("Player");
-        ghost = GetComponent<NavMeshAgent>();
+        ghost = gameObject;
         if (GetComponentInChildren<Animator>())
         {
             anim = GetComponentInChildren<Animator>();
@@ -66,7 +66,7 @@ public class TheMaiden : MonoBehaviour
         
         else
         {
-            ghost.SetDestination(ghost.transform.position);
+            transform.position = transform.position;
         }
         
         
@@ -88,8 +88,6 @@ public class TheMaiden : MonoBehaviour
             
             // FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/MaidenDeath",GetComponent<Transform>().position);
             MaidenDeathScream.start();
-            ghost.velocity = Vector3.zero;
-            ghost.isStopped = true;
             GetComponent<BoxCollider>().enabled = false;
             killTimer += Time.deltaTime; // kill time must be over 0.2 secounds! 
             if (killTimer > 3f)
@@ -168,14 +166,7 @@ public class TheMaiden : MonoBehaviour
         Gizmos.color = Color.red;
         //Gizmos.DrawLine(ghost.transform.position,ghost.destination);
         Gizmos.DrawWireSphere(transform.position,HearingRange);
-
-        if (ghost)
-        {
-              if (ghost.destination != null)
-              {
-                  Gizmos.DrawRay(transform.position, ghost.destination);
-              }
-        }
+        
     }
 
     private void OnTriggerEnter(Collider other)
