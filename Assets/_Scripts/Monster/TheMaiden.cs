@@ -23,11 +23,12 @@ public class TheMaiden : MonoBehaviour
     public float moveSpeed;
     public GameObject[] spawnPoints;
     private int spawnpointId;
+    private FMOD.Studio.EventInstance MaidenDeathScream;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        MaidenDeathScream = FMODUnity.RuntimeManager.CreateInstance("event:/Effects/MaidenDeath");
         Player = GameObject.FindWithTag("Player");
         ghost = GetComponent<NavMeshAgent>();
         if (GetComponentInChildren<Animator>())
@@ -84,7 +85,9 @@ public class TheMaiden : MonoBehaviour
         {
             anim.SetBool("Death",true);
             anim.SetBool("Flying",false);
-            FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/MaidenDeath",GetComponent<Transform>().position);
+            
+            // FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/MaidenDeath",GetComponent<Transform>().position);
+            MaidenDeathScream.start();
             ghost.velocity = Vector3.zero;
             ghost.isStopped = true;
             GetComponent<BoxCollider>().enabled = false;
@@ -120,6 +123,11 @@ public class TheMaiden : MonoBehaviour
                         ghostDying = false;
                         killTimer = 0;
 
+                        if (transform.position == spawnPoints[spawnpointId].transform.position)
+                        {
+                            transform.position += transform.forward * moveSpeed * Time.deltaTime;
+                        }
+
                     }
                     else
                     {
@@ -128,6 +136,10 @@ public class TheMaiden : MonoBehaviour
                         anim.SetBool("Flying",true);
                         anim.SetBool("Death",false);
                         gameObject.SetActive(true);
+                        if (transform.position == spawnPoints[spawnpointId].transform.position)
+                        {
+                            transform.position += transform.forward * moveSpeed * Time.deltaTime;
+                        }
                         
                     }
                   
