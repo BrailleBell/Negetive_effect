@@ -7,6 +7,8 @@ using UnityEngine.AI;
 
 public class TheMaiden : MonoBehaviour
 {
+    private RaycastHit hit;
+    public float _float;
     private GameObject Player;
     private NavMeshAgent ghost;
     public float DistanceToPlayer;
@@ -38,6 +40,16 @@ public class TheMaiden : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.DrawRay(transform.position,Vector3.down,Color.green);
+        if(Physics.Raycast(gameObject.transform.position,Vector3.down,_float,7))
+        {
+            transform.position = new Vector3(transform.position.x, _float, transform.position.z);
+        }
+        else{
+            
+        }
+     
+        
         // Looks at the player
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Player.transform.position - transform.position), 3 * Time.deltaTime);
         
@@ -61,7 +73,7 @@ public class TheMaiden : MonoBehaviour
 
         if (DistanceToPlayer < HearingRange)
         {
-            moveSpeed = DistanceToPlayer / 3;
+            moveSpeed = DistanceToPlayer / 4;
         }
         else
         {
@@ -94,8 +106,8 @@ public class TheMaiden : MonoBehaviour
                         {
                             RespawnsLeft--;
                         }
-                        
-                        ghost.Warp(spawnPoints[spawnpointId].transform.position);
+
+                        transform.position = spawnPoints[spawnpointId].transform.position;
                         GetComponent<BoxCollider>().enabled = true;
                         anim.SetBool("Flying",true);
                         spawnpointId = spawnpointId++;
@@ -109,7 +121,7 @@ public class TheMaiden : MonoBehaviour
                     }
                     else
                     {
-                        ghost.Warp(spawnPoints[spawnpointId].transform.position);
+                        transform.position = spawnPoints[spawnpointId].transform.position;
                         GetComponent<BoxCollider>().enabled = true;
                         anim.SetBool("Flying",true);
                         
@@ -152,6 +164,7 @@ public class TheMaiden : MonoBehaviour
     {
         if (other.CompareTag("CameraShoot"))
         {
+            Debug.Log("Maiden is captured!!! OMG it works maybe");
             ghostDying = true;
         }
     }
