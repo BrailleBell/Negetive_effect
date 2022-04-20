@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 4440268031316834829}
   - component: {fileID: 3430934863946784690}
   - component: {fileID: 1322350430456575287}
+  - component: {fileID: 4690524483920397774}
   m_Layer: 0
   m_Name: polySurface30
   m_TagString: Untagged
@@ -204,6 +205,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4690524483920397774
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8154166384412165487}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -485743578430441126, guid: 7ff77f00bd0bb1443b3cace42a99ca3e, type: 3}
 --- !u!1 &8842005871393380358
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,7 +228,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8214229074896372412}
-  - component: {fileID: 7592451492985915622}
   m_Layer: 0
   m_Name: Bridge end with fill
   m_TagString: Untagged
@@ -238,17 +252,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &7592451492985915622
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8842005871393380358}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}

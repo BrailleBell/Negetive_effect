@@ -27,5 +27,10 @@ public class PlayerManager : MonoBehaviour
         {
             SceneManager.LoadScene(SceneToGoTo);
         }
+        
+        if (other.CompareTag("DeathBarrier"))
+        {
+            SceneManager.LoadScene(SceneToGoTo);
+        }
     }
 }
