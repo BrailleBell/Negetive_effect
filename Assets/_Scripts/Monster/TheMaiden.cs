@@ -107,6 +107,7 @@ public class TheMaiden : MonoBehaviour
                             RespawnsLeft--;
                         }
 
+                        anim.SetBool("Death",false);
                         transform.position = spawnPoints[spawnpointId].transform.position;
                         GetComponent<BoxCollider>().enabled = true;
                         anim.SetBool("Flying",true);
@@ -124,6 +125,7 @@ public class TheMaiden : MonoBehaviour
                         transform.position = spawnPoints[spawnpointId].transform.position;
                         GetComponent<BoxCollider>().enabled = true;
                         anim.SetBool("Flying",true);
+                        anim.SetBool("Death",false);
                         
                     }
                   
