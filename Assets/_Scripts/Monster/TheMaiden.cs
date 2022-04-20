@@ -32,7 +32,7 @@ public class TheMaiden : MonoBehaviour
         ghost = GetComponent<NavMeshAgent>();
         if (GetComponentInChildren<Animator>())
         {
-            anim = GetComponent<Animator>();
+            anim = GetComponentInChildren<Animator>();
         }
 
     }
