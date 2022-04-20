@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
+using UnitySampleAssetsModified;
 
 public class TheThingNew : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class TheThingNew : MonoBehaviour
     public float DistanceToPlayer;
     private bool dying;
     private float killTimer;
+    public bool dontFollow;
     
     
     
@@ -31,14 +33,19 @@ public class TheThingNew : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        DistanceToPlayer = Vector3.Distance(transform.position, Player.transform.position);
-        if (DistanceToPlayer < visibilityRange)
+        if (!dontFollow)
         {
-            anim.SetBool("Attack",true);
-            ghost.SetDestination(Player.transform.position);
-            ghost.speed = 15;
+            DistanceToPlayer = Vector3.Distance(transform.position, Player.transform.position);
+            if (DistanceToPlayer < visibilityRange)
+            {
+                anim.SetBool("Attack",true);
+                ghost.SetDestination(Player.transform.position);
+                ghost.speed = 15;
 
+            }
+            
         }
+
         
         if (dying) // after taking picture of the ghost it dies after killtimer 
         {

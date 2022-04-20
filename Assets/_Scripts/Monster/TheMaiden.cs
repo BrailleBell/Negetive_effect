@@ -49,6 +49,11 @@ public class TheMaiden : MonoBehaviour
         else{
             
         }
+
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            ghostDying = true;
+        }
      
         
         // Looks at the player
