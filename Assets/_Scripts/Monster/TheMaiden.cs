@@ -110,6 +110,7 @@ public class TheMaiden : MonoBehaviour
                         anim.SetBool("Death",false);
                         transform.position = spawnPoints[spawnpointId].transform.position;
                         GetComponent<BoxCollider>().enabled = true;
+                        gameObject.SetActive(true);
                         anim.SetBool("Flying",true);
                         spawnpointId = spawnpointId++;
                         if (spawnpointId >= spawnPoints.Length)
@@ -126,6 +127,7 @@ public class TheMaiden : MonoBehaviour
                         GetComponent<BoxCollider>().enabled = true;
                         anim.SetBool("Flying",true);
                         anim.SetBool("Death",false);
+                        gameObject.SetActive(true);
                         
                     }
                   
