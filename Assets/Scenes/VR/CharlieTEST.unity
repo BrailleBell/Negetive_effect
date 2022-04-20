@@ -890,8 +890,6 @@ GameObject:
   m_Component:
   - component: {fileID: 346017076}
   - component: {fileID: 346017075}
-  - component: {fileID: 346017077}
-  - component: {fileID: 346017078}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -921,8 +919,8 @@ MonoBehaviour:
   reloaded: 0
   reloadReady: 0
   SaveGame: 0
-  minuteToRealTime: 0
   hourlyObjects: []
+  hourChangeCanvas: {fileID: 0}
 --- !u!4 &346017076
 Transform:
   m_ObjectHideFlags: 0
@@ -937,30 +935,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &346017077
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 346017074}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d740112824352c46a4fcbe8fe5f4926, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &346017078
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 346017074}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 054770f1f0730a549bc56a2fc08fc515, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &366843458
 GameObject:
   m_ObjectHideFlags: 0
