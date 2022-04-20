@@ -17,7 +17,12 @@ public class PlayerSaveData : MonoBehaviour
     {
         ///Ads the event from GM where we call this function to happen every hour
         ///we then call the AutoSave function from here
-        GameManager.OnHourChanged.AddListener(AutoSave);
+        GameManager.OnHourChanged.AddListener(AutoSave); //this gets nullreferenced
+
+        currentFilm = GameObject.FindGameObjectWithTag("Film");
+        Debug.Log("Film tag has been located");
+        notesSaved = GameObject.FindGameObjectsWithTag("Save");
+        Debug.Log("The tag save has been loacted");
     }
 
     // Update is called once per frame
