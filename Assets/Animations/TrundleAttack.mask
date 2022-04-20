@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TrundleAttack
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Main_Anim
+    m_Weight: 1
+  - m_Path: Main_Anim/Stomach_Anim
+    m_Weight: 1
+  - m_Path: Main_Anim/Stomach_Anim/L_Shoulder_Anim
+    m_Weight: 1
+  - m_Path: Main_Anim/Stomach_Anim/L_Shoulder_Anim/L_Arm1_Anim
+    m_Weight: 1
+  - m_Path: Main_Anim/Stomach_Anim/L_Shoulder_Anim/L_Arm1_Anim/L_Arm2_Anim
+    m_Weight: 1
+  - m_Path: Main_Anim/Stomach_Anim/L_Shoulder_Anim/L_Arm1_Anim/L_Arm2_Anim/L_Arm3_Anim
+    m_Weight: 1
+  - m_Path: Main_Anim/Stomach_Anim/R_Shoulder_Anim
+    m_Weight: 1
+  - m_Path: Main_Anim/Stomach_Anim/R_Shoulder_Anim/R_Arm1_Anim
+    m_Weight: 1
+  - m_Path: Main_Anim/Stomach_Anim/R_Shoulder_Anim/R_Arm1_Anim/R_Arm2_Anim
+    m_Weight: 1
+  - m_Path: Main_Anim/Stomach_Anim/R_Shoulder_Anim/R_Arm1_Anim/R_Arm2_Anim/R_Arm3_Anim
+    m_Weight: 1
+  - m_Path: Root_Joint
+    m_Weight: 1
+  - m_Path: Root_Joint/L_Hip_Joint1
+    m_Weight: 1
+  - m_Path: Root_Joint/L_Hip_Joint1/L_Knee_Joint
+    m_Weight: 1
+  - m_Path: Root_Joint/L_Hip_Joint1/L_Knee_Joint/L_Foot_Joint
+    m_Weight: 1
+  - m_Path: Root_Joint/R_Hip_Joint
+    m_Weight: 1
+  - m_Path: Root_Joint/R_Hip_Joint/R_Knee_Joint
+    m_Weight: 1
+  - m_Path: Root_Joint/R_Hip_Joint/R_Knee_Joint/R_Foot_Joint
+    m_Weight: 1
+  - m_Path: Root_Joint/Spine_Joint
+    m_Weight: 1
+  - m_Path: Root_Joint/Spine_Joint/Chest_Joint
+    m_Weight: 1
+  - m_Path: Root_Joint/Spine_Joint/Chest_Joint/L_Shoulder_Joint
+    m_Weight: 1
+  - m_Path: Root_Joint/Spine_Joint/Chest_Joint/L_Shoulder_Joint/L_Arm1_Joint
+    m_Weight: 1
+  - m_Path: Root_Joint/Spine_Joint/Chest_Joint/L_Shoulder_Joint/L_Arm1_Joint/L_Arm2_Joint
+    m_Weight: 1
+  - m_Path: Root_Joint/Spine_Joint/Chest_Joint/L_Shoulder_Joint/L_Arm1_Joint/L_Arm2_Joint/L_Arm3_Joint
+    m_Weight: 1
+  - m_Path: Root_Joint/Spine_Joint/Chest_Joint/R_Shoulder_Joint
+    m_Weight: 1
+  - m_Path: Root_Joint/Spine_Joint/Chest_Joint/R_Shoulder_Joint/R_Arm1_Joint
+    m_Weight: 1
+  - m_Path: Root_Joint/Spine_Joint/Chest_Joint/R_Shoulder_Joint/R_Arm1_Joint/R_Arm2_Joint
+    m_Weight: 1
+  - m_Path: Root_Joint/Spine_Joint/Chest_Joint/R_Shoulder_Joint/R_Arm1_Joint/R_Arm2_Joint/R_Arm3_Joint
+    m_Weight: 1
+  - m_Path: Trundle_LP
+    m_Weight: 1
