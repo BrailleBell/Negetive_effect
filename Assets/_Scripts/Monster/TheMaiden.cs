@@ -97,6 +97,7 @@ public class TheMaiden : MonoBehaviour
                 gameObject.SetActive(false);
                 if (SpawnAfterKilled)
                 {
+                    Debug.Log("Maidens SpawnPointId = " + spawnpointId);
                     spawnpointId = UnityEngine.Random.Range(1, spawnPoints.Length);
                     
                     if (RespawnsOn)
@@ -115,7 +116,6 @@ public class TheMaiden : MonoBehaviour
                         GetComponent<BoxCollider>().enabled = true;
                         gameObject.SetActive(true);
                         anim.SetBool("Flying",true);
-                        spawnpointId = spawnpointId++;
                         if (spawnpointId >= spawnPoints.Length)
                         {
                             spawnpointId = 1;
@@ -126,6 +126,7 @@ public class TheMaiden : MonoBehaviour
                         if (transform.position == spawnPoints[spawnpointId].transform.position)
                         {
                             transform.position += transform.forward * moveSpeed * Time.deltaTime;
+                            spawnpointId = spawnpointId++;
                         }
 
                     }
@@ -139,6 +140,7 @@ public class TheMaiden : MonoBehaviour
                         if (transform.position == spawnPoints[spawnpointId].transform.position)
                         {
                             transform.position += transform.forward * moveSpeed * Time.deltaTime;
+                            spawnpointId = spawnpointId++;
                         }
                         
                     }
