@@ -459,13 +459,13 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: -1414875132
-      Data2: 1116134147
-      Data3: -661555042
-      Data4: -1417175549
-    Path: event:/Monsters/TheThing
+      Data1: 52912709
+      Data2: 1213427736
+      Data3: -1039125095
+      Data4: 1516998716
+    Path: event:/Monsters/TheThingBreathing
   Event: 
-  PlayEvent: 11
+  PlayEvent: 1
   StopEvent: 12
   AllowFadeout: 1
   TriggerOnce: 0
@@ -473,7 +473,7 @@ MonoBehaviour:
   Params: []
   OverrideAttenuation: 1
   OverrideMinDistance: 1
-  OverrideMaxDistance: 83.13449
+  OverrideMaxDistance: 34.093384
 --- !u!114 &1258171471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -486,8 +486,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d16a6fd00fc00ae408a75e032842d228, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visibilityRange: 100
+  visibilityRange: 25
   DistanceToPlayer: 0
+  dontFollow: 0
 --- !u!195 &1511104043
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -510,28 +511,33 @@ NavMeshAgent:
   m_BaseOffset: -0.15
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1511104044
+--- !u!114 &59295303
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132148338918474}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92383210999fafc4c884732f7644fb2a, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seen: 0
-  attacking: 0
-  ghostDying: 0
-  notTestKill: 0
-  timer: 0
-  killTimer: 0
-  attackTimer: 0
-  orgMat: {fileID: 2100000, guid: 3cb39e584302e00468307d1a8603d944, type: 2}
-  cabin: {fileID: 0}
-  hidingSound: []
-  killSound: {fileID: 0}
-  attackDist: 15
-  GoToSceneWhenKilled: 1
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1414875132
+      Data2: 1116134147
+      Data3: -661555042
+      Data4: -1417175549
+    Path: event:/Monsters/TheThing
+  Event: 
+  PlayEvent: 1
+  StopEvent: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 23.098724

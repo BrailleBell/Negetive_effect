@@ -90,7 +90,6 @@ public class TheMaiden : MonoBehaviour
         {
             anim.SetBool("Death",true);
             anim.SetBool("Flying",false);
-            
             // FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/MaidenDeath",GetComponent<Transform>().position);
             MaidenDeathScream.start();
             GetComponent<BoxCollider>().enabled = false;

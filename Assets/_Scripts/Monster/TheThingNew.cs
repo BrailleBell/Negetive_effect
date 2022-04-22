@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using FMOD.Studio;
+using FMODUnity;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
@@ -16,6 +18,7 @@ public class TheThingNew : MonoBehaviour
     private bool dying;
     private float killTimer;
     public bool dontFollow;
+    private StudioEventEmitter runningSound;
     
     
     
@@ -26,8 +29,8 @@ public class TheThingNew : MonoBehaviour
         anim = GetComponent<Animator>();
         ghost = GetComponent<NavMeshAgent>();
         ghost.speed = 0;
-
-
+        
+        
     }
 
     // Update is called once per frame
@@ -41,7 +44,6 @@ public class TheThingNew : MonoBehaviour
                 anim.SetBool("Attack",true);
                 ghost.SetDestination(Player.transform.position);
                 ghost.speed = 15;
-
             }
             
         }
