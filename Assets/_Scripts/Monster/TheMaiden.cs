@@ -28,7 +28,6 @@ public class TheMaiden : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        MaidenDeathScream = FMODUnity.RuntimeManager.CreateInstance("event:/Effects/MaidenDeath");
         Player = GameObject.FindWithTag("Player");
         ghost = gameObject;
         if (GetComponentInChildren<Animator>())
@@ -53,6 +52,7 @@ public class TheMaiden : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space))
         {
             ghostDying = true;
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/MaidenDeath",GetComponent<Transform>().position);
         }
      
         
@@ -100,7 +100,7 @@ public class TheMaiden : MonoBehaviour
                 gameObject.SetActive(false);
                 if (SpawnAfterKilled)
                 {
-                    Debug.Log("Maidens SpawnPointId = " + spawnpointId);
+                    //Debug.Log("Maidens SpawnPointId = " + spawnpointId);
                     spawnpointId = UnityEngine.Random.Range(1, spawnPoints.Length);
                     
                     if (RespawnsOn)
@@ -147,8 +147,12 @@ public class TheMaiden : MonoBehaviour
                         }
                         
                     }
-                  
 
+                    SpawnAfterKilled = false;
+                    if (!SpawnAfterKilled)
+                    {
+                        SpawnAfterKilled = true;
+                    }
                 }
                 else
                 {
@@ -178,8 +182,9 @@ public class TheMaiden : MonoBehaviour
     {
         if (other.CompareTag("CameraShoot"))
         {
-            Debug.Log("Maiden is captured!!! OMG it works maybe");
+            //Debug.Log("Maiden is captured!!! OMG it works maybe");
             ghostDying = true;
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/MaidenDeath",GetComponent<Transform>().transform.position);
         }
     }
 }
