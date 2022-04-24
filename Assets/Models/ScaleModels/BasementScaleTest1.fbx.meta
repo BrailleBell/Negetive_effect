@@ -3,7 +3,32 @@ guid: a98b19c3ddeb11141b527908f1587951
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CeilingSupport_M
+    second: {fileID: 2100000, guid: 71950eb11e8b96444904a6a591d47c43, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ceiling_M
+    second: {fileID: 2100000, guid: 6e999b1fdbf506b4c94325755b82362f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lit
+    second: {fileID: 2100000, guid: 9d4d99ed5b4f0014aabcb693524c73d6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneWall1
+    second: {fileID: 2100000, guid: b53e9135765c0d043a6ad8b6fd0f6cdb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 77e120569c3ae7b489d844455a71666c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
