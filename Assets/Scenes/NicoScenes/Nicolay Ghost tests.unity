@@ -123,41 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: b4d9fe4cc12c4784a878f1a1928816d5, type: 2}
---- !u!1 &59295301 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132148338918474, guid: 90b919fa49aef7343933dfe203d37b0b, type: 3}
-  m_PrefabInstance: {fileID: 1957879371}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &59295303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 59295301}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -1414875132
-      Data2: 1116134147
-      Data3: -661555042
-      Data4: -1417175549
-    Path: event:/Monsters/TheThing
-  Event: 
-  PlayEvent: 1
-  StopEvent: 12
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  Params: []
-  OverrideAttenuation: 1
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 23.098724
 --- !u!1 &60875489
 GameObject:
   m_ObjectHideFlags: 0
@@ -2979,50 +2944,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 599447717, guid: 90b919fa49aef7343933dfe203d37b0b, type: 3}
-      propertyPath: PlayEvent
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 599447717, guid: 90b919fa49aef7343933dfe203d37b0b, type: 3}
-      propertyPath: EventReference.Path
-      value: event:/Monsters/TheThingBreathing
-      objectReference: {fileID: 0}
-    - target: {fileID: 599447717, guid: 90b919fa49aef7343933dfe203d37b0b, type: 3}
-      propertyPath: OverrideAttenuation
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 599447717, guid: 90b919fa49aef7343933dfe203d37b0b, type: 3}
-      propertyPath: OverrideMaxDistance
-      value: 34.093384
-      objectReference: {fileID: 0}
-    - target: {fileID: 599447717, guid: 90b919fa49aef7343933dfe203d37b0b, type: 3}
-      propertyPath: OverrideMinDistance
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 599447717, guid: 90b919fa49aef7343933dfe203d37b0b, type: 3}
-      propertyPath: EventReference.Guid.Data1
-      value: 52912709
-      objectReference: {fileID: 0}
-    - target: {fileID: 599447717, guid: 90b919fa49aef7343933dfe203d37b0b, type: 3}
-      propertyPath: EventReference.Guid.Data2
-      value: 1213427736
-      objectReference: {fileID: 0}
-    - target: {fileID: 599447717, guid: 90b919fa49aef7343933dfe203d37b0b, type: 3}
-      propertyPath: EventReference.Guid.Data3
-      value: -1039125095
-      objectReference: {fileID: 0}
-    - target: {fileID: 599447717, guid: 90b919fa49aef7343933dfe203d37b0b, type: 3}
-      propertyPath: EventReference.Guid.Data4
-      value: 1516998716
-      objectReference: {fileID: 0}
-    - target: {fileID: 1258171471, guid: 90b919fa49aef7343933dfe203d37b0b, type: 3}
-      propertyPath: dontFollow
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1258171471, guid: 90b919fa49aef7343933dfe203d37b0b, type: 3}
-      propertyPath: visibilityRange
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 828666200836035222, guid: 90b919fa49aef7343933dfe203d37b0b, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -3070,10 +2991,6 @@ PrefabInstance:
     - target: {fileID: 828666200836035223, guid: 90b919fa49aef7343933dfe203d37b0b, type: 3}
       propertyPath: m_Name
       value: Pivot_TheThing_Mnstr
-      objectReference: {fileID: 0}
-    - target: {fileID: 828666200836035223, guid: 90b919fa49aef7343933dfe203d37b0b, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90b919fa49aef7343933dfe203d37b0b, type: 3}
