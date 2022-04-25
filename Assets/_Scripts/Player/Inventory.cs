@@ -9,13 +9,36 @@ public class Inventory : MonoBehaviour
     public GameObject film;
     public GameObject[] notes;
 
+    //Inventory popout VR 
+    public GameObject inventory;
+    public GameObject anchor;
+    bool UIactive;
+
     // Start is called before the first frame update
     void Start()
     {
         gm = GameObject.Find("__GM").GetComponent<GameManager>();
+
+        inventory.SetActive(false);
+        UIactive = false;
     }
 
-    public void InstantiateFilm()
+    private void Update()
+    {
+        if (Input.GetKeyDown("secondaryButton")) //this will not work but its just to test something
+        {
+            UIactive = !UIactive;
+            inventory.SetActive(UIactive);
+        }
+
+        if (UIactive)
+        {
+            inventory.transform.position = anchor.transform.position;
+            inventory.transform.eulerAngles = new Vector3(anchor.transform.eulerAngles.x + 15, anchor.transform.eulerAngles.y, 0);
+        }
+    }
+
+    /*public void InstantiateFilm()
     {
         Debug.Log("grabbed a film, do you have more than 0?");
 
@@ -31,5 +54,5 @@ public class Inventory : MonoBehaviour
     public void InstantiateNotes()
     {
         Debug.Log("Notes has been instatiated");
-    }
+    }*/
 }
