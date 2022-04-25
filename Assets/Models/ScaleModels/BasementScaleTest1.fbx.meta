@@ -7,6 +7,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Boiler_M
+    second: {fileID: 2100000, guid: 88fb7f7b9f110bb4aba4df97306bc1bd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: CeilingSupport_M
     second: {fileID: 2100000, guid: 71950eb11e8b96444904a6a591d47c43, type: 2}
   - first:
@@ -17,18 +22,33 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Lit
-    second: {fileID: 2100000, guid: 9d4d99ed5b4f0014aabcb693524c73d6, type: 2}
+      name: PotatoSack_M
+    second: {fileID: 2100000, guid: 22d08939da1fc744fb5411b31ee5fe34, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Potato_M
+    second: {fileID: 2100000, guid: 84fd22af3cbab424e8c31c1d7840aa4a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stairs_M
+    second: {fileID: 2100000, guid: 7d08f629a352aad45ac0b294a7f85dc2, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: StoneWall1
-    second: {fileID: 2100000, guid: b53e9135765c0d043a6ad8b6fd0f6cdb, type: 2}
+    second: {fileID: 2100000, guid: 8051607d959cc3f43ba4b7c2f1cd9c67, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WoodenChest_M
+    second: {fileID: 2100000, guid: bf0396f9d0a87794d9462f7490cf1e44, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: lambert1
-    second: {fileID: 2100000, guid: 77e120569c3ae7b489d844455a71666c, type: 2}
+    second: {fileID: 2100000, guid: b6ec42cedb081624ea83203e8718c2ca, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
