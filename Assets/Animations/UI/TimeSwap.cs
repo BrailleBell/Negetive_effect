@@ -27,9 +27,9 @@ public class TimeSwap : MonoBehaviour
         {
             clock.text = ams[onTheHour];
             ani.SetBool("Hour", true);
-            Canvas.transform.position = T.GetChild(0).GetChild(0).position + (T.forward * 2);
+            Canvas.transform.position = T.GetChild(0).GetChild(0).position;
             Canvas.transform.rotation = T.GetChild(0).GetChild(0).rotation;
-            Canvas.transform.Rotate(0, 180, 0);
+            Canvas.transform.Rotate(0, 0, 0);
             onTheHour++;
         }
     }
