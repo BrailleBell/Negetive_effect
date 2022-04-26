@@ -34,6 +34,8 @@ public class Trundle : MonoBehaviour
     public float circlingSpeed;
     private float pos,goingdownTimer;
     public float _speed;
+    private float attackTimerForSound;
+    private bool attackSound;
 
     // States and enums
     public enum State
@@ -250,9 +252,12 @@ public class Trundle : MonoBehaviour
         
         goingdownTimer += Time.deltaTime;
         anim.SetBool("Down",true);
-        FMODUnity.RuntimeManager.PlayOneShot("event:/Monsters/Trundle/Down",GetComponent<Transform>().position);
         if (goingdownTimer > 2)
         {
+            if (!goingDown)
+            {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/Monsters/Trundle/Down",GetComponent<Transform>().position);
+            }
             goingDown = true;   
         }
 
@@ -400,14 +405,27 @@ public class Trundle : MonoBehaviour
             {
                 ghost.speed = 2;
                 anim.SetBool("Up",true);
+                RuntimeManager.PlayOneShot("event:/Effects/Monsters/Trundle/Up", GetComponent<Transform>().transform.position);
                 anim.SetBool("Attack",true);
+                RuntimeManager.PlayOneShot("event:/Effects/Monsters/Attacking",GetComponent<Transform>().transform.position);
                 anim.SetBool("Down",false);
                 attacking = true;
-                RuntimeManager.PlayOneShot("event:/Monsters/Trundle/Up", GetComponent<Transform>().transform.position);
+                
+                
             }
             else if(attacking)
             {
-                RuntimeManager.PlayOneShot("event:/Monsters/Trundle/Attacking",GetComponent<Transform>().transform.position);
+                attackTimerForSound += Time.deltaTime;
+                if (attackTimerForSound > 2)
+                {
+                    attackSound = true;
+                    if (attackSound)
+                    {
+                        attackTimerForSound = 0;
+                        RuntimeManager.PlayOneShot("event:/Effects/Monsters/Attacking",GetComponent<Transform>().transform.position);
+                        attackSound = false;
+                    }
+                }
                 GetComponent<BoxCollider>().enabled = true;
                 uptime += Time.deltaTime;
                 anim.SetBool("Up",false);
