@@ -67,6 +67,9 @@ public class PlayerSaveData : MonoBehaviour
     public void LoadSaveFile() //this is used on the load button in the main menu scene
     {
         SaveGameManager.LoadGame(); //calls the load game function from the SaveGameManager.cs
+
+        //scuffed way of checking there is a savefile from time
+        
     }
 
     /// <summary>
