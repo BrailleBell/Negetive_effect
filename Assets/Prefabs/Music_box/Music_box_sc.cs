@@ -4,39 +4,22 @@ using UnityEngine;
 
 public class Music_box_sc : MonoBehaviour
 {
-    private GameObject keyMe;
-    private GameObject disk;
-    private GameObject top;
-    private float rotFlo;
+    private Animator ani;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        keyMe = transform.GetChild(1).gameObject;
-        disk = transform.GetChild(3).gameObject;
-        top = transform.GetChild(4).gameObject;
+        ani = GetComponent<Animator>();
     }
-
-    // Update is called once per frame
+    private void OnTriggerEnter(Collider other)
+    {
+        ani.SetBool("Touched", true);
     
-    void Update()
-    {
-        Mathf.Clamp(top.transform.rotation.x,0, 30);
-
-
-
-      if (transform.GetChild(4).rotation.x > 0)
-        {
-            transform.GetChild(1).Rotate(-1*Time.deltaTime, 0, 0);
-            Mathf.Clamp(transform.GetChild(1).rotation.z, 0, 200);
-        }
-    }
-    private void OnTriggerStay(Collider other)
-    {
-       
     }
 
-
+    public void end()
+    {
+        ani.SetBool("Touched", false);
+    }
 
 }
 //I want a song to play when the key is turned around and let go. when this happens the disk will also spin around. the keys rotation will also be clamped
