@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 8058287271925433374}
   - component: {fileID: 8058287271925433371}
   - component: {fileID: 8058287271925433372}
+  - component: {fileID: 8058287271925433376}
   m_Layer: 0
   m_Name: Music_box
   m_TagString: Untagged
@@ -191,14 +192,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollisionTag: Key
+  CollisionTag: Respawn
   EventReference:
     Guid:
-      Data1: 2031336432
-      Data2: 1196352175
-      Data3: -1518714178
-      Data4: 1637640521
-    Path: event:/Music/Chase
+      Data1: 1017013596
+      Data2: 1098536671
+      Data3: -1507952224
+      Data4: 1979131441
+    Path: event:/Music/MusicBox
   Event: 
   PlayEvent: 3
   StopEvent: 0
@@ -209,6 +210,18 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+--- !u!114 &8058287271925433376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4734954812879627878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b91e3ef17c61f454183b3c5bd08166f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5067486568324428866
 GameObject:
   m_ObjectHideFlags: 0

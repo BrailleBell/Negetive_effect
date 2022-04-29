@@ -12,6 +12,7 @@ public class Music_box_sc : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        ani.Play("Play");
         ani.SetBool("Touched", true);
     
     }
