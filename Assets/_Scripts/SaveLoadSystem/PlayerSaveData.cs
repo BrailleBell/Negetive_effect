@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerSaveData : MonoBehaviour
 {
@@ -11,7 +12,8 @@ public class PlayerSaveData : MonoBehaviour
     private float currentTime = GameManager.getTimer; //Hopefully it works like this
     private GameObject currentFilm = GameManager.polaroidImage;
     private GameObject[] notesSaved = GameManager.Notes;
-    
+
+    //for load button UI
 
     private void Awake()
     {
@@ -66,9 +68,37 @@ public class PlayerSaveData : MonoBehaviour
 
     public void LoadSaveFile() //this is used on the load button in the main menu scene
     {
+        currentTime += Time.deltaTime; //makes so that the times goes forward
+        /* timer * 10 = around 5 seconds per ingame min
+         * timer * 20 = around 2 seconds per ingame min
+         * timer * 40 = around 1 second per ingame min*/
+        int min = (int)currentTime * 8 / 60 % 60; //ingame minutes
+        int hour = (int)currentTime * 8 / 3600 % 24; //ingame hours
+
         SaveGameManager.LoadGame(); //calls the load game function from the SaveGameManager.cs
 
-        //scuffed way of checking there is a savefile from time
+        //scuffed way of checking if there is a savefile from time
+        if (hour == 1)
+        {
+
+            Debug.Log("loading hour 1");
+        }
+        else if(hour == 2)
+        {
+            Debug.Log("loading hour 2");
+        }
+        else if(hour == 3)
+        {
+            Debug.Log("loading hour 3");
+        }
+        else if(hour == 4)
+        {
+            Debug.Log("loading hour 4");
+        }
+        else if(hour == 5)
+        {
+            Debug.Log("loading hour 5");
+        }
         
     }
 
