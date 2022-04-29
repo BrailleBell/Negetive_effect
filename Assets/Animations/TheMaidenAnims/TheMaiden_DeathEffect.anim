@@ -106,7 +106,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.01
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -115,7 +115,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.016666668
-        value: 0.01
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -125,8 +125,8 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: material.Vector1_d898bf2024474f218f1df016263cf3de
-    path: TheMaiden_Dress
+    attribute: material.Vector1_583760cf628b46959d6ab20aac61ecf0
+    path: Root_Joint/TheMaiden_Dress
     classID: 137
     script: {fileID: 0}
   - curve:
@@ -134,7 +134,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.241
+        value: 0.22
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -154,7 +154,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: material.DissolveAmount
-    path: TheMaiden_Dress
+    path: Root_Joint/TheMaiden_Dress
     classID: 137
     script: {fileID: 0}
   - curve:
@@ -171,7 +171,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.016666668
-        value: 179.45
+        value: 147.09
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -182,7 +182,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: material.Vector1_131c69a69e4d440194bf560cd9bb5881
-    path: TheMaiden_Dress
+    path: Root_Joint/TheMaiden_Dress
     classID: 137
     script: {fileID: 0}
   m_PPtrCurves: []
@@ -208,14 +208,21 @@ AnimationClip:
       customType: 22
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 1033424051
+      path: 4127989210
+      attribute: 2173460093
+      script: {fileID: 0}
+      typeID: 137
+      customType: 22
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 4127989210
       attribute: 2233054370
       script: {fileID: 0}
       typeID: 137
       customType: 22
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 1033424051
+      path: 4127989210
       attribute: 2289964081
       script: {fileID: 0}
       typeID: 137
@@ -223,13 +230,6 @@ AnimationClip:
       isPPtrCurve: 0
     - serializedVersion: 2
       path: 2271781776
-      attribute: 2231658738
-      script: {fileID: 0}
-      typeID: 137
-      customType: 22
-      isPPtrCurve: 0
-    - serializedVersion: 2
-      path: 1033424051
       attribute: 2231658738
       script: {fileID: 0}
       typeID: 137
@@ -346,7 +346,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.01
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -355,7 +355,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.016666668
-        value: 0.01
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -365,8 +365,8 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: material.Vector1_d898bf2024474f218f1df016263cf3de
-    path: TheMaiden_Dress
+    attribute: material.Vector1_583760cf628b46959d6ab20aac61ecf0
+    path: Root_Joint/TheMaiden_Dress
     classID: 137
     script: {fileID: 0}
   - curve:
@@ -374,7 +374,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.241
+        value: 0.22
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -394,7 +394,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: material.DissolveAmount
-    path: TheMaiden_Dress
+    path: Root_Joint/TheMaiden_Dress
     classID: 137
     script: {fileID: 0}
   - curve:
@@ -411,7 +411,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.016666668
-        value: 179.45
+        value: 147.09
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -422,7 +422,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: material.Vector1_131c69a69e4d440194bf560cd9bb5881
-    path: TheMaiden_Dress
+    path: Root_Joint/TheMaiden_Dress
     classID: 137
     script: {fileID: 0}
   m_EulerEditorCurves: []
