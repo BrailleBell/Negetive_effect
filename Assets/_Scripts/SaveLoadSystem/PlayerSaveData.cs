@@ -14,6 +14,9 @@ public class PlayerSaveData : MonoBehaviour
     private GameObject[] notesSaved = GameManager.Notes;
 
     //for load button UI
+    public Button[] loadButtons;
+
+    bool hasSavefile;
 
     private void Awake()
     {
@@ -75,31 +78,50 @@ public class PlayerSaveData : MonoBehaviour
         int min = (int)currentTime * 8 / 60 % 60; //ingame minutes
         int hour = (int)currentTime * 8 / 3600 % 24; //ingame hours
 
-        SaveGameManager.LoadGame(); //calls the load game function from the SaveGameManager.cs
+        //SaveGameManager.LoadGame(); //calls the load game function from the SaveGameManager.cs
 
+        ///Checks if the time and file corresponds
+        ///if it does it enables the button and hopefully
+        ///the game will load it at the right time
         //scuffed way of checking if there is a savefile from time
+        #region LOAD SAVE AFTER SPECIFIC HOURS
         if (hour == 1)
         {
-
+            loadButtons[0].enabled = true;
+            SaveGameManager.LoadGame();
             Debug.Log("loading hour 1");
+            Debug.Log(hour + ":" + min);
         }
         else if(hour == 2)
         {
+            loadButtons[1].enabled = true;
+            SaveGameManager.LoadGame();
             Debug.Log("loading hour 2");
+            Debug.Log(hour + ":" + min);
         }
         else if(hour == 3)
         {
+            loadButtons[2].enabled = true;
+            SaveGameManager.LoadGame();
             Debug.Log("loading hour 3");
+            Debug.Log(hour + ":" + min);
         }
         else if(hour == 4)
         {
+            loadButtons[3].enabled = true;
+            SaveGameManager.LoadGame();
             Debug.Log("loading hour 4");
+            Debug.Log(hour + ":" + min);
         }
         else if(hour == 5)
         {
+            loadButtons[4].enabled = true;
+            SaveGameManager.LoadGame();
             Debug.Log("loading hour 5");
+            Debug.Log(hour + ":" + min);
         }
-        
+        #endregion
+
     }
 
     /// <summary>
