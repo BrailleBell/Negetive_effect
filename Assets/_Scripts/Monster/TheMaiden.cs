@@ -9,6 +9,8 @@ public class TheMaiden : MonoBehaviour
 {
     private RaycastHit hit;
     public float _float;
+    public float deathTimer;
+    private float timetodie;
     private GameObject Player;
     private GameObject ghost;
     public float DistanceToPlayer;
@@ -43,7 +45,7 @@ public class TheMaiden : MonoBehaviour
         Debug.DrawRay(transform.position,Vector3.down,Color.green);
         if(Physics.Raycast(gameObject.transform.position,Vector3.down,_float,7))
         {
-            transform.position = new Vector3(transform.position.x, _float, transform.position.z);
+            //transform.position = new Vector3(transform.position.x, _float, transform.position.z);
         }
         else{
             
@@ -79,18 +81,19 @@ public class TheMaiden : MonoBehaviour
 
         if (DistanceToPlayer < HearingRange)
         {
-            moveSpeed = DistanceToPlayer / 4;
+         
         }
         else
         {
-            moveSpeed = 10;
+            
         }
         
         if (ghostDying) // after taking picture of the ghost it dies after killtimer 
         {
+            timetodie  += Time.deltaTime;
             anim.SetBool("Death",true);
             anim.SetBool("Flying",false);
-            // FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/MaidenDeath",GetComponent<Transform>().position);
+        //    FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/MaidenDeath",GetComponent<Transform>().position);
             MaidenDeathScream.start();
             GetComponent<BoxCollider>().enabled = false;
             killTimer += Time.deltaTime; // kill time must be over 0.2 secounds! 
@@ -98,73 +101,82 @@ public class TheMaiden : MonoBehaviour
             {
                 gameObject.SetActive(false);
                 if (SpawnAfterKilled)
-                {
+
+               {
+                    if(timetodie > deathTimer)
+                    {
+
                     //Debug.Log("Maidens SpawnPointId = " + spawnpointId);
                     spawnpointId = UnityEngine.Random.Range(1, spawnPoints.Length);
                     
-                    if (RespawnsOn)
-                    {
-                        if (RespawnsLeft == 0)
-                        {
-                            gameObject.SetActive(false);
-                        }
-                        else
-                        {
-                            RespawnsLeft--;
-                        }
+                      if (RespawnsOn)
+                      {
+                           if (RespawnsLeft == 0)
+                           {
+                               gameObject.SetActive(false);
+                           }
+                           else
+                          {
+                              RespawnsLeft--;
+                          }
 
-                        anim.SetBool("Death",false);
-                        transform.position = spawnPoints[spawnpointId].transform.position;
-                        GetComponent<BoxCollider>().enabled = true;
-                        gameObject.SetActive(true);
-                        anim.SetBool("Flying",true);
-                        if (spawnpointId >= spawnPoints.Length)
-                        {
-                            spawnpointId = 1;
-                        }
-                        ghostDying = false;
-                        killTimer = 0;
+                          anim.SetBool("Death",false);
+                          transform.position = spawnPoints[spawnpointId].transform.position;
+                          GetComponent<BoxCollider>().enabled = true;
+                          gameObject.SetActive(true);
+                           anim.SetBool("Flying",true);
+                            timetodie = 0;
+                         if (spawnpointId >= spawnPoints.Length)
+                          {
+                              spawnpointId = 1;
+                          }
+                           ghostDying = false;
+                          killTimer = 0;
 
-                        if (transform.position == spawnPoints[spawnpointId].transform.position)
-                        {
+                           if (transform.position == spawnPoints[spawnpointId].transform.position)
+                            {
+                               transform.position += transform.forward * moveSpeed * Time.deltaTime;
+                              spawnpointId = spawnpointId++;
+                           }
+
+                      }
+                      else
+                      {
+                           transform.position = spawnPoints[spawnpointId].transform.position;
+                           GetComponent<BoxCollider>().enabled = true;
+                           anim.SetBool("Flying",true);
+                           anim.SetBool("Death",false);
+                            timetodie = 0;
+                            gameObject.SetActive(true);
+                            if (transform.position == spawnPoints[spawnpointId].transform.position)
+                            {
                             transform.position += transform.forward * moveSpeed * Time.deltaTime;
                             spawnpointId = spawnpointId++;
-                        }
-
-                    }
-                    else
-                    {
-                        transform.position = spawnPoints[spawnpointId].transform.position;
-                        GetComponent<BoxCollider>().enabled = true;
-                        anim.SetBool("Flying",true);
-                        anim.SetBool("Death",false);
-                        gameObject.SetActive(true);
-                        if (transform.position == spawnPoints[spawnpointId].transform.position)
-                        {
-                            transform.position += transform.forward * moveSpeed * Time.deltaTime;
-                            spawnpointId = spawnpointId++;
-                        }
+                           }
                         
-                    }
+                       }
 
                     SpawnAfterKilled = false;
-                    if (!SpawnAfterKilled)
-                    {
+                        if (!SpawnAfterKilled)
+                       {
                         SpawnAfterKilled = true;
-                    }
-                }
-                else
-                {
+                       }
+                 }
+
+
+                   else
+                   {
                     gameObject.SetActive(false);
                     ghostDying = false;
                     killTimer = 0;
-                }
+                  }
                 
-            }
+                }
+
+          }
+        
+        
         }
-        
-        
-        
         
 
     }
