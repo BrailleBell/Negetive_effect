@@ -1,43 +1,109 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class SkellyBoi : MonoBehaviour
 {
+    //read and u will understand
+    public int AmountOfMonsters;
     public GameObject Player;
-    public GameObject Monster;
-    public int monstersAroundPlayer;
+    public Transform monster;
+    public float distFromPlayerToSpawn;
+    public float DistanceToPlayer;
+    public float awareRadius;
+    
+    //dont mess up the generatedMonstercount kek
+    private int generatedMonstersCount = 0;
+    private bool dying, haveSpawned;
+    private NavMeshAgent ghost;
+    private Animator anim;
+    private float killTimer;
+    
+    
 
-    private readonly float AppearWaitDuration;
-    private Transform SurrounderParentTransform;
 
     // Start is called before the first frame update
     void Start()
     {
-        SurrounderParentTransform = new GameObject(gameObject.name + "Surrounder Parent").transform;
-        Player = GameObject.FindGameObjectWithTag("Player");
-        StartCoroutine(SurroundStepAnimated());
+      Player = GameObject.FindWithTag("Player");
+      ghost = GetComponent<NavMeshAgent>();
     }
 
-    IEnumerator SurroundStepAnimated()
+    public void SpawnMonsters()
     {
-        float AngleStep = 360.0f / monstersAroundPlayer;
-        Player.transform.SetParent(SurrounderParentTransform);
-
-        for (int i = 1; i < monstersAroundPlayer; i++)
+        for (int i = 0; i < AmountOfMonsters; i++)
         {
-            GameObject newSurroundMonster = Instantiate(Monster);
-            newSurroundMonster.transform.RotateAround(Player.transform.position,Vector3.up,AngleStep +i);
-            newSurroundMonster.transform.SetParent(SurrounderParentTransform);
-            yield return new WaitForSeconds(AppearWaitDuration);
+            generatedMonstersCount++;
+            string objName = "SkellyCopy" + generatedMonstersCount;
+            float angleIteration = 360 / AmountOfMonsters;
+            float currentRotation = angleIteration * i;
+
+            Transform monst;
+            monst = Instantiate(monster, Player.transform.position, Player.transform.rotation) as Transform;
+            monst.name = objName;
             
+            monst.transform.Rotate(new Vector3(0,currentRotation,0));
+            monst.transform.Translate(new Vector3(distFromPlayerToSpawn,5,0));
+
         }
     }
 
+   
 
 // Update is called once per frame
     void Update()
     {
+        //Distance calculation
+        DistanceToPlayer = Vector3.Distance(transform.position, Player.transform.position);
+        if (DistanceToPlayer < awareRadius)
+        {
+            if (!haveSpawned)
+            {
+                //spawns the monstr lel cant u read
+                SpawnMonsters();
+                haveSpawned = true;
+            }
+        }
+        if (Input.GetKeyUp(KeyCode.B))
+        {
+            dying = true;
+        }
+        
+        
+        if (dying) // after taking picture of the ghost it dies after killtimer 
+        {
+         //   anim.SetBool("Death",true);
+            ghost.velocity = Vector3.zero;
+            ghost.isStopped = true;
+            killTimer += Time.deltaTime; // kill time must be over 0.2 secounds! 
+            if (killTimer > 3f)
+            {
+               gameObject.SetActive(false);
+            }
+        }
         
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position,awareRadius);
+        
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "CameraShoot")
+        {
+            UnityEngine.Debug.Log("monster hit");
+            dying = true;
+
+        }
+    }
+    
 }
+
+
