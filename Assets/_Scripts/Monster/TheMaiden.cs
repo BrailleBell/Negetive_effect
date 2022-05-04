@@ -23,6 +23,7 @@ public class TheMaiden : MonoBehaviour
     public int RespawnsLeft;
     private float killTimer;
     public float moveSpeed;
+    public GameObject toTurnOff;
     public GameObject[] spawnPoints;
     private int spawnpointId;
     private FMOD.Studio.EventInstance MaidenDeathScream;
@@ -99,12 +100,12 @@ public class TheMaiden : MonoBehaviour
             killTimer += Time.deltaTime; // kill time must be over 0.2 secounds! 
             if (killTimer > 3f)
             {
-                gameObject.SetActive(false);
+                toTurnOff.SetActive(false);
                 if (SpawnAfterKilled)
 
                {
-                    if(timetodie > deathTimer)
-                    {
+                    
+                  
 
                     //Debug.Log("Maidens SpawnPointId = " + spawnpointId);
                     spawnpointId = UnityEngine.Random.Range(1, spawnPoints.Length);
@@ -113,7 +114,7 @@ public class TheMaiden : MonoBehaviour
                       {
                            if (RespawnsLeft == 0)
                            {
-                               gameObject.SetActive(false);
+                               toTurnOff.SetActive(false);
                            }
                            else
                           {
@@ -123,7 +124,7 @@ public class TheMaiden : MonoBehaviour
                           anim.SetBool("Death",false);
                           transform.position = spawnPoints[spawnpointId].transform.position;
                           GetComponent<BoxCollider>().enabled = true;
-                          gameObject.SetActive(true);
+                          toTurnOff.SetActive(true);
                            anim.SetBool("Flying",true);
                             timetodie = 0;
                          if (spawnpointId >= spawnPoints.Length)
@@ -147,7 +148,7 @@ public class TheMaiden : MonoBehaviour
                            anim.SetBool("Flying",true);
                            anim.SetBool("Death",false);
                             timetodie = 0;
-                            gameObject.SetActive(true);
+                            toTurnOff.SetActive(true);
                             if (transform.position == spawnPoints[spawnpointId].transform.position)
                             {
                             transform.position += transform.forward * moveSpeed * Time.deltaTime;
@@ -161,12 +162,12 @@ public class TheMaiden : MonoBehaviour
                        {
                         SpawnAfterKilled = true;
                        }
-                 }
+                 
 
 
                    else
                    {
-                    gameObject.SetActive(false);
+                    toTurnOff.SetActive(false);
                     ghostDying = false;
                     killTimer = 0;
                   }
