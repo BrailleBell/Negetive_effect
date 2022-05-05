@@ -42,7 +42,7 @@ public class Inventory : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (gameObject.CompareTag("RightHand"))
+        if (collision.gameObject.CompareTag("RightHand"))
         {
             InstantiateFilm();
         }
