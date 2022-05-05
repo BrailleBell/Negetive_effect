@@ -25,6 +25,7 @@ public class Inventory : MonoBehaviour
 
     private void Update()
     {
+        #region POP out inventory (not for use in game)
         if (Input.GetKeyDown("secondaryButton")) //this will not work but its just to test something
         {
             UIactive = !UIactive;
@@ -36,9 +37,18 @@ public class Inventory : MonoBehaviour
             inventory.transform.position = anchor.transform.position;
             inventory.transform.eulerAngles = new Vector3(anchor.transform.eulerAngles.x + 15, anchor.transform.eulerAngles.y, 0);
         }
+        #endregion
     }
 
-    /*public void InstantiateFilm()
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (gameObject.CompareTag("RightHand"))
+        {
+            InstantiateFilm();
+        }
+    }
+
+    public void InstantiateFilm()
     {
         Debug.Log("grabbed a film, do you have more than 0?");
 
@@ -48,11 +58,10 @@ public class Inventory : MonoBehaviour
             Instantiate(film,gameObject.transform.position,quaternion.identity);
             Debug.Log("Film has been instatiated");
         }
-
     }
 
     public void InstantiateNotes()
     {
         Debug.Log("Notes has been instatiated");
-    }*/
+    }
 }
