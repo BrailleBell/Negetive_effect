@@ -5,9 +5,12 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using System.IO;
+
 
 public class Poloroid_image : MonoBehaviour
 {
+
 
     public Material shaderMat;
     public GameObject Picture;
@@ -304,6 +307,11 @@ public class Poloroid_image : MonoBehaviour
         tex.ReadPixels(new Rect(0, 0, rTex.width, rTex.height), 0, 0);
         tex.Apply();
         return tex;
+    }
+
+    private void SaveTexture()
+    {
+            
     }
 
 
