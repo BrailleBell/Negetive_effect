@@ -10,7 +10,7 @@ using System.IO;
 
 public class Poloroid_image : MonoBehaviour
 {
-
+    public static TextureSaving ts;
 
     public Material shaderMat;
     public GameObject Picture;
