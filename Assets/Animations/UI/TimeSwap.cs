@@ -19,7 +19,7 @@ public class TimeSwap : MonoBehaviour
         if (changed)
         {
             Canvas.transform.position = P.position;
-            Canvas.transform.rotation = P.rotation;
+            Canvas.transform.rotation.eulerAngles.Set(P.rotation.eulerAngles.x, P.rotation.eulerAngles.y, 0); //= new Vector3(P.rotation.eulerAngles.x, P.rotation.eulerAngles.y, 0);
             Canvas.transform.Rotate(0, 0, 0);
         }
     }
