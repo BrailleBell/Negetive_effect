@@ -4,14 +4,14 @@ using UnityEngine;
 using System.IO;
 using System;
 
-public static class TextureSaving
+public class TextureSaving
 {
-    public static void TextureArray_SaveToDisk(float[,] array, string pathInResourcesFolder)
+    public void TextureArray_SaveToDisk(float[,] array, string pathInResourcesFolder)
     {
         TextureToDisk(ArrayToTexture(array), pathInResourcesFolder);
     }
 
-    public static Texture2D ArrayToTexture(float[,] array)
+    public Texture2D ArrayToTexture(float[,] array)
     {
         Texture2D tex = new Texture2D(array.GetLength(0), array.GetLength(1));
 
@@ -27,12 +27,12 @@ public static class TextureSaving
         return tex;
     }
 
-    public static void TextureArray_SaveToDisk(Vector3[,] array, string pathInResourcesFolder)
+    public void TextureArray_SaveToDisk(Vector3[,] array, string pathInResourcesFolder)
     {
         TextureToDisk(ArrayToTexture(array), pathInResourcesFolder);
     }
 
-    public static Texture2D ArrayToTexture(Vector3[,] array)
+    public Texture2D ArrayToTexture(Vector3[,] array)
     {
         Texture2D tex = new Texture2D(array.GetLength(0), array.GetLength(1));
 
@@ -50,7 +50,7 @@ public static class TextureSaving
 
     //Saves the texture2d as a png into the folder:
     //
-    public static void TextureToDisk(Texture2D texture,string pathInResourcesFolder)
+    public void TextureToDisk(Texture2D texture,string pathInResourcesFolder)
     {
         File.WriteAllBytes("Assets/Resources/" + pathInResourcesFolder + ".png", texture.EncodeToPNG());
     }

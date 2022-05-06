@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    //public static TextureSaving ts;
+    public TextureSaving ts;
 
     public GameManager gm;
     public GameObject film;

@@ -10,7 +10,7 @@ using System.IO;
 
 public class Poloroid_image : MonoBehaviour
 {
-    public static TextureSaving ts;
+    public TextureSaving ts;
 
     public Material shaderMat;
     public GameObject Picture;
@@ -306,12 +306,13 @@ public class Poloroid_image : MonoBehaviour
         RenderTexture.active = rTex;
         tex.ReadPixels(new Rect(0, 0, rTex.width, rTex.height), 0, 0);
         tex.Apply();
+        //SaveTexture();
         return tex;
     }
 
-    private void SaveTexture()
+    private void SaveTexture(Texture2D tex, string pathInResourcesFolder)
     {
-            
+        ts.TextureToDisk(tex, pathInResourcesFolder);
     }
 
 
