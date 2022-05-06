@@ -11,8 +11,18 @@ public class TimeSwap : MonoBehaviour
     public GameObject Canvas;
     public string[] ams = {"00:00", "01:00", "02:00", "03:00", "04:00", "05:00" };
     private int onTheHour = 0;
+    public bool changed;
+    private Transform P;
 
-
+    private void Update()
+    {
+        if (changed)
+        {
+            Canvas.transform.position = P.position;
+            Canvas.transform.rotation = P.rotation;
+            Canvas.transform.Rotate(0, 0, 0);
+        }
+    }
 
 
     //will put the clock display infront of the player and display the ingame time.
@@ -27,10 +37,8 @@ public class TimeSwap : MonoBehaviour
         {
             clock.text = ams[onTheHour];
             ani.SetBool("Hour", true);
-            Canvas.transform.position = T.GetChild(0).GetChild(0).position;
-            Canvas.transform.rotation = T.GetChild(0).GetChild(0).rotation;
-            Canvas.transform.Rotate(0, 0, 0);
-           
+            changed = true;
+            P = T.GetChild(0).GetChild(0);
         }
     }
 
@@ -45,6 +53,7 @@ public class TimeSwap : MonoBehaviour
     {
         clock.text = T;
         ani.SetBool("Hour", true);
+        changed = false;
     }
 
     public void NewHour()
