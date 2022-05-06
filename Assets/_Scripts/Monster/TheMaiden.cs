@@ -55,17 +55,13 @@ public class TheMaiden : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space))
         {
             ghostDying = true;
-            FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/MaidenDeath",GetComponent<Transform>().position);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/Monsters/MaidenDeath",GetComponent<Transform>().position);
         }
      
         
         // Looks at the player
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Player.transform.position - transform.position), 3 * Time.deltaTime);
         
-        if (Input.GetKeyUp(KeyCode.F))
-        {
-           // FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/MaidenDeath",GetComponent<Transform>().position);
-        }
         
         if (!DontFollow)
         {
@@ -183,7 +179,7 @@ public class TheMaiden : MonoBehaviour
         {
             //Debug.Log("Maiden is captured!!! OMG it works maybe");
             ghostDying = true;
-            FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/MaidenDeath",GetComponent<Transform>().transform.position);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/Monsters/MaidenDeath",GetComponent<Transform>().transform.position);
         }
     }
 }

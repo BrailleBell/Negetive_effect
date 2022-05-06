@@ -1326,7 +1326,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8507901550095671570, guid: 2b6cc190d8a59d8458285087097cc5f7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8970552502732332872, guid: 2b6cc190d8a59d8458285087097cc5f7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2922,6 +2922,14 @@ PrefabInstance:
       propertyPath: spawnPoints.Array.data[5]
       value: 
       objectReference: {fileID: 1259347578}
+    - target: {fileID: 1984125186, guid: 762f2ff514a1fe4488a7f40bc51b3496, type: 3}
+      propertyPath: StopEvent
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1984125186, guid: 762f2ff514a1fe4488a7f40bc51b3496, type: 3}
+      propertyPath: CollisionTag
+      value: CameraShoot
+      objectReference: {fileID: 0}
     - target: {fileID: 5105098798836535056, guid: 762f2ff514a1fe4488a7f40bc51b3496, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -3671,7 +3679,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 828666200836035223, guid: 90b919fa49aef7343933dfe203d37b0b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90b919fa49aef7343933dfe203d37b0b, type: 3}
