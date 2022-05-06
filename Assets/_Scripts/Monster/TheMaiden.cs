@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
@@ -26,7 +27,7 @@ public class TheMaiden : MonoBehaviour
     public GameObject[] spawnPoints;
     private int spawnpointId;
     private FMOD.Studio.EventInstance MaidenDeathScream;
-    private Transform maidenPos;
+
 
     // Start is called before the first frame update
     void Start()
@@ -38,21 +39,12 @@ public class TheMaiden : MonoBehaviour
             anim = GetComponentInChildren<Animator>();
         }
         toTurnOff = GameObject.Find("D_TheMaiden_Mnstr");
-       // maidenPos =
 
     }
 
     // Update is called once per frame
     void Update()
     {
-       // maidenPos = Terrain.activeTerrain.SampleHeight(transform.position) + 1.5f;
-
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            ghostDying = true;
-            FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/Monsters/MaidenDeath",GetComponent<Transform>().position);
-        }
-     
         
         // Looks at the player
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Player.transform.position - transform.position), 3 * Time.deltaTime);
@@ -67,6 +59,31 @@ public class TheMaiden : MonoBehaviour
         {
             transform.position = transform.position;
         }
+        
+        //Keeping her above ground, _float is her floating hight
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down,out hit, Mathf.Infinity, 1<<7))
+        {
+            if (hit.distance > _float)
+            {
+                transform.position = new Vector3(transform.position.x, hit.point.y + _float, transform.position.z);
+            }
+            else if (hit.distance < _float)
+            {
+                transform.position = new Vector3(transform.position.x, hit.point.y + _float, transform.position.z);
+            }
+
+        }
+
+
+        if (Input.GetKeyUp(KeyCode.K))
+        {
+            ghostDying = true;
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/Monsters/MaidenDeath",GetComponent<Transform>().position);
+        }
+     
+        
+
         
         
         DistanceToPlayer = Vector3.Distance(ghost.transform.position, Player.transform.position);
@@ -86,7 +103,6 @@ public class TheMaiden : MonoBehaviour
             Debug.Log(timetodie);
             anim.SetBool("Death",true);
             anim.SetBool("Flying",false);
-        //    FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/MaidenDeath",GetComponent<Transform>().position);
             MaidenDeathScream.start();
             GetComponent<BoxCollider>().enabled = false;
             killTimer += Time.deltaTime; // kill time must be over 0.2 secounds! 
