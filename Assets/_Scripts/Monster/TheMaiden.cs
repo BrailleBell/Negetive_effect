@@ -26,6 +26,7 @@ public class TheMaiden : MonoBehaviour
     public GameObject[] spawnPoints;
     private int spawnpointId;
     private FMOD.Studio.EventInstance MaidenDeathScream;
+    private Transform maidenPos;
 
     // Start is called before the first frame update
     void Start()
@@ -37,20 +38,14 @@ public class TheMaiden : MonoBehaviour
             anim = GetComponentInChildren<Animator>();
         }
         toTurnOff = GameObject.Find("D_TheMaiden_Mnstr");
+       // maidenPos =
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.DrawRay(transform.position,Vector3.down,Color.green);
-        if(Physics.Raycast(gameObject.transform.position,Vector3.down,_float,7))
-        {
-            //transform.position = new Vector3(transform.position.x, _float, transform.position.z);
-        }
-        else{
-            
-        }
+       // maidenPos = Terrain.activeTerrain.SampleHeight(transform.position) + 1.5f;
 
         if (Input.GetKeyUp(KeyCode.Space))
         {

@@ -1326,7 +1326,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8507901550095671570, guid: 2b6cc190d8a59d8458285087097cc5f7, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8970552502732332872, guid: 2b6cc190d8a59d8458285087097cc5f7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2214,10 +2214,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b20a8967193e38b468ca0db6565431b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AmountOfMonsters: 100
+  AmountOfMonsters: 8
   Player: {fileID: 310627286}
   monster: {fileID: 214365948}
-  distFromPlayerToSpawn: 100
+  distFromPlayerToSpawn: 20
   DistanceToPlayer: 0
   awareRadius: 20.08
 --- !u!114 &909603611
@@ -2940,7 +2940,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6097990393379876109, guid: 762f2ff514a1fe4488a7f40bc51b3496, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6911821844288288695, guid: 762f2ff514a1fe4488a7f40bc51b3496, type: 3}
       propertyPath: m_RootOrder
@@ -3679,7 +3679,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 828666200836035223, guid: 90b919fa49aef7343933dfe203d37b0b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90b919fa49aef7343933dfe203d37b0b, type: 3}
