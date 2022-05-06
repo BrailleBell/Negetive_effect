@@ -30,7 +30,7 @@ public class TimeSwap : MonoBehaviour
             Canvas.transform.position = T.GetChild(0).GetChild(0).position;
             Canvas.transform.rotation = T.GetChild(0).GetChild(0).rotation;
             Canvas.transform.Rotate(0, 0, 0);
-            onTheHour++;
+           
         }
     }
 
@@ -45,6 +45,11 @@ public class TimeSwap : MonoBehaviour
     {
         clock.text = T;
         ani.SetBool("Hour", true);
+    }
+
+    public void NewHour()
+    {
+        onTheHour++;
     }
    
 }
