@@ -60,7 +60,7 @@ public class TheMaiden : MonoBehaviour
             transform.position = transform.position;
         }
         
-        //Keeping her above ground, _float is her floating hight
+        //Keeping her above ground, _float is her floating height
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.down,out hit, Mathf.Infinity, 1<<7))
         {
