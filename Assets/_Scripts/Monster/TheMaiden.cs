@@ -18,7 +18,6 @@ public class TheMaiden : MonoBehaviour
     private Animator anim;
     private bool ghostDying;
     public bool DontFollow;
-    public bool SpawnAfterKilled = true;
     public bool RespawnsOn;
     public int RespawnsLeft;
     private float killTimer;
@@ -37,6 +36,7 @@ public class TheMaiden : MonoBehaviour
         {
             anim = GetComponentInChildren<Animator>();
         }
+        toTurnOff = GameObject.Find("D_TheMaiden_Mnstr");
 
     }
 
@@ -92,6 +92,7 @@ public class TheMaiden : MonoBehaviour
         if (ghostDying) // after taking picture of the ghost it dies after killtimer 
         {
             timetodie  += Time.deltaTime;
+            Debug.Log(timetodie);
             anim.SetBool("Death",true);
             anim.SetBool("Flying",false);
         //    FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/MaidenDeath",GetComponent<Transform>().position);
@@ -101,13 +102,10 @@ public class TheMaiden : MonoBehaviour
             if (killTimer > 3f)
             {
                 toTurnOff.SetActive(false);
-                if (SpawnAfterKilled)
+                if (timetodie > deathTimer)
+                {
 
-               {
-                    
-                  
-
-                    //Debug.Log("Maidens SpawnPointId = " + spawnpointId);
+                   //Debug.Log("Maidens SpawnPointId = " + spawnpointId);
                     spawnpointId = UnityEngine.Random.Range(1, spawnPoints.Length);
                     
                       if (RespawnsOn)
@@ -131,11 +129,11 @@ public class TheMaiden : MonoBehaviour
                           {
                               spawnpointId = 1;
                           }
-                           ghostDying = false;
+                          ghostDying = false;
                           killTimer = 0;
 
                            if (transform.position == spawnPoints[spawnpointId].transform.position)
-                            {
+                           {
                                transform.position += transform.forward * moveSpeed * Time.deltaTime;
                               spawnpointId = spawnpointId++;
                            }
@@ -155,26 +153,15 @@ public class TheMaiden : MonoBehaviour
                             spawnpointId = spawnpointId++;
                            }
                         
-                       }
+                    }
 
-                    SpawnAfterKilled = false;
-                        if (!SpawnAfterKilled)
-                       {
-                        SpawnAfterKilled = true;
-                       }
-                 
+                    //toTurnOff.SetActive(false);
+                    //ghostDying = false;
+                    //killTimer = 0; 
 
-
-                   else
-                   {
-                    toTurnOff.SetActive(false);
-                    ghostDying = false;
-                    killTimer = 0;
-                  }
-                
                 }
-
-          }
+                
+            }
         
         
         }
