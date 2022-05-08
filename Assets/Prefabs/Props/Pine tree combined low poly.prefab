@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4472482597922771648}
   - component: {fileID: 4616395726271798228}
   - component: {fileID: 7548350088132277815}
+  - component: {fileID: 4012613025151835920}
   m_Layer: 0
   m_Name: Pine tree combined low poly
   m_TagString: Untagged
@@ -125,15 +126,29 @@ LODGroup:
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.4356678
+  - screenRelativeHeight: 0.17898165
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 4472482597922771648}
-  - screenRelativeHeight: 0.24115393
+  - screenRelativeHeight: 0.037339285
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 668805031227982274}
   m_Enabled: 1
+--- !u!136 &4012613025151835920
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2671073602935337749}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.25
+  m_Height: 20.769897
+  m_Direction: 1
+  m_Center: {x: 0.23000002, y: 10.384949, z: 1.04}
 --- !u!1 &3377326350583290661
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,6 +160,7 @@ GameObject:
   - component: {fileID: 7545482137196571433}
   - component: {fileID: 8488809607796489907}
   - component: {fileID: 668805031227982274}
+  - component: {fileID: 9147750143469968619}
   m_Layer: 0
   m_Name: LOD0
   m_TagString: Untagged
@@ -215,3 +231,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &9147750143469968619
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3377326350583290661}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.25
+  m_Height: 20.769897
+  m_Direction: 1
+  m_Center: {x: 0.23000002, y: 10.384949, z: 1.04}
