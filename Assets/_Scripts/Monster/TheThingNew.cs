@@ -23,6 +23,7 @@ public class TheThingNew : MonoBehaviour
     private int spawnPointId;
     private float timetoDie;
     public float SpawnTimer;
+    private float resettimer;
     
     
     
@@ -40,11 +41,18 @@ public class TheThingNew : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (Input.GetKeyUp(KeyCode.L))
+        {
+            dying = true;
+        }
+        
         if (!dontFollow)
         {
             DistanceToPlayer = Vector3.Distance(transform.position, Player.transform.position);
             if (DistanceToPlayer < visibilityRange)
             {
+                resettimer = 0;
                 anim.SetBool("Attack",true);
                 ghost.SetDestination(Player.transform.position);
                 ghost.speed = 15;
@@ -56,7 +64,23 @@ public class TheThingNew : MonoBehaviour
             }
             
         }
-
+        
+        // teleports until it finds player
+        if (DistanceToPlayer > visibilityRange)
+        {
+            if (!dontRespawn)
+            {
+                resettimer += Time.deltaTime;
+                if (resettimer > 30)
+                {
+                    dying = true;
+                    resettimer = 0;
+                }
+                
+            }
+        }
+        
+        
         
         if (dying) // after taking picture of the ghost it dies after killtimer 
         {
@@ -70,17 +94,17 @@ public class TheThingNew : MonoBehaviour
                 {
                     gameObject.SetActive(false);
                 }
-                else
+                else if(timetoDie > SpawnTimer)
                 {
                     anim.SetBool("Death",false);
                     anim.SetBool("Attack", false);
                     killTimer = 0;
                     if (timetoDie > SpawnTimer)
                     {
+                        dying = false;
                         spawnPointId = UnityEngine.Random.Range(1, spawnPoints.Length);
                         transform.position = spawnPoints[spawnPointId].transform.position;
                         
-                    
                         
                     }
                     
