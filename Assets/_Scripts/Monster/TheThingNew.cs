@@ -17,8 +17,12 @@ public class TheThingNew : MonoBehaviour
     public float DistanceToPlayer;
     private bool dying;
     private float killTimer;
-    public bool dontFollow;
+    public bool dontFollow, dontRespawn;
     private StudioEventEmitter runningSound;
+    public GameObject[] spawnPoints;
+    private int spawnPointId;
+    private float timetoDie;
+    public float SpawnTimer;
     
     
     
@@ -45,6 +49,11 @@ public class TheThingNew : MonoBehaviour
                 ghost.SetDestination(Player.transform.position);
                 ghost.speed = 15;
             }
+            else
+            {
+                ghost.SetDestination(transform.position);
+                
+            }
             
         }
 
@@ -53,10 +62,29 @@ public class TheThingNew : MonoBehaviour
         {
             anim.SetBool("Death", true);
             GetComponent<BoxCollider>().enabled = false;
+            timetoDie += Time.deltaTime;
             killTimer += Time.deltaTime; // kill time must be over 0.2 secounds! 
             if (killTimer > 3f)
             {
-                gameObject.SetActive(false);
+                if (dontRespawn)
+                {
+                    gameObject.SetActive(false);
+                }
+                else
+                {
+                    anim.SetBool("Death",false);
+                    anim.SetBool("Attack", false);
+                    killTimer = 0;
+                    if (timetoDie > SpawnTimer)
+                    {
+                        spawnPointId = UnityEngine.Random.Range(1, spawnPoints.Length);
+                        transform.position = spawnPoints[spawnPointId].transform.position;
+                        
+                    
+                        
+                    }
+                    
+                }
             }
   
         }
