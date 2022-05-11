@@ -301,16 +301,17 @@ public class Poloroid_image : MonoBehaviour
     //take the render texture and turn it into it's own 2d texture
     Texture2D toTexture2D(RenderTexture rTex)
     {
+        string pathInResourcesFolder;
         Texture2D tex = new Texture2D(x, y, TextureFormat.RGB24, false);
         // ReadPixels looks at the active RenderTexture.
         RenderTexture.active = rTex;
         tex.ReadPixels(new Rect(0, 0, rTex.width, rTex.height), 0, 0);
         tex.Apply();
-        //SaveTexture();
+        //SaveTexture(tex, pathInResourcesFolder);
         return tex;
     }
 
-    private void SaveTexture(Texture2D tex, string pathInResourcesFolder)
+    public void SaveTexture(Texture2D tex, string pathInResourcesFolder)
     {
         ts.TextureToDisk(tex, pathInResourcesFolder);
     }
