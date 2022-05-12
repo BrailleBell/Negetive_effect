@@ -586,6 +586,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 674159342884199174}
+  - component: {fileID: 622840317}
+  - component: {fileID: 622840316}
   m_Layer: 0
   m_Name: Butt_joint
   m_TagString: Untagged
@@ -612,6 +614,35 @@ Transform:
   m_Father: {fileID: 2426692413290017041}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &622840317
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4037250109761177327}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.74, y: 0.15, z: 0.57}
+  m_Center: {x: 0.11, y: 0.58, z: 0.01}
+--- !u!114 &622840316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4037250109761177327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a2b7c75651b2ff44a0c5310dc2ebeb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  killTime: 5
+  anim: {fileID: 5548363977983374394}
+  film: {fileID: 7961346492668250464}
+  gObject: {fileID: 4629373268678707561}
 --- !u!1 &4127440079693379775
 GameObject:
   m_ObjectHideFlags: 0
@@ -804,9 +835,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5437259655388124115}
-  - component: {fileID: 5548363977983374395}
   - component: {fileID: 5548363977983374394}
-  - component: {fileID: 5548363977983374396}
   m_Layer: 0
   m_Name: FabreceRigged
   m_TagString: Untagged
@@ -831,19 +860,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &5548363977983374395
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4629373268678707561}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.6, y: 0.15, z: 0.76}
-  m_Center: {x: 0, y: 1.08, z: -0.33}
 --- !u!95 &5548363977983374394
 Animator:
   serializedVersion: 3
@@ -863,21 +879,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5548363977983374396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4629373268678707561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a2b7c75651b2ff44a0c5310dc2ebeb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  killTime: 5
-  anim: {fileID: 5548363977983374394}
-  film: {fileID: 7961346492668250464}
 --- !u!1 &4683933054771293354
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,19 +9,23 @@ public class Fabrece : MonoBehaviour
     public float killTime = 5;
     public Animator anim;
     public GameObject film;
-    void OnTriggerExit()
+    public GameObject gObject;
+    void OnTriggerExit(Collider other)
     {
+        if(other.CompareTag("Film"))
+        {
         anim.SetBool("Run", true);
         run = true;
         film.transform.parent = null;
-        Destroy(gameObject, killTime);
+        Destroy(gObject, killTime);
+        }
     }
 
     void Update()
     {
         if(run == true)
         {
-            transform.position += transform.forward * Time.deltaTime * movementSpeed;
+            gObject.transform.position += transform.right * Time.deltaTime * movementSpeed;
         }
     }
 }
