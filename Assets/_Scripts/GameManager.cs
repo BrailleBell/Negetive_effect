@@ -87,8 +87,8 @@ public class GameManager : MonoBehaviour
         /* timer * 10 = around 5 seconds per ingame min
          * timer * 20 = around 2 seconds per ingame min
          * timer * 40 = around 1 second per ingame min*/
-        int min = (int)timer * 8 / 60 % 60; //ingame minutes
-        int hour = (int)timer * 8 / 3600 % 24; //ingame hours
+        int min = (int)timer * 12 / 60 % 60; //ingame minutes
+        int hour = (int)timer * 12 / 3600 % 24; //ingame hours
 
         Debug.Log(hour + ":" + min);
 

@@ -111,6 +111,9 @@ public class TheThingNew : MonoBehaviour
                 }
             }
   
+        }else
+        {
+            GetComponent<BoxCollider>().enabled = true;
         }
         
 
