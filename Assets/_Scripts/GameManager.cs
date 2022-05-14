@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
         int min = (int)timer * 12 / 60 % 60; //ingame minutes
         int hour = (int)timer * 12 / 3600 % 24; //ingame hours
 
-        Debug.Log(hour + ":" + min);
+        //Debug.Log(hour + ":" + min);
 
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(2))
         {
@@ -137,7 +137,7 @@ public class GameManager : MonoBehaviour
                     {
                         hourlyObjects[0].SetActive(true);
                         //timeSp.GetComponent<TimeSwap>().hour(Player.transform);
-                        Debug.Log("hello, the hour has been changed");
+                        //Debug.Log("hello, the hour has been changed");
                     }
                     break;
 

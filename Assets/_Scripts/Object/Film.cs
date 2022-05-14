@@ -63,5 +63,4 @@ public class Film: MonoBehaviour
            // Destroy(gameObject);
         }
     }
-
 }
