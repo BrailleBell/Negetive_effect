@@ -111,6 +111,7 @@ public class TheMaiden : MonoBehaviour
             {
 
                 deathTimer = Random.Range(60, 120);
+                Debug.Log("deathTimer = " + deathTimer + "timeToDie = "+ timetodie);
                 toTurnOff.SetActive(false);
                 if (timetodie > deathTimer)
                 {
