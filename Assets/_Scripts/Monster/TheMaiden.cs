@@ -100,7 +100,7 @@ public class TheMaiden : MonoBehaviour
         
         if (ghostDying) // after taking picture of the ghost it dies after killtimer 
         {
-            deathTimer = Random.Range(60, 120);
+            
             timetodie  += Time.deltaTime;
             Debug.Log(timetodie);
             anim.SetBool("Death",true);
@@ -196,6 +196,7 @@ public class TheMaiden : MonoBehaviour
             //Debug.Log("Maiden is captured!!! OMG it works maybe");
             ghostDying = true;
             FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/Monsters/MaidenDeath",GetComponent<Transform>().transform.position);
+            deathTimer = Random.Range(60, 120);
         }
     }
 }

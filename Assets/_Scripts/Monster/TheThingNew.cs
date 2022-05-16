@@ -97,7 +97,7 @@ public class TheThingNew : MonoBehaviour
                 }
                 else if(!dontRespawn)
                 {
-                    SpawnTimer = Random.Range(60, 120);
+                    
                     anim.SetBool("Death",false);
                     anim.SetBool("Attack", false);
                     killTimer = 0;
@@ -137,6 +137,7 @@ public class TheThingNew : MonoBehaviour
         if (other.gameObject.tag == "CameraShoot")
         {
             UnityEngine.Debug.Log("monster hit");
+            SpawnTimer = Random.Range(60, 120);
             dying = true;
 
         }
