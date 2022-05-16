@@ -100,6 +100,7 @@ public class TheMaiden : MonoBehaviour
         
         if (ghostDying) // after taking picture of the ghost it dies after killtimer 
         {
+            deathTimer = Random.Range(60, 120);
             timetodie  += Time.deltaTime;
             Debug.Log(timetodie);
             anim.SetBool("Death",true);
@@ -110,7 +111,7 @@ public class TheMaiden : MonoBehaviour
             if (killTimer > 3f)
             {
 
-                deathTimer = Random.Range(60, 120);
+                
                 Debug.Log("deathTimer = " + deathTimer + "timeToDie = "+ timetodie);
                 toTurnOff.SetActive(false);
                 if (timetodie > deathTimer)
