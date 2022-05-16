@@ -7,6 +7,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 using UnitySampleAssetsModified;
+using Random = UnityEngine.Random;
 
 public class TheThingNew : MonoBehaviour
 {
@@ -94,8 +95,9 @@ public class TheThingNew : MonoBehaviour
                 {
                     gameObject.SetActive(false);
                 }
-                else if(timetoDie > SpawnTimer)
+                else if(!dontRespawn)
                 {
+                    SpawnTimer = Random.Range(60, 120);
                     anim.SetBool("Death",false);
                     anim.SetBool("Attack", false);
                     killTimer = 0;
