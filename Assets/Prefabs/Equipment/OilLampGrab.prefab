@@ -820,6 +820,30 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 635547659545568360, guid: a36f6c7507bb82d479f8057523fa2a46, type: 3}
   m_PrefabInstance: {fileID: 6922909378887967452}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6480736456822649479 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4171228387114750043, guid: a36f6c7507bb82d479f8057523fa2a46, type: 3}
+  m_PrefabInstance: {fileID: 6922909378887967452}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &470801884570863587 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1829725099130346177, guid: a36f6c7507bb82d479f8057523fa2a46, type: 3}
+  m_PrefabInstance: {fileID: 6922909378887967452}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1285466651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6480736456822649479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b976f68b2d9a3ae4c8670ad0e58846f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectMat: {fileID: 470801884570863587}
+  glowNeeded: 0
 --- !u!65 &6922909378887967451
 BoxCollider:
   m_ObjectHideFlags: 0
