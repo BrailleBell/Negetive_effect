@@ -5,12 +5,13 @@ using Unity.Mathematics;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class TheMaiden : MonoBehaviour
 {
     private RaycastHit hit;
     public float _float;
-    public float deathTimer;
+    private float deathTimer;
     private float timetodie;
     private GameObject Player;
     private GameObject ghost;
@@ -108,6 +109,8 @@ public class TheMaiden : MonoBehaviour
             killTimer += Time.deltaTime; // kill time must be over 0.2 secounds! 
             if (killTimer > 3f)
             {
+
+                deathTimer = Random.Range(60, 120);
                 toTurnOff.SetActive(false);
                 if (timetodie > deathTimer)
                 {
