@@ -19,8 +19,8 @@ namespace SaveLoadSystem
         public const string SaveDirectory = "/SaveData/";
         public const string FileName = "SaveGame.txt";
 
-        /*public static UnityAction OnLoadGameStart;
-        public static UnityAction OnLoadGameFinish;*/
+        public static UnityAction OnLoadGameStart;
+        public static UnityAction OnLoadGameFinish;
 
         /// <summary>
         /// This makes a save locally and on to our assets in Unity with all data from PlayerSaveData.cs
@@ -59,7 +59,7 @@ namespace SaveLoadSystem
         /// </summary>
         public static void LoadGame()
         {
-            //OnLoadGameStart?.Invoke();
+            OnLoadGameStart?.Invoke();
 
             var dir = Application.dataPath + Path.AltDirectorySeparatorChar + SaveDirectory;
 
@@ -91,7 +91,7 @@ namespace SaveLoadSystem
             }
 
             CurrentSaveData = tempData;
-            //OnLoadGameFinish?.Invoke();
+            OnLoadGameFinish?.Invoke();
         }
     }
 }

@@ -87,38 +87,60 @@ public class PlayerSaveData : MonoBehaviour
         #region LOAD SAVE AFTER SPECIFIC HOURS
         if (hour == 1)
         {
-            loadButtons[0].enabled = true;
-            SaveGameManager.LoadGame();
-            Debug.Log("loading hour 1");
-            Debug.Log(hour + ":" + min);
+            /*when clicking the load button the panel with the hourly ones should appear
+             * so checking if the button is enabled is just an extra step to ensure
+             * that the right thing happens to the right buttons etc etc*/
+            if (loadButtons[0].enabled == true)
+            { 
+                SaveGameManager.LoadGame();
+                SceneManager.LoadScene(2); //test if this actually sends the player to the game scene
+                Debug.Log("loading hour 1");
+                Debug.Log(hour + ":" + min);
+            }
         }
         else if(hour == 2)
         {
-            loadButtons[1].enabled = true;
-            SaveGameManager.LoadGame();
-            Debug.Log("loading hour 2");
-            Debug.Log(hour + ":" + min);
+            if(loadButtons[1].enabled == true)
+            {
+                SaveGameManager.LoadGame();
+                SceneManager.LoadScene(2);
+                Debug.Log("loading hour 2");
+                Debug.Log(hour + ":" + min);
+            }
         }
         else if(hour == 3)
         {
-            loadButtons[2].enabled = true;
-            SaveGameManager.LoadGame();
-            Debug.Log("loading hour 3");
-            Debug.Log(hour + ":" + min);
+            if(loadButtons[2].enabled == true)
+            {
+                SaveGameManager.LoadGame();
+                SceneManager.LoadScene(2);
+                Debug.Log("loading hour 3");
+                Debug.Log(hour + ":" + min);
+            }
         }
         else if(hour == 4)
         {
-            loadButtons[3].enabled = true;
-            SaveGameManager.LoadGame();
-            Debug.Log("loading hour 4");
-            Debug.Log(hour + ":" + min);
+            if(loadButtons[3].enabled == true)
+            {
+                SaveGameManager.LoadGame();
+                SceneManager.LoadScene(2);
+                Debug.Log("loading hour 4");
+                Debug.Log(hour + ":" + min);
+            }
         }
         else if(hour == 5)
         {
-            loadButtons[4].enabled = true;
-            SaveGameManager.LoadGame();
-            Debug.Log("loading hour 5");
-            Debug.Log(hour + ":" + min);
+            if(loadButtons[4].enabled == true)
+            {
+                SaveGameManager.LoadGame();
+                SceneManager.LoadScene(2);
+                Debug.Log("loading hour 5");
+                Debug.Log(hour + ":" + min);
+            }
+        }
+        else
+        {
+            Debug.Log("no save file found and cannot be loaded");
         }
         #endregion
 
