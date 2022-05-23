@@ -135,7 +135,7 @@ public class GameManager : MonoBehaviour
                 case 0:
                     if(hour == 0)
                     {
-                        hourlyObjects[0].SetActive(true);
+                        //hourlyObjects[0].SetActive(true);
                         //timeSp.GetComponent<TimeSwap>().hour(Player.transform);
                         //Debug.Log("hello, the hour has been changed");
                     }

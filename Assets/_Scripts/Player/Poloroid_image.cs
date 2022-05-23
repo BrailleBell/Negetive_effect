@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using System.IO;
+using UnityEngine.XR.Interaction.Toolkit;
 
 
 public class Poloroid_image : MonoBehaviour
@@ -29,6 +30,7 @@ public class Poloroid_image : MonoBehaviour
     private TextMesh filmText;
     public GameObject oldFilm;
     private Camera _camera;
+    public float move;
 
     //Light
     public GameObject reloadedlamp;
@@ -49,6 +51,7 @@ public class Poloroid_image : MonoBehaviour
 
     private void Start()
     {
+        move = GameObject.Find("XR Origin").GetComponent<DeviceBasedContinuousMoveProvider>().moveSpeed;
         
       //  Instantiate(Picture, transform.position, Quaternion.identity);
         //screenCapture = new Texture2D(516, 516, TextureFormat.RGB24, false);
@@ -67,6 +70,8 @@ public class Poloroid_image : MonoBehaviour
 
     private void Update()
     {
+        move = 10;
+        
         if (_camera.enabled)
         {
             Debug.Log("Lollee");
@@ -253,14 +258,14 @@ public class Poloroid_image : MonoBehaviour
        // bool isActive = !gameObject.activeSelf;
        // gameObject.SetActive(isActive);
         //
-        
-        gm.reloadReady = true;
-        Instantiate(oldFilm, transform.position, quaternion.identity);
-        Debug.Log("Check0");
-         Debug.Log("check1");
-         //play reload sound 
-       
-      Debug.Log("Reload Ready, insert film");
+        move = 15;
+        // gm.reloadReady = true;
+        //Instantiate(oldFilm, transform.position, quaternion.identity);
+        // Debug.Log("Check0");
+        //Debug.Log("check1");
+        //play reload sound 
+
+        // Debug.Log("Reload Ready, insert film");
         //Instantiate(oldFilm, transform.position, quaternion.identity);
 
     }
