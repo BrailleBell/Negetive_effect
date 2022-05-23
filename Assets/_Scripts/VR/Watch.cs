@@ -11,8 +11,8 @@ public class Watch : MonoBehaviour
 
     private void Update()
     {
-        int min = (int)GameManager.getTimer * 8 / 60 % 60;
-        int hour = (int)GameManager.getTimer * 8 / 3600 % 24;
+        int min = (int)GameManager.getTimer * 12 / 60 % 60;
+        int hour = (int)GameManager.getTimer * 12 / 3600 % 24;
 
         string _Min;
         if (min < 10)

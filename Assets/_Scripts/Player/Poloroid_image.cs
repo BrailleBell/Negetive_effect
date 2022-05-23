@@ -258,8 +258,8 @@ public class Poloroid_image : MonoBehaviour
        // bool isActive = !gameObject.activeSelf;
        // gameObject.SetActive(isActive);
         //
-        move = 15;
-        // gm.reloadReady = true;
+        //move = 15;
+         gm.reloadReady = true;
         //Instantiate(oldFilm, transform.position, quaternion.identity);
         // Debug.Log("Check0");
         //Debug.Log("check1");
