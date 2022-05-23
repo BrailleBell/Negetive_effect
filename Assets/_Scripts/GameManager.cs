@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     private GameObject timeSp;
 
     public bool isCreated;
+    private bool playedHoursound;
 
     //Camera reloading
     public bool reloaded,reloadReady;
@@ -138,60 +139,103 @@ public class GameManager : MonoBehaviour
                         //hourlyObjects[0].SetActive(true);
                         //timeSp.GetComponent<TimeSwap>().hour(Player.transform);
                         //Debug.Log("hello, the hour has been changed");
+                        if (!playedHoursound)
+                        {
+                            FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/NewHourEffect",GetComponent<Transform>().position);
+                            playedHoursound = true;
+                        }
                     }
                     break;
 
                 case 1:
                     if(hour == 1)
                     {
+                        playedHoursound = false;
                         hourlyObjects[1].SetActive(true);
                         //hourlyObjects[0].SetActive(false);
                         timeSp.GetComponent<TimeSwap>().hour(Player.transform); // this will trigger the clock display to appear infront of the player
+                        if (!playedHoursound)
+                        {
+                            FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/NewHourEffect",GetComponent<Transform>().position);
+                            playedHoursound = true;
+                        }
+                        
                     }
                     break;
 
                 case 2:
                     if(hour == 2)
                     {
+                        playedHoursound = false;
                         hourlyObjects[2].SetActive(true);
                         //hourlyObjects[1].SetActive(false);
                         timeSp.GetComponent<TimeSwap>().hour(Player.transform);
+                        if (!playedHoursound)
+                        {
+                            FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/NewHourEffect",GetComponent<Transform>().position);
+                            playedHoursound = true;
+                        }
                     }
                     break;
 
                 case 3:
                     if(hour == 3)
                     {
+                        playedHoursound = false;
                         hourlyObjects[3].SetActive(true);
                        // hourlyObjects[2].SetActive(false);
                         timeSp.GetComponent<TimeSwap>().hour(Player.transform);
+                        if (!playedHoursound)
+                        {
+                            FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/NewHourEffect",GetComponent<Transform>().position);
+                            playedHoursound = true;
+                        }
                     }
                     break;
 
                 case 4:
                     if(hour == 4)
                     {
+                        playedHoursound = false;
                         hourlyObjects[4].SetActive(true);
                         hourlyObjects[3].SetActive(false);
                         timeSp.GetComponent<TimeSwap>().hour(Player.transform);
+                        if (!playedHoursound)
+                        {
+                            FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/NewHourEffect",GetComponent<Transform>().position);
+                            playedHoursound = true;
+                        }
+
                     }
                     break;
 
                 case 5:
                     if(hour == 5)
                     {
+                        playedHoursound = false;
                         hourlyObjects[5].SetActive(true);
                         //hourlyObjects[4].SetActive(false);
                         timeSp.GetComponent<TimeSwap>().hour(Player.transform);
+                        if (!playedHoursound)
+                        {
+                            FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/NewHourEffect",GetComponent<Transform>().position);
+                            playedHoursound = true;
+                        }
                     }
                     break;
 
                 case 6:
                     if(hour == 6)
                     {
+                        playedHoursound = false;
                         hourlyObjects[6].SetActive(true);
                         //hourlyObjects[5].SetActive(false);
                         timeSp.GetComponent<Animator>().SetBool("Win", true);
+                        if (!playedHoursound)
+                        {
+                            FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/NewHourEffect",GetComponent<Transform>().position);
+                            playedHoursound = true;
+                        }
                     }
                     break;
             }

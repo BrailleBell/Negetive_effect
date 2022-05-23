@@ -19,6 +19,7 @@ public class PlayanimationOnCollision : MonoBehaviour
                 taskDone = false;
                 wheel2.SetActive(true);
                 wheel1.SetActive(false);
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/DoorOpening",GetComponent<Transform>().position);
             }
         }
     }
