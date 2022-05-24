@@ -20,7 +20,7 @@ public class RandomSounds : MonoBehaviour
         if (!reset)
         {
             counter += Time.deltaTime;
-            timer = Random.Range(30, 60);
+            timer = Random.Range(120,240);
             if (counter > timer)
             {
                 FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/SuspenseForRandomEncounter",GetComponent<Transform>().position);
