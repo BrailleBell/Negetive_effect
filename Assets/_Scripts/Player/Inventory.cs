@@ -50,12 +50,18 @@ public class Inventory : MonoBehaviour
             InstantiateNotes();
             UIactive = !UIactive;
             inventory.SetActive(UIactive);
+            Debug.Log("collision works opening inv");
         }
 
         if (UIactive)
         {
             inventory.transform.position = anchor.transform.position;
             inventory.transform.eulerAngles = new Vector3(anchor.transform.eulerAngles.x + 15, anchor.transform.eulerAngles.y, 0);
+        }
+
+        else
+        {
+            Debug.Log("collision doesnt work inv");
         }
     }
 
