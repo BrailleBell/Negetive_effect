@@ -28,7 +28,7 @@ public class Inventory : MonoBehaviour
     private void Update()
     {
         #region POP out inventory (not for use in game)
-        if (Input.GetKeyDown("secondaryButton")) //this will not work but its just to test something
+        /*if (Input.GetKeyDown("secondaryButton")) //this will not work but its just to test something
         {
             UIactive = !UIactive;
             inventory.SetActive(UIactive);
@@ -38,7 +38,7 @@ public class Inventory : MonoBehaviour
         {
             inventory.transform.position = anchor.transform.position;
             inventory.transform.eulerAngles = new Vector3(anchor.transform.eulerAngles.x + 15, anchor.transform.eulerAngles.y, 0);
-        }
+        }*/
         #endregion
     }
 
