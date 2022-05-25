@@ -825,7 +825,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &302946834
 Transform:
   m_ObjectHideFlags: 0
@@ -992,6 +992,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: XR Origin
       objectReference: {fileID: 0}
+    - target: {fileID: 1648940922029869211, guid: 9f555d26ec8327d4386cf5b032990054, type: 3}
+      propertyPath: m_TagString
+      value: RightHand
+      objectReference: {fileID: 0}
+    - target: {fileID: 1648940922682954470, guid: 9f555d26ec8327d4386cf5b032990054, type: 3}
+      propertyPath: m_ModelPrefab
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1648940922682954471, guid: 9f555d26ec8327d4386cf5b032990054, type: 3}
       propertyPath: m_HoverExited.m_PersistentCalls.m_Calls.Array.size
       value: 0
@@ -1015,6 +1023,10 @@ PrefabInstance:
     - target: {fileID: 1648940922682954471, guid: 9f555d26ec8327d4386cf5b032990054, type: 3}
       propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1648940922682954476, guid: 9f555d26ec8327d4386cf5b032990054, type: 3}
+      propertyPath: m_TagString
+      value: LeftHand
       objectReference: {fileID: 0}
     - target: {fileID: 2051225628498500353, guid: 9f555d26ec8327d4386cf5b032990054, type: 3}
       propertyPath: m_Enabled
@@ -1047,7 +1059,7 @@ MonoBehaviour:
   gm: {fileID: 0}
   film: {fileID: 0}
   notes: []
-  inventory: {fileID: 0}
+  inventory: {fileID: 302946833}
   anchor: {fileID: 0}
 --- !u!1 &337335844
 GameObject:
@@ -5470,6 +5482,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1739368580}
   m_CullTransparentMesh: 1
+--- !u!1 &1776213970 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1648940922029869211, guid: 9f555d26ec8327d4386cf5b032990054, type: 3}
+  m_PrefabInstance: {fileID: 314556288}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1776213971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776213970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a8f9fc94abf2c44b9d4e25a82c7c479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gm: {fileID: 0}
+  film: {fileID: 0}
+  notes: []
+  inventory: {fileID: 0}
+  anchor: {fileID: 0}
 --- !u!1 &1793491849
 GameObject:
   m_ObjectHideFlags: 0

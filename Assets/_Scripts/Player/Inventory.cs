@@ -44,9 +44,18 @@ public class Inventory : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("RightHand"))
+        if (collision.gameObject.CompareTag("RightHand") || collision.gameObject.CompareTag("LeftHand"))
         {
             InstantiateFilm();
+            InstantiateNotes();
+            UIactive = !UIactive;
+            inventory.SetActive(UIactive);
+        }
+
+        if (UIactive)
+        {
+            inventory.transform.position = anchor.transform.position;
+            inventory.transform.eulerAngles = new Vector3(anchor.transform.eulerAngles.x + 15, anchor.transform.eulerAngles.y, 0);
         }
     }
 
