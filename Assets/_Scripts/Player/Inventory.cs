@@ -16,11 +16,13 @@ public class Inventory : MonoBehaviour
     public GameObject anchor;
     bool UIactive;
 
+    Rigidbody rb;
+
     // Start is called before the first frame update
     void Start()
     {
         gm = GameObject.Find("__GM").GetComponent<GameManager>();
-
+        rb = gameObject.GetComponent<Rigidbody>();
         inventory.SetActive(false);
         UIactive = false;
     }
