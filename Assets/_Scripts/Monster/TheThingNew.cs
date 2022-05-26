@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using FMOD.Studio;
 using FMODUnity;
 using UnityEditor;
@@ -87,7 +88,6 @@ public class TheThingNew : MonoBehaviour
         {
             anim.SetBool("Death", true);
             GetComponent<BoxCollider>().enabled = false;
-            timetoDie += Time.deltaTime;
             killTimer += Time.deltaTime; // kill time must be over 0.2 secounds! 
             if (killTimer > 3f)
             {
@@ -95,19 +95,32 @@ public class TheThingNew : MonoBehaviour
                 {
                     gameObject.SetActive(false);
                 }
-                else if(!dontRespawn)
+                else if(!dontRespawn) // Teleports the monster to a new random locaiton
                 {
+                    timetoDie += Time.deltaTime;
+                    spawnPointId = UnityEngine.Random.Range(1, spawnPoints.Length);
+                    transform.position = spawnPoints[spawnPointId].transform.position;
+                    if (DistanceToPlayer > 5)
+                    {
+                        spawnPointId = UnityEngine.Random.Range(1, spawnPoints.Length);
+                        transform.position = spawnPoints[spawnPointId].transform.position;
+
+                    }
                     
-                    anim.SetBool("Death",false);
-                    anim.SetBool("Attack", false);
-                    killTimer = 0;
+                    
+
+                    //falsesafe that teleports the monster to new position if it has not been encountered for a while,
+                    //also spawns the monster back after a certain amount of time
                     if (timetoDie > SpawnTimer)
                     {
                         dying = false;
-                        spawnPointId = UnityEngine.Random.Range(1, spawnPoints.Length);
-                        transform.position = spawnPoints[spawnPointId].transform.position;
-                        
-                        
+                        Debug.Log("TimeToDie = " + timetoDie);
+                        timetoDie = 0;
+                        killTimer = 0;
+                        anim.SetBool("Death",false);
+                        anim.SetBool("Attack",false);
+                        GetComponent<BoxCollider>().enabled = true;
+
                     }
                     
                 }
