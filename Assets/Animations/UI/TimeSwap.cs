@@ -14,6 +14,12 @@ public class TimeSwap : MonoBehaviour
     public bool changed;
     private Transform P;
 
+    private void Start()
+    {
+        P = T.GetChild(0).GetChild(0);
+    }
+
+
     private void Update()
     {
         if (changed)
