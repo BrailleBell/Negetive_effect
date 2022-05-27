@@ -18,7 +18,7 @@ public class TheMaiden : MonoBehaviour
     public float DistanceToPlayer;
     public float HearingRange;
     private Animator anim;
-    private bool ghostDying;
+    public bool ghostDying;
     public bool DontFollow;
     public bool RespawnsOn;
     public int RespawnsLeft;

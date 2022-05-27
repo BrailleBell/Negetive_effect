@@ -7,13 +7,14 @@ using UnityEngine.SceneManagement;
 public class PlayerManager : MonoBehaviour
 {
     public GameObject Player;
-    public static Vector3 lastPostPos = new Vector3(-3,0,-3);
+    public static Vector3 lastPostPos;
     public int SceneToGoTo;
     public float respawnTimer;
     private float respawnTimerCounter;
     private bool DeathTimer;
     private Animator anim;
     private GameObject deathPP;
+    private GameObject cS; 
 
 
     private void Awake()
@@ -26,6 +27,7 @@ public class PlayerManager : MonoBehaviour
     {
         Player = GameObject.Find("XR Origin");
         anim = deathPP.GetComponent<Animator>();
+        cS = GameObject.Find("Canvases");
         
     }
 
@@ -93,12 +95,12 @@ public class PlayerManager : MonoBehaviour
     {
         // Write everything that happens during death
         transform.position = lastPostPos;
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/Death",GetComponent<Transform>().transform.position);
         // SceneManager.LoadScene(SceneToGoTo);
+        cS.GetComponent<TimeSwap>().Show_again(Player.transform);
         
         
-        
-        
-        //This is last entry
+            //This is last entry
         DeathTimer = false;
 
     }

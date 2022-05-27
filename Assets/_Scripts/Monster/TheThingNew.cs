@@ -17,7 +17,7 @@ public class TheThingNew : MonoBehaviour
     private NavMeshAgent ghost;
     public float visibilityRange;
     public float DistanceToPlayer;
-    private bool dying;
+    public bool dying;
     private float killTimer;
     public bool dontFollow, dontRespawn;
     private StudioEventEmitter runningSound;
@@ -159,7 +159,8 @@ public class TheThingNew : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-           // GetComponent<BoxCollider>().enabled = false;
+            
+            // GetComponent<BoxCollider>().enabled = false;
         }
     }
 }

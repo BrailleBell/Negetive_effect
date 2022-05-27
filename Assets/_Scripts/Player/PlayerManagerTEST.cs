@@ -14,12 +14,14 @@ public class PlayerManagerTEST : MonoBehaviour
     private bool DeathTimer;
     private GameObject deathPP;
     private Animator anim;
+    private GameObject cS; 
 
 
     private void Awake()
     { 
         GameObject.Find("FPSPlayer!").transform.position = lastPostPos;
         deathPP = GameObject.Find("post_death");
+        cS = GameObject.Find("Canvases");
     }
 
     void Start()
@@ -43,6 +45,7 @@ public class PlayerManagerTEST : MonoBehaviour
                 
                 
                 
+                
                 Dying();
             }
         }
@@ -57,7 +60,7 @@ public class PlayerManagerTEST : MonoBehaviour
         if (other.CompareTag("Monster"))
         {
             anim.SetBool("Dead",true);
-            //FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/Death",GetComponent<Transform>().transform.position);
+            
             DeathTimer = true;
             Debug.Log("DeathCounter " + respawnTimerCounter);
             
@@ -93,9 +96,11 @@ public class PlayerManagerTEST : MonoBehaviour
     public void Dying()
     {
         // Write everything that happens during death
-        transform.position = lastPostPos;
-        // SceneManager.LoadScene(SceneToGoTo);
         
+        transform.position = lastPostPos;
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/NewHourEffect",GetComponent<Transform>().transform.position);
+        // SceneManager.LoadScene(SceneToGoTo);
+        cS.GetComponent<TimeSwap>().Show_again(Player.transform);
         
         
         
