@@ -1,10 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManagerTEST : MonoBehaviour
 {
     public GameObject Player;
     public static Vector3 lastPostPos = new Vector3(-3,0,-3);
@@ -16,23 +14,28 @@ public class PlayerManager : MonoBehaviour
 
     private void Awake()
     { 
-        GameObject.Find("XR Origin").transform.position = lastPostPos;
+        GameObject.Find("FPSPlayer!").transform.position = lastPostPos;
     }
 
     void Start()
     {
-        Player = GameObject.Find("XR Origin");
+        Player = GameObject.Find("FPSPlayer!");
         
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (DeathTimer)
+        if (DeathTimer) // A bool, checks if the player has died
         {
             respawnTimerCounter += Time.deltaTime;
             if (respawnTimerCounter > respawnTimer)
             {
+                respawnTimerCounter = 0;
+                //Write here, everything that should happen before death
+                
+                
+                
+                
                 Dying();
             }
         }
@@ -55,13 +58,16 @@ public class PlayerManager : MonoBehaviour
 
     public void Dying()
     {
+        // Write everything that happens during death
         transform.position = lastPostPos;
         // SceneManager.LoadScene(SceneToGoTo);
         
         
         
+        
+        //This is last entry
         DeathTimer = false;
-        respawnTimerCounter = 0;
+        
 
     }
 }
