@@ -14,10 +14,7 @@ public class TimeSwap : MonoBehaviour
     public bool changed;
     private Transform P;
 
-    private void Start()
-    {
-        P = T.GetChild(0).GetChild(0);
-    }
+
 
 
     private void Update()
@@ -43,8 +40,9 @@ public class TimeSwap : MonoBehaviour
         {
             clock.text = ams[onTheHour];
             ani.SetBool("Hour", true);
-            changed = true;
             P = T.GetChild(0).GetChild(0);
+            changed = true;
+            
         }
     }
 
@@ -69,8 +67,9 @@ public class TimeSwap : MonoBehaviour
     {
         clock.text = ams[onTheHour];
         ani.SetBool("re", true);
-        changed = true;
         P = T.GetChild(0).GetChild(0);
+        changed = true;
+       
     }
 
 
