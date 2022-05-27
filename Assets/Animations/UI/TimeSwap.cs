@@ -9,7 +9,7 @@ public class TimeSwap : MonoBehaviour
     public string time;
     public  Text clock;
     public GameObject Canvas;
-    public string[] ams = {"00:00", "01:00", "02:00", "03:00", "04:00", "05:00" };
+    public string[] ams = {"00:00", "00:00", "01:00", "02:00", "03:00", "04:00", "05:00" };
     private int onTheHour = 0;
     public bool changed;
     private Transform P;
