@@ -153,7 +153,13 @@ public class TheThingNew : MonoBehaviour
             UnityEngine.Debug.Log("monster hit");
             SpawnTimer = Random.Range(60, 120);
             dying = true;
+            
 
+        }
+
+        if (other.CompareTag("Player"))
+        {
+           // GetComponent<BoxCollider>().enabled = false;
         }
     }
 }

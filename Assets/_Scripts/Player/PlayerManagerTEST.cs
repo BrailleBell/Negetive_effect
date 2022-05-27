@@ -2,11 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerManagerTEST : MonoBehaviour
 {
     public GameObject Player;
-    public static Vector3 lastPostPos = new Vector3(-3,0,-3);
+    public static Vector3 lastPostPos;
     public int SceneToGoTo;
     private float respawnTimer = 1 ;
     private float respawnTimerCounter;
@@ -56,8 +57,10 @@ public class PlayerManagerTEST : MonoBehaviour
         if (other.CompareTag("Monster"))
         {
             anim.SetBool("Dead",true);
+            //FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/Death",GetComponent<Transform>().transform.position);
             DeathTimer = true;
             Debug.Log("DeathCounter " + respawnTimerCounter);
+            
         }
         
         if (other.CompareTag("DeathBarrier"))
