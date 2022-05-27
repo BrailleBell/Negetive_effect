@@ -70,6 +70,7 @@ public class TheThingNew : MonoBehaviour
         // teleports until it finds player
         if (DistanceToPlayer > visibilityRange)
         {
+            anim.SetBool("Attack",false);
             if (!dontRespawn)
             {
                 resettimer += Time.deltaTime;
