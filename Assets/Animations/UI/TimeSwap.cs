@@ -46,6 +46,7 @@ public class TimeSwap : MonoBehaviour
     public void stop()
     {
         ani.SetBool("Hour", false);
+        ani.SetBool("re", false);
     }
 
     //made for the 6am event. 
@@ -55,6 +56,17 @@ public class TimeSwap : MonoBehaviour
         ani.SetBool("Hour", true);
         changed = false;
     }
+
+
+
+    public void Show_again(Transform T)
+    {
+        clock.text = ams[onTheHour];
+        ani.SetBool("re", true);
+        changed = true;
+        P = T.GetChild(0).GetChild(0);
+    }
+
 
     public void NewHour()
     {
