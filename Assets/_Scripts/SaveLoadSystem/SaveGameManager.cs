@@ -13,6 +13,10 @@ using System.Runtime.Serialization.Formatters.Binary;
 /// 
 namespace SaveLoadSystem
 {
+    /*want to do something like this so that it can be used
+     * for checking the bool if there is a savefile or not*/
+    //public static bool getSaveFile => SaveData;
+
    public static class SaveGameManager
    {
         public static SaveData CurrentSaveData = new SaveData();

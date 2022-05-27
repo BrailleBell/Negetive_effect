@@ -85,7 +85,7 @@ public class PlayerSaveData : MonoBehaviour
         ///the game will load it at the right time
         //scuffed way of checking if there is a savefile from time
         #region LOAD SAVE AFTER SPECIFIC HOURS
-        if (hour == 1)
+        if (hour == 0)
         {
             /*when clicking the load button the panel with the hourly ones should appear
              * so checking if the button is enabled is just an extra step to ensure
@@ -98,7 +98,7 @@ public class PlayerSaveData : MonoBehaviour
                 Debug.Log(hour + ":" + min);
             }
         }
-        else if(hour == 2)
+        else if(hour == 1)
         {
             if(loadButtons[1].enabled == true)
             {
@@ -108,7 +108,7 @@ public class PlayerSaveData : MonoBehaviour
                 Debug.Log(hour + ":" + min);
             }
         }
-        else if(hour == 3)
+        else if(hour == 2)
         {
             if(loadButtons[2].enabled == true)
             {
@@ -118,7 +118,7 @@ public class PlayerSaveData : MonoBehaviour
                 Debug.Log(hour + ":" + min);
             }
         }
-        else if(hour == 4)
+        else if(hour == 3)
         {
             if(loadButtons[3].enabled == true)
             {
@@ -128,7 +128,7 @@ public class PlayerSaveData : MonoBehaviour
                 Debug.Log(hour + ":" + min);
             }
         }
-        else if(hour == 5)
+        else if(hour == 4)
         {
             if(loadButtons[4].enabled == true)
             {
