@@ -14,13 +14,19 @@ public class SkellyBoi : MonoBehaviour
     public float distFromPlayerToSpawn;
     public float DistanceToPlayer;
     public float awareRadius;
+    public bool DontRespawn;
     
     //dont mess up the generatedMonstercount kek
     private int generatedMonstersCount = 0;
-    private bool dying, haveSpawned;
+    public bool dying;
+    private bool haveSpawned;
     private NavMeshAgent ghost;
     private Animator anim;
     private float killTimer;
+    public GameObject[] spawnPoints;
+    private int SpawnPointId;
+    public float reSpawnTimer;
+    private float timerReset;
     
     
 
@@ -81,7 +87,25 @@ public class SkellyBoi : MonoBehaviour
             killTimer += Time.deltaTime; // kill time must be over 0.2 secounds! 
             if (killTimer > 3f)
             {
-               gameObject.SetActive(false);
+                if (DontRespawn)
+                {
+                    gameObject.SetActive(false);
+                    
+                }
+                else
+                {
+                    SpawnPointId = UnityEngine.Random.Range(1, spawnPoints.Length);
+                    timerReset += Time.deltaTime;
+                    if (timerReset > reSpawnTimer)
+                    {
+                        transform.position = spawnPoints[SpawnPointId].transform.position;
+                        dying = false;
+                    }
+                    
+                }
+                
+                
+               
             }
         }
         

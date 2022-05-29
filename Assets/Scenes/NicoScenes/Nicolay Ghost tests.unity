@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &60875490
 Light:
   m_ObjectHideFlags: 0
@@ -426,7 +426,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &214365943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1851,7 +1851,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!195 &909603605
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1969,6 +1969,16 @@ MonoBehaviour:
   distFromPlayerToSpawn: 20
   DistanceToPlayer: 0
   awareRadius: 20.08
+  DontRespawn: 0
+  dying: 0
+  spawnPoints:
+  - {fileID: 1288897579}
+  - {fileID: 1431869996}
+  - {fileID: 1607717340}
+  - {fileID: 266808264}
+  - {fileID: 2033621567}
+  - {fileID: 1259347578}
+  reSpawnTimer: 0
 --- !u!114 &909603611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3816,7 +3826,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 828666200836035223, guid: 90b919fa49aef7343933dfe203d37b0b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90b919fa49aef7343933dfe203d37b0b, type: 3}

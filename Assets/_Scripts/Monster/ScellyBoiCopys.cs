@@ -15,10 +15,12 @@ public class ScellyBoiCopys : MonoBehaviour
     private Animator anim;
     private float killTimer;
     private float Dist;
+    private SkellyBoi _skellyBoi;
     
     // Start is called before the first frame update
     void Start()
     {
+        _skellyBoi = GameObject.Find("Shellback").GetComponent<SkellyBoi>();
         Dist = MainHost.GetComponent<SkellyBoi>().distFromPlayerToSpawn;
 //        anim.SetBool("Spawned",true);
         Player = GameObject.FindGameObjectWithTag("Player");
@@ -102,8 +104,13 @@ public class ScellyBoiCopys : MonoBehaviour
         {
             dying = true;
         }
-        
-        
+
+        if (_skellyBoi.dying)
+        {
+            dying = true;
+        }
+
+
 
     }
     
