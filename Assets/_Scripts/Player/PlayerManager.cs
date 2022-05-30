@@ -21,6 +21,12 @@ public class PlayerManager : MonoBehaviour
     { 
         GameObject.Find("XR Origin").transform.position = lastPostPos;
         deathPP = GameObject.Find("post_death");
+
+        //attach a callback for every new scene that is loaded
+        //it is fine to remove a callback that wasn't added so far
+        //this makes sure that this callback is definitely only added once
+        //SceneManager.sceneLoaded -= OnSceneLoaded;
+        //SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void Start()
