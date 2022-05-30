@@ -15,6 +15,8 @@ public class PlayerManager : MonoBehaviour
     private Animator anim;
     private GameObject deathPP;
     private GameObject cS; 
+    [HideInInspector]
+    public bool PlayerDied;
 
 
     private void Awake()
@@ -58,6 +60,7 @@ public class PlayerManager : MonoBehaviour
         else
         {
             anim.SetBool("Dead", false);
+            PlayerDied = false;
         }
     }
 
@@ -104,8 +107,9 @@ public class PlayerManager : MonoBehaviour
         FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/Death",GetComponent<Transform>().transform.position);
         // SceneManager.LoadScene(SceneToGoTo);
         cS.GetComponent<TimeSwap>().Show_again(Player.transform);
-        
-        
+
+
+        PlayerDied = true;
             //This is last entry
         DeathTimer = false;
 

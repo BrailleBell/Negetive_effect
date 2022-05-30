@@ -14,7 +14,9 @@ public class PlayerManagerTEST : MonoBehaviour
     private bool DeathTimer;
     private GameObject deathPP;
     private Animator anim;
-    private GameObject cS; 
+    public GameObject cS;
+    [HideInInspector]
+    public bool PlayerDied;
 
 
     private void Awake()
@@ -52,6 +54,7 @@ public class PlayerManagerTEST : MonoBehaviour
         else
         {
             anim.SetBool("Dead", false);
+            PlayerDied = false;
         }
     }
 
@@ -100,10 +103,11 @@ public class PlayerManagerTEST : MonoBehaviour
         transform.position = lastPostPos;
         FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/NewHourEffect",GetComponent<Transform>().transform.position);
         // SceneManager.LoadScene(SceneToGoTo);
-        cS.GetComponent<TimeSwap>().Show_again(Player.transform);
-        
-        
-        
+//        cS.GetComponent<TimeSwap>().Show_again(Player.transform);
+
+
+
+        PlayerDied = true;
         //This is last entry
         DeathTimer = false;
 

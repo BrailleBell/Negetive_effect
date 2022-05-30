@@ -47,6 +47,27 @@ public class TheMaiden : MonoBehaviour
     void Update()
     {
         
+        // teleports the enemy to another position when the player dies
+        if (Player.GetComponent<PlayerManagerTEST>())
+        {
+            if (Player.GetComponent<PlayerManagerTEST>().PlayerDied)
+            {
+                spawnpointId = UnityEngine.Random.Range(1, spawnPoints.Length);
+                transform.position = spawnPoints[spawnpointId].transform.position;
+            }
+            
+        }
+
+        if (Player.GetComponent<PlayerManager>())
+        {
+            if (Player.GetComponent<PlayerManager>().PlayerDied) 
+            {
+                spawnpointId = UnityEngine.Random.Range(1, spawnPoints.Length);
+                transform.position = spawnPoints[spawnpointId].transform.position; 
+            }
+            
+        }
+        
         // Looks at the player
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Player.transform.position - transform.position), 3 * Time.deltaTime);
         
@@ -197,6 +218,12 @@ public class TheMaiden : MonoBehaviour
             ghostDying = true;
             FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/Monsters/MaidenDeath",GetComponent<Transform>().transform.position);
             deathTimer = Random.Range(60, 120);
+        }
+
+        if (other.CompareTag("Player"))
+        {
+            spawnpointId = UnityEngine.Random.Range(1, spawnPoints.Length);
+            transform.position = spawnPoints[spawnpointId].transform.position;
         }
     }
 }

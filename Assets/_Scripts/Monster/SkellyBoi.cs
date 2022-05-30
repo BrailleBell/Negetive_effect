@@ -62,6 +62,28 @@ public class SkellyBoi : MonoBehaviour
 // Update is called once per frame
     void Update()
     {
+        // teleports the enemy to another position when the player dies
+        if (Player.GetComponent<PlayerManagerTEST>())
+        {
+            if (Player.GetComponent<PlayerManagerTEST>().PlayerDied)
+            {
+                SpawnPointId = UnityEngine.Random.Range(1, spawnPoints.Length);
+                transform.position = spawnPoints[SpawnPointId].transform.position;
+            }
+            
+        }
+
+        if (Player.GetComponent<PlayerManager>())
+        {
+            if (Player.GetComponent<PlayerManager>().PlayerDied) 
+            {
+                SpawnPointId = UnityEngine.Random.Range(1, spawnPoints.Length);
+                transform.position = spawnPoints[SpawnPointId].transform.position; 
+            }
+            
+        }
+        
+        
         //Distance calculation
         DistanceToPlayer = Vector3.Distance(transform.position, Player.transform.position);
         if (DistanceToPlayer < awareRadius)

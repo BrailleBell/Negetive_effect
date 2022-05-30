@@ -43,6 +43,27 @@ public class TheThingNew : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // teleports the enemy to another position when the player dies
+        if (Player.GetComponent<PlayerManagerTEST>())
+        {
+            if (Player.GetComponent<PlayerManagerTEST>().PlayerDied)
+            {
+                spawnPointId = UnityEngine.Random.Range(1, spawnPoints.Length);
+                transform.position = spawnPoints[spawnPointId].transform.position;
+            }
+            
+        }
+
+        if (Player.GetComponent<PlayerManager>())
+        {
+            if (Player.GetComponent<PlayerManager>().PlayerDied) 
+            {
+                spawnPointId = UnityEngine.Random.Range(1, spawnPoints.Length);
+                transform.position = spawnPoints[spawnPointId].transform.position; 
+            }
+            
+        }
+
 
         if (Input.GetKeyUp(KeyCode.L))
         {
@@ -56,6 +77,7 @@ public class TheThingNew : MonoBehaviour
             {
                 resettimer = 0;
                 anim.SetBool("Attack",true);
+                Debug.Log("Player Should Be chased");
                 ghost.SetDestination(Player.transform.position);
                 ghost.speed = 15;
             }
@@ -160,7 +182,7 @@ public class TheThingNew : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             
-            // GetComponent<BoxCollider>().enabled = false;
+            
         }
     }
 }

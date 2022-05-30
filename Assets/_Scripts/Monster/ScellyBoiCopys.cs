@@ -35,6 +35,24 @@ public class ScellyBoiCopys : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // destroys the fake skellyboi when the player dies
+        if (Player.GetComponent<PlayerManagerTEST>())
+        {
+            if (Player.GetComponent<PlayerManagerTEST>().PlayerDied)
+            {
+                Destroy(gameObject);
+            }
+        }
+        
+        if (Player.GetComponent<PlayerManager>())
+        {
+            if (Player.GetComponent<PlayerManager>().PlayerDied) 
+            {
+                Destroy(gameObject);
+            }
+            
+        }
+
 
         if (Input.GetKeyUp(KeyCode.H))
         {
@@ -121,6 +139,11 @@ public class ScellyBoiCopys : MonoBehaviour
             UnityEngine.Debug.Log("monster hit");
             fakeDying = true;
 
+        }
+
+        if (other.CompareTag("Player"))
+        {
+            fakeDying = true;
         }
     }
 }

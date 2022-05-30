@@ -91,6 +91,26 @@ public class Trundle : MonoBehaviour
   
     void Update()
     {
+        // teleports the enemy to another position when the player dies
+        if (Player.GetComponent<PlayerManagerTEST>())
+        {
+            if (Player.GetComponent<PlayerManagerTEST>().PlayerDied)
+            {
+                wayPointInd = UnityEngine.Random.Range(1, MonsterWaypoints.Length);
+                transform.position = MonsterWaypoints[wayPointInd].transform.position;
+            }
+            
+        }
+
+        if (Player.GetComponent<PlayerManager>())
+        {
+            if (Player.GetComponent<PlayerManager>().PlayerDied) 
+            {
+                wayPointInd = UnityEngine.Random.Range(1, MonsterWaypoints.Length);
+                transform.position = MonsterWaypoints[wayPointInd].transform.position; 
+            }
+            
+        }
          distanceToPlayer = Vector3.Distance(transform.position, Player.transform.position);
 
          switch (state)
@@ -487,6 +507,11 @@ public class Trundle : MonoBehaviour
             UnityEngine.Debug.Log("monster hit");
             ghostDying = true;
 
+        }
+
+        if (other.CompareTag("Player"))
+        {
+            
         }
     }
     
