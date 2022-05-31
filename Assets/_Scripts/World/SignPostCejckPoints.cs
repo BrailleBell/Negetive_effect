@@ -7,12 +7,13 @@ public class SignPostCejckPoints : MonoBehaviour
 {
     private GameObject Player;
     public GameObject light;
+    private float timer;
+    private bool lightsOn;
 
     private int currentSignPost;
     // Start is called before the first frame update
     void Start()
     {
-       
         light.SetActive(false);
         Player = GameObject.FindGameObjectWithTag("Player");
     }
@@ -20,13 +21,23 @@ public class SignPostCejckPoints : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (lightsOn)
+        {
+            timer += Time.deltaTime;
+            if (timer > 30)
+            {
+                light.SetActive(false);
+                timer = 0;
+                lightsOn = false;
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+            lightsOn = true;
             PlayerManager.lastPostPos = transform.position;
             PlayerManagerTEST.lastPostPos = transform.position;
             FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/Death",GetComponent<Transform>().transform.position);
@@ -34,10 +45,5 @@ public class SignPostCejckPoints : MonoBehaviour
             light.SetActive(true);
         }
     }
-
-    private void OnTriggerExit(Collider other)
-    {
-             light.SetActive(false);
-
-    }
+    
 }
