@@ -13,7 +13,7 @@ public class Film: MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        gm = GameObject.Find("__GM").GetComponent<GameManager>();
+            gm = GameObject.Find("__GM").GetComponent<GameManager>();
             Camera = GameObject.Find("PoloroidCamera");
             ArmPacks = GameObject.FindGameObjectsWithTag("ArmPack");
     }

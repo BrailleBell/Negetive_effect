@@ -17,6 +17,8 @@ public class PlayerManagerTEST : MonoBehaviour
     public GameObject cS;
     [HideInInspector]
     public bool PlayerDied;
+    public GameObject[] spawnFilm;
+    public GameObject film;
 
 
     private void Awake()
@@ -66,12 +68,20 @@ public class PlayerManagerTEST : MonoBehaviour
             
             DeathTimer = true;
             Debug.Log("DeathCounter " + respawnTimerCounter);
+            for (int i = 0; i < spawnFilm.Length; i++)
+            {
+                Instantiate(film, spawnFilm[i].transform.position, Quaternion.identity);
+            }
             
         }
         
         if (other.CompareTag("DeathBarrier"))
         {
             DeathTimer = true;
+            for (int i = 0; i < spawnFilm.Length; i++)
+            {
+                Instantiate(film, spawnFilm[i].transform.position, Quaternion.identity);
+            }
         }
     }
 

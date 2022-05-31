@@ -122,6 +122,7 @@ public class SkellyBoi : MonoBehaviour
                     {
                         transform.position = spawnPoints[SpawnPointId].transform.position;
                         dying = false;
+                        timerReset = 0;
                     }
                     
                 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,6 +18,8 @@ public class PlayerManager : MonoBehaviour
     private GameObject cS; 
     [HideInInspector]
     public bool PlayerDied;
+    public GameObject[] spawnFilm;
+    public GameObject film;
 
 
     private void Awake()
@@ -71,11 +74,20 @@ public class PlayerManager : MonoBehaviour
             anim.SetBool("Dead",true);
             DeathTimer = true;
             Debug.Log("DeathCounter " + respawnTimerCounter);
+            
+            for (int i = 0; i < spawnFilm.Length; i++)
+            {
+                Instantiate(film, spawnFilm[i].transform.position, Quaternion.identity);
+            }
         }
         
         if (other.CompareTag("DeathBarrier"))
         {
             DeathTimer = true;
+           // for (int i = 0; i < spawnFilm.Length; i++)
+           // {
+           //     Instantiate(film, spawnFilm[i].transform.position, Quaternion.identity);
+           // }
         }
     }
 

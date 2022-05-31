@@ -98,6 +98,7 @@ public class Trundle : MonoBehaviour
             {
                 wayPointInd = UnityEngine.Random.Range(1, MonsterWaypoints.Length);
                 transform.position = MonsterWaypoints[wayPointInd].transform.position;
+                state = State.Patroling;
             }
             
         }
@@ -107,7 +108,8 @@ public class Trundle : MonoBehaviour
             if (Player.GetComponent<PlayerManager>().PlayerDied) 
             {
                 wayPointInd = UnityEngine.Random.Range(1, MonsterWaypoints.Length);
-                transform.position = MonsterWaypoints[wayPointInd].transform.position; 
+                transform.position = MonsterWaypoints[wayPointInd].transform.position;
+                state = State.Patroling;
             }
             
         }
