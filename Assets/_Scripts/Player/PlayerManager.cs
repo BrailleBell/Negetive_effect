@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class PlayerManager : MonoBehaviour
 {
     public GameObject Player;
-    public static Vector3 lastPostPos;
+    public static Vector3 lastPostPos =new Vector3(1817.61f,42.515f,253.88f);
     public int SceneToGoTo;
     public float respawnTimer;
     private float respawnTimerCounter;
@@ -45,7 +45,7 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("DeathTimerBool is " + DeathTimer);
+       // Debug.Log("DeathTimerBool is " + DeathTimer);
         if (DeathTimer) // A bool, checks if the player has died
         {
             respawnTimerCounter += Time.deltaTime;
@@ -84,10 +84,10 @@ public class PlayerManager : MonoBehaviour
         if (other.CompareTag("DeathBarrier"))
         {
             DeathTimer = true;
-           // for (int i = 0; i < spawnFilm.Length; i++)
-           // {
-           //     Instantiate(film, spawnFilm[i].transform.position, Quaternion.identity);
-           // }
+            for (int i = 0; i < spawnFilm.Length; i++)
+            {
+                Instantiate(film, spawnFilm[i].transform.position, Quaternion.identity);
+            }
         }
     }
 
@@ -115,7 +115,7 @@ public class PlayerManager : MonoBehaviour
     public void Dying()
     {
         // Write everything that happens during death
-        transform.position = lastPostPos;
+        transform.position =new Vector3(lastPostPos.x,lastPostPos.y + 3,lastPostPos.z);
         FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/Death",GetComponent<Transform>().transform.position);
         // SceneManager.LoadScene(SceneToGoTo);
         cS.GetComponent<TimeSwap>().Show_again(Player.transform);
