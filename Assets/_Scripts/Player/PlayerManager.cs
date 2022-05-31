@@ -45,6 +45,10 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/TrueDeath",GetComponent<Transform>().transform.position);
+        }
        // Debug.Log("DeathTimerBool is " + DeathTimer);
         if (DeathTimer) // A bool, checks if the player has died
         {
@@ -71,6 +75,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (other.CompareTag("Monster"))
         {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/TrueDeath",GetComponent<Transform>().transform.position);
             anim.SetBool("Dead",true);
             DeathTimer = true;
             Debug.Log("DeathCounter " + respawnTimerCounter);
@@ -83,6 +88,8 @@ public class PlayerManager : MonoBehaviour
         
         if (other.CompareTag("DeathBarrier"))
         {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/TrueDeath",GetComponent<Transform>().transform.position);
+            anim.SetBool("Dead",true);
             DeathTimer = true;
             for (int i = 0; i < spawnFilm.Length; i++)
             {
@@ -115,7 +122,7 @@ public class PlayerManager : MonoBehaviour
     public void Dying()
     {
         // Write everything that happens during death
-        transform.position =new Vector3(lastPostPos.x,lastPostPos.y + 3,lastPostPos.z);
+        transform.position =new Vector3(lastPostPos.x + 3,lastPostPos.y + 3,lastPostPos.z + 3);
         FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/Death",GetComponent<Transform>().transform.position);
         // SceneManager.LoadScene(SceneToGoTo);
         cS.GetComponent<TimeSwap>().Show_again(Player.transform);

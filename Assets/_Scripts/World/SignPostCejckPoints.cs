@@ -6,14 +6,14 @@ using UnityEngine;
 public class SignPostCejckPoints : MonoBehaviour
 {
     private GameObject Player;
-    private Light light;
+    public GameObject light;
 
     private int currentSignPost;
     // Start is called before the first frame update
     void Start()
     {
-        light = GetComponent<Light>();
-        light.enabled = false;
+       
+        light.SetActive(false);
         Player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -31,12 +31,13 @@ public class SignPostCejckPoints : MonoBehaviour
             PlayerManagerTEST.lastPostPos = transform.position;
             FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/Death",GetComponent<Transform>().transform.position);
             Debug.Log("CheckPointReached " + PlayerManager.lastPostPos);
-            light.enabled = true;
+            light.SetActive(true);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        light.enabled = false;
+             light.SetActive(false);
+
     }
 }
