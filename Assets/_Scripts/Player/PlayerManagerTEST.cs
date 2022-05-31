@@ -65,7 +65,7 @@ public class PlayerManagerTEST : MonoBehaviour
         if (other.CompareTag("Monster"))
         {
             anim.SetBool("Dead",true);
-            
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/TrueDeath",GetComponent<Transform>().transform.position);
             DeathTimer = true;
             Debug.Log("DeathCounter " + respawnTimerCounter);
             for (int i = 0; i < spawnFilm.Length; i++)
