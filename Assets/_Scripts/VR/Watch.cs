@@ -12,6 +12,7 @@ public class Watch : MonoBehaviour
     public bool shouldCountTime;
 
     private static Watch instance;
+    private float currentTime = GameManager.getTimer;
 
     private void Awake()
     {
@@ -35,7 +36,7 @@ public class Watch : MonoBehaviour
     }
 
     //this will be called every time a scene is loaded
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         //checks the build index
         shouldCountTime = scene.buildIndex != 0;
@@ -44,7 +45,7 @@ public class Watch : MonoBehaviour
         if (!shouldCountTime)
         {
             Debug.Log("reset timer", this);
-            
+            currentTime = 0;
         }
     }
 
@@ -55,10 +56,14 @@ public class Watch : MonoBehaviour
 
         string _Min;
         if (min < 10)
+        {
             _Min = "0" + min;
+        }
         else
+        {
             _Min = min.ToString();
-
+        }
+            
         string _Hour;
         if(hour < 10)
         {

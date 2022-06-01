@@ -17,6 +17,7 @@ public class PlayerSaveData : MonoBehaviour
     public Button[] loadButtons;
 
     bool hasSavefile;
+    private Watch watch;
 
     private void Awake()
     {
@@ -96,6 +97,9 @@ public class PlayerSaveData : MonoBehaviour
                 SceneManager.LoadScene(2); //test if this actually sends the player to the game scene
                 Debug.Log("loading hour 1");
                 Debug.Log(hour + ":" + min);
+
+                //resets the timer
+                //watch.OnSceneLoaded(Scene scene, LoadSceneMode mode);
             }
         }
         else if(hour == 1)
