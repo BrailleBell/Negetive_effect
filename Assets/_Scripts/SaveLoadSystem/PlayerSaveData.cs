@@ -16,14 +16,31 @@ public class PlayerSaveData : MonoBehaviour
     //for load button UI
     public Button[] loadButtons;
 
-    bool hasSavefile;
-    private Watch watch;
+    private static Watch watch;
 
     private void Awake()
     {
         ///Ads the event from GM where we call this function to happen every hour
         ///we then call the AutoSave function from here
         GameManager.OnHourChanged.AddListener(AutoSave); //this gets nullreferenced
+
+        if (watch && watch != this)
+        {
+            //if another instance of this object exists destroy this one
+            Destroy(gameObject);
+            return;
+        }
+
+        //watch = ; //this is the active instance of the object
+
+        //lets not destroy this object when a new scene is loaded
+        DontDestroyOnLoad(gameObject);
+
+        //attach a callback for every new scene that is loaded
+        //it is fine to remove a callback that wasn't added so far
+        //this makes sure that this callback is definitely only added once
+        SceneManager.sceneLoaded -= watch.OnSceneLoaded;
+        SceneManager.sceneLoaded += watch.OnSceneLoaded;
     }
 
     private void Start()
@@ -99,7 +116,7 @@ public class PlayerSaveData : MonoBehaviour
                 Debug.Log(hour + ":" + min);
 
                 //resets the timer
-                //watch.OnSceneLoaded(Scene scene, LoadSceneMode mode);
+                watch.OnSceneLoaded(SceneManager.GetSceneByBuildIndex(2), LoadSceneMode.Single);
             }
         }
         else if(hour == 1)
