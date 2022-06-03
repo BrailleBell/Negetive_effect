@@ -782,7 +782,7 @@
                 {
                     "name": "",
                     "id": "b103d8ef-e4bd-4206-bb3b-e9aea3ce6bee",
-                    "path": "*/{MenuButton}",
+                    "path": "<XRController>{LeftHand}/menu",
                     "interactions": "",
                     "processors": "",
                     "groups": "XR",
@@ -793,7 +793,18 @@
                 {
                     "name": "",
                     "id": "f11224fc-5417-4b88-9a34-9c7e6d9832fe",
-                    "path": "<OculusRemote>/start",
+                    "path": "<XRController>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "XR",
+                    "action": "Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "65af7944-141c-454b-90bc-5d4d04314df6",
+                    "path": "<XRController>/menu",
                     "interactions": "",
                     "processors": "",
                     "groups": "XR",
