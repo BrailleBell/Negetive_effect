@@ -21,17 +21,30 @@ public class PlayerManager : MonoBehaviour
     public GameObject[] spawnFilm;
     public GameObject film;
 
+    private static Watch watch;
 
     private void Awake()
     { 
         GameObject.Find("XR Origin").transform.position = lastPostPos;
         deathPP = GameObject.Find("post_death");
 
+        if (watch && watch != this)
+        {
+            //if another instance of this object exists destroy this one
+            Destroy(gameObject);
+            return;
+        }
+
+        //watch = ; //this is the active instance of the object
+
+        //lets not destroy this object when a new scene is loaded
+        DontDestroyOnLoad(gameObject);
+
         //attach a callback for every new scene that is loaded
         //it is fine to remove a callback that wasn't added so far
         //this makes sure that this callback is definitely only added once
-        //SceneManager.sceneLoaded -= OnSceneLoaded;
-        //SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.sceneLoaded -= watch.OnSceneLoaded;
+        SceneManager.sceneLoaded += watch.OnSceneLoaded;
     }
 
     void Start()
@@ -127,6 +140,7 @@ public class PlayerManager : MonoBehaviour
         // SceneManager.LoadScene(SceneToGoTo);
         cS.GetComponent<TimeSwap>().Show_again(Player.transform);
 
+        watch.OnSceneLoaded(SceneManager.GetSceneByBuildIndex(2), LoadSceneMode.Single);
 
         PlayerDied = true;
             //This is last entry
