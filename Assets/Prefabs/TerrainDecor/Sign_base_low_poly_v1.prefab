@@ -104,8 +104,6 @@ GameObject:
   - component: {fileID: 8724881254788586872}
   - component: {fileID: 5673087280888959709}
   - component: {fileID: 7592556165389395479}
-  - component: {fileID: 1890226376}
-  - component: {fileID: 1890226375}
   m_Layer: 0
   m_Name: Sign_base_low_poly_v1
   m_TagString: Untagged
@@ -177,29 +175,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &1890226376
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8241255174334777282}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 18.471294
-  m_Center: {x: -0.4369316, y: 6.116234, z: 0.57619095}
---- !u!114 &1890226375
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8241255174334777282}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e784caa076b809b4797bec80a5640c21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  light: {fileID: 3676758478957251287}

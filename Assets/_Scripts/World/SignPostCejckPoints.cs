@@ -23,13 +23,12 @@ public class SignPostCejckPoints : MonoBehaviour
     {
         if (lightsOn)
         {
-            timer += Time.deltaTime;
-            if (timer > 30)
+            if(Vector3.Distance(Player.transform.position,transform.position) > 40)
             {
-                light.SetActive(false);
-                timer = 0;
                 lightsOn = false;
-            }
+                light.SetActive(false);
+            }    
+
         }
     }
 
