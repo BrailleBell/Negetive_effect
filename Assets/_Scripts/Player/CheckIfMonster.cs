@@ -32,7 +32,7 @@ public class CheckIfMonster : MonoBehaviour
         if (other.CompareTag("Monster"))
         {
 
-            Debug.Log("ser monster shø");
+            //Debug.Log("ser monster shø");
             mymat.SetColor("_EmissionColor", Color.red);
         }
     }
