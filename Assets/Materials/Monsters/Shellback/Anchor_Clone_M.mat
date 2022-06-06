@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Anchor_M
+  m_Name: Anchor_Clone_M
   m_Shader: {fileID: -6465566751694194690, guid: e1add5a3ff45ff44fa433296ac2252f9, type: 3}
   m_ShaderKeywords: _METALLICSPECGLOSSMAP _NORMALMAP _OCCLUSIONMAP
   m_LightmapFlags: 4
@@ -105,7 +105,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - DissolveAmount: 0
+    - DissolveAmount: 1
     - Vector1_131c69a69e4d440194bf560cd9bb5881: 113.49
     - Vector1_303109e73c834906b88dc6cabafa7378: 0
     - Vector1_46f8435dc2de4a50ba8dd6e3be9e796c: 0
@@ -114,7 +114,7 @@ Material:
     - Vector1_583760cf628b46959d6ab20aac61ecf0: 0
     - Vector1_58f84430fed34e50be2a24efdc7cca27: 0
     - Vector1_814eee1c42a7468ca3f238ac5542b284: 0
-    - Vector1_d898bf2024474f218f1df016263cf3de: 0.04
+    - Vector1_d898bf2024474f218f1df016263cf3de: 0
     - Vector1_f1ba49805b8a4628a43dbe4c29c71811: 1
     - _AlphaClip: 0
     - _Blend: 0
