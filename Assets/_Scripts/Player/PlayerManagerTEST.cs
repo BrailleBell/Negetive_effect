@@ -37,7 +37,7 @@ public class PlayerManagerTEST : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("DeathTimerBool is " + DeathTimer);
+      //  Debug.Log("DeathTimerBool is " + DeathTimer);
         if (DeathTimer) // A bool, checks if the player has died
         {
             respawnTimerCounter += Time.deltaTime;
@@ -111,7 +111,7 @@ public class PlayerManagerTEST : MonoBehaviour
         // Write everything that happens during death
         
         transform.position = lastPostPos;
-        FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/NewHourEffect",GetComponent<Transform>().transform.position);
+       // FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/NewHourEffect",GetComponent<Transform>().transform.position);
         // SceneManager.LoadScene(SceneToGoTo);
 //        cS.GetComponent<TimeSwap>().Show_again(Player.transform);
 

@@ -60,6 +60,7 @@ public class TheThingNew : MonoBehaviour
             {
                 spawnPointId = UnityEngine.Random.Range(1, spawnPoints.Length);
                 transform.position = spawnPoints[spawnPointId].transform.position; 
+                
             }
             
         }
@@ -176,11 +177,12 @@ public class TheThingNew : MonoBehaviour
             SpawnTimer = Random.Range(60, 120);
             dying = true;
             
-
+            
         }
 
         if (other.CompareTag("Player"))
         {
+            gameObject.GetComponent<Collider>().enabled = false;
             
             
         }

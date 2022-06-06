@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class PlayerManager : MonoBehaviour
 {
     public GameObject Player;
-    public static Vector3 lastPostPos =new Vector3(1817.61f,42.515f,253.88f);
+    public static Vector3 lastPostPos = new Vector3(1817.61f,42.515f,253.88f);
     public int SceneToGoTo;
     public float respawnTimer;
     private float respawnTimerCounter;
@@ -20,6 +20,7 @@ public class PlayerManager : MonoBehaviour
     public bool PlayerDied;
     public GameObject[] spawnFilm;
     public GameObject film;
+    private float currentTime = GameManager.getTimer;
 
     private static Watch watch;
 
@@ -71,7 +72,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (other.CompareTag("Monster"))
         {
-            FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/TrueDeath",GetComponent<Transform>().transform.position);
+          //  FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/TrueDeath",GetComponent<Transform>().transform.position);
             anim.SetBool("Dead",true);
             DeathTimer = true;
             Debug.Log("DeathCounter " + respawnTimerCounter);
@@ -118,12 +119,15 @@ public class PlayerManager : MonoBehaviour
     public void Dying()
     {
         // Write everything that happens during death
-        transform.position =new Vector3(lastPostPos.x + 3,lastPostPos.y + 3,lastPostPos.z + 3);
-        FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/Death",GetComponent<Transform>().transform.position);
+        transform.position = lastPostPos;
+       // FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/Death",GetComponent<Transform>().transform.position);
         // SceneManager.LoadScene(SceneToGoTo);
+
+        // The death pp transform
         cS.GetComponent<TimeSwap>().Show_again(Player.transform);
 
-        watch.OnSceneLoaded(SceneManager.GetSceneByBuildIndex(2), LoadSceneMode.Single);
+        currentTime = 0;
+      //  watch.OnSceneLoaded(SceneManager.GetSceneByBuildIndex(2), LoadSceneMode.Single);
 
         PlayerDied = true;
             //This is last entry
