@@ -3662,6 +3662,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1255189293985922025, guid: 9f555d26ec8327d4386cf5b032990054, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1648940921072651178, guid: 9f555d26ec8327d4386cf5b032990054, type: 3}
       propertyPath: m_TurnAmount
       value: 20
@@ -3736,7 +3740,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3419320877451766320, guid: 9f555d26ec8327d4386cf5b032990054, type: 3}
       propertyPath: loadButtons.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3419320877451766320, guid: 9f555d26ec8327d4386cf5b032990054, type: 3}
       propertyPath: loadButtons.Array.data[0]
@@ -3758,9 +3762,17 @@ PrefabInstance:
       propertyPath: loadButtons.Array.data[4]
       value: 
       objectReference: {fileID: 1896817160}
+    - target: {fileID: 3419320877451766320, guid: 9f555d26ec8327d4386cf5b032990054, type: 3}
+      propertyPath: loadButtons.Array.data[5]
+      value: 
+      objectReference: {fileID: 1547997147}
     - target: {fileID: 4753717015477372593, guid: 9f555d26ec8327d4386cf5b032990054, type: 3}
       propertyPath: m_UseGravity
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8576453626418287794, guid: 9f555d26ec8327d4386cf5b032990054, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f555d26ec8327d4386cf5b032990054, type: 3}
