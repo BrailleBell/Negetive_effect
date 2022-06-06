@@ -72,7 +72,8 @@ public class PlayerManager : MonoBehaviour
     {
         if (other.CompareTag("Monster"))
         {
-          //  FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/TrueDeath",GetComponent<Transform>().transform.position);
+            gameObject.GetComponent<Collider>().enabled = false;
+            //  FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/TrueDeath",GetComponent<Transform>().transform.position);
             anim.SetBool("Dead",true);
             DeathTimer = true;
             Debug.Log("DeathCounter " + respawnTimerCounter);
@@ -85,6 +86,7 @@ public class PlayerManager : MonoBehaviour
         
         if (other.CompareTag("DeathBarrier"))
         {
+            gameObject.GetComponent<Collider>().enabled = false;
             FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/TrueDeath",GetComponent<Transform>().transform.position);
             anim.SetBool("Dead",true);
             DeathTimer = true;
@@ -120,13 +122,14 @@ public class PlayerManager : MonoBehaviour
     {
         // Write everything that happens during death
         transform.position = lastPostPos;
-       // FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/Death",GetComponent<Transform>().transform.position);
+        gameObject.GetComponent<Collider>().enabled = true;
+        // FMODUnity.RuntimeManager.PlayOneShot("event:/Effects/Death",GetComponent<Transform>().transform.position);
         // SceneManager.LoadScene(SceneToGoTo);
 
         // The death pp transform
         cS.GetComponent<TimeSwap>().Show_again(Player.transform);
 
-        currentTime = 0;
+        currentTime = 00;
       //  watch.OnSceneLoaded(SceneManager.GetSceneByBuildIndex(2), LoadSceneMode.Single);
 
         PlayerDied = true;
