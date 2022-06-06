@@ -159,6 +159,15 @@ public class PlayerSaveData : MonoBehaviour
                 Debug.Log(hour + ":" + min);
             }
         }
+        else if (hour == 5)
+        {
+            if (loadButtons[5].enabled == true)
+            {
+                SaveGameManager.LoadGame();
+                SceneManager.LoadScene(2);
+                Debug.Log(hour + ":" + min);
+            }
+        }
         else
         {
             Debug.Log("no save file found and cannot be loaded");
