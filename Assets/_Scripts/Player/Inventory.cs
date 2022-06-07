@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -28,7 +29,7 @@ public class Inventory : MonoBehaviour
         UIactive = false;
     }
 
-    public void Update(InputAction.CallbackContext context)
+    public void UIopen(InputAction.CallbackContext context)
     {
         #region POP out inventory (not for use in game)
         if (context.performed) //this will not work but its just to test something

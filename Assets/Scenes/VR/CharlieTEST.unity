@@ -900,7 +900,7 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3545101258092696463, guid: 9f555d26ec8327d4386cf5b032990054, type: 3}
+    - target: {fileID: 0}
       propertyPath: inventory
       value: 
       objectReference: {fileID: 302946833}
@@ -2534,7 +2534,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 904357486}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a8f9fc94abf2c44b9d4e25a82c7c479, type: 3}
   m_Name: 
@@ -4546,23 +4546,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1648940922029869211, guid: 9f555d26ec8327d4386cf5b032990054, type: 3}
   m_PrefabInstance: {fileID: 314556288}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1776213971
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1776213970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a8f9fc94abf2c44b9d4e25a82c7c479, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gm: {fileID: 0}
-  film: {fileID: 0}
-  notes: []
-  inventory: {fileID: 302946833}
-  anchor: {fileID: 202644251}
 --- !u!54 &1776213972
 Rigidbody:
   m_ObjectHideFlags: 0

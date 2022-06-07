@@ -24,6 +24,7 @@ public class XROffset_GrabInteractable : XRGrabInteractable
         initialAttachLocalRot = attachTransform.localRotation;
     }
 
+    [System.Obsolete]
     protected override void OnSelectEntered(XRBaseInteractor interactor)
     {
         if(interactor is XRDirectInteractor)
@@ -36,6 +37,22 @@ public class XROffset_GrabInteractable : XRGrabInteractable
             attachTransform.localPosition = initialAttachLocalPos;
             attachTransform.localRotation = initialAttachLocalRot;
         }
+
+        //inventory stuff
+        if(gameObject.GetComponent<Item>() == null)
+        {
+            return;
+        }
+        if (gameObject.GetComponent<Item>().inSlot)
+        {
+            gameObject.GetComponentInParent<Slot>().ItemInSlot = null;
+            gameObject.transform.parent = null;
+            gameObject.GetComponent<Item>().inSlot = false;
+            gameObject.GetComponent<Item>().currentSlot.ResetColor();
+            gameObject.GetComponent<Item>().currentSlot = null;
+        }
+
+
 
         base.OnSelectEntered(interactor);
     }

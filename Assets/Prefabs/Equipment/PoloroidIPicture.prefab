@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 6846915198272024735}
   - component: {fileID: 197467803474414936}
   - component: {fileID: 5718895069093578658}
+  - component: {fileID: 3835770615792158431}
   m_Layer: 6
   m_Name: PoloroidIPicture
   m_TagString: Untagged
@@ -311,3 +312,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5675170681390550404}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &3835770615792158431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5675170681390550404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd193988e2f6ee7478a6df85c0f467d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inSlot: 0
+  slotRotation: {x: 0, y: 0, z: 0}
+  currentSlot: {fileID: 0}

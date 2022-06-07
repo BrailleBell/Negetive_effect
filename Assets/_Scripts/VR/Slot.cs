@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.XR;
+using UnityEngine.InputSystem;
 
 public class Slot : MonoBehaviour
 {
@@ -17,7 +17,7 @@ public class Slot : MonoBehaviour
         originalColor = slotImage.color;
     }
 
-    private void OnTriggerStay(Collider other)
+    public void OnTriggerStay(Collider other, InputAction.CallbackContext context) //an error is made from this but not game breaking
     {
         if (ItemInSlot != null)
         {
@@ -31,10 +31,10 @@ public class Slot : MonoBehaviour
             return;
         }
 
-        /*if (InputDevice.TryGetFeatureUsages(CommonUsages.secondaryButton)) ///Need to find out how to use the buttons for this
+        if (context.performed) //needs the inputaction for this to happen
         {
             InsertItem(obj);
-        }*/
+        }
     }
 
     bool IsItem(GameObject obj)
