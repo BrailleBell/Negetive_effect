@@ -16,18 +16,27 @@ public class ScellyBoiCopys : MonoBehaviour
     private float killTimer;
     private float Dist;
     private SkellyBoi _skellyBoi;
+     private PlayerManager pl;
+
+    private SkinnedMeshRenderer meshRend;
     
     // Start is called before the first frame update
-    void Start()
-    {
+    void Awake()
+    { 
+        meshRend = GetComponentInChildren<SkinnedMeshRenderer>();
+        Player = GameObject.FindGameObjectWithTag("Player");
+        anim = gameObject.GetComponentInChildren<Animator>();
+        MainHost = GameObject.Find("Shellback");
         _skellyBoi = GameObject.Find("Shellback").GetComponent<SkellyBoi>();
         Dist = MainHost.GetComponent<SkellyBoi>().distFromPlayerToSpawn;
-//        anim.SetBool("Spawned",true);
-        Player = GameObject.FindGameObjectWithTag("Player");
+        anim.SetBool("Summoned",true);
+        anim.SetBool("Attack",true);
+        anim.SetBool("Walk",true);
+        
         ghost = GetComponent<NavMeshAgent>();
         gameObject.tag = "Monster";
-        MainHost = GameObject.Find("Shellback");
-  //      anim.SetBool("Spawned",false);
+       
+
     //    anim.SetBool("Flying",true);
 
     }
@@ -35,6 +44,8 @@ public class ScellyBoiCopys : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
         // destroys the fake skellyboi when the player dies
         if (Player.GetComponent<PlayerManagerTEST>())
         {
@@ -70,25 +81,30 @@ public class ScellyBoiCopys : MonoBehaviour
         
         if (dying) // after taking picture of the ghost it dies after killtimer 
         {
-      //     anim.SetBool("Death",true);
+            anim.SetBool("CloneDeath",true);
             ghost.velocity = Vector3.zero;
             ghost.isStopped = true;
             killTimer += Time.deltaTime; // kill time must be over 0.2 secounds! 
             if (killTimer > 2f)
             {
                 gameObject.SetActive(false);
+                
             }
         }
          
         if (fakeDying) // after taking picture of the ghost it dies after killtimer 
         {
-            //      anim.SetBool("Death",true);
+                anim.SetBool("CloneDeath",true);
+                  
             ghost.SetDestination(transform.position);
             killTimer += Time.deltaTime; // kill time must be over 0.2 secounds! 
             if (killTimer > 2f)
             {
-                GetComponent<MeshRenderer>().enabled = false;
-                GetComponent<CapsuleCollider>().enabled = false;
+                anim.SetBool("Walk",false);
+                anim.SetBool("Summoned",false);
+                anim.SetBool("Attack",false);
+                meshRend.GetComponent<Renderer>().enabled = false;
+                //GetComponent<CapsuleCollider>().enabled = false;
                 transform.position = new Vector3(Player.transform.position.x, -5, Player.transform.position.y);
                 
                 if (killTimer > 6)
@@ -104,11 +120,16 @@ public class ScellyBoiCopys : MonoBehaviour
 
                     }
                     
-                    GetComponent<MeshRenderer>().enabled = true;
-                    GetComponent<CapsuleCollider>().enabled = true;
+                    meshRend.GetComponent<Renderer>().enabled = true;
+                    //GetComponent<CapsuleCollider>().enabled = true;
                     fakeDying = false;
                     killTimer = 0;
                     ghost.SetDestination(Player.transform.position);
+
+                    anim.SetBool("CloneDeath",false);
+                    anim.SetBool("Summoned",true);
+                    anim.SetBool("Attack",true);
+                    anim.SetBool("Walk",true);
                    
                 }
             }

@@ -26,6 +26,7 @@ public class TheThingNew : MonoBehaviour
     private float timetoDie;
     public float SpawnTimer;
     private float resettimer;
+    public GameObject pp;
     
     
     
@@ -36,6 +37,7 @@ public class TheThingNew : MonoBehaviour
         anim = GetComponent<Animator>();
         ghost = GetComponent<NavMeshAgent>();
         ghost.speed = 0;
+
         
         
     }
@@ -144,6 +146,7 @@ public class TheThingNew : MonoBehaviour
                         anim.SetBool("Death",false);
                         anim.SetBool("Attack",false);
                         GetComponent<BoxCollider>().enabled = true;
+                        pp.SetActive(false);
 
                     }
                     
@@ -183,6 +186,7 @@ public class TheThingNew : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             gameObject.GetComponent<Collider>().enabled = false;
+            pp.SetActive(false);
             
             
         }

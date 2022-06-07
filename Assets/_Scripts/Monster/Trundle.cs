@@ -513,6 +513,8 @@ public class Trundle : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
+            transform.position = MonsterWaypoints[wayPointInd].transform.position;
+            state = State.Idle;
             
         }
     }

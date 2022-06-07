@@ -19,7 +19,8 @@ public class SkellyBoi : MonoBehaviour
     //dont mess up the generatedMonstercount kek
     private int generatedMonstersCount = 0;
     public bool dying;
-    private bool haveSpawned;
+    [HideInInspector]
+    public bool haveSpawned;
     private NavMeshAgent ghost;
     private Animator anim;
     private float killTimer;
@@ -36,10 +37,13 @@ public class SkellyBoi : MonoBehaviour
     {
       Player = GameObject.FindWithTag("Player");
       ghost = GetComponent<NavMeshAgent>();
+      anim = gameObject.GetComponentInChildren<Animator>();
+
     }
 
     public void SpawnMonsters()
     {
+        anim.SetBool("Summon",true);
         for (int i = 0; i < AmountOfMonsters; i++)
         {
             generatedMonstersCount++;
@@ -62,6 +66,7 @@ public class SkellyBoi : MonoBehaviour
 // Update is called once per frame
     void Update()
     {
+       // Debug.Log("Havespawned bool = " + haveSpawned);
         // teleports the enemy to another position when the player dies
         if (Player.GetComponent<PlayerManagerTEST>())
         {
@@ -78,7 +83,9 @@ public class SkellyBoi : MonoBehaviour
             if (Player.GetComponent<PlayerManager>().PlayerDied) 
             {
                 SpawnPointId = UnityEngine.Random.Range(1, spawnPoints.Length);
-                transform.position = spawnPoints[SpawnPointId].transform.position; 
+                transform.position = spawnPoints[SpawnPointId].transform.position;
+                anim.SetBool("Summon",false);
+                haveSpawned = false;
             }
             
         }
@@ -89,10 +96,15 @@ public class SkellyBoi : MonoBehaviour
         if (DistanceToPlayer < awareRadius)
         {
             if (!haveSpawned)
-            {
-                //spawns the monstr lel cant u read
-                SpawnMonsters();
-                haveSpawned = true;
+
+                {if(!dying)
+                {
+                     //spawns the monstr 
+                    SpawnMonsters();
+                    haveSpawned = true;
+
+                }
+                   
             }
         }
         if (Input.GetKeyUp(KeyCode.B))
@@ -103,7 +115,9 @@ public class SkellyBoi : MonoBehaviour
         
         if (dying) // after taking picture of the ghost it dies after killtimer 
         {
-         //   anim.SetBool("Death",true);
+            haveSpawned = false;
+            anim.SetBool("Death",true);
+            anim.SetBool("Summon",false);
             ghost.velocity = Vector3.zero;
             ghost.isStopped = true;
             killTimer += Time.deltaTime; // kill time must be over 0.2 secounds! 
@@ -122,7 +136,9 @@ public class SkellyBoi : MonoBehaviour
                     {
                         transform.position = spawnPoints[SpawnPointId].transform.position;
                         dying = false;
+                        anim.SetBool("Death",false);
                         timerReset = 0;
+                        haveSpawned = false;
                     }
                     
                 }
