@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1775117496
 Transform:
   m_ObjectHideFlags: 0
@@ -93,8 +93,6 @@ GameObject:
   - component: {fileID: 8073081709615751152}
   - component: {fileID: 6335911854946741050}
   - component: {fileID: 8306440262089591462}
-  - component: {fileID: 1643010115}
-  - component: {fileID: 1643010114}
   m_Layer: 0
   m_Name: Gravestone1 low poly 1
   m_TagString: Untagged
@@ -179,49 +177,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.1882243, y: 3.9906535, z: 1.6477406}
   m_Center: {x: -0.0022490628, y: 1.9953573, z: -0.0047664233}
---- !u!205 &1643010115
-LODGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5543177097052605167}
-  serializedVersion: 2
-  m_LocalReferencePoint: {x: -0.0023100376, y: 1.995388, z: -0.004766345}
-  m_Size: 3.990654
-  m_FadeMode: 0
-  m_AnimateCrossFading: 0
-  m_LastLODIsBillboard: 0
-  m_LODs:
-  - screenRelativeHeight: 0.11241387
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 6335911854946741050}
-  - screenRelativeHeight: 0.0071500763
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 1775117497}
-  m_Enabled: 1
---- !u!114 &1643010114
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5543177097052605167}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fadcc2d9a34a1a34f93d4962ec37e6e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_data: {fileID: 11400000, guid: da77a0e1c20f48644a48cb0897c7a6c0, type: 2}
-  m_rootTransform: {fileID: 5162957646505349205}
-  m_lodGroup: {fileID: 1643010115}
-  m_renderers:
-  - {fileID: 6335911854946741050}
-  m_lodReplacement: 2
-  m_renderPipelineInUse: 3
-  m_insertIndex: 1
-  m_lastImpostor: {fileID: 1775117495}
-  m_folderPath: Assets/AmplifyImpostors/Models/
-  m_cutMode: 0

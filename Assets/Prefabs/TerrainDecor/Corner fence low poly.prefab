@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7973891988117686506
 Transform:
   m_ObjectHideFlags: 0
@@ -93,8 +93,6 @@ GameObject:
   - component: {fileID: 6805072926703661543}
   - component: {fileID: 8760783908311418157}
   - component: {fileID: 32471411065923507}
-  - component: {fileID: 6553947535815379550}
-  - component: {fileID: 5425497524425362848}
   m_Layer: 0
   m_Name: Corner fence low poly
   m_TagString: Untagged
@@ -111,7 +109,7 @@ Transform:
   m_GameObject: {fileID: 7103428941048964344}
   m_LocalRotation: {x: 0, y: -0.13052624, z: 0, w: 0.9914449}
   m_LocalPosition: {x: 1643.392, y: 25.97, z: 664.675}
-  m_LocalScale: {x: 1.3309122, y: 1.3309122, z: 1.3309122}
+  m_LocalScale: {x: 1.3309122, y: 1.3309125, z: 1.3309122}
   m_Children:
   - {fileID: 7973891988117686506}
   m_Father: {fileID: 0}
@@ -179,49 +177,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5000006, y: 3.8057833, z: 1.5000001}
   m_Center: {x: -0.000060962928, y: 1.1528878, z: 0.000121959696}
---- !u!114 &6553947535815379550
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7103428941048964344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fadcc2d9a34a1a34f93d4962ec37e6e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_data: {fileID: 11400000, guid: 3bb6d943ad83b96409d9bf42494cdbd9, type: 2}
-  m_rootTransform: {fileID: 7628994762108026434}
-  m_lodGroup: {fileID: 5425497524425362848}
-  m_renderers:
-  - {fileID: 8760783908311418157}
-  m_lodReplacement: 2
-  m_renderPipelineInUse: 3
-  m_insertIndex: 0
-  m_lastImpostor: {fileID: 4671652796262277679}
-  m_folderPath: Assets/AmplifyImpostors/Models/
-  m_cutMode: 0
---- !u!205 &5425497524425362848
-LODGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7103428941048964344}
-  serializedVersion: 2
-  m_LocalReferencePoint: {x: -0.00006121397, y: 1.1529013, z: -0.0002900064}
-  m_Size: 3.805856
-  m_FadeMode: 0
-  m_AnimateCrossFading: 0
-  m_LastLODIsBillboard: 0
-  m_LODs:
-  - screenRelativeHeight: 0.1339174
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 8760783908311418157}
-  - screenRelativeHeight: 0.0044869683
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 6660905132975250257}
-  m_Enabled: 1

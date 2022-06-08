@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1667008661
 Transform:
   m_ObjectHideFlags: 0
@@ -92,11 +92,9 @@ GameObject:
   - component: {fileID: 3947888551867955267}
   - component: {fileID: 100886985897719782}
   - component: {fileID: 2774951175134659372}
-  - component: {fileID: 519148144}
   - component: {fileID: 7257962018847278695}
   - component: {fileID: 5403177647422074655}
   - component: {fileID: 2197165226764716583}
-  - component: {fileID: 403142980895802809}
   m_Layer: 0
   m_Name: Gravestone2 low poly
   m_TagString: Untagged
@@ -168,30 +166,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &519148144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4432218318889018105}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fadcc2d9a34a1a34f93d4962ec37e6e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_data: {fileID: 11400000, guid: 6381d85c7422e0f42bc24152ba3999eb, type: 2}
-  m_rootTransform: {fileID: 3947888551867955267}
-  m_lodGroup: {fileID: 403142980895802809}
-  m_renderers:
-  - {fileID: 2774951175134659372}
-  - {fileID: 1667008659}
-  m_lodReplacement: 2
-  m_renderPipelineInUse: 3
-  m_insertIndex: 0
-  m_lastImpostor: {fileID: 1667008658}
-  m_folderPath: Assets/AmplifyImpostors/Models/
-  m_cutMode: 0
 --- !u!65 &7257962018847278695
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -231,26 +205,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.223399, y: 0.82364917, z: 0.54963845}
   m_Center: {x: -0.037920676, y: 3.2537384, z: -0.07376395}
---- !u!205 &403142980895802809
-LODGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4432218318889018105}
-  serializedVersion: 2
-  m_LocalReferencePoint: {x: 0, y: 2.1487367, z: 0.00000011920929}
-  m_Size: 4.3283877
-  m_FadeMode: 0
-  m_AnimateCrossFading: 0
-  m_LastLODIsBillboard: 0
-  m_LODs:
-  - screenRelativeHeight: 0.12880254
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 2774951175134659372}
-  - screenRelativeHeight: 0.0011433469
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 1667008659}
-  m_Enabled: 1

@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 3497340040941652420}
   - component: {fileID: 1688281915884518670}
   - component: {fileID: 5598325067862205647}
-  - component: {fileID: 3976508984634379826}
-  - component: {fileID: 871914089019670931}
   m_Layer: 0
   m_Name: Fence low poly
   m_TagString: Untagged
@@ -98,52 +96,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 9.415241, y: 3.3719928, z: 1.8794384}
   m_Center: {x: -0.0001221134, y: 1.6860039, z: -0.000061010032}
---- !u!114 &3976508984634379826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 895379619302907099}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fadcc2d9a34a1a34f93d4962ec37e6e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_data: {fileID: 11400000, guid: a374a54e655192943943a60a60f53362, type: 2}
-  m_rootTransform: {fileID: 515336330530309729}
-  m_lodGroup: {fileID: 871914089019670931}
-  m_renderers:
-  - {fileID: 1688281915884518670}
-  m_lodReplacement: 2
-  m_renderPipelineInUse: 3
-  m_insertIndex: 0
-  m_lastImpostor: {fileID: 4783003301903469513}
-  m_folderPath: Assets/AmplifyImpostors/Models/
-  m_cutMode: 0
---- !u!205 &871914089019670931
-LODGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 895379619302907099}
-  serializedVersion: 2
-  m_LocalReferencePoint: {x: -0.00018382072, y: 1.6860727, z: -0.00009289384}
-  m_Size: 9.415916
-  m_FadeMode: 0
-  m_AnimateCrossFading: 0
-  m_LastLODIsBillboard: 0
-  m_LODs:
-  - screenRelativeHeight: 0.1520594
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 1688281915884518670}
-  - screenRelativeHeight: 0.0032009599
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 5213039410916314294}
-  m_Enabled: 1
 --- !u!1 &4783003301903469513
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,7 +113,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2372005577139954326
 Transform:
   m_ObjectHideFlags: 0
