@@ -17,7 +17,7 @@ public class Slot : MonoBehaviour
         originalColor = slotImage.color;
     }
 
-    public void OnTriggerStay(Collider other, InputAction.CallbackContext context) //an error is made from this but not game breaking
+    public void OnTriggerStay(Collider other, InputAction.CallbackContext context)
     {
         if (ItemInSlot != null)
         {

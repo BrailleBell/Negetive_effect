@@ -900,10 +900,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: inventory
-      value: 
-      objectReference: {fileID: 302946833}
     - target: {fileID: 8602025526947012241, guid: 9f555d26ec8327d4386cf5b032990054, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -5374,6 +5370,10 @@ PrefabInstance:
     - target: {fileID: 735753570981425289, guid: 380302b0b24a85d4fb0818489214a1ba, type: 3}
       propertyPath: m_Name
       value: Inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 735753570981425289, guid: 380302b0b24a85d4fb0818489214a1ba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 735753570981425290, guid: 380302b0b24a85d4fb0818489214a1ba, type: 3}
       propertyPath: m_RootOrder
