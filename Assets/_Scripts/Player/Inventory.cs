@@ -46,9 +46,32 @@ public class Inventory : MonoBehaviour
         #endregion
     }
 
-    public void OnCollisionEnter(Collision collision, InputAction.CallbackContext context)
+    /*public void OnCollisionEnter(Collision collision, InputAction.CallbackContext context)
     {
         if (collision.gameObject.CompareTag("RightHand") || collision.gameObject.CompareTag("LeftHand") && context.performed)
+        {
+            InstantiateFilm();
+            InstantiateNotes();
+            UIactive = !UIactive;
+            inventory.SetActive(UIactive);
+            Debug.Log("collision works opening inv");
+        }
+
+        if (UIactive)
+        {
+            inventory.transform.position = anchor.transform.position;
+            inventory.transform.eulerAngles = new Vector3(anchor.transform.eulerAngles.x + 15, anchor.transform.eulerAngles.y, 0);
+        }
+
+        else
+        {
+            Debug.Log("collision doesnt work inv");
+        }
+    }*/
+
+    public void VrpopoutMenu(InputAction.CallbackContext context)
+    {
+        if (context.performed)
         {
             InstantiateFilm();
             InstantiateNotes();

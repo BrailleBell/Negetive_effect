@@ -17,7 +17,27 @@ public class Slot : MonoBehaviour
         originalColor = slotImage.color;
     }
 
-    public void OnTriggerStay(Collider other, InputAction.CallbackContext context)
+    /*public void OnTriggerStay(Collider other, InputAction.CallbackContext context)
+    {
+        if (ItemInSlot != null)
+        {
+            return;
+        }
+
+        GameObject obj = other.gameObject;
+
+        if (!IsItem(obj))
+        {
+            return;
+        }
+
+        if (context.performed) //needs the inputaction for this to happen
+        {
+            InsertItem(obj);
+        }
+    }*/
+
+    public void ItemsInSlot(InputAction.CallbackContext context, Collider other)
     {
         if (ItemInSlot != null)
         {
