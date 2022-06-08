@@ -46,9 +46,9 @@ public class Inventory : MonoBehaviour
         #endregion
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void OnCollisionEnter(Collision collision, InputAction.CallbackContext context)
     {
-        if (collision.gameObject.CompareTag("RightHand") || collision.gameObject.CompareTag("LeftHand"))
+        if (collision.gameObject.CompareTag("RightHand") || collision.gameObject.CompareTag("LeftHand") && context.performed)
         {
             InstantiateFilm();
             InstantiateNotes();
