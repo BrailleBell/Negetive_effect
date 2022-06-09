@@ -21,6 +21,7 @@ public class PlayerManager : MonoBehaviour
     public GameObject[] spawnFilm;
     public GameObject film;
     private float currentTime = GameManager.getTimer;
+    private GameObject camera;
 
     private static Watch watch;
 
@@ -28,6 +29,7 @@ public class PlayerManager : MonoBehaviour
     { 
         GameObject.Find("XR Origin").transform.position = lastPostPos;
         deathPP = GameObject.Find("post_death");
+        camera = GameObject.FindGameObjectWithTag("Camera");
 
     }
 
@@ -120,6 +122,7 @@ public class PlayerManager : MonoBehaviour
 
     public void Dying()
     {
+        camera.transform.position = gameObject.transform.position;
         // Write everything that happens during death
         transform.position = lastPostPos;
         gameObject.GetComponent<Collider>().enabled = true;
