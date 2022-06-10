@@ -61,6 +61,7 @@ public class PlayerManager : MonoBehaviour
                 
                 
                 Dying();
+                camera.transform.position = gameObject.transform.position;
             }
         }
         else
@@ -122,7 +123,7 @@ public class PlayerManager : MonoBehaviour
 
     public void Dying()
     {
-        camera.transform.position = gameObject.transform.position;
+        
         // Write everything that happens during death
         transform.position = lastPostPos;
         gameObject.GetComponent<Collider>().enabled = true;
@@ -166,6 +167,7 @@ public class PlayerManager : MonoBehaviour
         PlayerDied = true;
             //This is last entry
         DeathTimer = false;
+        camera.transform.position = gameObject.transform.position;
 
     }
 }

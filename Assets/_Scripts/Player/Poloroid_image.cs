@@ -31,6 +31,7 @@ public class Poloroid_image : MonoBehaviour
     public GameObject oldFilm;
     private Camera _camera;
     public float move;
+    private GameObject player;
 
     //Light
     public GameObject reloadedlamp;
@@ -46,6 +47,7 @@ public class Poloroid_image : MonoBehaviour
     {
         _camera = GameObject.FindGameObjectWithTag("PolaroidCameraCam").GetComponent<Camera>();
         SM = GameObject.Find("__SM").GetComponent<SoundManager>();
+        player = GameObject.FindGameObjectWithTag("Player");
 
     }
 
@@ -334,4 +336,14 @@ public class Poloroid_image : MonoBehaviour
    // {
    //     reloadedlamp.GetComponent<Material>().color = Color.white;
    // }
+
+
+
+   public void OnTriggerEnter()
+   {
+       if(gameObject.CompareTag("DeathBarrier"))
+       {
+           gameObject.transform.position = player.transform.position;
+       }
+   }
 }

@@ -15,6 +15,7 @@ public class SkellyBoi : MonoBehaviour
     public float DistanceToPlayer;
     public float awareRadius;
     public bool DontRespawn;
+    public bool summoning;
     
     //dont mess up the generatedMonstercount kek
     private int generatedMonstersCount = 0;
@@ -28,6 +29,8 @@ public class SkellyBoi : MonoBehaviour
     private int SpawnPointId;
     public float reSpawnTimer;
     private float timerReset;
+    public float resettimer;
+    private float ifNotseenInAmount;
     
     
 
@@ -43,6 +46,7 @@ public class SkellyBoi : MonoBehaviour
 
     public void SpawnMonsters()
     {
+        summoning = true;
         anim.SetBool("Summon",true);
         for (int i = 0; i < AmountOfMonsters; i++)
         {
@@ -78,6 +82,8 @@ public class SkellyBoi : MonoBehaviour
             
         }
 
+        
+
         if (Player.GetComponent<PlayerManager>())
         {
             if (Player.GetComponent<PlayerManager>().PlayerDied) 
@@ -96,25 +102,42 @@ public class SkellyBoi : MonoBehaviour
         if (DistanceToPlayer < awareRadius)
         {
             if (!haveSpawned)
-
-                {if(!dying)
+            {
+                if(!dying)
                 {
-                     //spawns the monstr 
+                    //ghost.SetDestination(gameObject.transform.position);
+                    //spawns the monstr 
                     SpawnMonsters();
                     haveSpawned = true;
-
-                }
-                   
+                }             
             }
         }
+        else
+        {
+            //ghost.SetDestination(Player.transform.position);
+            ifNotseenInAmount += Time.deltaTime;
+            if(ifNotseenInAmount > resettimer)
+            {
+                dying = true;
+                ifNotseenInAmount = 0;
+            }
+        }
+
+        if(DistanceToPlayer > awareRadius)
+        {
+            //ghost.SetDestination(Player.transform.position);
+        }
+
+    
         if (Input.GetKeyUp(KeyCode.B))
         {
             dying = true;
         }
         
         
-        if (dying) // after taking picture of the ghost it dies after killtimer 
+        if (dying) // after taking picture of the ghost it dies after killtimer
         {
+            summoning = false;
             haveSpawned = false;
             anim.SetBool("Death",true);
             anim.SetBool("Summon",false);
@@ -130,15 +153,32 @@ public class SkellyBoi : MonoBehaviour
                 }
                 else
                 {
-                    SpawnPointId = UnityEngine.Random.Range(1, spawnPoints.Length);
+                    
+                    
+                    //ghost.SetDestination(Player.transform.position);
+                    transform.position = spawnPoints[SpawnPointId].transform.position;
+                    
+                    Debug.Log("SpawnPointID er " + SpawnPointId);
+                    awareRadius = 0;
                     timerReset += Time.deltaTime;
                     if (timerReset > reSpawnTimer)
                     {
-                        transform.position = spawnPoints[SpawnPointId].transform.position;
                         dying = false;
                         anim.SetBool("Death",false);
                         timerReset = 0;
                         haveSpawned = false;
+                        Debug.Log("SpawnPointId for Shellback is " + SpawnPointId);
+                        awareRadius = 100;
+                        //ghost.SetDestination(Player.transform.position);
+                        //SpawnPointId = UnityEngine.Random.Range(1, spawnPoints.Length -1);
+                        SpawnPointId++;
+                        if(SpawnPointId == spawnPoints.Length)
+                        {
+                            SpawnPointId = 0;
+                        }
+
+                        transform.position = spawnPoints[SpawnPointId].transform.position;
+                        killTimer = 0;
                     }
                     
                 }
@@ -147,7 +187,13 @@ public class SkellyBoi : MonoBehaviour
                
             }
         }
-        
+        if(summoning == false)
+        {
+            if(dying == false)
+            {
+                //ghost.SetDestination(Player.transform.position);
+            }
+        }
     }
 
     private void OnDrawGizmosSelected()
