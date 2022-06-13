@@ -535,7 +535,7 @@ MonoBehaviour:
   Params: []
   OverrideAttenuation: 1
   OverrideMinDistance: 1
-  OverrideMaxDistance: 23.098724
+  OverrideMaxDistance: 96.81714
 --- !u!114 &599447717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -565,7 +565,7 @@ MonoBehaviour:
   Params: []
   OverrideAttenuation: 1
   OverrideMinDistance: 1
-  OverrideMaxDistance: 34.093384
+  OverrideMaxDistance: 133.8024
 --- !u!114 &1258171471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -580,6 +580,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visibilityRange: 25
   DistanceToPlayer: 0
+  dying: 0
   dontFollow: 1
   dontRespawn: 0
   spawnPoints:
@@ -590,6 +591,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   SpawnTimer: 10
+  pp: {fileID: 0}
 --- !u!195 &1511104043
 NavMeshAgent:
   m_ObjectHideFlags: 0
